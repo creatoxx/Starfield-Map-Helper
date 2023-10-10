@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfield Galaxy Map</title>
+    <style>
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585112.png');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .layer-stars-monochrome {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585233.png');
+            z-index: 1;
+        }
+
+        .layer-stars-colored {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585391.png');
+            z-index: 1;
+        }
+
+        .layer-name-labels {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585340.png');
+            z-index: 1;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            background-color: orange;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+		
+        .mouse-coordinates {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border: 1px solid #000;
+			z-index: 1;
+        }		
+		
+		.star-system {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			z-index: 2;
+		}
+
+		.star-icon {
+			width: 10px;
+			height: 10px;
+			background-color: #ff5733;
+			border-radius: 50%;
+		}
+
+		.star-label {
+			font-size: 14px;
+			color: white;
+			margin-top: 0;
+			margin-left: 5px;
+		}		
+		
+    </style>	
+</head>
+<body>
+
+    <div id="map-container">
+
+		<div class="star-system" style="top: 568px; left: 301px;">
+    		<div class="star-icon"></div>
+    		<div class="star-label">StarName</div>
+		</div>
+		
+		<div class="star-system" style="top: 542px; left: 371px;">
+    		<div class="star-icon"></div>
+    		<div class="star-label">StarName</div>
+		</div>
+		
+		<div class="star-system" style="top: 571px; left: 396px;">
+    		<div class="star-icon"></div>
+    		<div class="star-label">StarName</div>
+		</div>
+		
+		<div class="star-system" style="top: 614px; left: 352px;">
+    		<div class="star-icon"></div>
+    		<div class="star-label">StarName</div>
+		</div>
+		
+		<div class="star-system" style="top: 629px; left: 344px;">
+    		<div class="star-icon"></div>
+    		<div class="star-label">StarName</div>
+		</div>
+
+		<div class="mouse-coordinates" id="coordinates-display">
+			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
+		</div>
+		
+        <div class="layer-stars-monochrome" style="top: 0px; left: 0px;"></div>		
+        <div class="layer-stars-colored" style="top: 0px; left: 0px;"></div>
+        <div class="layer-name-labels" style="top: 0px; left: 0px;"></div>
+		
+        <div class="button-container">
+            <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
+            <button onclick="toggleLayer('layer-stars-monochrome')">Toggle Monochrome Layer</button>
+            <button onclick="toggleLayer('layer-stars-colored')">Toggle Difficulty Layer</button>
+            <button onclick="toggleLayer('layer-name-labels')">Toggle Name Labels</button>
+			<button onclick="exportCoordinatesToHTML()">Export Mouse Coordinates to JSON</button>
+        </div>		
+		
+    </div>
+
+    <div id="notification" class="notification"></div>	
+
+    <script>
+	
+        // Initialize an array to store star system data
+        const starSystems = [];
+
+		// Function to add star system data to the array on Ctrl + click
+		function addStarSystemOnCtrlClick(event) {
+			// Check if the Ctrl key is pressed (event.ctrlKey) and the left mouse button is clicked (event.button === 0)
+			if (event.ctrlKey && event.button === 0) {
+				const top = event.clientY;
+				const left = event.clientX;
+				starSystems.push({ top, left });
+				// You can perform any other actions here if needed
+			}
+		}
+
+		function exportCoordinatesToHTML() {
+			let htmlCode = '';
+
+			starSystems.forEach((system, index) => {
+				htmlCode += '		<div class="star-system" style="top: ' + (system.top - 20) + 'px; left: ' + (system.left - 8) + 'px;">\n';
+				htmlCode += '    		<div class="star-icon"></div>\n';
+				htmlCode += '    		<div class="star-label">StarName' + '</div>\n';
+				htmlCode += '		</div>\n';
+				htmlCode += '		\n';				
+			});
+
+			// Create a Blob containing the HTML code
+			const blob = new Blob([htmlCode], { type: 'text/html' });
+
+			// Create a temporary download link for the HTML file
+			const a = document.createElement('a');
+			a.href = URL.createObjectURL(blob);
+			a.download = 'star_systems.html';
+
+			// Programmatically trigger a click event on the link to start the download
+			a.click();
+
+			// Clean up by revoking the Blob URL
+			URL.revokeObjectURL(a.href);
+		}
+
+        document.addEventListener("mousedown", addStarSystemOnCtrlClick);	
+	
+	    const mapContainer = document.getElementById("map-container");
+        const originalCoordinatesSpan = document.getElementById("original-coordinates");
+
+        mapContainer.addEventListener("mousemove", function(event) {		
+
+            const originalX = "X(left): " + event.pageX;
+            const originalY = "Y(top): " + event.pageY;
+
+			originalCoordinatesSpan.textContent = ` ${originalX}, ${originalY}`;
+        });				
+
+		mapContainer.addEventListener("mouseleave", function () {
+			originalCoordinatesSpan.value = "";		
+		});
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === 'F11') {
+                event.preventDefault();
+                toggleFullScreen();
+            } else if (event.key === 'F1' || event.key === 'F3' || event.key === 'F6' || event.key === 'F7' || event.key === 'F10') {
+                event.preventDefault();
+            }
+        });
+
+        mapContainer.onwheel = function (event) {
+
+            if (event.ctrlKey) {
+                if (event.deltaY > 0) {
+                } else if (event.deltaY < 0) {
+                }
+                event.preventDefault();
+            }
+        };
+
+        function toggleFullScreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                mapContainer.requestFullscreen().catch(err => {
+                    console.error("Error attempting to enable fullscreen:", err);
+                });
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = "block";
+            setTimeout(function () {
+                notification.style.display = "none";
+            }, 3000);
+        }
+
+        function toggleLayer(layerClass) {
+            const layerElements = document.querySelectorAll("." + layerClass);
+            layerElements.forEach(element => {
+                element.style.display = element.style.display === "none" ? "block" : "none";
+            });
+            localStorage.setItem(layerClass, layerElements[0].style.display);
+        }
+
+        function loadLayerToggleState() {
+            const layerClasses = ['layer-stars-monochrome', 'layer-stars-colored', 'layer-name-labels'];
+            layerClasses.forEach(layerClass => {
+                const savedState = localStorage.getItem(layerClass);
+                if (savedState !== null) {
+                    const layerElements = document.querySelectorAll("." + layerClass);
+                    layerElements.forEach(element => {
+                        element.style.display = savedState;
+                    });
+                }
+            });
+        }
+		
+		window.addEventListener('load', function () {
+			loadLayerToggleState();
+		});		
+		
+    </script>
+</body>
+</html>

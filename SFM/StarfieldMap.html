@@ -9,7 +9,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585112.png');
+            background-image: url('https://raw.githubusercontent.com/creatoxx/Starfield-Map-Helper/main/SFM/StarfieldMapDev/resource/images/SFM_StarsBG.png');
             background-size: cover;
             z-index: 0;
         }
@@ -20,7 +20,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585233.png');
+            background-image: url('https://raw.githubusercontent.com/creatoxx/Starfield-Map-Helper/main/SFM/StarfieldMapDev/resource/images/SFM_StarsMonochrome.png');
             z-index: 1;
         }
 
@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585391.png');
+            background-image: url('https://raw.githubusercontent.com/creatoxx/Starfield-Map-Helper/main/SFM/StarfieldMapDev/resource/images/SFM_StarsDifficulty.png');
             z-index: 1;
         }
 
@@ -40,7 +40,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585340.png');
+            background-image: url('https://raw.githubusercontent.com/creatoxx/Starfield-Map-Helper/main/SFM/StarfieldMapDev/resource/images/SFM_LabelNames.png');
             z-index: 1;
         }
 
@@ -89,7 +89,34 @@
 			height: 10px;
 			background-color: #ff5733;
 			border-radius: 50%;
+            animation: starGlow 2s infinite alternate, plasmaMove 2s infinite;
+        }
+		
+        @keyframes starGlow {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 255, 0, 0.5); /* Start with a yellow glow */
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(255, 255, 0, 1); /* End with a stronger yellow glow */
+            }
+        }		
+		
+		.plasma {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: radial-gradient(circle, rgba(255, 0, 0, 0.7) 0%, transparent 80%);
+			animation: plasmaMove 2s linear infinite alternate;
 		}
+
+		@keyframes plasmaMove {
+			0% {
+				transform: translate(-50%, -50%) scale(1);
+			}
+			100% {
+				transform: translate(-50%, -50%) scale(1.2);
+			}
+		}		
 
 		.star-label {
 			font-size: 14px;
@@ -103,27 +130,40 @@
 <body>
 
     <div id="map-container">
+	
+<div class="star-system" style="top: 556px; left: 301px;">
+    <div class="star-icon plasma" style="background-color: yellow; width: 6px; height: 6px;">
+        <style>
+            @keyframes starGlow {
+                0% {
+                    box-shadow: 0 0 10px yellow;
+                }
+                100% {
+                    box-shadow: 0 0 20px yellow;
+                }
+            }
+        </style>
+    </div>
+    <div class="star-label">Sol</div>
+</div>
 
-		<div class="star-system" style="top: 560px; left: 301px;">
-    		<div class="star-icon"></div>
-    		<div class="star-label">sol</div>
-		</div>
-		<div class="star-system" style="top: 537px; left: 371px;">
-    		<div class="star-icon"></div>
-    		<div class="star-label">barna</div>
-		</div>
-		<div class="star-system" style="top: 565px; left: 396px;">
-    		<div class="star-icon"></div>
-    		<div class="star-label">wolf</div>
-		</div>
-		<div class="star-system" style="top: 610px; left: 353px;">
-    		<div class="star-icon"></div>
-    		<div class="star-label">tolim</div>
-		</div>
-		<div class="star-system" style="top: 623px; left: 344px;">
-    		<div class="star-icon"></div>
-    		<div class="star-label">alpha</div>
-		</div>
+<div class="star-system" style="top: 342px; left: 942px;">
+    <div class="star-icon plasma" style="background-color: orange; width: 10px; height: 10px;">
+        <style>
+            @keyframes starGlow {
+                0% {
+                    box-shadow: 0 0 10px orange;
+                }
+                100% {
+                    box-shadow: 0 0 20px orange;
+                }
+            }
+        </style>
+    </div>
+    <div class="star-label">Arcturus</div>
+</div>
+
+	
 
 		<div class="mouse-coordinates" id="coordinates-display">
 			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
@@ -149,43 +189,111 @@
 	
         // Initialize an array to store star system data
         const starSystems = [];
-
-		// Function to add star system data to the array on Ctrl + click
+		
 		function addStarSystemOnCtrlClick(event) {
-			// Check if the Ctrl key is pressed (event.ctrlKey) and the left mouse button is clicked (event.button === 0)
 			if (event.ctrlKey && event.button === 0) {
 				const top = event.clientY;
 				const left = event.clientX;
-				starSystems.push({ top, left });
-				// You can perform any other actions here if needed
+				const starName = prompt('Enter star name:');
+				const stellarClassification = prompt('Enter stellar classification:');
+				
+				const { backgroundColor, starIconSize } = getStarProperties(stellarClassification);
+
+				starSystems.push({ top, left, starName, stellarClassification, backgroundColor, starIconSize });
 			}
 		}
-
+		
 		function exportCoordinatesToHTML() {
 			let htmlCode = '';
 
 			starSystems.forEach((system, index) => {
-				htmlCode += '		<div class="star-system" style="top: ' + (system.top) + 'px; left: ' + (system.left - 8) + 'px;">\n';
-				htmlCode += '    		<div class="star-icon"></div>\n';
-				htmlCode += '    		<div class="star-label">StarName' + '</div>\n';
-				htmlCode += '		</div>\n';
-				htmlCode += '		\n';				
+				const starName = system.starName || 'StarName';
+				const stellarClassification = system.stellarClassification || '';
+
+				// Use the getStarProperties function to get background color and star icon size
+				const { backgroundColor, starIconSize } = getStarProperties(stellarClassification);
+
+				// Define a variable for the glow color
+				const glowColor = backgroundColor;
+
+				htmlCode += '<div class="star-system" style="top: ' + (system.top - 20) + 'px; left: ' + (system.left - 8) + 'px;">\n';
+				// Use the glowColor variable to set the box-shadow color
+				htmlCode += '    <div class="star-icon plasma" style="background-color: ' + backgroundColor + '; width: ' + starIconSize + '; height: ' + starIconSize + ';">\n';
+				htmlCode += '        <style>\n';
+				htmlCode += '            @keyframes starGlow {\n';
+				htmlCode += '                0% {\n';
+				// Use the glowColor variable to define the initial color of the glow
+				htmlCode += '                    box-shadow: 0 0 10px ' + glowColor + ';\n';
+				htmlCode += '                }\n';
+				htmlCode += '                100% {\n';
+				// Use the glowColor variable to define the final color of the glow
+				htmlCode += '                    box-shadow: 0 0 20px ' + glowColor + ';\n';
+				htmlCode += '                }\n';
+				htmlCode += '            }\n';
+				htmlCode += '        </style>\n';
+				htmlCode += '    </div>\n';
+				htmlCode += '    <div class="star-label">' + starName + '</div>\n';
+				htmlCode += '</div>\n\n';
 			});
 
-			// Create a Blob containing the HTML code
 			const blob = new Blob([htmlCode], { type: 'text/html' });
-
-			// Create a temporary download link for the HTML file
 			const a = document.createElement('a');
 			a.href = URL.createObjectURL(blob);
 			a.download = 'star_systems.html';
 
-			// Programmatically trigger a click event on the link to start the download
 			a.click();
-
-			// Clean up by revoking the Blob URL
 			URL.revokeObjectURL(a.href);
 		}
+
+		function getStarProperties(stellarClassification) {
+			// Extract the spectral class (e.g., 'A') and luminosity class (e.g., 'Ib') from the input
+			const matches = stellarClassification.match(/([OBAFGKM])([0123456789IVab]+)/);
+
+			// Define color mappings based on the simplified MK system for spectral classes and luminosity classes
+			const colorMap = {
+				spectralClass: {
+					'O': 'cyan',
+					'B': 'cyan',
+					'A': 'white',
+					'F': 'white',
+					'G': 'yellow',
+					'K': 'orange',
+					'M': 'red',
+					'0': 'cyan',
+					'Ia': 'red',
+					'Ib': 'orange',
+					'II': 'yellow',
+					'III': 'yellow',
+					'IV': 'cyan',
+					'V': 'white',
+					'VI': 'cyan',
+					'VII': 'orange',
+					'default': 'gray'
+				},
+				luminosityClassSize: {
+					'0': '20px',    // Adjust the sizes as needed
+					'Ia': '16px',
+					'Ib': '14px',
+					'II': '12px',
+					'III': '10px',
+					'IV': '8px',
+					'V': '6px',
+					'VI': '4px',
+					'VII': '2px',
+					'default': '6px' // Default size
+				}
+			};
+
+			// Use the extracted spectral class and luminosity class to determine the properties
+			const spectralClass = matches ? matches[1] : 'default';
+			const luminosityClassMatches = stellarClassification.match(/([IVab]+)/);
+			const luminosityClass = luminosityClassMatches ? luminosityClassMatches[0] : 'default';
+
+			const spectralClassColor = colorMap.spectralClass[spectralClass] || colorMap.spectralClass['default'];
+			const luminosityClassSize = colorMap.luminosityClassSize[luminosityClass] || colorMap.luminosityClassSize['default'];
+
+			return { backgroundColor: spectralClassColor, starIconSize: luminosityClassSize };
+		}		
 
         document.addEventListener("mousedown", addStarSystemOnCtrlClick);	
 	
@@ -204,24 +312,39 @@
 			originalCoordinatesSpan.value = "";		
 		});
 
-        document.addEventListener("keydown", function (event) {
-            if (event.key === 'F11') {
-                event.preventDefault();
-                toggleFullScreen();
-            } else if (event.key === 'F1' || event.key === 'F3' || event.key === 'F6' || event.key === 'F7' || event.key === 'F10') {
-                event.preventDefault();
-            }
-        });
+		document.addEventListener("keydown", function (event) {
+			if (event.key === 'F11') {
+				event.preventDefault();
+				toggleFullScreen();
+			} else if (event.key === 'F1' || event.key === 'F3' || event.key === 'F6' || event.key === 'F7' || event.key === 'F10') {
+				event.preventDefault();
+			} else if (event.ctrlKey && event.key === 'c') {
+				// Restore default zoom and center the map
+				mapContainer.style.transform = 'scale(1)';
+				mapContainer.scrollTo(0, 0);
+			}
+		});
 
-        mapContainer.onwheel = function (event) {
+		let zoomLevel = 1.0; // Initial zoom level
+		const zoomStep = 0.1; // Zoom step size
 
-            if (event.ctrlKey) {
-                if (event.deltaY > 0) {
-                } else if (event.deltaY < 0) {
-                }
-                event.preventDefault();
-            }
-        };
+		mapContainer.addEventListener("wheel", function(event) {
+			if (event.ctrlKey) {
+				event.preventDefault(); // Prevent the default zoom behavior
+
+				// Calculate the new zoom level
+				zoomLevel += event.deltaY > 0 ? -zoomStep : zoomStep;
+				
+				// Calculate the maximum zoom-out level based on the map container size
+				const maxZoomOut = Math.min(mapContainer.clientWidth / mapContainer.scrollWidth, mapContainer.clientHeight / mapContainer.scrollHeight);
+				
+				// Restrict zoom level within a range
+				zoomLevel = Math.max(maxZoomOut, Math.min(3.0, zoomLevel));
+				
+				// Apply the zoom transformation to the map container
+				mapContainer.style.transform = `scale(${zoomLevel})`;
+			}
+		});
 
         function toggleFullScreen() {
             if (document.fullscreenElement) {
@@ -265,8 +388,8 @@
 		
 		window.addEventListener('load', function () {
 			loadLayerToggleState();
-		});		
-		
+		});	
+	
     </script>
 </body>
 </html>

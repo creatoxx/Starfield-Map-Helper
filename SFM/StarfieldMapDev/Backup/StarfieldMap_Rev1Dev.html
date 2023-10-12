@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfield Galaxy Map</title>
+    <style>
+        /* Map Container */
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585112.png');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .layer-stars-monochrome {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585233.png');
+            z-index: 1;
+        }
+
+        .layer-stars-colored {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585391.png');
+            z-index: 1;
+        }
+
+        .layer-jump-lanes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585288.png');
+            z-index: 1;
+        }
+
+        .layer-name-labels {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://staticdelivery.nexusmods.com/images/4187/32303475-1696585340.png');
+            z-index: 1;
+        }
+
+        /* Star Icons */
+        .icons-star-system {
+            top: 50px;
+            left: 50px;
+            width: 15px;
+            height: 15px;
+            background-color: cyan;
+            border-radius: 50%;
+            position: absolute;
+            cursor: grab; /* Add cursor style for better visual feedback */
+            z-index: 1;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .add-icon-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px;
+            background-color: #007bff;/* blue background */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            z-index: 3;
+        }
+		
+		.remove-all-icons-button {
+			position: absolute;
+			top: 50px;
+			left: 10px;
+			padding: 5px;
+			background-color: #ff0000;/* red background */
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			z-index: 3;
+		}
+		.star-icon-counter {
+			color: #000;
+			padding: 3px 6px;
+			background-color: yellow;
+			border-radius: 3px;
+			margin-top: 10px;
+			text-align: center;
+			font-size: 14px;
+			position: absolute;
+			top: 81px;
+			left: 10px;
+		}
+
+		/* Style for the star icon input box */
+		.text-input {
+			position: absolute;
+			top: 25px;
+			left: 0;
+			display: none;
+			z-index: 3;
+			width: 200px;
+			height: 200px;
+			padding: 10px;
+			border: 1px solid #000;
+			line-height: 1.4;
+			vertical-align: top;
+			resize: vertical;
+		}
+
+		/* Style for the notification popup */
+		.notification {
+			display: none;
+			position: fixed;
+			top: 10%;
+			left: 20%;
+			transform: translate(-50%, -50%);
+			background-color: orange;
+			color: white;
+			padding: 10px;
+			border-radius: 5px;
+			z-index: 9999;
+		}
+    </style>
+</head>
+<body>
+
+    <!-- Create a container for the map -->
+    <div id="map-container">
+        <div class="layer-stars-monochrome" style="top: 0px; left: 0px;"></div>
+        <div class="layer-stars-colored" style="top: 0px; left: 0px;"></div>
+        <!--div class="layer-jump-lanes" style="top: 0px; left: 0px;"></div-->
+        <div class="layer-name-labels" style="top: 0px; left: 0px;"></div>
+		
+        <div class="button-container">
+		
+            <!-- Fullscreen button -->
+            <button onclick="toggleFullScreen()">Toggle Fullscreen</button>
+
+            <!-- Buttons to toggle layers -->
+            <button onclick="toggleLayer('layer-stars-monochrome')">Toggle Monochrome Layer</button>
+            <button onclick="toggleLayer('layer-stars-colored')">Toggle Difficulty Layer</button>
+            <!-- <button onclick="toggleLayer('layer-jump-lanes')">Toggle Jump Lanes Layer</button> -->
+            <button onclick="toggleLayer('layer-name-labels')">Toggle Name Labels</button>
+            <button onclick="toggleLayer('icons-star-system')">Toggle Star Icons</button>
+			
+        </div>
+
+        <!-- Star Icon container -->
+        <div id="icon-container"></div>
+
+        <!-- Star Icon button group -->
+        <button class="add-icon-button" onclick="createNewIcon()">Add Icon</button>
+		<button class="remove-all-icons-button" onclick="removeAllIcons()">Remove All Icons</button>
+		<div id="star-icon-counter" class="star-icon-counter">Star Icons: 0</div>
+
+        <!-- Text input for Star Icons -->
+		<textarea id="text-input" class="text-input" onblur="saveIconText(this)"></textarea>
+
+    </div>
+
+    <!-- Container to display debug and notification messages -->
+    <div id="notification" class="notification"></div>
+    <script>
+		// Function to count the number of star icons on the map
+		function countStarIcons() {
+			const icons = document.querySelectorAll(".icons-star-system");
+			return icons.length;
+		}
+
+		// Function to update the star icon counter
+		function updateStarIconCounter() {
+			const starIconCounter = document.getElementById("star-icon-counter");
+			if (starIconCounter) {
+				const iconCount = countStarIcons();
+				starIconCounter.textContent = "Star Icons: " + iconCount;
+			}
+		}
+
+		// Call updateStarIconCounter during the page load
+		window.addEventListener('load', updateStarIconCounter);	
+	
+        // Function to block the original hotkeys
+        document.addEventListener("keydown", function (event) {
+            if (event.key === 'F11') {
+                event.preventDefault();
+                toggleFullScreen();
+            } else if (event.key === 'F1' || event.key === 'F3' || event.key === 'F5' || event.key === 'F6' || event.key === 'F7' || event.key === 'F10' || event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+
+        const mapContainer = document.getElementById("map-container");
+        const iconContainer = document.getElementById("icon-container");
+        const textInput = document.getElementById("text-input");
+
+        mapContainer.onwheel = function (event) {
+
+            if (event.ctrlKey) {
+                if (event.deltaY > 0) {
+                    // Scroll down (Zoom Out)
+                } else if (event.deltaY < 0) {
+                    // Scroll up (Zoom In)
+                }
+                // Prevent the default scroll behavior
+                event.preventDefault();
+            }
+        };
+
+        // Function to toggle fullscreen mode
+        function toggleFullScreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                mapContainer.requestFullscreen().catch(err => {
+                    console.error("Error attempting to enable fullscreen:", err);
+                });
+            }
+        }
+
+        // Function to show a temporary notification popup
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = "block";
+
+            // Automatically hide the notification after 3 seconds (adjust as needed)
+            setTimeout(function () {
+                notification.style.display = "none";
+            }, 3000);
+        }
+
+        // Function to toggle the visibility of a specific layer
+        function toggleLayer(layerClass) {
+            // Check if there are any star icons on the page
+            const iconsExist = document.querySelector("." + layerClass);
+
+            if (iconsExist) {
+                const layerElements = document.querySelectorAll("." + layerClass);
+
+                layerElements.forEach(element => {
+                    element.style.display = element.style.display === "none" ? "block" : "none";
+                });
+
+                // Save the toggle state in localStorage
+                localStorage.setItem(layerClass, layerElements[0].style.display);
+            } else {
+                showNotification("No star icons to display. Please add star icons first.");
+            }
+        }
+
+        // Function to load the toggle state of layers from localStorage
+        function loadLayerToggleState() {
+            const layerClasses = ['layer-stars-monochrome', 'layer-stars-colored', 'layer-name-labels']; //'layer-jump-lanes',
+
+            layerClasses.forEach(layerClass => {
+                const savedState = localStorage.getItem(layerClass);
+                if (savedState !== null) {
+                    const layerElements = document.querySelectorAll("." + layerClass);
+                    layerElements.forEach(element => {
+                        element.style.display = savedState;
+                    });
+                }
+            });
+        }
+
+        // Call the loadLayerToggleState function when the page loads to restore the toggle state
+        window.addEventListener('load', loadLayerToggleState);
+
+        // Function to enable dragging for star icons
+        function enableDrag(icon) {
+            let isDragging = false;
+
+            icon.addEventListener("mousedown", e => {
+                isDragging = true;
+
+                const offsetX = e.clientX - icon.getBoundingClientRect().left;
+                const offsetY = e.clientY - icon.getBoundingClientRect().top;
+
+                document.addEventListener("mousemove", onMouseMove);
+                document.addEventListener("mouseup", onMouseUp);
+
+                function onMouseMove(e) {
+                    if (!isDragging) return;
+                    icon.style.left = e.clientX - offsetX + "px";
+                    icon.style.top = e.clientY - offsetY + "px";
+                }
+
+                function onMouseUp() {
+                    if (!isDragging) return;
+                    isDragging = false;
+
+                    // Save the position of the dragged icon in localStorage
+                    const iconId = icon.getAttribute("data-icon-id");
+                    localStorage.setItem("icon-position-" + iconId, JSON.stringify({
+                        top: icon.style.top,
+                        left: icon.style.left,
+                    }));
+
+                    document.removeEventListener("mousemove", onMouseMove);
+                    document.removeEventListener("mouseup", onMouseUp);
+                }
+            });
+        }
+
+		// Load existing icons and their positions from localStorage
+		function loadIcons() {
+			for (let i = 0; i < localStorage.length; i++) {
+				const key = localStorage.key(i);
+				if (key.startsWith("icon-position-")) {
+					const iconId = key.substring("icon-position-".length);
+					// Check if an icon with the same ID already exists
+					if (!document.querySelector(`[data-icon-id="${iconId}"]`)) {
+						const position = JSON.parse(localStorage.getItem(key));
+						createIcon(position.left, position.top, iconId);
+					}
+				}
+			}
+		}
+
+        // Call loadIcons function when the page loads to restore icon positions
+        window.addEventListener('load', loadIcons);
+
+		// Define a maximum number of icons per row
+		const iconsPerRow = 75;
+
+		// Variables to track the current row and the number of icons in the current row
+		let currentRow = 1; // Start from the second row
+		let iconsInCurrentRow = 0;
+
+		// Function to create a new icon when the "Add Icon" button is clicked
+		function createNewIcon() {
+			// Check if the maximum limit of star icons (150) has been reached
+			const currentIconCount = countStarIcons();
+			if (currentIconCount >= 150) {
+				showNotification("Maximum limit of star icons reached (150).");
+				return;
+			}
+
+			// Calculate the left position based on the current row and icons in the row
+			const left = `${iconsInCurrentRow * 18 + 135}px`; // Adjust spacing as needed
+
+			// Calculate the top position based on the current row
+			const top = `${currentRow * 40 + 15}px`; // Adjust spacing as needed
+
+			// Create the new star icon at the calculated position
+			createIcon(left, top);
+
+			// Increment the count of icons in the current row
+			iconsInCurrentRow++;
+
+			// If the maximum number of icons per row is reached, start a new row
+			if (iconsInCurrentRow >= iconsPerRow) {
+				iconsInCurrentRow = 0; // Reset the icons count in the current row
+				currentRow++; // Move to the next row
+			}
+
+			// After creating the new icon, update the star icon counter
+			updateStarIconCounter();
+		}
+
+		// Function to remove an icon and its associated text
+		function removeIcon(icon) {
+			// Remove the icon from the DOM
+			iconContainer.removeChild(icon);
+
+			// Remove the icon's position from localStorage
+			const iconId = icon.getAttribute("data-icon-id");
+			localStorage.removeItem("icon-position-" + iconId);
+
+			// Remove the icon's text data from localStorage
+			localStorage.removeItem("icon-text-" + iconId);
+			updateStarIconCounter();
+		}
+
+        // Function to handle shift-click on icons
+        function handleIconClick(icon, event) {
+            if (event.shiftKey) {
+                // Remove the icon when shift-clicked
+                removeIcon(icon);
+            } else if (event.ctrlKey) {
+                // Handle Ctrl-click
+                handleIconCtrlClick(icon);
+            }
+        }
+
+        // Function to handle Ctrl-click on icons
+        function handleIconCtrlClick(icon) {
+            // Show the text input box for editing the icon's label
+            textInput.style.left = (parseFloat(icon.style.left) - 20) + "px";
+            textInput.style.top = (parseFloat(icon.style.top) - 20) + "px";
+            textInput.style.display = "block";
+            textInput.value = icon.getAttribute("data-label");
+
+            // Focus on the text input
+            textInput.focus();
+
+            // Save the icon element in a variable for reference when confirming changes
+            textInput.dataset.iconId = icon.getAttribute("data-icon-id");
+        }
+
+        // Function to save the edited icon text when the text input loses focus
+        function saveIconText(input) {
+            const iconId = input.dataset.iconId;
+            const icon = document.querySelector(`[data-icon-id="${iconId}"]`);
+            icon.setAttribute("data-label", input.value);
+
+            // Hide the text input box
+            input.style.display = "none";
+
+            // Save the updated icon text in localStorage
+            localStorage.setItem("icon-text-" + iconId, input.value);
+        }
+
+		// Function to create a new star icon
+		function createIcon(left, top, id) {
+			const icon = document.createElement("div");
+			icon.classList.add("icons-star-system");
+			icon.style.left = left;
+			icon.style.top = top;
+
+			// Add a unique ID to the star icon
+			icon.dataset.iconId = id || generateUniqueId();
+
+			// Add a default label (you can change this as needed)
+			icon.setAttribute("data-label", "Star " + icon.dataset.iconId);
+
+			// Load the saved label from localStorage if it exists
+			const savedText = localStorage.getItem("icon-text-" + icon.dataset.iconId);
+			if (savedText) {
+				icon.setAttribute("data-label", savedText);
+			} else {
+				// If there's no saved text, save the initial text in localStorage
+				localStorage.setItem("icon-text-" + icon.dataset.iconId, icon.getAttribute("data-label"));
+			}
+
+			// Enable dragging for the icon
+			enableDrag(icon);
+
+			// Handle click events on the icon (shift-click and Ctrl-click)
+			icon.addEventListener("click", event => handleIconClick(icon, event));
+
+			// Append the icon to the icon container
+			iconContainer.appendChild(icon);
+
+			// Save the initial position of the icon in localStorage
+			localStorage.setItem("icon-position-" + icon.dataset.iconId, JSON.stringify({
+				top: top,
+				left: left,
+			}));
+		}
+
+		// Function to generate a unique ID for star icons
+		function generateUniqueId() {
+			// Generate a random number with a timestamp to ensure uniqueness
+			return "icon-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
+		}
+
+        // Function to remove all icons
+        function removeAllIcons() {
+            const icons = document.querySelectorAll(".icons-star-system");
+            icons.forEach(icon => removeIcon(icon));
+			updateStarIconCounter();
+        }
+
+        // Initialize the map by loading the existing icons
+        loadIcons();
+		
+        // Function to initialize local storage with the initial state of layers
+        function initializeLocalStorage() {
+            const initialLayers = {
+                'layer-name-labels': 'block', // Initial state of 'layer-name-labels'
+                'layer-stars-colored': 'block', // Initial state of 'layer-stars-colored'
+            };
+
+            for (const key in initialLayers) {
+                if (localStorage.getItem(key) === null) {
+                    localStorage.setItem(key, initialLayers[key]);
+                }
+            }
+        }
+
+        // Call initializeLocalStorage when the page loads to set initial layer states
+        window.addEventListener('load', initializeLocalStorage);
+
+        // Toggle the layers based on their initial state
+        function toggleInitialLayers() {
+            const initialLayerStates = {
+                'layer-stars-colored': localStorage.getItem('layer-stars-colored'),
+            };
+
+            for (const key in initialLayerStates) {
+                if (initialLayerStates[key] === 'block') {
+                    toggleLayer(key);
+                }
+            }
+        }
+
+        // Call toggleInitialLayers when the page loads to apply initial layer states
+        window.addEventListener('load', toggleInitialLayers);
+    </script>
+</body>
+</html>

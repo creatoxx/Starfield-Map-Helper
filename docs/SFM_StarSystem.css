@@ -18,9 +18,5 @@
 	color: white;
 	margin-top: 0;
 	margin-left: 8px;
-	display: none;
-}
-
-.star-label.star-label-visible {
-  display: block;
+	display: block;
 }

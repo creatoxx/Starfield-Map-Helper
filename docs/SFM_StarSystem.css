@@ -1,0 +1,21 @@
+.star-system {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	z-index: 2;
+}
+
+.star-icon {
+	width: 10px;
+	height: 10px;
+	background-color: #ff5733;
+	border-radius: 50%;
+}		
+
+.star-label {
+	font-size: 12px;
+	color: white;
+	margin-top: 0;
+	margin-left: 8px;
+}

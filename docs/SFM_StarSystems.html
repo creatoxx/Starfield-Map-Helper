@@ -609,17 +609,6 @@
             </div>
             <div class="star-label">Zosma</div>
         </div>
-    </div>
-    <script>
-        window.addEventListener('message', (event) => {
-          if (event.data === 'toggleStarLabels') {
-            const starLabels = document.querySelectorAll('.star-label');
-            starLabels.forEach(label => {
-              label.style.display = label.style.display === 'none' ? 'block' : 'none';
-            });
-            window.parent.postMessage('starLabelsToggled', '*');
-          }
-        });
-    </script>    
+    </div> 
 </body>
 </html>

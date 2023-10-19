@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+	
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: rgb(0, 0, 255, 0.03);
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            animation: twinkle 7s infinite;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            20%, 80% {
+                opacity: 0;
+            }
+        }
+		
+    </style>
+</head>
+<body>
+    <script>
+	
+        for (let i = 0; i < 2000; i++) {
+            createStar();
+        }
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.animationDelay = `${Math.random() * 7}s`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+            document.body.appendChild(star);
+        }
+		
+    </script>
+</body>
+</html>

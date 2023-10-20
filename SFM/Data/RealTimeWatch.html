@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>	
+</head>
+	<body>
+		<div id="real-time" style="font-size: 24px; color: white; margin-left: -4px; user-select: none; cursor: auto;"></div><!--cursor: move for d&d-->
+		<script src="Scripts\PreventDefault.js"></script>		
+		<script>			
+		
+			function displayTime() {
+				var now = new Date();
+				var hours = now.getHours();
+				var minutes = now.getMinutes();
+				var seconds = now.getSeconds();
+				
+				hours = String(hours).padStart(2, '0');
+				minutes = String(minutes).padStart(2, '0');
+				seconds = String(seconds).padStart(2, '0');
+				
+				var timeString = hours + ":" + minutes + ":" + seconds;
+				document.getElementById("real-time").innerHTML = timeString;
+			}
+			
+			setInterval(displayTime, 1000);
+
+			//iframe prevents usage because cross interface security. implement main?
+			/*var realTimeWatch = document.getElementById("real-time");		
+			var offsetX, offsetY, isDragging = false;
+
+			realTimeWatch.addEventListener("mousedown", function (e) {
+				isDragging = true;
+				offsetX = e.clientX - realTimeWatch.getBoundingClientRect().left;
+				offsetY = e.clientY - realTimeWatch.getBoundingClientRect().top;
+			});
+
+			window.addEventListener("mousemove", function (e) {
+				if (isDragging) {
+					realTimeWatch.style.left = e.clientX - offsetX + "px";
+					realTimeWatch.style.top = e.clientY - offsetY + "px";
+				}
+			});
+
+			window.addEventListener("mouseup", function () {
+				isDragging = false;
+			});
+
+			realTimeWatch.addEventListener("dblclick", function () {
+				realTimeWatch.style.left = "10px";
+				realTimeWatch.style.top = "115px";
+			});	*/	
+			
+		</script>		
+		
+	</body>
+</html>

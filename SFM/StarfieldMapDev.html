@@ -20,7 +20,28 @@
             background-size: cover;
             z-index: 0;
 			user-select: none;		
-        }				
+        }
+
+		.invisible-layer {
+			position: absolute;
+            top: 0;
+            left: 0;			
+			width: 100%;
+			height: 100vh;
+			background: transparent;
+			z-index: 1;
+		}	
+	
+        .mouse-coordinates {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px;
+            border: 1px solid #000;
+			z-index: 3;
+
+        }		
 
         .notification {
             display: none;
@@ -137,6 +158,11 @@
     <div id="notification" class="notification"></div>	
 	
     <div id="map-container"> 
+	
+		<div class="invisible-layer" style="top: 0px; left: 0px;"></div>	
+		<div class="mouse-coordinates" id="coordinates-display">
+			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
+		</div>		
 	
 		<!--iframe to add a real time watch-->
 		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 115px; left: 10px; width: 93px; height: 43px; border: 5px ridge cyan; background-color: rgba(0, 0, 255, 0.1); z-index: 999;"></iframe>		
@@ -781,6 +807,20 @@
 		const starLabels = document.querySelectorAll('.star-label');
 		const hotkeyInfo = document.querySelectorAll('.hotkey-info');
 		
+		const originalCoordinatesSpan = document.getElementById("original-coordinates");	
+		
+		mapContainer.addEventListener("mousemove", function(event) {		
+
+			const originalX = "X(left): " + event.pageX;
+			const originalY = "Y(top): " + event.pageY;
+
+			originalCoordinatesSpan.textContent = ` ${originalX}, ${originalY}`;
+		});				
+
+		mapContainer.addEventListener("mouseleave", function () {
+			originalCoordinatesSpan.value = "";		
+		});			
+		
 		function createStarInfoBox(index) {
 			const starInfoBox = document.createElement('div');
 			starInfoBox.className = 'star-info';
@@ -890,11 +930,11 @@
 			  starIcon.style.cursor = 'default';
 			});
 			
-			/*document.addEventListener('keydown', (event) => {
+			document.addEventListener('keydown', (event) => {
 			  if (event.ctrlKey) {
 				starIcon.style.cursor = 'pointer';
 			  }
-			});*/
+			});
 			
 			document.addEventListener('keyup', () => {
 			  starIcon.style.cursor = 'default';

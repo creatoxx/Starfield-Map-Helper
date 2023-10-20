@@ -19,9 +19,9 @@
             background-image: url('https://raw.githubusercontent.com/creatoxx/Starfield-Map-Helper/main/SFM/StarfieldMapDev/resource/images/SFM_StarsBG.png');
             background-size: cover;
             z-index: 0;
-			user-select: none;			
-        }	
-		
+			user-select: none;		
+        }
+
 		.invisible-layer {
 			position: absolute;
             top: 0;
@@ -30,8 +30,8 @@
 			height: 100vh;
 			background: transparent;
 			z-index: 1;
-		}		
-		
+		}	
+	
         .mouse-coordinates {
             position: absolute;
             top: 10px;
@@ -41,7 +41,7 @@
             border: 1px solid #000;
 			z-index: 3;
 
-        }
+        }		
 
         .notification {
             display: none;
@@ -55,6 +55,16 @@
             border-radius: 5px;
             z-index: 666;
         }
+		
+        .hotkey-info {
+			position: absolute;	
+            width: 97%;
+            height: 94%;
+            border: 5px ridge cyan;
+            padding: 20px;
+            z-index: 666;
+			display: none;			
+        }		
 
 		.star-system {
 			position: absolute;
@@ -91,7 +101,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: 10px;
-			z-index: 2;
+			z-index: 999;
 		}		
 
 		#extended-info-container {
@@ -146,27 +156,30 @@
 <body>
 
     <div id="notification" class="notification"></div>	
-
+	
     <div id="map-container"> 
 	
+		<div class="invisible-layer" style="top: 0px; left: 0px;"></div>	
+		<div class="mouse-coordinates" id="coordinates-display">
+			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
+		</div>		
+	
+		<!--iframe to add a real time watch-->
+		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 115px; left: 10px; width: 93px; height: 43px; border: 5px ridge cyan; background-color: rgba(0, 0, 255, 0.1); z-index: 999;"></iframe>		
 		<!--iframe to add twinkling star animation with a transparent saphire background-->
-		<iframe src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>
+		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>
 		<!--iframe to add star system resemblence-->		
 		<iframe id="system-animation" src="Data/SystemAnimation.html" width="800" height="800" style="border:10px ridge cyan; transform: scale(0.25); position: absolute; top: -280px; left: 58px; display: none;"></iframe>
 		
-		<div class="invisible-layer" style="top: 0px; left: 0px;"></div>
-		
-		<div class="mouse-coordinates" id="coordinates-display">
-			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
-		</div>
+		<div class="hotkey-info"></div>
 
 		<div class="star-info" id="starInfo">
 			<textarea id="starInfoText"></textarea>
 		</div>		
 		
 		<div id="button-container">
-			<button onclick="toggleFullScreen()" style="cursor: pointer;">Toggle Fullscreen</button>	
-			<button onclick="toggleStarLabels()" style="cursor: pointer;">Toggle Star Labels</button>		
+			<button onclick="toggleStarLabels()" style="cursor: pointer;">Toggle Star Labels</button>
+			<button onclick="toggleHotkeyInfo()" style="cursor: pointer;">Show Hotkey Info</button>				
 		</div>
 
 		<div id="extended-info-container">
@@ -773,7 +786,9 @@
 			<div class="star-label">Zosma</div>
 		</div>		
 		
-    </div>			
+    </div>	
+
+	<script src="Data\Scripts\PreventDefault.js"></script>	
 
     <script>	
 	
@@ -787,40 +802,24 @@
         }	
 	
 	    const mapContainer = document.getElementById("map-container");
-        const originalCoordinatesSpan = document.getElementById("original-coordinates");
 		const extendedInfoContainer = document.getElementById('extended-info-container');
         const systemAnimation = document.getElementById('system-animation');
 		const starLabels = document.querySelectorAll('.star-label');
+		const hotkeyInfo = document.querySelectorAll('.hotkey-info');
 		
-        mapContainer.addEventListener("mousemove", function(event) {		
+		const originalCoordinatesSpan = document.getElementById("original-coordinates");	
+		
+		mapContainer.addEventListener("mousemove", function(event) {		
 
-            const originalX = "X(left): " + event.pageX;
-            const originalY = "Y(top): " + event.pageY;
+			const originalX = "X(left): " + event.pageX;
+			const originalY = "Y(top): " + event.pageY;
 
 			originalCoordinatesSpan.textContent = ` ${originalX}, ${originalY}`;
-        });				
+		});				
 
 		mapContainer.addEventListener("mouseleave", function () {
 			originalCoordinatesSpan.value = "";		
-		});
-
-		document.addEventListener("keydown", function (event) {
-			if (event.key === 'F11') {
-				event.preventDefault();
-				toggleFullScreen();
-			} else if (event.key === 'F1' || event.key === 'F3' || event.key === 'F6' || event.key === 'F7' || event.key === 'F10') {
-				event.preventDefault();
-			} else if (event.ctrlKey && event.key === 'c') {
-				mapContainer.style.transform = 'scale(1)';
-				mapContainer.scrollTo(0, 0);
-			}
-		});
-
-		mapContainer.addEventListener("wheel", function(event) {
-			if (event.ctrlKey) {
-				event.preventDefault(); 
-			}
-		});
+		});			
 		
 		function createStarInfoBox(index) {
 			const starInfoBox = document.createElement('div');
@@ -910,7 +909,7 @@
 			document.addEventListener('mouseup', () => {
 				isDragging = false;
 			});
-		}
+		}	
 
 		const starIcons = document.querySelectorAll('.star-icon');
 		const starInfoBoxes = Array.from(starIcons).map((starIcon, index) => createStarInfoBox(index));
@@ -942,16 +941,6 @@
 			});	
 			
 		});		
-
-        function toggleFullScreen() {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else {
-                mapContainer.requestFullscreen().catch(err => {
-                    console.error("Error attempting to enable fullscreen:", err);
-                });
-            }
-        }
 		
 		let starLabelsHidden = true;
 
@@ -962,6 +951,19 @@
 					label.style.display = 'none';
 				} else {
 					label.style.display = 'block';
+				}
+			});
+		}
+
+		let hotkeyInfoHidden = true;
+
+		function toggleHotkeyInfo() {
+			hotkeyInfoHidden = !hotkeyInfoHidden;
+			hotkeyInfo.forEach(info => {
+				if (hotkeyInfoHidden) {
+					info.style.display = 'none';
+				} else {
+					info.style.display = 'block';
 				}
 			});
 		}
@@ -1020,7 +1022,7 @@
 		 		  
 		}	
 
-		toggleStarLabels();		
+		toggleStarLabels();	
 		
     </script>
 </body>

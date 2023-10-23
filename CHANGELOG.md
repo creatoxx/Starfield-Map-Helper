@@ -10,3 +10,11 @@
   - fixed default browser key block not working
   - outsourced prevent default function to .js, to enable use in all files<br>
 Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to define the text box</br></p>
+<p>Alpha 3(23.10.2023): - add fx to star icons
+- smooth out animation on star icons
+- add starfield aesthetics and color tones
+- add Orbitron font and style to use globaly
+- moved button of the text editor box to the upside
+- ctrl-hovering no longer auto opens the system and extended info boxes
+- couple of tiny fixes and QoL improvements not worth mentioning because they're standard browser functions
+- add starfield banner and icon</p>

@@ -8,5 +8,5 @@
   - add general and hotkey description page div...no content...sorry, real life obligations
   - fixed non passive wheel scroll block
   - fixed default browser key block not working
-  - outsourced prevent default function to .js, to enable use in all files
+  - outsourced prevent default function to .js, to enable use in all files/n
 Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to define the text box</p>

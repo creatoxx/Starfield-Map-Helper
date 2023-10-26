@@ -1,0 +1,17 @@
+- add textures to celestial bodies
+- minor propertie changes to all bodies due to texture addition etc.
+- celestial bodies rotate around their own axis...well actually the texture does
+- fixed saturn moons sharing same id
+- create and add plasma like .gif for sun
+- fixed missaligned orbit of mercury type planet
+- moved system html to dedicated folder in preparation for individual star systems
+- minor path and reference changes due to new structure
+- button selection will now highlight on mouseover
+- added style and dimensions to info screen
+- toggle hotkey is now settings in preparation for ...well whatever the future holds
+- add descriptive text to label
+- add me importance to badass importance label...i shall become star!
+- minor chanes to all code for new changes to mui importance and button logic
+- hid mouse coordinate, only needed ofr background tracking
+- initially hid system window as was planned
+- moved back to use local files exclusively for performance reasons

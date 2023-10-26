@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>	
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: rgb(0, 0, 255, 0.03);
+        }	
+
+        .sun {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+			box-shadow: 0 0 75px #f2b602, 0 0 70px #f39f02, 0 0 65px #f27a02;
+        }		
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .planet1 { width: 20px; height: 20px; background-color: #3498db; }
+        .planet2 { width: 10px; height: 10px; background-color: #ff5733; }
+        .planet3 { width: 30px; height: 30px; background-color: #ffab00; }
+        .planet4 { width: 25px; height: 25px; background-color: #fad02e; }
+        .planet5 { width: 15px; height: 15px; background-color: #ffdd6b; }
+        .planet6 { width: 8px; height: 8px; background-color: #d4c5b2; }
+        .planet7 { width: 22px; height: 22px; background-color: #b2ccbd; }
+        .planet8 { width: 28px; height: 28px; background-color: #2e64d0; }
+        .planet9 { width: 18px; height: 18px; background-color: #ff00ff; }
+        .planet10 { width: 12px; height: 12px; background-color: #00ffff; }
+		
+		.planet-orbit {
+			position: absolute;
+			border: 1px dashed cyan;
+			border-radius: 50%;
+		}	
+
+		.moon {
+		  position: absolute;		
+		  border-radius: 50%;		  
+		}
+		
+		.moon1 { top: -6px; left: -6px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+		.moon2 { top: -8px; left: -8px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+		.moon3 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon4 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon5 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon6 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+		.moon7 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon8 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon9 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+		.moon10 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}			
+		
+		.moon-orbit{
+			position: absolute;
+			/*background: red;*/
+		}
+		
+		.moon-spin-right{
+			position: absolute;
+			/*background: black;*/
+		}
+		
+		.moon-spin-left {
+			position: absolute;
+			/*background: white;*/
+		}
+
+		@keyframes spin-right {
+		  100% {
+			transform: rotate(360deg);
+		  }
+		}
+		
+		@keyframes spin-left {
+		  100% {
+			transform: rotate(-360deg);
+		  }
+		}		
+
+		.moon-spin-right {
+		  animation: spin-right 3s linear infinite;
+		}	
+
+		.moon-spin-left {
+		  animation: spin-left 3s linear infinite;
+		}
+
+		.planet-rings {
+		  position: absolute;
+		  width: 30px;
+		  height: 30px;
+		  background: transparent;
+		  border: 1px double #0077b3;
+		  border-radius: 50%;
+		}
+
+		@keyframes rotate-sphere {
+		  from {
+			transform: rotate(0deg);
+		  }
+		  to {
+			transform: rotate(-360deg);
+		  }
+		}
+
+		@keyframes counter-rotate-sphere {
+		  from {
+			transform: rotate(0deg);
+		  }
+		  to {
+			transform: rotate(360deg);
+		  }
+		}				
+    </style>
+</head>
+<body>
+
+    <div class="sun">
+		<img src="../Textures/Icons/IconSun.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;" />		
+	</div>
+	
+	<!--mercury type-->
+	<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+	<div class="planet planet1" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+		<img src="../Textures/Icons/Planets/IconMercury.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;" />	
+	</div>
+
+	<!--venus type-->	
+	<div class="planet-orbit planet-orbit2"></div>
+	<div class="planet planet2" style="background-color: #FF9900; box-shadow: 0 0 14px #FF9900;">
+		<img src="../Textures/Icons/Planets/IconVenus.png" style="width: 100%; height: 100%; margin-bottom: 3px; animation: counter-rotate-sphere 3s linear infinite;" />		
+	</div>
+
+	<!--earth type-->	
+	<div class="planet-orbit planet-orbit3"></div>
+	<div class="planet planet3" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+		<img src="../Textures/Icons/Planets/IconEarth.png" style="width: 105%; height: 105%; margin-left: -0.2px; margin-bottom: 8px; animation: rotate-sphere 5s linear infinite;" />	
+		<div class="moon-orbit" style="left: 4.5px; top: 4.5px; width: 4px; height: 4px;">
+			<div class="moon-spin-left" style="left: 1px; top: 1px; width: 2px; height: 2px;">
+				<div class="moon moon1" style="left: 5.5px; top: 5.5px; width: 3.474px; height: 3.474px;">
+					<img src="../Textures/Icons/Moons/IconMoon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--mars type-->	
+	<div class="planet-orbit planet-orbit4" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet4" style="background-color: transparent;"></div>	
+
+	<!--jupiter type: ganymed, europa, io, kallisto-->	
+	<div class="planet-orbit planet-orbit5" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet5" style="background-color: transparent;"></div>	
+
+	<!--saturn type: titan, enceladus, mimas, dione, rhea, iapetus, tethys-->	
+	<div class="planet-orbit planet-orbit6" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet6" style="background-color: transparent;"></div>	
+
+	<!--your anus type: titania, oberon, miranda, umbriel, ariel-->	
+	<div class="planet-orbit planet-orbit7" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet7" style="background-color: transparent;"></div>	
+
+	<!--neptune type: triton-->	
+	<div class="planet-orbit planet-orbit8" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet8" style="background-color: transparent;"></div>	
+
+	<!--pluto type: charon-->	
+	<div class="planet-orbit planet-orbit9" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet9" style="background-color: transparent;"></div>	
+
+	<!--eris type-->	
+	<div class="planet-orbit planet-orbit10" style="border: 1px dashed transparent;"></div>
+	<div class="planet planet10" style="background-color: transparent;"></div>	
+	
+    <script>		
+        const sun = document.querySelector('.sun');
+        const planets = document.querySelectorAll('.planet');
+		const planetData = [
+			{ radius: 35.38750, speed: 0.0004736, size: 4.879400, direction: 'left' },
+			{ radius: 47.07230, speed: 0.0003502, size: 12.10360, direction: 'left' },
+			{ radius: 63.10000, speed: 0.0002978, size: 12.75627, direction: 'left' },
+			{ radius: 85.14501, speed: 0.0002407, size: 6.792400, direction: 'left' },
+			{ radius: 129.5207, speed: 0.0001306, size: 24.08600, direction: 'left' },
+			{ radius: 203.4392, speed: 0.0000968, size: 20.04500, direction: 'left' },
+			{ radius: 281.8372, speed: 0.0000681, size: 17.18800, direction: 'left' },
+			{ radius: 364.4922, speed: 0.0000543, size: 16.75420, direction: 'left' },
+			{ radius: 381.3323, speed: 0.0000467, size: 2.374000, direction: 'left' },
+			{ radius: 400.0000, speed: 0.0000000, size: 0.000000, direction: 'left' }
+		];		
+
+        function animate() {
+            for (let i = 0; i < planets.length; i++) {
+				const angle = (planetData[i].direction === 'left')
+				  ? (2 * Math.PI - planetData[i].speed * Date.now())
+				  : (planetData[i].speed * Date.now());
+                const sunX = sun.getBoundingClientRect().left + sun.offsetWidth / 2;
+                const sunY = sun.getBoundingClientRect().top + sun.offsetHeight / 2;
+				const planetOrbit = document.querySelector(`.planet-orbit.planet-orbit${i + 1}`);
+                const planetX = sunX + planetData[i].radius * Math.cos(angle);
+                const planetY = sunY + planetData[i].radius * Math.sin(angle);				
+                planets[i].style.left = `${planetX - planetData[i].size / 2}px`;
+                planets[i].style.top = `${planetY - planetData[i].size / 2}px`;
+                planets[i].style.width = `${planetData[i].size}px`;
+                planets[i].style.height = `${planetData[i].size}px`;	
+				planetOrbit.style.left = `${sunX - planetData[i].radius - 1.5}px`;
+				planetOrbit.style.top = `${sunY - planetData[i].radius - 1}px`;
+				planetOrbit.style.width = `${2 * planetData[i].radius}px`;
+				planetOrbit.style.height = `${2 * planetData[i].radius}px`;				
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();		
+    </script>
+</body>
+</html>

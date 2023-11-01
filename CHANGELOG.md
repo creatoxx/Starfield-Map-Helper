@@ -35,3 +35,17 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - hid mouse coordinate, only needed ofr background tracking
 - initially hid system window as was planned
 - moved back to use local files exclusively for performance reasons</p>
+<p>Alpha 4 update 2(1.11.2023): - fixed extended info box staying open after confirming text entry
+- extended info will open with shift now
+- doubleclick icon function will not work with shift hold
+- changed slash type to use correct varaint in all file instances
+- increased size of system window and added text boxes to the left and right
+- added x button to system window to close it
+- added blur background to system iframe, to prevent interaction with starmap elements
+- prevent pointer events in mostly all elements that should not have interaction on main map
+- fixed swapped textures on jupiter moons
+- added deimos and phobos type textures
+- added celestial body images to system page for test system Vega
+- added celestial body info to left systeminfo box(Vega)
+- added celestial body info text to right systeminfo box(Vega)
+- added function to to open starfield wiki on double click body in left info box(Vega)</p>

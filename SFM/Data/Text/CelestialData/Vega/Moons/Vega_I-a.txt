@@ -1,0 +1,16 @@
+Name:		Vega Ia
+Type:		Barren
+System:		Vega System
+Orbiting:	Vega I
+Gravity:	0.07 G
+Temperature:	Hot (67°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		None
+Resources: 	-Water(H2O) 
+		-Chlorine(Cl)
+Traits: 	-Crystalline Crust
+		-Glacial Recession
+Biomes: 	-100% Frozen Volcanic

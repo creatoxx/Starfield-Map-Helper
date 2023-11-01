@@ -1,0 +1,10 @@
+System: Sol
+Type: Rock
+Gravity: 0.90 G
+Temperature: Inferno
+Atmosphere: Co₂ (COR)
+Magnetosphere: None
+Fauna: None
+Flora: None
+Water: None
+Resources: Water (H2O), Lead (Pb), Nickle (Ni), Cobalt (Co), Dysprosium (Dy)

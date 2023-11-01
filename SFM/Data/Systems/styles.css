@@ -1,0 +1,155 @@
+body {
+	margin: 0;
+	overflow: hidden;
+	background-color: rgb(0, 0, 255, 0.03);
+	font-family: 'Orbitron'; 
+	font-size: 12px;	
+}	
+
+.sun {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02);
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 0 75px #f2b602, 0 0 70px #f39f02, 0 0 65px #f27a02;
+	z-index: 1;		
+}		
+
+.planet {
+	position: absolute;
+	border-radius: 50%;
+	z-index: 1;			
+}
+
+.planet1 { width: 20px; height: 20px; background-color: #3498db; }
+.planet2 { width: 10px; height: 10px; background-color: #ff5733; }
+.planet3 { width: 30px; height: 30px; background-color: #ffab00; }
+.planet4 { width: 25px; height: 25px; background-color: #fad02e; }
+.planet5 { width: 15px; height: 15px; background-color: #ffdd6b; }
+.planet6 { width: 8px; height: 8px; background-color: #d4c5b2; }
+.planet7 { width: 22px; height: 22px; background-color: #b2ccbd; }
+.planet8 { width: 28px; height: 28px; background-color: #2e64d0; }
+.planet9 { width: 18px; height: 18px; background-color: #ff00ff; }
+.planet10 { width: 12px; height: 12px; background-color: #00ffff; }
+
+.planet-orbit {
+	position: absolute;
+	border: 1px dashed cyan;
+	border-radius: 50%;
+}	
+
+.moon {
+	position: absolute;		
+	border-radius: 50%;		  
+}
+
+.moon1 { top: -6px; left: -6px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+.moon2 { top: -8px; left: -8px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+.moon3 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon4 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon5 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon6 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
+.moon7 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon8 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon9 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
+.moon10 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}			
+
+.moon-orbit{
+	position: absolute;
+	/*background: red;*/
+}
+
+.moon-spin-right{
+	position: absolute;
+	/*background: black;*/
+}
+
+.moon-spin-left {
+	position: absolute;
+	/*background: white;*/
+}
+
+@keyframes spin-right {
+	100% {
+	  transform: rotate(360deg);
+	}
+}
+
+@keyframes spin-left {
+	100% {
+	  transform: rotate(-360deg);
+	}
+}		
+
+.moon-spin-right {
+	animation: spin-right 3s linear infinite;
+}	
+
+.moon-spin-left {
+	animation: spin-left 3s linear infinite;
+}
+
+.planet-rings {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background: transparent;
+	border: 1px double #0077b3;
+	border-radius: 50%;
+}
+
+@keyframes rotate-sphere {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes counter-rotate-sphere {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}	
+
+.system-info-box-left {
+	position: absolute;
+	box-shadow: 0 0 14px #000000;			
+	width: 290px;
+	height: 730px;
+	left: 10px;
+	top: 58px;			
+	background-color: rgba(48, 62, 77, 1.0);
+	display: block;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+.system-info-box-right {
+	position: absolute;
+	box-shadow: 0 0 14px #000000;
+	width: 290px;
+	height: 778px;
+	left: 1100px;	
+	top: 10px;				
+	background-color: #b7b7b7;
+	display: block;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#celestialData {
+	position: relative;
+	width: 290px;
+	height: 778px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}

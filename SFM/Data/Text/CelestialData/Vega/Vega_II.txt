@@ -1,0 +1,12 @@
+Name:		Vega II
+Type:		Gas Giant
+System:		Vega System
+Moons:		5
+Gravity:	3.40 G
+Temperature:	Temperate (-43°)
+Atmosphere:	H2
+Magnetosphere:	Extreme
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	Unknown

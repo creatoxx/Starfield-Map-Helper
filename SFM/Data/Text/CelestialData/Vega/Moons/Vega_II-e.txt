@@ -1,0 +1,18 @@
+Name:		Vega IIe
+Type:		Rock
+System:		Vega System
+Orbiting:	Vega II
+Gravity:	0.64 G
+Temperature:	Cold (-36°)
+Atmosphere:	Standard M
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Chemical
+Resources: 	-Water(H2O)
+		-Nickel(Ni)
+		-Cobalt(Co)
+		-Palladium(Pd)
+Traits: 	-Pelted Fields
+Biomes: 	-50% Frozen Craters
+		-50% Plateau

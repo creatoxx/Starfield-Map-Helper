@@ -1,319 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+	<link rel='stylesheet' type="text/css" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>	
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: rgb(0, 0, 255, 0.03);
-        }	
-
-        .sun {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02);
-            border-radius: 50%;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-			box-shadow: 0 0 75px #f2b602, 0 0 70px #f39f02, 0 0 65px #f27a02;
-        }		
-
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-        }
-
-        .planet1 { width: 20px; height: 20px; background-color: #3498db; }
-        .planet2 { width: 10px; height: 10px; background-color: #ff5733; }
-        .planet3 { width: 30px; height: 30px; background-color: #ffab00; }
-        .planet4 { width: 25px; height: 25px; background-color: #fad02e; }
-        .planet5 { width: 15px; height: 15px; background-color: #ffdd6b; }
-        .planet6 { width: 8px; height: 8px; background-color: #d4c5b2; }
-        .planet7 { width: 22px; height: 22px; background-color: #b2ccbd; }
-        .planet8 { width: 28px; height: 28px; background-color: #2e64d0; }
-        .planet9 { width: 18px; height: 18px; background-color: #ff00ff; }
-        .planet10 { width: 12px; height: 12px; background-color: #00ffff; }
-		
-		.planet-orbit {
-			position: absolute;
-			border: 1px dashed cyan;
-			border-radius: 50%;
-		}	
-
-		.moon {
-		  position: absolute;		
-		  border-radius: 50%;		  
-		}
-		
-		.moon1 { top: -6px; left: -6px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
-		.moon2 { top: -8px; left: -8px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
-		.moon3 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon4 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon5 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon6 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}
-		.moon7 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon8 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon9 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}	
-		.moon10 { top: -9px; left: -9px; width: 2px; height: 2px; background-color: #666666; box-shadow: 0 0 14px #666666;}			
-		
-		.moon-orbit{
-			position: absolute;
-			/*background: red;*/
-		}
-		
-		.moon-spin-right{
-			position: absolute;
-			/*background: black;*/
-		}
-		
-		.moon-spin-left {
-			position: absolute;
-			/*background: white;*/
-		}
-
-		@keyframes spin-right {
-		  100% {
-			transform: rotate(360deg);
-		  }
-		}
-		
-		@keyframes spin-left {
-		  100% {
-			transform: rotate(-360deg);
-		  }
-		}		
-
-		.moon-spin-right {
-		  animation: spin-right 3s linear infinite;
-		}	
-
-		.moon-spin-left {
-		  animation: spin-left 3s linear infinite;
-		}
-
-		.planet-rings {
-		  position: absolute;
-		  width: 30px;
-		  height: 30px;
-		  background: transparent;
-		  border: 1px double #0077b3;
-		  border-radius: 50%;
-		}
-
-		@keyframes rotate-sphere {
-		  from {
-			transform: rotate(0deg);
-		  }
-		  to {
-			transform: rotate(-360deg);
-		  }
-		}
-
-		@keyframes counter-rotate-sphere {
-		  from {
-			transform: rotate(0deg);
-		  }
-		  to {
-			transform: rotate(360deg);
-		  }
-		}				
-    </style>
+    <title></title>	
 </head>
-<body>
+<body>  
+	<div class="system-info-box-left">
+		<div class="celestial-body" ondblclick="openInfo(document.getElementById('sun-id'))">
+			<div style="margin-left: 5px; margin-top: 10px; width: 90px; height: 90px; background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02); border-radius: 50%;">
+				<img id="SolSun" src="../Textures/Icons/IconSun.gif" style="width: 90px; height: 90px; opacity: 0.25;"/>
+			</div>
+			<div>
+				<img id="SolMercury" src="../Textures/Icons/Planets/IconMercury.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px; z-index: 999;"/>
+			</div>
+			<div>
+				<img id="SolVenus" src="../Textures/Icons/Planets/IconVenus.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;"/>
+			</div>
+			<div>
+				<img id="SolEarth" src="../Textures/Icons/Planets/IconEarth.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;"/>
+				<img id="SolMoon" src="../Textures/Icons/Moons/IconMoon.png" style="margin-left: 6px; width: calc(3.474*8px); height: calc(3.474*8px);"/>			
+			</div>
+			<div><link rel="stylesheet" type="text/css" href="styles.css">
+				<img id="SolMars" src="../Textures/Icons/Planets/IconMars.png" style="margin-left: 5px; margin-top: 10px; width: 45px; height: 45px;"/>
+				<img id="SolPhobos" src="../Textures/Icons/Moons/IconPhobos.png" style="margin-left: 6px; width: calc(0.5*32px); height: calc(0.7*32px)"/>			
+				<img id="SolDeimos" src="../Textures/Icons/Moons/IconDeimos.png" style="margin-left: 6px; width: calc(0.8*32px); height: calc(0.5*32px)"/>
+			</div>
+			<div>
+				<img id="SolJupiter" src="../Textures/Icons/Planets/IconJupiter.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;"/>
+				<img id="SolIo" src="../Textures/Icons/Moons/IconIo.png" style="margin-left: 10px; width: 25px; height: 25px;"/>
+				<img id="SolEuropa" src="../Textures/Icons/Moons/IconEuropa.png" style="margin-left: 10px; width: 20px; height: 20px;"/>	
+				<img id="SolGanymed" src="../Textures/Icons/Moons/IconGanymed.png" style="margin-left: 10px; width: 35px; height: 35px;"/>			
+				<img id="SolCallisto" src="../Textures/Icons/Moons/IconCallisto.png" style="margin-left: 10px; width: 30px; height: 30px;"/>			
+			</div>
+			<div>
+				<img id="SolSaturn" src="../Textures/Icons/Planets/IconSaturn.png" style="margin-left: 5px; margin-top: 10px; width: 70px; height: 70px;"/>
+				<img id="SolMimas" src="../Textures/Icons/Moons/IconMimas.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
+				<img id="SolEnceladus" src="../Textures/Icons/Moons/IconEnceladus.png" style="margin-left: 6px; width: 15px; height: 15px;"/>	
+				<img id="SolTethys" src="../Textures/Icons/Moons/IconTethys.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
+				<img id="SolDione" src="../Textures/Icons/Moons/IconDione.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
+				<img id="SolRhea" src="../Textures/Icons/Moons/IconRhea.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
+				<img id="SolTitan" src="../Textures/Icons/Moons/IconTitan.png" style="margin-left: 6px; margin-bottom: -2px; width: 35px; height: 35px;"/>	
+				<img id="SolIapetus" src="../Textures/Icons/Moons/IconIapetus.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
+			</div>
+			<div>	
+				<img id="SolUranus" src="../Textures/Icons/Planets/IconUranus.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;"/>
+				<img id="SolAriel" src="../Textures/Icons/Moons/IconAriel.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
+				<img id="SolUmbriel" src="../Textures/Icons/Moons/IconUmbriel.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
+				<img id="SolTitania" src="../Textures/Icons/Moons/IconTitania.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
+				<img id="SolOberon" src="../Textures/Icons/Moons/IconOberon.png" style="margin-left: 6px; width: 15px; height: 15px;"/>	
+				<img id="SolMiranda" src="../Textures/Icons/Moons/IconMiranda.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
+			</div>
+			<div>
+				<img id="SolNeptun" src="../Textures/Icons/Planets/IconNeptun.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;"/>
+				<img id="SolTriton" src="../Textures/Icons/Moons/IconTriton.png" style="margin-left: 6px; width: 25px; height: 25px;"/>				
+			</div>
+			<div>
+				<img id="SolPluto" src="../Textures/Icons/Planets/IconPluto.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px;"/>
+				<img id="SolCharon" src="../Textures/Icons/Moons/IconCharon.png" style="margin-left: 6px; width: 25px; height: 25px;"/>			
+			</div>	
+		</div>
+	</div> 
 
-    <div class="sun">
-		<img src="../Textures/Icons/IconSun.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;" />		
-	</div>
+	<div class="system-info-box-right">
+		<object id="celestialData"></object>		
+	</div> 	
 	
-	<!--mercury type-->
-	<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
-	<div class="planet planet1" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
-		<img src="../Textures/Icons/Planets/IconMercury.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;" />	
-	</div>
-
-	<!--venus type-->	
-	<div class="planet-orbit planet-orbit2"></div>
-	<div class="planet planet2" style="background-color: #FF9900; box-shadow: 0 0 14px #FF9900;">
-		<img src="../Textures/Icons/Planets/IconVenus.png" style="width: 100%; height: 100%; margin-bottom: 3px; animation: counter-rotate-sphere 3s linear infinite;" />		
-	</div>
-
-	<!--earth type-->	
-	<div class="planet-orbit planet-orbit3"></div>
-	<div class="planet planet3" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
-		<img src="../Textures/Icons/Planets/IconEarth.png" style="width: 105%; height: 105%; margin-left: -0.2px; margin-bottom: 8px; animation: rotate-sphere 5s linear infinite;" />	
-		<div class="moon-orbit" style="left: 4.5px; top: 4.5px; width: 4px; height: 4px;">
-			<div class="moon-spin-left" style="left: 1px; top: 1px; width: 2px; height: 2px;">
-				<div class="moon moon1" style="left: 5.5px; top: 5.5px; width: 3.474px; height: 3.474px;">
-					<img src="../Textures/Icons/Moons/IconMoon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+	<div class="main">
+		<div class="banner-sol" style="border-top-right-radius: 20px; position: relative;">
+			<img src="../Textures/StarfieldBanner.png" style="width: 25%; height: 25%; margin-top: 10px; margin-left: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 0 14px #000000;">
+			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Sol System</p>
+			<div style="position: absolute; top: 0; right: 0;">
+				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid green; border-bottom: 90px solid transparent;">
+					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 1</p>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!--mars type-->	
-	<div class="planet-orbit planet-orbit4"></div>
-	<div class="planet planet4" style="background-color: #FF3300; box-shadow: 0 0 14px #FF3300;">
-		<img src="../Textures/Icons/Planets/IconMars.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 7s linear infinite;" />		
-		<div class="moon-orbit" style="left: 1.45px; top: 1.3px; width: 4px; height: 4px;">
-			<div class="moon-spin-left" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px; animation: spin-left 3s linear infinite;">
-				<div class="moon moon1" style="left: 4.7px; top: 4.7px; width: 0.5px; height: 0.7px;"></div>			
+		<div class="sun" id="sun-id" alt="Sun">
+			<img src="../Textures/Icons/IconSun.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;"/>		
+		</div>
+		
+		<!--mercury type-->
+		<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+		<div class="planet planet1" id="planet1-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/IconMercury.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>	
+		</div>
+
+		<!--venus type-->	
+		<div class="planet-orbit planet-orbit2"></div>
+		<div class="planet planet2" style="background-color: #FF9900; box-shadow: 0 0 14px #FF9900;">
+			<img src="../Textures/Icons/Planets/IconVenus.png" style="width: 100%; height: 100%; margin-bottom: 3px; animation: counter-rotate-sphere 3s linear infinite;" />		
+		</div>
+
+		<!--earth type-->	
+		<div class="planet-orbit planet-orbit3"></div>
+		<div class="planet planet3" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/IconEarth.png" style="width: 105%; height: 105%; margin-left: -0.2px; margin-bottom: 8px; animation: rotate-sphere 5s linear infinite;" />	
+			<div class="moon-orbit" style="left: 4.5px; top: 4.5px; width: 4px; height: 4px;">
+				<div class="moon-spin-left" style="left: 1px; top: 1px; width: 2px; height: 2px;">
+					<div class="moon moon1" style="left: 5.5px; top: 5.5px; width: 3.474px; height: 3.474px;">
+						<img src="../Textures/Icons/Moons/IconMoon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>
+				</div>
 			</div>
-			<div class="moon-spin-right" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px; animation: spin-right 4s linear infinite;">
-				<div class="moon moon2" style="left: 5.9px; top: 5.9px; width: 0.8px; height: 0.5px;"></div>				
-			</div>			
-		</div>	
-	</div>
+		</div>
 
-	<!--jupiter type: ganymed, europa, io, kallisto-->	
-	<div class="planet-orbit planet-orbit5"></div>
-	<div class="planet planet5" style="background: radial-gradient(ellipse at center, #cc9900, #dd9900, #ee9900); box-shadow: 0 0 14px #996633;">
-		<img src="../Textures/Icons/Planets/IconJupiter.png" style="width: 100%; height: 100%; margin-top: -0.3px; animation: rotate-sphere 11s linear infinite;" />		
-		<div class="planet-rings" style="top: -4px; left: -4px; border: 1px double #C68C53; box-shadow: 0 0 3px #C68C53;"></div>
-		<div class="planet-rings" style="width: 27px; height: 27px; top: -2.5px; left: -2.5px; border: 1px double #996633; box-shadow: 0 0 3px #996633;"></div>		
-		<div class="moon-orbit" style="left: 8px; top: 8px; width: 8px; height: 8px;">
-			<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
-				<div class="moon moon1" style="left: 11px; top: 11px; width: 3.6432px; height: 3.6432px; background-color: #cccc00; box-shadow: 0 0 14px #cccc00;">
-					<img src="../Textures/Icons/Moons/IconGanymed.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+		<!--mars type-->	
+		<div class="planet-orbit planet-orbit4"></div>
+		<div class="planet planet4" style="background-color: #FF3300; box-shadow: 0 0 14px #FF3300;">
+			<img src="../Textures/Icons/Planets/IconMars.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 7s linear infinite;" />		
+			<div class="moon-orbit" style="left: 1.45px; top: 1.3px; width: 4px; height: 4px;">
+				<div class="moon-spin-left" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px; animation: spin-left 3s linear infinite;">
+					<div class="moon moon1" style="left: 4.7px; top: 4.7px; width: 0.5px; height: 0.7px;"></div>			
+				</div>
+				<div class="moon-spin-right" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px; animation: spin-right 4s linear infinite;">
+					<div class="moon moon2" style="left: 5.9px; top: 5.9px; width: 0.8px; height: 0.5px;"></div>				
 				</div>			
-			</div>
-			<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
-				<div class="moon moon2" style="left: 13.8px; top: 13.8px; width: 3.1216px; height: 3.1216px; background-color: #aaaa55; box-shadow: 0 0 14px #aaaa55;">
-					<img src="../Textures/Icons/Moons/IconEuropa.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 5.1s linear infinite;">
-				<div class="moon moon3" style="left: 15.5px; top: 15.5px; width: 5.2624px; height: 5.2624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
-					<img src="../Textures/Icons/Moons/IconIo.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+			</div>	
+		</div>
+
+		<!--jupiter type: ganymed, europa, io, kallisto-->	
+		<div class="planet-orbit planet-orbit5"></div>
+		<div class="planet planet5" style="background: radial-gradient(ellipse at center, #cc9900, #dd9900, #ee9900); box-shadow: 0 0 14px #996633;">
+			<img src="../Textures/Icons/Planets/IconJupiter.png" style="width: 100%; height: 100%; margin-top: -0.3px; animation: rotate-sphere 11s linear infinite;" />		
+			<div class="planet-rings" style="top: -4px; left: -4px; border: 1px double #C68C53; box-shadow: 0 0 3px #C68C53;"></div>
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -2.5px; left: -2.5px; border: 1px double #996633; box-shadow: 0 0 3px #996633;"></div>		
+			<div class="moon-orbit" style="left: 8px; top: 8px; width: 8px; height: 8px;">
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 11px; top: 11px; width: 3.6432px; height: 3.6432px; background-color: #cccc00; box-shadow: 0 0 14px #cccc00;">
+						<img src="../Textures/Icons/Moons/IconIo.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>			
+				</div>
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
+					<div class="moon moon2" style="left: 13.8px; top: 13.8px; width: 3.1216px; height: 3.1216px; background-color: #aaaa55; box-shadow: 0 0 14px #aaaa55;">
+						<img src="../Textures/Icons/Moons/IconEuropa.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 5.1s linear infinite;">
+					<div class="moon moon3" style="left: 15.5px; top: 15.5px; width: 5.2624px; height: 5.2624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/IconGanymed.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>	
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.3s linear infinite;">
+					<div class="moon moon4" style="left: 20px; top: 20px; width: 4.8206px; height: 4.8206px; background-color: #75a3a3; box-shadow: 0 0 14px #75a3a3;">
+						<img src="../Textures/Icons/Moons/IconCallisto.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>				
 				</div>				
 			</div>	
-			<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.3s linear infinite;">
-				<div class="moon moon4" style="left: 20px; top: 20px; width: 4.8206px; height: 4.8206px; background-color: #75a3a3; box-shadow: 0 0 14px #75a3a3;">
-					<img src="../Textures/Icons/Moons/IconCallisto.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
-				</div>				
-			</div>				
-		</div>	
-	</div>
+		</div>
 
-	<!--saturn type: titan, enceladus, mimas, dione, rhea, iapetus, tethys-->	
-	<div class="planet-orbit planet-orbit6"></div>
-	<div class="planet planet6" style="background: radial-gradient(ellipse at center, #997300, #997000, #996700); box-shadow: 0 0 14px #997300;">
-		<img src="../Textures/Icons/Planets/IconSaturn.png" style="width: 103%; height: 103%; margin-top: -0.3px; margin-left: -0.4px; animation: rotate-sphere 15s linear infinite;" />		
-		<div class="planet-rings" style="top: -5.7px; left: -6px; border: 1px double #cc9966; box-shadow: 0 0 3px #cc9966;"></div>
-		<div class="planet-rings" style="width: 27px; height: 27px; top: -4.3px; left: -4.6px; border: 1px double #b3cce6; box-shadow: 0 0 3px #b3cce6;"></div>	
-		<div class="planet-rings" style="width: 24px; height: 24px; top: -2.9px; left: -3.2px; border: 1px double #d9e6f2; box-shadow: 0 0 3px #d9e6f2;"></div>			
-		<div class="moon-orbit" style="left: 6px; top: 6px; width: 8px; height: 8px;">
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 1.3s linear infinite;">
-				<div class="moon moon1" style="left: 9.9px; top: 9.9px; width: 0.8px; height: 0.8px; background-color: #404040; box-shadow: 0 0 14px #404040;">
-					<img src="../Textures/Icons/Moons/IconMimas.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />					
-				</div>			
-			</div>
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 2.8s linear infinite;">
-				<div class="moon moon2" style="left: 10.5px; top: 10.5px; width: 1.1216px; height: 1.1216px; background-color: #80dfff; box-shadow: 0 0 14px #80dfff;">
-					<img src="../Textures/Icons/Moons/IconEnceladus.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 4.1s linear infinite;">
-				<div class="moon moon3" style="left: 12.4px; top: 12.4px; width: 1.6624px; height: 1.6624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
-					<img src="../Textures/Icons/Moons/IconTethys.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>	
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 5.8s linear infinite;">
-				<div class="moon moon4" style="left: 14.1px; top: 14.1px; width: 1.8206px; height: 1.8206px;">
-					<img src="../Textures/Icons/Moons/IconDione.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 5.4s linear infinite;">
-				<div class="moon moon5" style="left: 16.9px; top: 16.9px; width: 2.4206px; height: 2.4206px;">
-					<img src="../Textures/Icons/Moons/IconRhea.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 2.2s linear infinite;">
-				<div class="moon moon6" style="left: 20px; top: 20px; width: 5.150px; height: 5.150px; background-color: #ffd966; box-shadow: 0 0 14px #ffd966;">
-					<img src="../Textures/Icons/Moons/IconTitan.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 3.6s linear infinite;">
-				<div class="moon moon7" style="left: 24px; top: 24px; width: 2.8206px; height: 2.8206px;">
-					<img src="../Textures/Icons/Moons/IconIapetus.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>			
-		</div>		
-	</div>
-
-	<!--your anus type: titania, oberon, miranda, umbriel, ariel-->	
-	<div class="planet-orbit planet-orbit7"></div>
-	<div class="planet planet7" style="background-color: #99ffff; box-shadow: 0 0 14px #99ffff;">
-		<img src="../Textures/Icons/Planets/IconUranus.png" style="width: 100%; height: 100%; margin-left: -0.5px; margin-top: -0.3px; animation: counter-rotate-sphere 21s linear infinite;" />		
-		<div class="planet-rings" style="top: -7.5px; left: -7.5px; border: 1px double #99e6ff; box-shadow: 0 0 3px #99e6ff;"></div>
-		<div class="planet-rings" style="width: 27px; height: 27px; top: -6px; left: -6px; border: 1px double #66ffff; box-shadow: 0 0 3px #66ffff;"></div>	
-		<div class="planet-rings" style="width: 21px; height: 21px; top: -3px; left: -3px; border: 1px double #4dc3ff; box-shadow: 0 0 3px #4dc3ff;"></div>		
-		<div class="moon-orbit" style="left: 5px; top: 5px; width: 7px; height: 7px;">
-			<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
-				<div class="moon moon1" style="left: 9px; top: 9px; width: 1.9px; height: 1.9px;">
-					<img src="../Textures/Icons/Moons/IconMiranda.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />					
-				</div>			
-			</div>
-			<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
-				<div class="moon moon2" style="left: 11.4px; top: 11.4px; width: 2.1px; height: 2.1px; background-color: #404040; box-shadow: 0 0 14px #404040;">
-					<img src="../Textures/Icons/Moons/IconAriel.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 5.1s linear infinite;">
-				<div class="moon moon3" style="left: 13.5px; top: 13.5px; width: 2.4px; height: 2.4px; background-color: #d2a679; box-shadow: 0 0 14px #d2a679;">
-					<img src="../Textures/Icons/Moons/IconUmbriel.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>	
-			<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.3s linear infinite;">
-				<div class="moon moon4" style="left: 15px; top: 15px; width: 2px; height: 2px;">
-					<img src="../Textures/Icons/Moons/IconTitania.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>
-			<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.8s linear infinite;">
-				<div class="moon moon5" style="left: 17px; top: 17px; width: 1.5px; height: 1.5px;">
-					<img src="../Textures/Icons/Moons/IconOberon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
-				</div>				
-			</div>			
-		</div>	
-	</div>
-
-	<!--neptune type: triton-->	
-	<div class="planet-orbit planet-orbit8"></div>
-	<div class="planet planet8" style="background-color: #85a3e0; box-shadow: 0 0 14px #85a3e0;">
-		<img src="../Textures/Icons/Planets/IconNeptun.png" style="width: 100%; height: 100%; margin-left: -0.2px; margin-top: -0.2px; animation: rotate-sphere 27s linear infinite;" />	
-		<div class="planet-rings" style="width: 27px; height: 27px; top: -6px; left: -6px; border: 1px double #b3d9ff; box-shadow: 0 0 3px #b3d9ff;"></div>	
-		<div class="planet-rings" style="width: 21px; height: 21px; top: -3px; left: -3px; border: 1px double #66b3ff; box-shadow: 0 0 3px #66b3ff;"></div>		
-		<div class="moon-orbit" style="left: 5px; top: 5px; width: 7px; height: 7px;">
-			<div class="moon-spin-left" style="left: 1.2px; top: 1.2px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
-				<div class="moon moon1" style="left: 9px; top: 9px; width: 2.7068px; height: 2.7068px; background-color: #ccccb3; box-shadow: 0 0 14px #ccccb3;">
-					<img src="../Textures/Icons/Moons/IconTriton.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+		<!--saturn type: titan, enceladus, mimas, dione, rhea, iapetus, tethys-->	
+		<div class="planet-orbit planet-orbit6"></div>
+		<div class="planet planet6" style="background: radial-gradient(ellipse at center, #997300, #997000, #996700); box-shadow: 0 0 14px #997300;">
+			<img src="../Textures/Icons/Planets/IconSaturn.png" style="width: 103%; height: 103%; margin-top: -0.3px; margin-left: -0.4px; animation: rotate-sphere 15s linear infinite;" />		
+			<div class="planet-rings" style="top: -5.7px; left: -6px; border: 1px double #cc9966; box-shadow: 0 0 3px #cc9966;"></div>
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -4.3px; left: -4.6px; border: 1px double #b3cce6; box-shadow: 0 0 3px #b3cce6;"></div>	
+			<div class="planet-rings" style="width: 24px; height: 24px; top: -2.9px; left: -3.2px; border: 1px double #d9e6f2; box-shadow: 0 0 3px #d9e6f2;"></div>			
+			<div class="moon-orbit" style="left: 6px; top: 6px; width: 8px; height: 8px;">
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 1.3s linear infinite;">
+					<div class="moon moon1" style="left: 9.9px; top: 9.9px; width: 0.8px; height: 0.8px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/IconMimas.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />					
+					</div>			
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 2.8s linear infinite;">
+					<div class="moon moon2" style="left: 10.5px; top: 10.5px; width: 1.1216px; height: 1.1216px; background-color: #80dfff; box-shadow: 0 0 14px #80dfff;">
+						<img src="../Textures/Icons/Moons/IconEnceladus.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 4.1s linear infinite;">
+					<div class="moon moon3" style="left: 12.4px; top: 12.4px; width: 1.6624px; height: 1.6624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/IconTethys.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>	
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 5.8s linear infinite;">
+					<div class="moon moon4" style="left: 14.1px; top: 14.1px; width: 1.8206px; height: 1.8206px;">
+						<img src="../Textures/Icons/Moons/IconDione.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 5.4s linear infinite;">
+					<div class="moon moon5" style="left: 16.9px; top: 16.9px; width: 2.4206px; height: 2.4206px;">
+						<img src="../Textures/Icons/Moons/IconRhea.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 2.2s linear infinite;">
+					<div class="moon moon6" style="left: 20px; top: 20px; width: 5.150px; height: 5.150px; background-color: #ffd966; box-shadow: 0 0 14px #ffd966;">
+						<img src="../Textures/Icons/Moons/IconTitan.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 3.6s linear infinite;">
+					<div class="moon moon7" style="left: 24px; top: 24px; width: 2.8206px; height: 2.8206px;">
+						<img src="../Textures/Icons/Moons/IconIapetus.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
 				</div>			
 			</div>		
-		</div>	
-	</div>
+		</div>
 
-	<!--pluto type: charon-->	
-	<div class="planet-orbit planet-orbit9"></div>
-	<div class="planet planet9" style="background-color: #666666; box-shadow: 0 0 14px #666666;">
-		<img src="../Textures/Icons/Planets/IconPluto.png" style="width: 100%; height: 100%; margin-bottom: 13px" />		
-		<div class="moon-orbit" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px;">
-			<div class="moon-spin-right" style="left: -1.1px; top: -1.1px; width: 4.5px; height: 4.5px; animation: spin-right 3.3s linear infinite;">
-				<div class="moon moon1" style="left: 4px; top: 4px; width: 1.5px; height: 1.5px;">
-					<img src="../Textures/Icons/Moons/IconCharon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+		<!--your anus type: titania, oberon, miranda, umbriel, ariel-->	
+		<div class="planet-orbit planet-orbit7"></div>
+		<div class="planet planet7" style="background-color: #99ffff; box-shadow: 0 0 14px #99ffff;">
+			<img src="../Textures/Icons/Planets/IconUranus.png" style="width: 100%; height: 100%; margin-left: -0.5px; margin-top: -0.3px; animation: counter-rotate-sphere 21s linear infinite;" />		
+			<div class="planet-rings" style="top: -7.5px; left: -7.5px; border: 1px double #99e6ff; box-shadow: 0 0 3px #99e6ff;"></div>
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -6px; left: -6px; border: 1px double #66ffff; box-shadow: 0 0 3px #66ffff;"></div>	
+			<div class="planet-rings" style="width: 21px; height: 21px; top: -3px; left: -3px; border: 1px double #4dc3ff; box-shadow: 0 0 3px #4dc3ff;"></div>		
+			<div class="moon-orbit" style="left: 5px; top: 5px; width: 7px; height: 7px;">
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 9px; top: 9px; width: 1.9px; height: 1.9px;">
+						<img src="../Textures/Icons/Moons/IconMiranda.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />					
+					</div>			
+				</div>
+				<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
+					<div class="moon moon2" style="left: 11.4px; top: 11.4px; width: 2.1px; height: 2.1px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/IconAriel.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 5.1s linear infinite;">
+					<div class="moon moon3" style="left: 13.5px; top: 13.5px; width: 2.4px; height: 2.4px; background-color: #d2a679; box-shadow: 0 0 14px #d2a679;">
+						<img src="../Textures/Icons/Moons/IconUmbriel.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>	
+				<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.3s linear infinite;">
+					<div class="moon moon4" style="left: 15px; top: 15px; width: 2px; height: 2px;">
+						<img src="../Textures/Icons/Moons/IconTitania.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 0.9px; top: 0.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.8s linear infinite;">
+					<div class="moon moon5" style="left: 17px; top: 17px; width: 1.5px; height: 1.5px;">
+						<img src="../Textures/Icons/Moons/IconOberon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>				
 				</div>			
-			</div>		
-		</div>		
-	</div>
+			</div>	
+		</div>
 
-	<!--eris type-->	
-	<div class="planet-orbit planet-orbit10" style="border: 1px dashed transparent;"></div>
-	<div class="planet planet10" style="background-color: transparent;"></div>	
+		<!--neptune type: triton-->	
+		<div class="planet-orbit planet-orbit8"></div>
+		<div class="planet planet8" style="background-color: #85a3e0; box-shadow: 0 0 14px #85a3e0;">
+			<img src="../Textures/Icons/Planets/IconNeptun.png" style="width: 100%; height: 100%; margin-left: -0.2px; margin-top: -0.2px; animation: rotate-sphere 27s linear infinite;" />	
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -6px; left: -6px; border: 1px double #b3d9ff; box-shadow: 0 0 3px #b3d9ff;"></div>	
+			<div class="planet-rings" style="width: 21px; height: 21px; top: -3px; left: -3px; border: 1px double #66b3ff; box-shadow: 0 0 3px #66b3ff;"></div>		
+			<div class="moon-orbit" style="left: 5px; top: 5px; width: 7px; height: 7px;">
+				<div class="moon-spin-left" style="left: 1.2px; top: 1.2px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 9px; top: 9px; width: 2.7068px; height: 2.7068px; background-color: #ccccb3; box-shadow: 0 0 14px #ccccb3;">
+						<img src="../Textures/Icons/Moons/IconTriton.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>			
+				</div>		
+			</div>	
+		</div>
+
+		<!--pluto type: charon-->	
+		<div class="planet-orbit planet-orbit9"></div>
+		<div class="planet planet9" style="background-color: #666666; box-shadow: 0 0 14px #666666;">
+			<img src="../Textures/Icons/Planets/IconPluto.png" style="width: 100%; height: 100%; margin-bottom: 13px" />		
+			<div class="moon-orbit" style="left: 0.5px; top: 0.5px; width: 3px; height: 3px;">
+				<div class="moon-spin-right" style="left: -1.1px; top: -1.1px; width: 4.5px; height: 4.5px; animation: spin-right 3.3s linear infinite;">
+					<div class="moon moon1" style="left: 4px; top: 4px; width: 1.5px; height: 1.5px;">
+						<img src="../Textures/Icons/Moons/IconCharon.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>			
+				</div>		
+			</div>		
+		</div>
+
+		<!--eris type-->	
+		<div class="planet-orbit planet-orbit10" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet10" style="background-color: transparent;"></div>			
+		
+	<div/>	
 	
-    <script>		
+	<script src="../Scripts/PreventDefault.js"></script>
+	<script src="../Scripts/CelestialData.js"></script>	
+	
+    <script>
+	
+		const pathText = "../Text/CelestialData/Sol/";
+		const moonPath = pathText + "Moons/";
+
+		const dataSources = {
+			SolSun: pathText + "SolSun.txt",		
+			SolMercury: pathText + "SolMercury.txt",
+			SolVenus: pathText + "SolVenus.txt",
+			SolMoon: moonPath + "SolMoon.txt"
+		};		
+
+		function openInfo(bodyId) {
+			alert("ChatGPT is never going to be Skynet!");
+		}
+	
         const sun = document.querySelector('.sun');
         const planets = document.querySelectorAll('.planet');
 		const planetData = [
@@ -350,7 +323,7 @@
             }
             requestAnimationFrame(animate);
         }
-        animate();		
+        animate();			
     </script>
 </body>
 </html>

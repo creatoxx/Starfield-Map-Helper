@@ -1,8 +1,0 @@
-Faction: United Colonies
-Spectral Class: G2V
-Temperature: 5772K
-Mass: 1.0SM
-Radius: 695800
-Magnitude: 4.83
-Planets: 9
-Moons: 21

@@ -1,0 +1,14 @@
+Name:		Neptune
+Type:		Ice Giant
+System:		Sol System
+Moons:		1
+Gravity:	1.15 G
+Temperature:	Deep Freeze (-221°)
+Atmosphere:	H2
+Magnetosphere:	Weak
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	None
+Traits: 	None
+Biomes:		None

@@ -1,0 +1,14 @@
+Name:		Uranus
+Type:		Gas Giant
+System:		Sol System
+Moons:		5
+Gravity:	0.92 G
+Temperature:	Deep Freeze (-210°)
+Atmosphere:	H2
+Magnetosphere:	Weak
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	None
+Traits: 	None
+Biomes:		None

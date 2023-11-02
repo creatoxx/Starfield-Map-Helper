@@ -25,3 +25,12 @@ function showInfo(bodyID) {
 		celestialData.data = "";
 	}			
 }	
+
+function openInfo(bodyID) {
+	if (bodyID) {
+		var url = 'https://starfieldwiki.net/wiki/Starfield:' + bodyID.id;
+		var leftOffset = (window.innerWidth - 1024) / 2;
+		var topOffset = (window.innerHeight - 768) / 2;
+		var newWindow = window.open(url, 'newWindow', 'width=1024,height=768,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
+	}
+}

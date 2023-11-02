@@ -9,57 +9,57 @@
 </head>
 <body>  
 	<div class="system-info-box-left">
-		<div class="celestial-body" ondblclick="openInfo(document.getElementById('sun-id'))">
+		<div class="celestial-body">
 			<div style="margin-left: 5px; margin-top: 10px; width: 90px; height: 90px; background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02); border-radius: 50%;">
-				<img id="SolSun" src="../Textures/Icons/IconSun.gif" style="width: 90px; height: 90px; opacity: 0.25;"/>
+				<img id="Sol_System" src="../Textures/Icons/IconSun.gif" style="width: 90px; height: 90px; opacity: 0.25;" ondblclick="openInfo(document.getElementById('Sol_System'))"/>
 			</div>
 			<div>
-				<img id="SolMercury" src="../Textures/Icons/Planets/IconMercury.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px; z-index: 999;"/>
+				<img id="Mercury" src="../Textures/Icons/Planets/IconMercury.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px; z-index: 999;" ondblclick="openInfo(document.getElementById('Mercury'))"/>
 			</div>
 			<div>
-				<img id="SolVenus" src="../Textures/Icons/Planets/IconVenus.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;"/>
+				<img id="Venus" src="../Textures/Icons/Planets/IconVenus.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;" ondblclick="openInfo(document.getElementById('Venus'))"/>
 			</div>
 			<div>
-				<img id="SolEarth" src="../Textures/Icons/Planets/IconEarth.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;"/>
-				<img id="SolMoon" src="../Textures/Icons/Moons/IconMoon.png" style="margin-left: 6px; width: calc(3.474*8px); height: calc(3.474*8px);"/>			
+				<img id="Earth" src="../Textures/Icons/Planets/IconEarth.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;" ondblclick="openInfo(document.getElementById('Earth'))"/>
+				<img id="Luna" src="../Textures/Icons/Moons/IconMoon.png" style="margin-left: 6px; width: calc(3.474*8px); height: calc(3.474*8px);" ondblclick="openInfo(document.getElementById('Luna'))"/>			
 			</div>
 			<div><link rel="stylesheet" type="text/css" href="styles.css">
-				<img id="SolMars" src="../Textures/Icons/Planets/IconMars.png" style="margin-left: 5px; margin-top: 10px; width: 45px; height: 45px;"/>
-				<img id="SolPhobos" src="../Textures/Icons/Moons/IconPhobos.png" style="margin-left: 6px; width: calc(0.5*32px); height: calc(0.7*32px)"/>			
-				<img id="SolDeimos" src="../Textures/Icons/Moons/IconDeimos.png" style="margin-left: 6px; width: calc(0.8*32px); height: calc(0.5*32px)"/>
+				<img id="Mars" src="../Textures/Icons/Planets/IconMars.png" style="margin-left: 5px; margin-top: 10px; width: 45px; height: 45px;" ondblclick="openInfo(document.getElementById('Mars'))"/>
+				<img id="Phobos" src="../Textures/Icons/Moons/IconPhobos.png" style="margin-left: 6px; width: calc(0.5*32px); height: calc(0.7*32px)" ondblclick="openInfo(document.getElementById('Phobos'))"/>			
+				<img id="Deimos" src="../Textures/Icons/Moons/IconDeimos.png" style="margin-left: 6px; width: calc(0.8*32px); height: calc(0.5*32px)" ondblclick="openInfo(document.getElementById('Deimos'))" />
 			</div>
 			<div>
-				<img id="SolJupiter" src="../Textures/Icons/Planets/IconJupiter.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;"/>
-				<img id="SolIo" src="../Textures/Icons/Moons/IconIo.png" style="margin-left: 10px; width: 25px; height: 25px;"/>
-				<img id="SolEuropa" src="../Textures/Icons/Moons/IconEuropa.png" style="margin-left: 10px; width: 20px; height: 20px;"/>	
-				<img id="SolGanymed" src="../Textures/Icons/Moons/IconGanymed.png" style="margin-left: 10px; width: 35px; height: 35px;"/>			
-				<img id="SolCallisto" src="../Textures/Icons/Moons/IconCallisto.png" style="margin-left: 10px; width: 30px; height: 30px;"/>			
+				<img id="Jupiter" src="../Textures/Icons/Planets/IconJupiter.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;" ondblclick="openInfo(document.getElementById('Jupiter'))"/>
+				<img id="Io" src="../Textures/Icons/Moons/IconIo.png" style="margin-left: 10px; width: 25px; height: 25px;" ondblclick="openInfo(document.getElementById('Io'))"/>
+				<img id="Europa" src="../Textures/Icons/Moons/IconEuropa.png" style="margin-left: 10px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Europa'))"/>	
+				<img id="Ganymede" src="../Textures/Icons/Moons/IconGanymed.png" style="margin-left: 10px; width: 35px; height: 35px;" ondblclick="openInfo(document.getElementById('Ganymede'))"/>			
+				<img id="Callisto" src="../Textures/Icons/Moons/IconCallisto.png" style="margin-left: 10px; width: 30px; height: 30px;" ondblclick="openInfo(document.getElementById('Callisto'))"/>			
 			</div>
 			<div>
-				<img id="SolSaturn" src="../Textures/Icons/Planets/IconSaturn.png" style="margin-left: 5px; margin-top: 10px; width: 70px; height: 70px;"/>
-				<img id="SolMimas" src="../Textures/Icons/Moons/IconMimas.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
-				<img id="SolEnceladus" src="../Textures/Icons/Moons/IconEnceladus.png" style="margin-left: 6px; width: 15px; height: 15px;"/>	
-				<img id="SolTethys" src="../Textures/Icons/Moons/IconTethys.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
-				<img id="SolDione" src="../Textures/Icons/Moons/IconDione.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
-				<img id="SolRhea" src="../Textures/Icons/Moons/IconRhea.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
-				<img id="SolTitan" src="../Textures/Icons/Moons/IconTitan.png" style="margin-left: 6px; margin-bottom: -2px; width: 35px; height: 35px;"/>	
-				<img id="SolIapetus" src="../Textures/Icons/Moons/IconIapetus.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
+				<img id="Saturn" src="../Textures/Icons/Planets/IconSaturn.png" style="margin-left: 5px; margin-top: 10px; width: 70px; height: 70px;" ondblclick="openInfo(document.getElementById('Saturn'))"/>
+				<img id="Mimas" src="../Textures/Icons/Moons/IconMimas.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Mimas'))"/>
+				<img id="Enceladus" src="../Textures/Icons/Moons/IconEnceladus.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Enceladus'))"/>	
+				<img id="Tethys" src="../Textures/Icons/Moons/IconTethys.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Tethys'))"/>			
+				<img id="Dione" src="../Textures/Icons/Moons/IconDione.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Dione'))"/>
+				<img id="Rhea" src="../Textures/Icons/Moons/IconRhea.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Rhea'))"/>
+				<img id="Titan" src="../Textures/Icons/Moons/IconTitan.png" style="margin-left: 6px; margin-bottom: -2px; width: 35px; height: 35px;" ondblclick="openInfo(document.getElementById('Titan'))"/>	
+				<img id="Iapetus" src="../Textures/Icons/Moons/IconIapetus.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Iapetus'))"/>
 			</div>
 			<div>	
-				<img id="SolUranus" src="../Textures/Icons/Planets/IconUranus.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;"/>
-				<img id="SolAriel" src="../Textures/Icons/Moons/IconAriel.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
-				<img id="SolUmbriel" src="../Textures/Icons/Moons/IconUmbriel.png" style="margin-left: 6px; width: 15px; height: 15px;"/>
-				<img id="SolTitania" src="../Textures/Icons/Moons/IconTitania.png" style="margin-left: 6px; width: 20px; height: 20px;"/>
-				<img id="SolOberon" src="../Textures/Icons/Moons/IconOberon.png" style="margin-left: 6px; width: 15px; height: 15px;"/>	
-				<img id="SolMiranda" src="../Textures/Icons/Moons/IconMiranda.png" style="margin-left: 6px; width: 15px; height: 15px;"/>			
+				<img id="Uranus" src="../Textures/Icons/Planets/IconUranus.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;" ondblclick="openInfo(document.getElementById('Uranus'))"/>
+				<img id="Ariel" src="../Textures/Icons/Moons/IconAriel.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Ariel'))"/>			
+				<img id="Umbriel" src="../Textures/Icons/Moons/IconUmbriel.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Umbriel'))"/>
+				<img id="Titania" src="../Textures/Icons/Moons/IconTitania.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Titania'))"/>
+				<img id="Oberon" src="../Textures/Icons/Moons/IconOberon.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Oberon'))"/>	
+				<img id="Miranda" src="../Textures/Icons/Moons/IconMiranda.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Miranda'))"/>			
 			</div>
 			<div>
-				<img id="SolNeptun" src="../Textures/Icons/Planets/IconNeptun.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;"/>
-				<img id="SolTriton" src="../Textures/Icons/Moons/IconTriton.png" style="margin-left: 6px; width: 25px; height: 25px;"/>				
+				<img id="Neptune" src="../Textures/Icons/Planets/IconNeptun.png" style="margin-left: 5px; margin-top: 10px; width: 65px; height: 65px;" ondblclick="openInfo(document.getElementById('Neptune'))"/>
+				<img id="Triton" src="../Textures/Icons/Moons/IconTriton.png" style="margin-left: 6px; width: 25px; height: 25px;" ondblclick="openInfo(document.getElementById('Triton'))"/>				
 			</div>
 			<div>
-				<img id="SolPluto" src="../Textures/Icons/Planets/IconPluto.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px;"/>
-				<img id="SolCharon" src="../Textures/Icons/Moons/IconCharon.png" style="margin-left: 6px; width: 25px; height: 25px;"/>			
+				<img id="Pluto" src="../Textures/Icons/Planets/IconPluto.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px;" ondblclick="openInfo(document.getElementById('Pluto'))"/>
+				<img id="Charon" src="../Textures/Icons/Moons/IconCharon.png" style="margin-left: 6px; width: 25px; height: 25px;" ondblclick="openInfo(document.getElementById('Charon'))"/>			
 			</div>	
 		</div>
 	</div> 
@@ -122,7 +122,7 @@
 			</div>	
 		</div>
 
-		<!--jupiter type: ganymed, europa, io, kallisto-->	
+		<!--jupiter type: ganymed, europa, io, callisto-->	
 		<div class="planet-orbit planet-orbit5"></div>
 		<div class="planet planet5" style="background: radial-gradient(ellipse at center, #cc9900, #dd9900, #ee9900); box-shadow: 0 0 14px #996633;">
 			<img src="../Textures/Icons/Planets/IconJupiter.png" style="width: 100%; height: 100%; margin-top: -0.3px; animation: rotate-sphere 11s linear infinite;" />		
@@ -277,15 +277,38 @@
 		const moonPath = pathText + "Moons/";
 
 		const dataSources = {
-			SolSun: pathText + "SolSun.txt",		
-			SolMercury: pathText + "SolMercury.txt",
-			SolVenus: pathText + "SolVenus.txt",
-			SolMoon: moonPath + "SolMoon.txt"
-		};		
-
-		function openInfo(bodyId) {
-			alert("ChatGPT is never going to be Skynet!");
-		}
+			'Sol_System': pathText + "Sol_System.txt",		
+			'Mercury': pathText + "Mercury.txt",
+			'Venus': pathText + "Venus.txt",
+			'Earth': pathText + "Earth.txt",
+			'Mars': pathText + "Mars.txt",
+			'Jupiter': pathText + "Jupiter.txt",
+			'Saturn': pathText + "Saturn.txt",
+			'Uranus': pathText + "Uranus.txt",
+			'Neptune': pathText + "Neptune.txt",
+			'Pluto': pathText + "Pluto.txt",
+			'Luna': moonPath + "Luna.txt",
+			'Phobos': moonPath + "Phobos.txt",
+			'Deimos': moonPath + "Deimos.txt",
+			'Ganymede': moonPath + "Ganymede.txt",
+			'Europa': moonPath + "Europa.txt",
+			'Io': moonPath + "Io.txt",
+			'Callisto': moonPath + "Callisto.txt",
+			'Titan': moonPath + "Titan.txt",
+			'Enceladus': moonPath + "Enceladus.txt",
+			'Mimas': moonPath + "Mimas.txt",
+			'Dione': moonPath + "Dione.txt",
+			'Rhea': moonPath + "Rhea.txt",
+			'Iapetus': moonPath + "Iapetus.txt",
+			'Tethys': moonPath + "Tethys.txt",
+			'Titania': moonPath + "Titania.txt",
+			'Oberon': moonPath + "Oberon.txt",
+			'Miranda': moonPath + "Miranda.txt",
+			'Umbriel': moonPath + "Umbriel.txt",
+			'Ariel': moonPath + "Ariel.txt",
+			'Triton': moonPath + "Triton.txt",
+			'Charon': moonPath + "Charon.txt",			
+		};
 	
         const sun = document.querySelector('.sun');
         const planets = document.querySelectorAll('.planet');

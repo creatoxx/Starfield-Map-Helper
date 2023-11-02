@@ -1,0 +1,18 @@
+Name:		Titan
+Type:		Ice
+System:		Sol System
+Orbiting:	Saturn
+Gravity:	0.14 G
+Temperature:	Deep Freeze (-180°)
+Atmosphere:	Standard N2
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Safe
+Resources:	-Water(H2O)
+		-Lead(Pb)
+		-Tungsten(W)
+		-Titanium(Ti)
+Traits: 	-Frozen Ecosystem
+		-Crystalline Crust
+Biomes:		-100% Frozen Plains

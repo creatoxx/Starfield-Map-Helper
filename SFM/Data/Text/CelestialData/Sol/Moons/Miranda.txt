@@ -1,0 +1,15 @@
+Name:		Miranda
+Type:		Ice
+System:		Sol System
+Orbiting:	Uranus
+Gravity:	0.01 G
+Temperature:	Deep Freeze (-210°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Heavy Metal
+Resources:	-Water(H2O)
+		-Lead(Pb)
+Traits: 	-Slushy Subsurface Seas
+Biomes:		-100% Frozen Mountains

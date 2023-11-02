@@ -1,0 +1,17 @@
+Name:		Pluto
+Type:		Ice
+System:		Sol System
+Moons:		1
+Gravity:	0.06 G
+Temperature:	Inferno (-222°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Safe
+Resources:	-Water(H2O)
+		-Lead(Pb)
+		-Tungsten(W)
+		-Titanium(Ti)
+Traits: 	None
+Biomes:		-100% Frozen Mountains

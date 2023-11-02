@@ -218,14 +218,43 @@
             position: absolute;
 			z-index: 777;
 			display: none;
-        }		
+        }
+
+		#wiki-container {
+			position: absolute;
+			top: 13px;
+			left: 425px;
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			z-index: 666;
+			text-align: center;
+		}
+
+		#wiki-container button {
+			background-color: #303E4D;
+			color: #B7B7B7;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			font-size: 12px;
+			font-family: 'Orbitron';
+		}
+
+		#wiki-container button:hover {
+			color: cyan;
+			font-weight: bold;
+		}		
     </style>	
 </head>
 <body>
 
-    <div id="notification" class="notification"></div>	
+    <div id="notification" class="notification"></div>		
 	
-    <div id="map-container"> 
+    <div id="map-container"> 	
 	
 		<div class="banner-starfield" style="border-top-right-radius: 20px;">
 			<img src="Data/Textures/StarfieldBanner.png" style="padding: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;">
@@ -249,8 +278,103 @@
 		<div class="invisible-layer" style="top: 0px; left: 0px;"></div>	
 		<div class="mouse-coordinates" id="coordinates-display" style="display: none;">
 			Mouse Coordinates: <span id="original-coordinates">N/A</span><br>
-		</div>		
+		</div>
 
+		<div id="wiki-container">
+			<a href="https://starfieldwiki.net/wiki/Category:Starfield-Creatures-All" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button onmouseenter="showSubMenu()" onmouseleave="hideSubMenu()">
+					Starfield Wiki - Creatures - Page 1
+				</button>
+				<div id="submenu01" style="display: none; position: absolute; top: 35.5px; left: 2px;">
+					<a href="https://starfieldwiki.net/w/index.php?title=Category:Starfield-Creatures-All&pagefrom=Herding+Bonemane+Grazer#mw-pages" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenu()" onmouseleave="hideSubMenu()">
+							Page 2
+						</button>						
+					</a>
+				</div>
+				<div id="submenu02" style="display: none; position: absolute; top: 35.5px; left: 90.25px;">
+					<a href="https://starfieldwiki.net/w/index.php?title=Category:Starfield-Creatures-All&pagefrom=Hunting+Tuskfrog#mw-pages" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenu()" onmouseleave="hideSubMenu()">
+							Page 3
+						</button>
+					</a>
+				</div>	
+				<div id="submenu03" style="display: none; position: absolute; top: 35.5px; left: 178.5px;">
+					<a href="https://starfieldwiki.net/w/index.php?title=Category:Starfield-Creatures-All&pagefrom=Swarming+Noid#mw-pages" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenu()" onmouseleave="hideSubMenu()" style="padding-left: 16px;">
+							Page 4
+						</button>
+					</a>
+				</div>					
+			</a>		
+			<a href="https://starfieldwiki.net/wiki/Starfield:Fauna" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button>
+					Starfield Wiki - Fauna
+				</button>				
+			</a>			
+			<a href="https://starfieldwiki.net/wiki/Starfield:Flora" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button>
+					Starfield Wiki - Flora
+				</button>				
+			</a>			
+			<a href="https://starfieldwiki.net/wiki/Starfield:Resources" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button>
+					Starfield Wiki - Resources
+				</button>				
+			</a>
+			<a href="https://starfieldwiki.net/wiki/Starfield:Missions" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button>
+					Starfield Wiki - Missions
+				</button>				
+			</a>
+			<a href="https://starfieldwiki.net/wiki/Starfield:Weapons" style="text-decoration: none;"
+				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
+				<button onmouseenter="showSubMenuItems()" onmouseleave="hideSubMenuItems()">
+					Starfield Wiki - Items - Weapons
+				</button>
+				<div id="submenu04" style="display: none; position: absolute; top: 35.5px; left: 1078px;">
+					<a href="https://starfieldwiki.net/wiki/Starfield:Spacesuits" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuItems()" onmouseleave="hideSubMenuItems()">
+							Spacesuits
+						</button>						
+					</a>
+				</div>
+				<div id="submenu05" style="display: none; position: absolute; top: 35.5px; left: 1193px;">
+					<a href="https://starfieldwiki.net/wiki/Starfield:Packs" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuItems()" onmouseleave="hideSubMenuItems()">
+							Packs
+						</button>
+					</a>
+				</div>	
+				<div id="submenu06" style="display: none; position: absolute; left: 1328px;">
+					<a href="https://starfieldwiki.net/wiki/Starfield:Helmets" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuItems()" onmouseleave="hideSubMenuItems()" style="padding-left: 16px;">
+							Helmets
+						</button>
+					</a>
+				</div>
+				<div id="submenu07" style="display: none; position: absolute; top: 35.5px; left: 1276px;">
+					<a href="https://starfieldwiki.net/wiki/Starfield:Apparel" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuItems()" onmouseleave="hideSubMenuItems()" style="padding-left: 16px;">
+							Apparel
+						</button>
+					</a>
+				</div>				
+			</a>			
+		</div>	
+		
 		<div class="background-blur"></div>	
 		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 126px; left: 10px; width: 135px; height: 55px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 666;"></iframe>
 		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>		
@@ -881,7 +1005,59 @@
 
 	<script src="Data/Scripts/PreventDefault.js"></script>	
 
-    <script>		
+    <script>
+	
+		document.addEventListener('mouseover', function (event) {	
+			if (!isHovering()) {
+				document.getElementById("submenu01").style.display = "none";
+				document.getElementById("submenu02").style.display = "none";
+				document.getElementById("submenu03").style.display = "none";
+				document.getElementById("submenu04").style.display = "none";
+				document.getElementById("submenu05").style.display = "none";
+				document.getElementById("submenu06").style.display = "none";
+				document.getElementById("submenu07").style.display = "none";				
+			}
+		});	
+	
+		function showSubMenu() {
+			if (isHovering()) {
+				document.getElementById("submenu01").style.display = "block";
+				document.getElementById("submenu02").style.display = "block";
+				document.getElementById("submenu03").style.display = "block";			
+			}
+		}
+
+		function hideSubMenu() {
+			if (!isHovering()) {
+				document.getElementById("submenu01").style.display = "none";
+				document.getElementById("submenu02").style.display = "none";
+				document.getElementById("submenu03").style.display = "none";			
+			}
+		}
+		
+		function showSubMenuItems() {
+			if (isHovering()) {
+				document.getElementById("submenu04").style.display = "block";
+				document.getElementById("submenu05").style.display = "block";
+				document.getElementById("submenu06").style.display = "block";
+				document.getElementById("submenu07").style.display = "block";				
+			}
+		}
+
+		function hideSubMenuItems() {
+			if (!isHovering()) {
+				document.getElementById("submenu04").style.display = "none";
+				document.getElementById("submenu05").style.display = "none";
+				document.getElementById("submenu06").style.display = "none";
+				document.getElementById("submenu07").style.display = "none";				
+			}
+		}		
+
+		function isHovering() {
+			var wikiCont = document.querySelector("#wiki-container");
+			return wikiCont.matches(":hover");
+		}
+	
         function showNotification(message) {
             const notification = document.getElementById("notification");
             notification.textContent = message;
@@ -1136,6 +1312,10 @@
 						if (!starInfoBoxes[index].style.display || starInfoBoxes[index].style.display === 'none') {
 							extendedInfoContainer.style.display = 'none';
 							//systemAnimation.style.display = 'none';
+							if (starLabelsHidden) {
+								const label = starIcon.nextElementSibling;
+								label.style.display = 'none';
+							}
 						}
 					}
 				});

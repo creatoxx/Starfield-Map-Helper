@@ -1,0 +1,14 @@
+Name:		Jupiter
+Type:		Gas Giant
+System:		Sol System
+Moons:		4
+Gravity:	2.65 G
+Temperature:	Frozen (-135°)
+Atmosphere:	H2
+Magnetosphere:	Extreme
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	None
+Traits: 	None
+Biomes:		None

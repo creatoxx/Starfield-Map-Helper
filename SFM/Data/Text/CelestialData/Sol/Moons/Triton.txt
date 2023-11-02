@@ -1,0 +1,16 @@
+Name:		Triton
+Type:		Ice
+System:		Sol System
+Orbiting:	Neptune
+Gravity:	0.08G
+Temperature:	Deep Freeze (-210°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Chemical
+Resources:	-Water(H2O)
+		-Nickel(Ni)
+		-Cobalt(Co)
+Traits: 	None
+Biomes:		-100% Frozen Mountains

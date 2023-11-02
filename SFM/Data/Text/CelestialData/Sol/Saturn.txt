@@ -1,0 +1,14 @@
+Name:		Saturn
+Type:		Gas Giant
+System:		Sol System
+Moons:		7
+Gravity:	1.14 G
+Temperature:	Deep Freeze (-180°)
+Atmosphere:	H2
+Magnetosphere:	Weak
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	None
+Traits: 	None
+Biomes:		None

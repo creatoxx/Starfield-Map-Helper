@@ -54,8 +54,8 @@
 			<img src="../Textures/StarfieldBanner.png" style="width: 25%; height: 25%; margin-top: 10px; margin-left: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 0 14px #000000;">
 			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Vega System</p>
 			<div style="position: absolute; top: 0; right: 0;">
-				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid green; border-bottom: 90px solid transparent;">
-					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 25</p>
+				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid gold; border-bottom: 90px solid transparent;">
+					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #000000; z-index: 2; transform: rotate(45deg)">Level: 25</p>
 				</div>
 			</div>
 		</div>
@@ -177,15 +177,6 @@
 		  'Vega_II-d': moonPath + "Vega_II-d.txt",	
 		  'Vega_II-e': moonPath + "Vega_II-e.txt"				
 		};	
-
-		function openInfo(bodyID) {
-			if (bodyID) {
-				var url = 'https://starfieldwiki.net/wiki/Starfield:' + bodyID.id;
-				var leftOffset = (window.innerWidth - 1024) / 2;
-				var topOffset = (window.innerHeight - 768) / 2;
-				var newWindow = window.open(url, 'newWindow', 'width=1024,height=768,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
-			}
-		}
 	
         const sun = document.querySelector('.sun');
         const planets = document.querySelectorAll('.planet');

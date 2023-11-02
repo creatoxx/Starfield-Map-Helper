@@ -49,3 +49,8 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - added celestial body info to left systeminfo box(Vega)
 - added celestial body info text to right systeminfo box(Vega)
 - added function to to open starfield wiki on double click body in left info box(Vega)</p>
+<p>Alpha 4 update 3(2.11.2023): - "finalized" sol setup
+- "finalized" system script setup
+- fixed star labels on main map not hiding on hover, when star labels are toggled off
+- added a row of direct wiki link buttons to the main window(creatures, fauna, flora, resources, missios, weapons, spacesuits, packs, helmets, apparel)
+- fixed wrong difficulty color on vega triangle</p>

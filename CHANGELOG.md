@@ -54,3 +54,12 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed star labels on main map not hiding on hover, when star labels are toggled off
 - added a row of direct wiki link buttons to the main window(creatures, fauna, flora, resources, missios, weapons, spacesuits, packs, helmets, apparel)
 - fixed wrong difficulty color on vega triangle</p>
+<p>Alpha 5(9.11.2023): - - couple small fixes
+- added resource wheel and keyworded all systems...that infobase is still sketchy since wikis are still building
+- added inara.cz to resource and mission tabs as alternative infobase
+- enabled default F3 search function
+- added first info stuff to setting page
+- fixed error on hovering system iframe exit button
+- added new alt-key interaction for star icons -> properties: discovered, settlement
+- added city icons to systems with major settlements
+- added outpost icon on the fly via toggle box</p>

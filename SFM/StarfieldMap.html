@@ -67,10 +67,13 @@
 			border-right: solid black; 
 			border-bottom: solid black;
 			background: rgba(48, 62, 77, 1.0);
+			color: #B7B7B7;
             padding: 20px;
             z-index: 999;
-			display: none;			
-        }
+			display: none;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;			
+        }		
 
 		.close-settings-button {
 			position: absolute;
@@ -105,7 +108,6 @@
 		}		
 
 		.star-label {
-			color: white;
 			margin-top: 6px;
 			margin-left: 6px;
 			color: #B7B7B7;
@@ -113,6 +115,34 @@
 
 		.hidden-label {
 			display: none;
+		}
+
+		.star-icon-box{
+			position: absolute;	
+			top: 30px;
+			width: 100px;
+			height: 70px;
+			background-color: rgba(48, 62, 77, 1.0);
+			border: 2px inset #B7B7B7; 
+			border-right: solid black; 
+			border-bottom: solid black;	
+			color: #B7B7B7;			
+			font-size: 12px;
+			text-align: center;			
+			display: none;		
+		}
+		
+		.star-icon-box button{			
+			background-color: rgba(48, 62, 77, 1.0);
+			color: #B7B7B7;			
+			font-size: 12px;
+			cursor: pointer			
+		}
+
+		.star-label img{			
+			position: absolute;
+			margin-left: 2px;
+			margin-top: -7px;
 		}		
 
 		#button-container {
@@ -172,7 +202,7 @@
 
 		.banner-starfield span {
 			position: relative;
-		}
+		}		
 
 		.banner-starfield span.blink {
 			position: relative;
@@ -247,6 +277,70 @@
 		#wiki-container button:hover {
 			color: cyan;
 			font-weight: bold;
+		}
+
+        .chartElements {
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.35);
+            overflow: hidden;
+			background: black;
+			display: none;			
+        }
+
+        .chartSegments-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }		
+
+        .chartSegment {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            clip-path: polygon(0% 0%, 100% 0, 100% 100%);
+        }
+		
+		.element-box {
+			position: absolute;		
+			left: 160px;
+			top: 64px;
+			width: 280px;
+			height: 192px;
+			background-color: rgba(48, 62, 77, 1.0);
+			border: 2px inset #B7B7B7; 
+			border-right: solid black; 
+			border-bottom: solid black;	
+			color: #B7B7B7;			
+			font-size: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;				
+			display: none;
+		}	
+
+        .text-box {
+            position: absolute;
+            padding: 5px;
+            max-width: 100px;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 1;
+        }	
+
+		@keyframes pulseElement {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.5);
+			}
+			100% {
+				transform: scale(1);
+			}
 		}		
     </style>	
 </head>
@@ -254,7 +348,7 @@
 
     <div id="notification" class="notification"></div>		
 	
-    <div id="map-container"> 	
+    <div id="map-container"> 		
 	
 		<div class="banner-starfield" style="border-top-right-radius: 20px;">
 			<img src="Data/Textures/StarfieldBanner.png" style="padding: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;">
@@ -281,7 +375,7 @@
 		</div>
 
 		<div id="wiki-container">
-			<a href="https://starfieldwiki.net/wiki/Category:Starfield-Creatures-All" style="text-decoration: none;"
+			<a href="https://starfieldwiki.net/wiki/Category:Starfield-Creatures-All" style="text-decoration: none; "
 				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
 				<button onmouseenter="showSubMenu()" onmouseleave="hideSubMenu()">
 					Starfield Wiki - Creatures - Page 1
@@ -325,15 +419,31 @@
 			</a>			
 			<a href="https://starfieldwiki.net/wiki/Starfield:Resources" style="text-decoration: none;"
 				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
-				<button>
+				<button onmouseenter="showSubMenuResource()" onmouseleave="hideSubMenuResource()">
 					Starfield Wiki - Resources
-				</button>				
+				</button>
+				<div id="submenu08" style="display: none; position: absolute; top: 35.5px; left: 648px;">
+					<a href="https://inara.cz/starfield/resources/" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuResource()" onmouseleave="hideSubMenuResource()">
+							Resources - Inara
+						</button>						
+					</a>
+				</div>				
 			</a>
 			<a href="https://starfieldwiki.net/wiki/Starfield:Missions" style="text-decoration: none;"
 				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
-				<button>
+				<button onmouseenter="showSubMenuMission()" onmouseleave="hideSubMenuMission()">
 					Starfield Wiki - Missions
-				</button>				
+				</button>
+				<div id="submenu09" style="display: none; position: absolute; top: 35.5px; left: 870px;">
+					<a href="https://inara.cz/starfield/missions/" style="text-decoration: none;"
+						onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">
+						<button onmouseenter="showSubMenuMission()" onmouseleave="hideSubMenuMission()">
+							Missions - Inara
+						</button>						
+					</a>
+				</div>					
 			</a>
 			<a href="https://starfieldwiki.net/wiki/Starfield:Weapons" style="text-decoration: none;"
 				onclick="window.open(this.href, 'newWindow', 'width=1024,height=768,left=' + (screen.width / 2 - 512) + ',top=50,resizable=no,scrollbars=no,status=no'); return false;">			
@@ -381,10 +491,38 @@
 		<iframe class="system-iframe" id="system-sol" src="Data/Systems/SystemSol.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
 		<iframe class="system-iframe" id="system-vega" src="Data/Systems/SystemVega.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
 
-		<button class="system-button" onmouseover="hoverSystemInfo()" onclick="closeSystemInfo()">X</button>
+		<button class="system-button" onclick="closeSystemInfo()">X</button>
 				
 		<div class="settings-info">
-			<button class="close-settings-button" onclick="closeSettingsInfo()">X</button>		
+			<button class="close-settings-button" onclick="closeSettingsInfo()">X</button>
+
+			<div class="hotkey-info">
+				<div class="hotkey-description">
+					<h1 class="hotkey">Starmap Hotkeys</h1>
+				</div>
+				<div class="hotkey-description">
+					<span class="hotkey">Double Click Star Icon = </span> Open System Widget
+				</div>
+				<div class="hotkey-description">
+					<span class="hotkey">Strg-Click Star Icon = </span> Open System Journal
+				</div>	
+				<div class="hotkey-description">
+					<span class="hotkey">Shift-Click Star Icon = </span> Open System Information
+				</div>
+				<div class="hotkey-description">
+					<span class="hotkey">Alt-Click Star Icon = </span> Open System Properties
+				</div>				
+				<div class="hotkey-description">
+					<span class="hotkey">"r" over Star Icon = </span> Open Resource Wheel
+				</div>				
+			</div>
+			<div class="hotkey-info">
+				<div class="hotkey-description">
+					<h1 class="hotkey">System Widget Hotkeys</h1>				
+					<span class="hotkey">Strg-Click Star Icon = </span> Open System Journal
+				</div>
+			</div>
+
 		</div>
 
 		<div class="star-info" id="starInfo">
@@ -398,614 +536,814 @@
 				
 
 		<div id="extended-info-container">
-		</div>	
+		</div>
+
+		<div class="chartElements">
+			<div class="chartSegments-container">
+			</div>
+		</div>		
 	
-		<div class="star-system" style="top: 479px; left: 1235px;">
+		<div class="element-box">		
+			<div class="element-info">
+				<div class="element-description">
+					<span class="element">Ad:</span> Aldumite					
+				</div>
+				<div class="element-description">
+					<span class="element">Ag:</span> Silver					
+				</div>
+				<div class="element-description">
+					<span class="element">Al:</span> Aluminium					
+				</div>	
+				<div class="element-description">
+					<span class="element">Aq:</span> Haematite					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ar:</span> Argon					
+				</div>	
+				<div class="element-description">
+					<span class="element">Au:</span> Gold					
+				</div>	
+				<div class="element-description">
+					<span class="element">Be:</span> Beryllium					
+				</div>	
+				<div class="element-description">
+					<span class="element">Cl:</span> Chlorine					
+				</div>	
+				<div class="element-description">
+					<span class="element">Cn:</span> Benzene					
+				</div>	
+				<div class="element-description">
+					<span class="element">Co:</span> Cobalt					
+				</div>
+				<div class="element-description">
+					<span class="element">Cs:</span> Caesium					
+				</div>
+				<div class="element-description">
+					<span class="element">Ct:</span> Caelumite					
+				</div>
+				<div class="element-description">
+					<span class="element">Cu:</span> Copper					
+				</div>
+				<div class="element-description">
+					<span class="element">Dy:</span> Dysprosium					
+				</div>
+				<div class="element-description">
+					<span class="element">Eu:</span> Europium					
+				</div>	
+				<div class="element-description">
+					<span class="element">F:</span> Fluorine					
+				</div>					
+			</div>
+			
+			<div class="element-info">
+				<div class="element-description">
+					<span class="element">Fe:</span> Iron				
+				</div>
+				<div class="element-description">
+					<span class="element">HC:</span> Alkane					
+				</div>	
+				<div class="element-description">
+					<span class="element">He:</span> Helium-3					
+				</div>	
+				<div class="element-description">
+					<span class="element">Hg:</span> Mercury					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ho:</span> Water				
+				</div>
+				<div class="element-description">
+					<span class="element">Ie:</span> Indicite					
+				</div>	
+				<div class="element-description">
+					<span class="element">Il:</span> Ionic Liq.						
+				</div>	
+				<div class="element-description">
+					<span class="element">Ir:</span> Iridium					
+				</div>
+				<div class="element-description">
+					<span class="element">Li:</span> Lithium				
+				</div>
+				<div class="element-description">
+					<span class="element">Nd:</span> Neodymium					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ne:</span> Neon					
+				</div>	
+				<div class="element-description">
+					<span class="element">Nh:</span> Amino Acid					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ni:</span> Nickel				
+				</div>
+				<div class="element-description">
+					<span class="element">Pb:</span> Lead					
+				</div>	
+				<div class="element-description">
+					<span class="element">Pd:</span> Palladium					
+				</div>	
+				<div class="element-description">
+					<span class="element">Pt:</span> Platinum					
+				</div>				
+			</div>			
+			
+			<div class="element-info">
+				<div class="element-description">
+					<span class="element">Pu:</span> Plutonium				
+				</div>
+				<div class="element-description">
+					<span class="element">Rc:</span> Rhoticite					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ro:</span> Carbolyxac.				
+				</div>	
+				<div class="element-description">
+					<span class="element">Sb:</span> Antimony					
+				</div>	
+				<div class="element-description">
+					<span class="element">Sc:</span> Chlorosila.			
+				</div>
+				<div class="element-description">
+					<span class="element">Ta:</span> Tantalum					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ti:</span> Titanium						
+				</div>	
+				<div class="element-description">
+					<span class="element">Ts:</span> Tasine					
+				</div>
+				<div class="element-description">
+					<span class="element">U:</span> Uranium				
+				</div>
+				<div class="element-description">
+					<span class="element">V:</span> Vanadium					
+				</div>	
+				<div class="element-description">
+					<span class="element">Vr:</span> Veryl					
+				</div>	
+				<div class="element-description">
+					<span class="element">Vy:</span> Vytinium					
+				</div>	
+				<div class="element-description">
+					<span class="element">W:</span> Tungsten				
+				</div>
+				<div class="element-description">
+					<span class="element">Xe:</span> Xenon					
+				</div>	
+				<div class="element-description">
+					<span class="element">Xf:</span> Tetrafluo.					
+				</div>	
+				<div class="element-description">
+					<span class="element">Yb:</span> Ytterbium					
+				</div>				
+			</div>			
+		</div>			
+	
+		<div class="star-system" style="top: 479px; left: 1235px;" data-keywords="Al, Be, Cu, Dy, F, Fe, Hc, He, Ho, Il, Ni, Pb, Ta, Sc, Nd, Pd, Ag">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Al-Battani</div>
 		</div>
-		<div class="star-system" style="top: 846px; left: 1275px;">
+		<div class="star-system" style="top: 846px; left: 1275px;" data-keywords="Al, Au, Be, HC, Cn, Co, Ir, Hg, Nd, Pd, Pt, Ag, Xf, W, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Alchiba</div>
 		</div>
-		<div class="star-system" style="top: 879px; left: 1515px;">
+		<div class="star-system" style="top: 879px; left: 1515px;" data-keywords="Al, F, HC, Cn, Nh, Ir, Li, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Algorab</div>
 		</div>
-		<div class="star-system" style="top: 227px; left: 27px;">
+		<div class="star-system" style="top: 227px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Alpha Andraste</div>
 		</div>
-		<div class="star-system" style="top: 603px; left: 344px;">
+		<div class="star-system" style="top: 603px; left: 344px;" data-keywords="Al, Ar, Cn, Cl, He, Sc, Co, Fe, Pb, Ni, Pt, W, U, V, Ho, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Alpha Centauri</div>
+			<div class="star-label">Alpha Centauri
+				<img src="Data/Textures/Icons/CityMarker.png">	
+			</div>
 		</div>
-		<div class="star-system" style="top: 431px; left: 823px;">
+		<div class="star-system" style="top: 431px; left: 823px;" data-keywords="Al, Be, F, HC, Cn, Co, Cu, Dy, Eu, Ir, Li, Ag, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Alpha Marae</div>
+			<div class="star-label">Alpha Marae</div>						
 		</div>
-		<div class="star-system" style="top: 608px; left: 1408px;">
+		<div class="star-system" style="top: 608px; left: 1408px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Eu, Li, Hg, Ne, Pu, Ta, Ti, W, V, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Alpha Ternion</div>
 		</div>
-		<div class="star-system" style="top: 868px; left: 1094px;">
+		<div class="star-system" style="top: 868px; left: 1094px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Il, Ir, Ne, Ag, Ta, Xf, Ti, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Alpha Tirna</div>
 		</div>		
-		<div class="star-system" style="top: 451px; left: 350px;">
+		<div class="star-system" style="top: 451px; left: 350px;" data-keywords="Al, Au, Be, F, Cn, Cl, Sc, Co, Cu, Ir, Pb, Nd, Ni, Pt, Pu, Ag, Xf, W, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Altair</div>
 		</div>
-		<div class="star-system" style="top: 296px; left: 560px;">
+		<div class="star-system" style="top: 296px; left: 560px;" data-keywords="Al, Be, F, HC, Cn, Nh, Cl, Sc, Cu, Eu, Ir, Fe, Pb, Li, Ne, Ni, U, V, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Andromas</div>
 		</div>
-		<div class="star-system" style="top: 631px; left: 653px;">
+		<div class="star-system" style="top: 631px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Aranae</div>
 		</div>
-		<div class="star-system" style="top: 633px; left: 1706px;">
+		<div class="star-system" style="top: 633px; left: 1706px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Il, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Archimedes</div>
 		</div>
-		<div class="star-system" style="top: 341px; left: 942px;">
+		<div class="star-system" style="top: 341px; left: 942px;" data-keywords="HC, Cn, Cl, Ir, Fe, Pb, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Arcturus</div>
 		</div>
-		<div class="star-system" style="top: 575px; left: 1426px;">
+		<div class="star-system" style="top: 575px; left: 1426px;" data-keywords="Al, Be, Cs, Sc, Co, Ir, Hg, Pt, Ag, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 7px; height: 7px;">
 			</div>
 			<div class="star-label">Bannoc</div>
 		</div>
-		<div class="star-system" style="top: 564px; left: 1432px;">
+		<div class="star-system" style="top: 564px; left: 1432px;" data-keywords="Al, Nd">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bannoc Secundus</div>
 		</div>
-		<div class="star-system" style="top: 353px; left: 1318px;">
+		<div class="star-system" style="top: 353px; left: 1318px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Ta, Ti">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bara</div>
 		</div>
-		<div class="star-system" style="top: 152px; left: 757px;">
+		<div class="star-system" style="top: 152px; left: 757px;" data-keywords="Al, Cs, F, HC, Nh, Sc, Co, Ir, Li, Nd, Ne, Pt, Ag, Ta, Xf, Ti, Xe, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bardeen</div>
 		</div>
-		<div class="star-system" style="top: 515px; left: 371px;">
+		<div class="star-system" style="top: 515px; left: 371px;" data-keywords="He, Pb, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Barnard's Star</div>
 		</div>
-		<div class="star-system" style="top: 546px; left: 1476px;">
+		<div class="star-system" style="top: 546px; left: 1476px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Li, Nd, Pd, Pt, Ta, Xf">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bel</div>
 		</div>	
-		<div class="star-system" style="top: 418px; left: 269px;">
+		<div class="star-system" style="top: 418px; left: 269px;" data-keywords="Al, Be, Co, Fe, Nd, Ne, Ni, Pt">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bessel</div>
 		</div>
-		<div class="star-system" style="top: 215px; left: 35px;">
+		<div class="star-system" style="top: 215px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Beta Andraste</div>
 		</div>
-		<div class="star-system" style="top: 445px; left: 815px;">
+		<div class="star-system" style="top: 445px; left: 815px;" data-keywords="Al, F, HC, Sb, Sc, Co, Il, Ir, Nd, Pd, Pu, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Beta Marae</div>
 		</div>
-		<div class="star-system" style="top: 620px; left: 1400px;">
+		<div class="star-system" style="top: 620px; left: 1400px;" data-keywords="Al, Cn, Sc, Co, Li, Pd, Pt">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Beta Ternion</div>
 		</div>
-		<div class="star-system" style="top: 881px; left: 1089px;">
+		<div class="star-system" style="top: 881px; left: 1089px;" data-keywords="">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Beta Tirna</div>
 		</div>	
-		<div class="star-system" style="top: 321px; left: 1829px;">
+		<div class="star-system" style="top: 321px; left: 1829px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Hg, Pt, Ag, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bohr</div>
 		</div>		
-		<div class="star-system" style="top: 765px; left: 1081px;">
+		<div class="star-system" style="top: 765px; left: 1081px;" data-keywords="W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Bolivar</div>
 		</div>
-		<div class="star-system" style="top: 207px; left: 742px;">
+		<div class="star-system" style="top: 207px; left: 742px;" data-keywords="Al, HC, Cn, Cl, Sc, Co, Eu, Fe, Pb, Ni, Ti, U, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Bradbury</div>
 		</div>	
-		<div class="star-system" style="top: 259px; left: 108px;">
+		<div class="star-system" style="top: 259px; left: 108px;" data-keywords="Al, Be, HC, Cn, Cl, Sc, Cu, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Rc, Xf, W, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Carinae</div>
 		</div>		
-		<div class="star-system" style="top: 270px; left: 1095px;">
+		<div class="star-system" style="top: 270px; left: 1095px;" data-keywords="Al, Au, Be, Cs, HC, Cn, Sc, Ne, Ta, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Celebrai</div>
 		</div>		
-		<div class="star-system" style="top: 340px; left: 1375px;">
+		<div class="star-system" style="top: 340px; left: 1375px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Ir, Hg, Nd, Ne, Pt, Ta, Xf, Ti, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Charybdis</div>
 		</div>		
-		<div class="star-system" style="top: 392px; left: 701px;">
+		<div class="star-system" style="top: 392px; left: 701px;" data-keywords="Al, Be, Ar, Au, F, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Il, Ir, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Pt, Ag, Xf, Ti, W, U, V, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Cheyenne</div>
+			<div class="star-label">Cheyenne
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>		
-		<div class="star-system" style="top: 474px; left: 1046px;">
+		<div class="star-system" style="top: 474px; left: 1046px;" data-keywords="Al, Be, F, Cn, Cl, Sc, Co, Eu, Li, Nd, Ti, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Copernicus</div>
 		</div>
-		<div class="star-system" style="top: 487px; left: 1037px;">
+		<div class="star-system" style="top: 487px; left: 1037px;" data-keywords="HC, Sc, Li">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Copernicus Minor</div>
 		</div>	
-		<div class="star-system" style="top: 531px; left: 1291px;">
+		<div class="star-system" style="top: 531px; left: 1291px;" data-keywords="Al, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Pd, W, Vy">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Decaran</div>
 		</div>		
-		<div class="star-system" style="top: 832px; left: 325px;">
+		<div class="star-system" style="top: 832px; left: 325px;" data-keywords="Al, Be, F, HC, Sc, Co, Dy, Ir, Fe, Pb, Li, Nd, Ag, Ag, Xf, W, U, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Delta Pavonis</div>
 		</div>		
-		<div class="star-system" style="top: 611px; left: 1276px;">
+		<div class="star-system" style="top: 611px; left: 1276px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Ne, Ta, Xf">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Delta Vulpes</div>
 		</div>		
-		<div class="star-system" style="top: 459px; left: 948px;">
+		<div class="star-system" style="top: 459px; left: 948px;" data-keywords="Al, HC, Sc, Ir, Ag, Ta, U, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Denebola</div>
 		</div>
-		<div class="star-system" style="top: 620px; left: 1546px;">
+		<div class="star-system" style="top: 620px; left: 1546px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Ne, Pt, Ta, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Enlil</div>
 		</div>		
-		<div class="star-system" style="top: 790px; left: 45px;">
+		<div class="star-system" style="top: 790px; left: 45px;" data-keywords="Al, Au, Be, Cs, F, HC, Cl, Sc, Co, Cu, Eu, Ir, Fe, Pb, Li, Nd, Ne, Ni, Pu, Ag, Ti, W, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Eridani</div>
 		</div>		
-		<div class="star-system" style="top: 273px; left: 98px;">
+		<div class="star-system" style="top: 273px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Eta Cassiopeia</div>
 		</div>
-		<div class="star-system" style="top: 285px; left: 1778px;">
+		<div class="star-system" style="top: 285px; left: 1778px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, V, Xe, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Fermi</div>
 		</div>		
-		<div class="star-system" style="top: 669px; left: 778px;">
+		<div class="star-system" style="top: 669px; left: 778px;" data-keywords="Al, Au, Be, F, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Hg, Nd, Pd, Pu, Ag, Ta, Xf, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Feynman</div>
 		</div>		
-		<div class="star-system" style="top: 698px; left: 1453px;">
+		<div class="star-system" style="top: 698px; left: 1453px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Il, Ir, Hg, Nd, Pt, Pu, Xf, Ti, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Foucault</div>
 		</div>		
-		<div class="star-system" style="top: 148px; left: 1258px;">
+		<div class="star-system" style="top: 148px; left: 1258px;" data-keywords="Al, Be, Cn, F, Sc, Co, Eu, Ir, Hg, Pt, Ag, Xf, Ti, W, V, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Freya</div>
 		</div>
-		<div class="star-system" style="top: 626px; left: 1269px;">
+		<div class="star-system" style="top: 626px; left: 1269px;" data-keywords="Al, Cn, Sc, Co, Dy, Ir, Li, Nd, Xf, Ti, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Gamma Vulpes</div>
 		</div>		
-		<div class="star-system" style="top: 268px; left: 722px;">
+		<div class="star-system" style="top: 268px; left: 722px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Pb, Li, Nd, Ag, Xf, Ti, W, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Groombridge</div>
 		</div>		
-		<div class="star-system" style="top: 627px; left: 535px;">
+		<div class="star-system" style="top: 627px; left: 535px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Nh, Cl, Sc, Co, Cu, Ir, Fe, Pb, Hg, Nd, Ni, Pd, Ta, Ti, W, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Guniibuu</div>
 		</div>
-		<div class="star-system" style="top: 599px; left: 1791px;">
+		<div class="star-system" style="top: 599px; left: 1791px;" data-keywords="HC, Sc, Ir, Li, Pd, Pt, Ag, Ta, Xf, W, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Hawking</div>
 		</div>
-		<div class="star-system" style="top: 569px; left: 1312px;">
+		<div class="star-system" style="top: 569px; left: 1312px;" data-keywords="Al, Be, Cs, HC, Nh, Sc, Co, Eu, Ir, Li, Hg, Nd, Ne, Pd, Ag, V, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Heinlein</div>
 		</div>
-		<div class="star-system" style="top: 396px; left: 1051px;">
+		<div class="star-system" style="top: 396px; left: 1051px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Ag, Xf, Ti, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Heisenberg</div>
 		</div>		
-		<div class="star-system" style="top: 567px; left: 1824px;">
+		<div class="star-system" style="top: 567px; left: 1824px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Ne, Pu, W, V, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Huygens</div>
 		</div>			
-		<div class="star-system" style="top: 488px; left: 1359px;">
+		<div class="star-system" style="top: 488px; left: 1359px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Eu, Il, Ir, Li, Hg, Nd, Ne, Pt, Pu, Ag, Ta, Xf, Ti, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Hyla</div>
 		</div>
-		<div class="star-system" style="top: 641px; left: 528px;">
+		<div class="star-system" style="top: 641px; left: 528px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Cl, Co, Cu, Ir, Fe, Pb, Hg, Ni, Pt, Ta, Xf, U, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Indum</div>
 		</div>		
-		<div class="star-system" style="top: 172px; left: 1250px;">
+		<div class="star-system" style="top: 172px; left: 1250px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Li, Ne, Pu, Ag, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Ixyll</div>
 		</div>
-		<div class="star-system" style="top: 616px; left: 974px;">
+		<div class="star-system" style="top: 616px; left: 974px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Li, Hg, Nd, Pd, Pu, Ag, Xf, Ti, W, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Jaffa</div>
 		</div>
-		<div class="star-system" style="top: 718px; left: 1486px;">
+		<div class="star-system" style="top: 718px; left: 1486px;" data-keywords="Al, Be, F, HC, Sb, Sc, Co, Ir, Nd, Ag, Ta, Xf, Ti, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Kang</div>
 		</div>		
-		<div class="star-system" style="top: 729px; left: 159px;">
+		<div class="star-system" style="top: 729px; left: 159px;" data-keywords="Al, He, Pb, Ni, Pt, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Kapteyn's Star</div>
 		</div>
-		<div class="star-system" style="top: 878px; left: 1375px;">
+		<div class="star-system" style="top: 878px; left: 1375px;" data-keywords="Al, Be, HC, Cn, Nh, Sc, Ag, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Katydid</div>
 		</div>			
-		<div class="star-system" style="top: 494px; left: 1250px;">
+		<div class="star-system" style="top: 494px; left: 1250px;" data-keywords="Al, Au, Be, HC, Cn, Sc, Co, Eu, Ie, Il, Ir, Pu, Ta, Xf, Ti, W, Xe, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Khayyam</div>
 		</div>		
-		<div class="star-system" style="top: 424px; left: 913px;">
+		<div class="star-system" style="top: 424px; left: 913px;" data-keywords="Al, Au, Be, F, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Pu, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div class="star-label">Kryx</div>
+			<div class="star-label">Kryx
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>		
-		<div class="star-system" style="top: 300px; left: 760px;">
+		<div class="star-system" style="top: 300px; left: 760px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Sc, Co, Dy, Eu, Il, Ir, Pb, Nd, Ne, Pd, Pt, Pu, Ta, Xf, U, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Kumasi</div>
 		</div>		
-		<div class="star-system" style="top: 560px; left: 931px;">
+		<div class="star-system" style="top: 560px; left: 931px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Hg, Pd, Pt, Pu, Ag, Ta, Xf, W, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Lantana</div>
 		</div>		
-		<div class="star-system" style="top: 443px; left: 1406px;">
+		<div class="star-system" style="top: 443px; left: 1406px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Ir, Li, Hg, Nd, Pt, Pu, Ag, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Leonis</div>
 		</div>
-		<div class="star-system" style="top: 446px; left: 703px;">
+		<div class="star-system" style="top: 446px; left: 703px;" data-keywords="Al, Au, Be, F, Sc, Eu, Ne, Xe, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Leviathan</div>
 		</div>
-		<div class="star-system" style="top: 663px; left: 554px;">
+		<div class="star-system" style="top: 663px; left: 554px;" data-keywords="Al, Be, F, HC, Cn, Sc, Co, Eu, Ir, Nd, Pt, Ag, Ta, Xf, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Linnaeus</div>
 		</div>		
-		<div class="star-system" style="top: 485px; left: 702px;">
+		<div class="star-system" style="top: 485px; left: 702px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Sc, Co, Hg, Nd, Ne, Pt, Xf, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Lunara</div>
 		</div>		
-		<div class="star-system" style="top: 563px; left: 213px;">
+		<div class="star-system" style="top: 563px; left: 213px;" data-keywords="HC, Cl, Fe, Li, Ta, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label" style="margin-left: -106px;">Luyten's Star</div>
 		</div>
-		<div class="star-system" style="top: 428px; left: 1607px;">
+		<div class="star-system" style="top: 428px; left: 1607px;" data-keywords="Al, Au, Be, F, HC, He, Sb, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Pt, Ag, Xf, Ti, W, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Maal</div>
 		</div>		
-		<div class="star-system" style="top: 405px; left: 693px;">
+		<div class="star-system" style="top: 405px; left: 693px;" data-keywords="Al, Au, Be, F, He, HC, Sb, Cn, Nh, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ne, Ni, Ag, Xf, Ho, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Maheo</div>
 		</div>		
-		<div class="star-system" style="top: 822px; left: 1466px;">
+		<div class="star-system" style="top: 822px; left: 1466px;" data-keywords="Al, Au, Be, F, Cs, Nh, Sc, Co, Eu, Ne, Pd, Pt, Pu, Xf, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Marduk</div>
 		</div>	
-		<div class="star-system" style="top: 650px; left: 1294px;">
+		<div class="star-system" style="top: 650px; left: 1294px;" data-keywords="Al, Be, F, HC, Cn, Co, Il, Ir, Pt, Ag, W, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Masada</div>
 		</div>
-		<div class="star-system" style="top: 221px; left: 733px;">
+		<div class="star-system" style="top: 221px; left: 733px;" data-keywords="Al, HC, Cl, Sc, Co, Cu, Fe, Nd, Ta">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">McClure</div>
 		</div>
-		<div class="star-system" style="top: 375px; left: 1304px;">
+		<div class="star-system" style="top: 375px; left: 1304px;" data-keywords="Al, Au, F, Sb, Cn, Nh, Co, Ir, Li, Hg, Nd, Ag, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Moloch</div>
 		</div>		
-		<div class="star-system" style="top: 362px; left: 955px;">
+		<div class="star-system" style="top: 362px; left: 955px;" data-keywords="Al, Be, Cs, F, HC, Sb, Cn, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Li, Hg, Ni, Pt, Ag, W, U, V, Xe, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Muphrid</div>
 		</div>
-		<div class="star-system" style="top: 499px; left: 472px;">
+		<div class="star-system" style="top: 499px; left: 472px;" data-keywords="Al, Be, Cs, F, Ar, He, HC, Cn, Cl, Sc, Cu, Eu, Il, Ir, Fe, Pb, Nd, Ne, Ni, Pu, Ag, Xf, U, V, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Narion</div>
 		</div>		
-		<div class="star-system" style="top: 109px; left: 743px;">
+		<div class="star-system" style="top: 109px; left: 743px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Co, Dy, Ne, Pd, Ag, Xf, W, U, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Nemeria</div>
 		</div>
-		<div class="star-system" style="top: 140px; left: 633px;">
+		<div class="star-system" style="top: 140px; left: 633px;" data-keywords="Al, Au, Be, F, HC, Sc, Li, Pt, Xf, Ti, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Newton</div>
 		</div>
-		<div class="star-system" style="top: 421px; left: 633px;">
+		<div class="star-system" style="top: 421px; left: 633px;" data-keywords="Al, Be, F, HC, Nh, Co, Ir, Nd, Pt, Pu, Ta, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Nikola</div>
 		</div>		
-		<div class="star-system" style="top: 415px; left: 1380px;">
+		<div class="star-system" style="top: 415px; left: 1380px;" data-keywords="Al, Be, HC, Ir, Ta, W">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Nirah</div>
 		</div>		
-		<div class="star-system" style="top: 806px; left: 1108px;">
+		<div class="star-system" style="top: 806px; left: 1108px;" data-keywords="Al, Be, F, HC, Sc, Il, Ir, Ag, Xf, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Nirvana</div>
 		</div>
-		<div class="star-system" style="top: 714px; left: 533px;">
+		<div class="star-system" style="top: 714px; left: 533px;" data-keywords="">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Oborum Proxima</div>
 		</div>
-		<div class="star-system" style="top: 703px; left: 541px;">
+		<div class="star-system" style="top: 703px; left: 541px;" data-keywords="Al, Au, Cl, Sc, Cu, Fe, Pb, Nd, Pt, Ag, Ta, Xf">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Oborum Prime</div>
 		</div>
-		<div class="star-system" style="top: 643px; left: 645px;">
+		<div class="star-system" style="top: 643px; left: 645px;" data-keywords="Al, Be, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Ir, Fe, Pb, Ni, Pd, Ta, U, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Olympus</div>
 		</div>
-		<div class="star-system" style="top: 464px; left: 1292px;">
+		<div class="star-system" style="top: 464px; left: 1292px;" data-keywords="F">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Ophion</div>
 		</div>
-		<div class="star-system" style="top: 403px; left: 276px;">
+		<div class="star-system" style="top: 403px; left: 276px;" data-keywords="Al, Au, Be, Cs, F, HC, He, Cl, Sc, Co, Cu, Eu, Fe, Pb, Nd, Ni, Pd, Pt">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Piazzi</div>
 		</div>
-		<div class="star-system" style="top: 614px; left: 1060px;">
+		<div class="star-system" style="top: 614px; left: 1060px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Eu, Li, Nd, Ne, Pu, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Porrima</div>
+			<div class="star-label">Porrima
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>
-		<div class="star-system" style="top: 572px; left: 237px;">
+		<div class="star-system" style="top: 572px; left: 237px;" data-keywords="Al, F, HC, Cn, He, Nh, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Ne, Ni, Xf, Ti, W, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Procyon A</div>
 		</div>
-		<div class="star-system" style="top: 559px; left: 245px;">
+		<div class="star-system" style="top: 559px; left: 245px;" data-keywords="Al, He, Nd">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
 			<div class="star-label">Procyon B</div>
 		</div>
-		<div class="star-system" style="top: 632px; left: 1392px;">
+		<div class="star-system" style="top: 632px; left: 1392px;" data-keywords="Al, Cs, F, HC, Eu, Li, Pu, Ag">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Proxima Ternion</div>
 		</div>		
-		<div class="star-system" style="top: 230px; left: 1683px;">
+		<div class="star-system" style="top: 230px; left: 1683px;" data-keywords="Al, Au, Be, Cs, F, HC, Sc, Co, I, Il, Ir, Li, Nd, Pt, Ti, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Pyraas</div>
 		</div>
-		<div class="star-system" style="top: 271px; left: 1642px;">
+		<div class="star-system" style="top: 271px; left: 1642px;" data-keywords="Al, Be, F, HC, Cn, Sc, Il, Li, Nd, Ne, Pd, Pt, Ag, Ta, Xf, Ti, W, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Rana</div>
 		</div>
-		<div class="star-system" style="top: 286px; left: 798px;">
+		<div class="star-system" style="top: 286px; left: 798px;" data-keywords="Al, Au, Be, F, Cs, HC, Co, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Rasalhague</div>
 		</div>	
-		<div class="star-system" style="top: 777px; left: 1072px;">
+		<div class="star-system" style="top: 777px; left: 1072px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Eu, Hg, Nd, Pt, Ag, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Rivera</div>
 		</div>
-		<div class="star-system" style="top: 400px; left: 1291px;">
+		<div class="star-system" style="top: 400px; left: 1291px;" data-keywords="Al, Be, Cs, Sb, Cn, Nh, Sc, Ir, Li, Hg, Nd, Ne, Pt, Ti, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Rutherford</div>
 		</div>
-		<div class="star-system" style="top: 390px; left: 863px;">
+		<div class="star-system" style="top: 390px; left: 863px;" data-keywords="Co, Ni">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Sagan</div>
 		</div>
-		<div class="star-system" style="top: 698px; left: 437px;">
+		<div class="star-system" style="top: 698px; left: 437px;" data-keywords="Al">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Sakharov</div>
 		</div>
-		<div class="star-system" style="top: 465px; left: 843px;">
+		<div class="star-system" style="top: 465px; left: 843px;" data-keywords="Ad, Be, Al, F, HC, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Nd, Ne, Pu, Ag, Ta, Xf, Ti, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Schrodinger</div>
 		</div>		
-		<div class="star-system" style="top: 355px; left: 1420px;">
+		<div class="star-system" style="top: 355px; left: 1420px;" data-keywords="Al, Be, F, Sc, Li, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Serpentis</div>
 		</div>
-		<div class="star-system" style="top: 288px; left: 1222px;">
+		<div class="star-system" style="top: 288px; left: 1222px;" data-keywords="Al, Au, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Li, Nd, Pd, Pt, Ag, W, U, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Shoza</div>
 		</div>	
-		<div class="star-system" style="top: 626px; left: 224px;">
+		<div class="star-system" style="top: 626px; left: 224px;" data-keywords="Al, HC, He, Cn, Cl, F, Sc, Cu, Ir, Fe, Li, Ni, U, Ho, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Sirius</div>
 		</div>
-		<div class="star-system" style="top: 540px; left: 300px;">
+		<div class="star-system" style="top: 540px; left: 300px;" data-keywords="Al, Ar, Cn, He, Nh, Cl, F, Sc, Co, Dy, Fe, Pb, Hg, Nd, Ni, Pd, Ag, Ti, W, Ho, Aq">
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-sol'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Sol</div>
+			<div class="star-label">Sol
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>
-		<div class="star-system" style="top: 221px; left: 1365px;">
+		<div class="star-system" style="top: 221px; left: 1365px;" data-keywords="Al, Be, HC, Cn, F, Nh, Sc, Co, Il, Ir, Nd, Pd, Pt, Ag, Ta, Ti, W, V">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Sparta</div>
 		</div>		
-		<div class="star-system" style="top: 303px; left: 1736px;">
+		<div class="star-system" style="top: 303px; left: 1736px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Dy, Ir, Li, Hg, Pd, Ag, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Strix</div>
 		</div>
-		<div class="star-system" style="top: 594px; left: 1486px;">
+		<div class="star-system" style="top: 594px; left: 1486px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Pu, Ta, Xf, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Syrma</div>
 		</div>		
-		<div class="star-system" style="top: 593px; left: 82px;">
+		<div class="star-system" style="top: 593px; left: 82px;" data-keywords="Al, Be, Cs, F, HC, He, Cn, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ni, Pd, Pt, Ta, Xf, U, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Tau Ceti</div>
 		</div>
-		<div class="star-system" style="top: 640px; left: 216px;">
+		<div class="star-system" style="top: 640px; left: 216px;" data-keywords="Cs, Cl">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
 			<div class="star-label">The Pup</div>
 		</div>		
-		<div class="star-system" style="top: 590px; left: 352px;">
+		<div class="star-system" style="top: 590px; left: 352px;" data-keywords="Al, Be, Cn, He, Pb, Ag">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Toliman</div>
 		</div>
-		<div class="star-system" style="top: 445px; left: 966px;">
+		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Tidacha</div>
 		</div>
-		<div class="star-system" style="top: 329px; left: 769px;">
+		<div class="star-system" style="top: 329px; left: 769px;" data-keywords="Al, Be, Cn, Cl, F, Sc, Co, Fe, Nd, Ta, U">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Ursae Majoris</div>
 		</div>
-		<div class="star-system" style="top: 315px; left: 777px;">
+		<div class="star-system" style="top: 315px; left: 777px;" data-keywords="Al, Nh, Eu, F, Ir, Ta, Xf">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div class="star-label">Ursae Minoris</div>
 		</div>		
-		<div class="star-system" style="top: 485px; left: 480px;">
+		<div class="star-system" style="top: 485px; left: 480px;" data-keywords="Al, Be, Cn, Cl, He, Sc, Co, Eu, Ir, Li, Nd, Ni, U, V, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Valo</div>
+			<div class="star-label">Valo
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>
-		<div class="star-system" style="top: 505px; left: 60px;">
+		<div class="star-system" style="top: 505px; left: 60px;" data-keywords="Cu">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
 			<div class="star-label">Van Maanen's Star</div>
 		</div>	
-		<div class="star-system" style="top: 252px; left: 456px;">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-vega'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
-			</div>
-			<div class="star-label">Vega</div>		
+		<div class="star-system" style="top: 252px; left: 456px;" data-keywords="Al, HC, Sc, Co, Dy, Pd, Ti, U">
+			<div class="star-icon-box">Vega State
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+			</div>	
+			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-vega'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;"></div>
+			<div id="vega-label" class="star-label">Vega</div>			
 		</div>
-		<div class="star-system" style="top: 474px; left: 1702px;">
+		<div class="star-system" style="top: 474px; left: 1702px;" data-keywords="Al, Be, Cn, F, Sc, Ir, Li, Hg, Ne, Pd, Pt, Pu, Ag, Ti, W, V, Vr, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Verne</div>
 		</div>
-		<div class="star-system" style="top: 713px; left: 824px;">
+		<div class="star-system" style="top: 713px; left: 824px;" data-keywords="Al, Be, Cn, Cl, F, He, Sc, Cu, Il, Fe, Pb, Nd">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div class="star-label">Volii</div>
+			<div class="star-label" style="margin-top: 15px;">Volii
+				<img src="Data/Textures/Icons/CityMarker.png">			
+			</div>
 		</div>				
-		<div class="star-system" style="top: 545px; left: 396px;">
+		<div class="star-system" style="top: 545px; left: 396px;" data-keywords="Al, Be, Pb, Hg, Ag, Ho">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Wolf</div>
 		</div>
-		<div class="star-system" style="top: 682px; left: 853px;">
+		<div class="star-system" style="top: 682px; left: 853px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Pt, Ag, Xf, W, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Xi Ophiuchi</div>
 		</div>
-		<div class="star-system" style="top: 894px; left: 1575px;">
+		<div class="star-system" style="top: 894px; left: 1575px;" data-keywords="Cn, Cs, F, Sc, Co, Ir, Li, Ne, Pd, Pt, Pu, Ag, Xf, Ti, W, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Zelazny</div>
 		</div>		
-		<div class="star-system" style="top: 696px; left: 846px;">
+		<div class="star-system" style="top: 696px; left: 846px;" data-keywords="Al, Au, Be, HC, Sb, Cn, Sc, Co, Ir, Li, Ne, Pt, Pu, Ag, Ta, V, Yb">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
 			<div class="star-label">Zeta Ophiuchi</div>
 		</div>
-		<div class="star-system" style="top: 301px; left: 1108px;">
+		<div class="star-system" style="top: 301px; left: 1108px;" data-keywords="F, HC, Cn, Sc, Co, Ir, Pd, Ta, Xe">
 			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
 			<div class="star-label">Zosma</div>
 		</div>		
 		
-    </div>	
+    </div>		
 
 	<script src="Data/Scripts/PreventDefault.js"></script>	
 
     <script>
+	
+		let isDiscovered = {
+			discovered: true
+		}
+
+		let isOutpost = {
+			outpost: true
+		}
+
+		const outpostImage = new Image();
+		outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";		
+	
+		function toggleDiscoverState(boxParent) {
+			const iconChild = boxParent.parentElement.parentElement.childNodes[5];
+			iconChild.style.fontWeight = "bold";
+			localStorage.setItem(iconChild.id + "-discover", JSON.stringify(isDiscovered));
+		}
+
+		function toggleOutpostState(boxParent) {
+			const iconChild = boxParent.parentElement.parentElement.childNodes[5];
+			iconChild.appendChild(outpostImage);
+			localStorage.setItem(iconChild.id + "-outpost", JSON.stringify(isOutpost));			
+		}		
 	
 		document.addEventListener('mouseover', function (event) {	
 			if (!isHovering()) {
@@ -1051,6 +1389,30 @@
 				document.getElementById("submenu06").style.display = "none";
 				document.getElementById("submenu07").style.display = "none";				
 			}
+		}
+
+		function showSubMenuResource() {
+			if (isHovering()) {
+				document.getElementById("submenu08").style.display = "block";			
+			}
+		}
+
+		function hideSubMenuResource() {
+			if (!isHovering()) {
+				document.getElementById("submenu08").style.display = "none";			
+			}
+		}	
+
+		function showSubMenuMission() {
+			if (isHovering()) {
+				document.getElementById("submenu09").style.display = "block";			
+			}
+		}
+
+		function hideSubMenuMission() {
+			if (!isHovering()) {
+				document.getElementById("submenu09").style.display = "none";			
+			}
 		}		
 
 		function isHovering() {
@@ -1069,11 +1431,23 @@
 	
 	    const mapContainer = document.getElementById("map-container");
 		const extendedInfoContainer = document.getElementById('extended-info-container');
+		const starIconBox = document.querySelector('.star-icon-box');		
         //const systemAnimation = document.querySelector('.system-animation');
 		const starLabels = document.querySelectorAll('.star-label');
 		const settingsInfo = document.querySelectorAll('.settings-info');		
 		
-		const originalCoordinatesSpan = document.getElementById("original-coordinates");	
+		const originalCoordinatesSpan = document.getElementById("original-coordinates");
+
+		starLabels.forEach((starLabel, index) => {
+			const discoveredText = localStorage.getItem(starLabel.id + "-discover");
+			const outpostText = localStorage.getItem(starLabel.id + "-outpost");			
+			if(discoveredText) {
+				starLabel.style.fontWeight = "bold";
+			}
+			if(outpostText) {
+				starLabel.appendChild(outpostImage);
+			}			
+		});
 		
 		mapContainer.addEventListener("mousemove", function(event) {		
 
@@ -1203,10 +1577,10 @@
 					starIcon.style.cursor = 'pointer';
 				}
 			});
-			
+
 			document.addEventListener('keyup', () => {
-				starIcon.style.cursor = 'default';
-			});	
+				starIcon.style.cursor = 'default';			
+			});				
 			
 		});		
 		
@@ -1231,7 +1605,7 @@
 				if (settingsInfoHidden) {
 					info.style.display = 'none';
 				} else {
-					info.style.display = 'block';
+					info.style.display = 'grid';
 				}
 			});
 		}
@@ -1239,6 +1613,7 @@
 		let hoverTimer;
 		let prevStarIcon;
 		let extendedInfoOpen = true;
+		let iconBoxOpen = true;
 		const animationDuration = 50;
 		const scaleSteps = 25;
 		const scaleFactorIncrement = 1.5 / scaleSteps;
@@ -1292,6 +1667,14 @@
 						extendedInfoContainer.style.display = 'none';
 					}
 				}
+				iconBoxOpen = !iconBoxOpen;					
+				if (event.altKey) {
+					if (!iconBoxOpen) {
+						starIconBox.style.display = 'block';
+					} else {
+						starIconBox.style.display = 'none';
+					}
+				}				
 			});
 
 			starIcon.addEventListener('mouseleave', function () {
@@ -1315,7 +1698,7 @@
 							if (starLabelsHidden) {
 								const label = starIcon.nextElementSibling;
 								label.style.display = 'none';
-							}
+							}						
 						}
 					}
 				});
@@ -1391,10 +1774,124 @@
 			systemButton.style.display = 'none';
 			backgroundBlur.style.display = 'none';
 		}
+		
+		const chartElements = document.querySelector('.chartElements');
+		const segmentContainer = document.querySelector('.chartSegments-container');
+		const totalSegments = 49;
+		
+		const segmentNames = [
+		  'Ad', 'Ag', 'Al', 'Aq', 'Ar', 'Au', 'Be', 'Cl', 'Cn', // 1-9; Cn = C6Hn -> Benzene; Aq -> Aqoueous Haematite
+		  'Co', 'Cs', 'Ct', 'Cu', 'Dy', 'Eu', 'F', 'Fe', 'HC', // 10-18; HC = HnCn -> Alkane
+		  'He', 'Hg', 'Ho', 'Ie', 'Il', 'Ir', 'Li', 'Nd', 'Ne', // 19-27; Ho = H2O -> Gumma die Oma da hadd ja ka Wassa da; He = He-3 -> Helium-3
+		  'Nh', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'Rc', 'Ro', 'Sb', // 28-36; Ro = R-COC -> Carbolyxic Acid; Nh = NH2 -> Amino Acid
+		  'Sc', 'Ta', 'Ti', 'Ts', 'U', 'V', 'Vr', 'Vy', 'W', // 37-45; Sc = SiH3Cl -> Chlorosilanes
+		  'Xe', 'Xf', 'Yb', 'Zr' //45-49 Xf = XF4 -> Tetrafluoride
+		];				
 
-		function hoverSystemInfo() {
-			systemButton.style.color = "red";
-		}	
+		for (let i = 0; i < totalSegments; i++) {
+			const startAngle = (360 / totalSegments) * i;
+			const color = getColorForSegment(i);
+
+			const chartSegment = document.createElement('div');
+			chartSegment.className = 'chartSegment';
+			chartSegment.id = 'chartSegment' + i;
+			chartSegment.style.background = color;
+			chartSegment.style.transform = `rotate(${startAngle}deg)`;
+			chartSegment.style.clipPath = `polygon(50% 50%, 100% 89%, 100% 100%)`;
+
+			segmentContainer.appendChild(chartSegment);
+
+			const text = document.createElement('div');
+			text.className = 'text-box';
+			text.id = 'text-box' + i;
+			const textAngle = (360 / totalSegments) * i;
+			const textX = 47.5 + (46) * Math.cos((textAngle - 90) * (Math.PI / 180));
+			const textY = 47.5 + (46) * Math.sin((textAngle - 90) * (Math.PI / 180));
+			text.style.top = `${textY}%`;
+			text.style.left = `${textX}%`;
+			text.style.transform = `rotate(${startAngle + 90}deg)`;
+			text.innerHTML = segmentNames[i];
+			text.style.display = 'block';
+			chartElements.appendChild(text);			
+		}
+
+		function getColorForSegment(segmentNumber) {
+			const colors = [
+				//colors are applied position = -18
+				'#6DA49E', '#7AB26B', '#AB9489', '#D7FFFF', '#4CD7BB', //1-5
+				'#706E29', '#5A74CB', '#A1E4DB', '#6A9A97', '#2AA1BE', //6-10
+				'#5F4421', '#444F54', '#D9A23C', '#4971A8', '#B8B840', //11-15
+				'#3A7B9C', '#DBBF5B', '#FC9375', '#4E5D93', '#BD5D5F', //16-20
+				'#698794', '#FBDC4C', '#4A490F', '#8E8E33', '#27D6E6', //21-25
+				'#EDED56', '#596C75', '#8498FF', '#D4826A', '#37A08B', //26-30
+				'#E6EFEF', '#BA8CFF', '#7E736D', '#344A49', '#FB4B42', //31-35
+				'#224B66', '#C79E4E', '#396764', '#424A57', '#2B5F80', //36-40
+				'#33588C', '#8A84FF', '#275549', '#222222', '#74A3B8', //41-45
+				'#9FD0CD', '#2F7869', '#75403A', '#A14B54' //46-49						
+			];
+
+			return colors[segmentNumber % colors.length];
+		}		
+
+		let isMouseOverStarIcon = false;
+		let hoveredStarIconKeywords = null;
+		const chart = document.querySelector('.chartElements');
+		const elementBox = document.querySelector('.element-box');		
+
+		starIcons.forEach((starIcon) => {
+			starIcon.addEventListener('mouseover', (event) => {
+				isMouseOverStarIcon = true;
+				hoveredStarIconKeywords = starIcon.parentElement.getAttribute('data-keywords');
+				resetSegmentNameColors();
+				if (event.target.parentElement === starIcon.parentElement) {
+					for (let i = 0; i < totalSegments; i++) {
+						const segmentName = segmentNames[i];
+						const textElement = document.getElementById('text-box' + i);
+						const keywords = hoveredStarIconKeywords.split(', ');
+						for (const keyword of keywords) {
+							const regex = new RegExp('\\b' + keyword + '\\b', 'gi');
+							if (segmentName.match(regex)) {
+								textElement.style.color = 'cyan';
+								textElement.style.fontWeight = 'bold';
+								textElement.style.textShadow = '0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan';
+								textElement.style.animation = 'pulseElement 1s infinite';
+							}
+						}
+					}
+				}
+			});
+
+			starIcon.addEventListener('mouseout', () => {
+				isMouseOverStarIcon = false;
+				resetSegmentNameColors();
+			});
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'r' && isMouseOverStarIcon) {
+				if (hoveredStarIconKeywords) {
+					chart.style.display = 'block';
+					elementBox.style.display = 'grid';					
+				}
+			}
+		});
+
+		document.addEventListener('keyup', (event) => {
+			if (event.key === 'r') {
+				chart.style.display = 'none';
+				elementBox.style.display = 'none';				
+			}
+		});	
+
+		function resetSegmentNameColors() {
+			for (let i = 0; i < totalSegments; i++) {
+				const textElement = document.getElementById('text-box' + i);
+				textElement.style.color = 'black';
+				textElement.style.fontWeight = 'normal';
+				textElement.style.textShadow = 'none';
+				textElement.style.animation = 'none';
+			}
+		}
 
 		toggleStarLabels();		
     </script>

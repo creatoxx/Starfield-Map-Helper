@@ -1,0 +1,15 @@
+Name:		Charon
+Type:		Ice
+System:		Sol System
+Orbiting:	Pluto
+Gravity:	0.03 G
+Temperature:	Deep Freeze (-222°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Chemical
+Resources:	-Water(H2O)
+		-Copper(Cu)
+Traits: 	None
+Biomes:		-100% Frozen Dunes

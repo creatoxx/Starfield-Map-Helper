@@ -1,0 +1,16 @@
+Name:		Europa
+Type:		Barren
+System:		Sol System
+Orbiting:	Jupiter
+Gravity:	0.13 G
+Temperature:	Frozen (-137°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	-Water(H2O)
+		-Chlorine(Cl)
+		-Chlorosilanes(SiH3Cl)
+Traits: 	None
+Biomes:		-100% Frozen Hills

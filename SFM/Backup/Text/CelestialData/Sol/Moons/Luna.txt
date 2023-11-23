@@ -1,0 +1,15 @@
+Name:		Luna
+Type:		Barren
+System:		Sol System
+Orbiting:	Earth
+Gravity:	0.17 G
+Temperature:	Temperate (29°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		None
+Resources:	-Helium 3(He-3)
+		-Iron(Fe)
+Traits: 	None
+Biomes:		-100% Craters

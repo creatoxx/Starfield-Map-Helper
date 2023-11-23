@@ -1,0 +1,16 @@
+Name:		Mimas
+Type:		Ice
+System:		Sol System
+Orbiting:	Saturn
+Gravity:	0.01 G
+Temperature:	Deep Freeze (-182°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Safe
+Resources:	-Water(H2O)
+		-Nickel(Ni)
+		-Palladium(Pd)
+Traits: 	None
+Biomes:		-100% Frozen Plains

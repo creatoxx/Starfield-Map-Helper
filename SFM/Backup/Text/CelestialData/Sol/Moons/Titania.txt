@@ -1,0 +1,15 @@
+Name:		Titania
+Type:		Ice
+System:		Sol System
+Orbiting:	Uranus
+Gravity:	0.04G
+Temperature:	Deep Freeze (-210°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Heavy Metal
+Resources:	-Water(H2O)
+		-Copper(Cu)
+Traits: 	None
+Biomes:		-100% Frozen Hills

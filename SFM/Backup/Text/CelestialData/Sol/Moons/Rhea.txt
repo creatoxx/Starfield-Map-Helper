@@ -1,0 +1,16 @@
+Name:		Rhea
+Type:		Ice
+System:		Sol System
+Orbiting:	Saturn
+Gravity:	0.03 G
+Temperature:	Deep Freeze (-179°)
+Atmosphere:	None
+Magnetosphere:	None
+Fauna:		None
+Flora:		None
+Water:		Chemical
+Resources:	-Water(H2O)
+		-Copper(Cu)
+		-Fluorine(F)
+Traits: 	-Gaseous Font
+Biomes:		-100% Frozen Plains

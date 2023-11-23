@@ -7,3 +7,5 @@
 <p>Mind though. Some of the references and resources I'm using are copy pasted from diverse wikis. Those will not persist. They are placeholder and will be replaced with game extracted content.</p>
 <p>As of Alpha 4 most of the textures and visual fx is taken from the game archives directly</p>
 <p>the background is found on opengameart.org curtesy of @Glimmervoid https://opengameart.org/content/space-background-6</p>
+<p>the sounds are heavily modified sounds from the game folder. used audacity to modifie them</p>
+<p>the following infobases are either permanent, temporary, or reacurring infobases: UESP-Starfield Wiki, Inara.cz, Starfield.Fandom Wiki, IGN Starfield, Starfield Mapgenie.io, game-maps.com, Starfield Fextralife, Starfield DB and last but not least Starfield Game8</p>

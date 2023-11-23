@@ -12,19 +12,26 @@ celestialBodies.forEach(function(img) {
 	img.addEventListener('mouseout', function() {
 		img.style.boxShadow = 'none';
 		img.style.borderRadius = '0';
+		celestialData.textContent = "";
 	});
 });
 
 function showInfo(bodyID) {
-	const celestialBodyId = bodyID.id;
+	const celestialBodyId = bodyID.name;
 
-	if (dataSources[celestialBodyId]) {
+	/*if (dataSources[celestialBodyId]) {
 		const dataFilePath = dataSources[celestialBodyId];
 		celestialData.data = dataFilePath;
 	} else {
-		celestialData.data = "";
-	}			
-}	
+		celestialData.textContent = "";	
+	}*/		
+	
+	if (celestialBodyId) {
+		celestialData.textContent = "Name: " + celestialBodyId;
+	} else {
+		celestialData.textContent = "";		
+	}
+}
 
 function openInfo(bodyID) {
 	if (bodyID) {

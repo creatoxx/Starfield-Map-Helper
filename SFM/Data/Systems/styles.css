@@ -3,7 +3,7 @@ body {
 	overflow: hidden;
 	background-color: rgb(0, 0, 255, 0.03);
 	font-family: 'Orbitron'; 
-	font-size: 12px;	
+	font-size: 12px;
 }	
 
 .sun {
@@ -12,7 +12,7 @@ body {
 	height: 60px;
 	background: radial-gradient(ellipse at center, #f2b602, #f39f02, #f27a02);
 	border-radius: 50%;
-	left: 50%;
+	left: 65%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	box-shadow: 0 0 75px #f2b602, 0 0 70px #f39f02, 0 0 65px #f27a02;
@@ -136,20 +136,25 @@ body {
 .system-info-box-right {
 	position: absolute;
 	box-shadow: 0 0 14px #000000;
-	width: 290px;
-	height: 778px;
-	left: 1100px;	
+	width: 350px;
+	height: 35px;
+	left: 370px;	
 	top: 10px;				
-	background-color: #b7b7b7;
+	background-color: rgba(48, 62, 77, 1.0);
+	color:  #b7b7b7;
 	display: block;
-	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
+	border-radius: 20px;
+	z-index: 999;
 }
 
 #celestialData {
 	position: relative;
 	width: 290px;
 	height: 778px;
+	top: 8px;
+	left: 11px;
+	font-size: 16px;	
+	font-weight: bold;	
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 }

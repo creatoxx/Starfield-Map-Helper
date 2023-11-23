@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writable Journal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron';
+            font-size: 12px;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .journal {
+            display: flex;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+            padding: 20px;
+            overflow: auto;
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            height: calc(100vh - 120px);
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+            margin: 0;
+            resize: none;
+            margin-top: 60px;
+            background: black;
+            color:  #B7B7B7;
+        }
+
+        button {
+            position: fixed;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prevPage {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #nextPage {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #exportBtn {
+            left: 44.5%;
+            top: 10px;
+            transform: translateX(-50%);
+        }
+
+        #importFile {
+            position: fixed;
+            opacity: 0;
+        }
+
+        #importBtn {
+            left: 54.5%;
+            top: 10px;
+            transform: translateX(-50%);
+        }
+
+        #extBtn {
+            left: 10%;
+            top: 10px;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="journal">
+    </div>
+
+    <button id="prevPage" onclick="changePage(-1)">Previous</button>
+    <button id="nextPage" onclick="changePage(1)">Next</button>
+    <button id="exportBtn" onclick="exportToJSON()">Export to JSON</button>
+    <input type="file" id="importFile" accept=".json" onchange="importFromJSON(this)" />
+    <button id="importBtn" onclick="document.getElementById('importFile').click()">Import from JSON</button>
+    <button id="extBtn" onclick="exitJournal()">Exit Journal</button>
+
+    <script>
+        const totalPages = 100;
+        let currentPage = 1;
+        const journal = document.querySelector('.journal');
+
+        function loadContent() {
+            for (let i = 1; i <= totalPages; i++) {
+                const key = `journalPage${i}`;
+                const content = localStorage.getItem(key);
+
+                const page = document.createElement('div');
+                page.className = 'page';
+
+                const textarea = document.createElement('textarea');
+                textarea.placeholder = `Write your journal entry on Page ${i}...`;
+                textarea.value = content || '';
+
+                textarea.addEventListener('input', () => {
+                    localStorage.setItem(key, textarea.value);
+                });
+
+                page.appendChild(textarea);
+                journal.appendChild(page);
+            }
+        }
+
+        loadContent();
+
+        function changePage(direction) {
+            document.querySelector('.page.active').classList.remove('active');
+            currentPage += direction;
+            currentPage = Math.min(totalPages, Math.max(1, currentPage));
+            document.querySelector(`.page:nth-child(${currentPage})`).classList.add('active');
+        }
+
+        function exportToJSON() {
+            const contentArray = [];
+
+            document.querySelectorAll('.page textarea').forEach((textarea, index) => {
+                contentArray.push({ page: index + 1, content: textarea.value });
+            });
+
+            const jsonContent = JSON.stringify(contentArray, null, 2);
+
+            const blob = new Blob([jsonContent], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'journal.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importFromJSON(input) {
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    try {
+                        const contentArray = JSON.parse(e.target.result);
+
+                        contentArray.forEach((item) => {
+                            const pageIndex = item.page - 1;
+                            const textarea = document.querySelectorAll('.page textarea')[pageIndex];
+                            if (textarea) {
+                                textarea.value = item.content;
+                                localStorage.setItem(`page${item.page}`, item.content);
+                            }
+                        });
+
+                        document.querySelector('.page:nth-child(1)').classList.add('active');
+                    } catch (error) {
+                        console.error('Error parsing JSON file:', error);
+                    }
+                };
+
+                reader.readAsText(file);
+            }
+        }
+
+        function exitJournal() {
+            parent.postMessage('closeJournal', '*');
+        }
+
+        document.querySelector('.page:nth-child(1)').classList.add('active');
+    </script>
+</body>
+</html>

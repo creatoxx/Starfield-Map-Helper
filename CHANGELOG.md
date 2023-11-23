@@ -54,7 +54,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed star labels on main map not hiding on hover, when star labels are toggled off
 - added a row of direct wiki link buttons to the main window(creatures, fauna, flora, resources, missios, weapons, spacesuits, packs, helmets, apparel)
 - fixed wrong difficulty color on vega triangle</p>
-<p>Alpha 5(9.11.2023): - - couple small fixes
+<p>Alpha 5(9.11.2023): - couple small fixes
 - added resource wheel and keyworded all systems...that infobase is still sketchy since wikis are still building
 - added inara.cz to resource and mission tabs as alternative infobase
 - enabled default F3 search function
@@ -63,3 +63,27 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - added new alt-key interaction for star icons -> properties: discovered, settlement
 - added city icons to systems with major settlements
 - added outpost icon on the fly via toggle box</p>
+<p>Alpha 5(9.11.2023):- added (100%)surveyed state(lime color) to alt-key interaction
+- applied the propertie logic to all star icons
+- added toggle on/off logic to star icon states
+- propertie box is now static upper left corner
+- discovered state is now cyan color instead of bold, for better visualization
+- added option to save the current map state and load it from a location of choice
+- fixed outpost icon overlapping with city icon if present
+- added staryard markers to systems that have it
+- decreased the scale of city, outpst, staryard marker by 35%
+- moved the img source declaration to its own .css style for city and staryards
+- fixed state box not alinging for very wide system names
+- added a direct link banner to the starfield community patch report
+- added direct link buttons to local maps on StarfieldMap.io
+- added 8 direct links to most important 8 wiki, database, whateveries main page, concerning starfield
+- fixed wrong language display on instructions page
+- added sound to most interactive elements on star map...maybe even all...haven't tested all of them
+- all wiki links are now hidden by default, and will need to be enabled with key h
+- added global journal(key j), allow saving local storage and export file
+- added dedicated class A and G star .gif
+- the .txt based system info has been made obsolete due to recent changes of the wiki...tbh, I can't even remotely hold up with their speed
+- fixed system x button not changing color to red when hovered
+- fixed blur on opening system card not properly spanning the whole screen
+- the right system box has been made smaller and will now only show the name of celestial body in upper left corner, so you know what you are clicking on, and what to expect when double clicking for wiki info
+- fixed wrong text of system link hotkey</p>

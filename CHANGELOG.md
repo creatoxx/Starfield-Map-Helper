@@ -63,7 +63,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - added new alt-key interaction for star icons -> properties: discovered, settlement
 - added city icons to systems with major settlements
 - added outpost icon on the fly via toggle box</p>
-<p>Alpha 5(9.11.2023):- added (100%)surveyed state(lime color) to alt-key interaction
+<p>Alpha 6(23.11.2023):- added (100%)surveyed state(lime color) to alt-key interaction
 - applied the propertie logic to all star icons
 - added toggle on/off logic to star icon states
 - propertie box is now static upper left corner

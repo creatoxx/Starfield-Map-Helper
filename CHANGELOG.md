@@ -87,3 +87,13 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed blur on opening system card not properly spanning the whole screen
 - the right system box has been made smaller and will now only show the name of celestial body in upper left corner, so you know what you are clicking on, and what to expect when double clicking for wiki info
 - fixed wrong text of system link hotkey</p>
+<p>Alpha 6 Rev 2(30.11.2023):- replaced somewhat broken journal close/open sounds with the standard interaction sound
+- changed text of map save to "MapSave"
+- added menu click sound to discover, survey, outpost buttons
+- added x close button to state button box
+- added systems: alpha centauri, valo, wolf, barnard's star
+- added dedicated textures for class K and M suns
+- corrected box shadow color of system Narion
+- moved all planet and moon icons to their dedicated sub folders
+- all moons and planets have their real game icons added
+- fixed wolf system overmouse not correctly responding by moving the staryard icon</p>

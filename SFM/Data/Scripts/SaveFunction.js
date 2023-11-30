@@ -1,5 +1,5 @@
 function saveToFile() {
-    const customFilename = prompt('Enter a custom filename:', 'star_systems.json');
+    const customFilename = prompt('Enter a custom filename:', 'MapSave.json');
 
     if (customFilename !== null) {
         const starSystems = document.querySelectorAll('.star-system');
@@ -28,7 +28,7 @@ function saveToFile() {
 }
 
 function saveDataToFile(data, customFilename) {
-    const filename = customFilename || 'star_systems.json';
+    const filename = customFilename || 'MapSave.json';
 
     const blob = new Blob([data], { type: 'application/json' });
     const a = document.createElement('a');

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+	<link rel='stylesheet' type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	<style>
+		.sun {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			background: radial-gradient(ellipse at center, #f23e02, #fd6735, #fea081);
+			border-radius: 50%;
+			left: 65%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 75px #f23e02, 0 0 70px #fd6735, 0 0 65px #fea081;
+			z-index: 1;		
+		}
+	</style>	
+</head>
+<body>  
+	<div class="system-info-box-left">
+		<div class="celestial-body">
+			<div style="margin-left: 5px; margin-top: 10px; width: 90px; height: 90px; background: radial-gradient(ellipse at center, #f23e02, #fd6735, #fea081); border-radius: 50%;">
+				<img id="Valo_System" name="Valo" src="../Textures/Icons/Suns/IconClassK.gif" style="width: 90px; height: 90px; opacity: 0.25;" ondblclick="openInfo(document.getElementById('Valo_System'))"/>
+			</div>
+			<div>
+				<img id="Polvo" name="Polvo" src="../Textures/Icons/Planets/Valo/IconPolvo.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px; z-index: 999;" ondblclick="openInfo(document.getElementById('Polvo'))"/>
+				<img id="Miatha" name="Miatha" src="../Textures/Icons/Moons/Valo/IconMiatha.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Miatha'))"/>	
+				<img id="Navacci" name="Navacci" src="../Textures/Icons/Moons/Valo/IconNavacci.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Navacci'))"/>			
+			</div>
+			<div>
+				<img id="Cantra" name="Cantra" src="../Textures/Icons/Planets/Valo/IconCantra.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;" ondblclick="openInfo(document.getElementById('Cantra'))"/>
+			</div>
+			<div>
+				<img id="Prax" name="Prax" src="../Textures/Icons/Planets/Valo/IconPrax.png" style="margin-left: 5px; margin-top: 10px; width: 50px; height: 50px;" ondblclick="openInfo(document.getElementById('Prax'))"/>			
+			</div>
+			<div>
+				<img id="Hilex" name="Hilex" src="../Textures/Icons/Planets/Valo/IconHilex.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;" ondblclick="openInfo(document.getElementById('Hilex'))"/>				
+			</div>	
+			<div>
+				<img id="Lumos" name="Lumos" src="../Textures/Icons/Planets/Valo/IconLumos.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;" ondblclick="openInfo(document.getElementById('Lumos'))"/>
+				<img id="Golga" name="Golga" src="../Textures/Icons/Moons/Valo/IconGolga.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Golga'))"/>	
+				<img id="Kindi" name="Kindi" src="../Textures/Icons/Moons/Valo/IconKindi.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Kindi'))"/>
+				<img id="Shorun" name="Shorun" src="../Textures/Icons/Moons/Valo/IconShorun.png" style="margin-left: 6px; width: 15px; height: 15px;" ondblclick="openInfo(document.getElementById('Shorun'))"/>	
+				<img id="Virum" name="Virum" src="../Textures/Icons/Moons/Valo/IconVirum.png" style="margin-left: 6px; width: 20px; height: 20px;" ondblclick="openInfo(document.getElementById('Virum'))"/>				
+			</div>				
+		</div>
+	</div> 
+
+	<div class="system-info-box-right">
+		<object id="celestialData"></object>		
+	</div> 	
+	
+	<div class="main">
+		<div class="banner-Valo" style="border-top-right-radius: 20px; position: relative;">
+			<img src="../Textures/StarfieldBanner.png" style="width: 25%; height: 25%; margin-top: 10px; margin-left: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 0 14px #000000;">
+			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Valo System</p>
+			<div style="position: absolute; top: 0; right: 0;">
+				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid green; border-bottom: 90px solid transparent;">
+					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 5</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="sun" id="valo-id">
+			<img src="../Textures/Icons/Suns/IconClassK.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;"/>		
+		</div>
+		
+		<!--mercury type-->
+		<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+		<div class="planet planet1" id="planet1-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Valo/IconPolvo.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>
+			<div class="moon-orbit" style="left: 2.5px; top: 2.5px; width: 4px; height: 4px;">
+				<div class="moon-spin-left" style="left: -2px; top: -2px; width: 4px; height: 4px;">
+					<div class="moon moon1" style="left: 3.8px; top: 3.8px; width: 3.474px; height: 3.474px;">
+						<img src="../Textures/Icons/Moons/Valo/IconMiatha.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>
+				</div>
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 2.5px; height: 2.5px; animation: spin-left 5.1s linear infinite;">
+					<div class="moon moon3" style="left: 8.5px; top: 8.5px; width: 3.2624px; height: 3.2624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/Valo/IconNavacci.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>				
+			</div>			
+		</div>
+
+		<!--venus type-->	
+		<div class="planet-orbit planet-orbit2"></div>
+		<div class="planet planet2" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Valo/IconCantra.png" style="width: 100%; height: 100%; margin-bottom: 3px; animation: counter-rotate-sphere 3s linear infinite;" />			
+		</div>
+
+		<!--earth type-->	
+		<div class="planet-orbit planet-orbit3"></div>
+		<div class="planet planet3" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Valo/IconPrax.png" style="width: 105%; height: 105%; margin-left: -0.2px; margin-bottom: 8px; animation: rotate-sphere 5s linear infinite;" />	
+		</div>
+		
+		<!--mars type-->	
+		<div class="planet-orbit planet-orbit4"></div>
+		<div class="planet planet4" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Valo/IconHilex.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 7s linear infinite;" />		
+		</div>		
+
+		<!--jupiter type: ganymed, europa, io, callisto-->	
+		<div class="planet-orbit planet-orbit5"></div>
+		<div class="planet planet5" style="background: radial-gradient(ellipse at center, #cc9900, #dd9900, #ee9900); box-shadow: 0 0 14px #996633;">
+			<img src="../Textures/Icons/Planets/Valo/IconLumos.png" style="width: 100%; height: 100%; margin-top: -0.3px; animation: rotate-sphere 11s linear infinite;" />		
+			<div class="planet-rings" style="top: -4px; left: -4px; border: 1px double #C68C53; box-shadow: 0 0 3px #C68C53;"></div>
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -2.5px; left: -2.5px; border: 1px double #996633; box-shadow: 0 0 3px #996633;"></div>		
+			<div class="moon-orbit" style="left: 8px; top: 8px; width: 8px; height: 8px;">
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 11px; top: 11px; width: 3.6432px; height: 3.6432px; background-color: #cccc00; box-shadow: 0 0 14px #cccc00;">
+						<img src="../Textures/Icons/Moons/Valo/IconGolga.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>			
+				</div>
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
+					<div class="moon moon2" style="left: 13.8px; top: 13.8px; width: 3.1216px; height: 3.1216px; background-color: #aaaa55; box-shadow: 0 0 14px #aaaa55;">
+						<img src="../Textures/Icons/Moons/Valo/IconKindi.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>
+				<div class="moon-spin-left" style="left: 1.7px; top: 1.7px; width: 4.5px; height: 4.5px; animation: spin-left 5.1s linear infinite;">
+					<div class="moon moon3" style="left: 15.5px; top: 15.5px; width: 5.2624px; height: 5.2624px; background-color: #404040; box-shadow: 0 0 14px #404040;">
+						<img src="../Textures/Icons/Moons/Valo/IconShorun.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>	
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 2.3s linear infinite;">
+					<div class="moon moon4" style="left: 20px; top: 20px; width: 4.8206px; height: 4.8206px; background-color: #75a3a3; box-shadow: 0 0 14px #75a3a3;">
+						<img src="../Textures/Icons/Moons/Valo/IconVirum.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>				
+				</div>					
+			</div>	
+		</div>		
+
+		<!--saturn type: titan, enceladus, mimas, dione, rhea, iapetus, tethys-->	
+		<div class="planet-orbit planet-orbit6" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet6" style="background-color: transparent;"></div>	
+
+		<!--your anus type: titania, oberon, miranda, umbriel, ariel-->	
+		<div class="planet-orbit planet-orbit7" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet7" style="background-color: transparent;"></div>	
+
+		<!--neptune type: triton-->	
+		<div class="planet-orbit planet-orbit8" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet8" style="background-color: transparent;"></div>	
+
+		<!--pluto type: charon-->	
+		<div class="planet-orbit planet-orbit9" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet9" style="background-color: transparent;"></div>	
+
+		<!--eris type-->	
+		<div class="planet-orbit planet-orbit10" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet10" style="background-color: transparent;"></div>			
+		
+	<div/>	
+	
+	<script src="../Scripts/PreventDefault.js"></script>
+	<script src="../Scripts/CelestialData.js"></script>	
+	
+    <script>
+	
+        const sun = document.querySelector('.sun');
+        const planets = document.querySelectorAll('.planet');
+		const planetData = [
+			{ radius: 85.38750, speed: 0.0004736, size: 4.879400, direction: 'left' },
+			{ radius: 117.07230, speed: 0.0003502, size: 12.10360, direction: 'left' },
+			{ radius: 141.10000, speed: 0.0002978, size: 12.75627, direction: 'left' },
+			{ radius: 195.14501, speed: 0.0002407, size: 6.792400, direction: 'left' },
+			{ radius: 249.5207, speed: 0.0001306, size: 24.08600, direction: 'left' },
+			{ radius: 273.4392, speed: 0.0000968, size: 20.04500, direction: 'left' },
+			{ radius: 281.8372, speed: 0.0000681, size: 17.18800, direction: 'left' },
+			{ radius: 364.4922, speed: 0.0000543, size: 16.75420, direction: 'left' },
+			{ radius: 381.3323, speed: 0.0000467, size: 2.374000, direction: 'left' },
+			{ radius: 400.0000, speed: 0.0000000, size: 0.000000, direction: 'left' }
+		];		
+
+        function animate() {
+            for (let i = 0; i < planets.length; i++) {
+				const angle = (planetData[i].direction === 'left')
+				  ? (2 * Math.PI - planetData[i].speed * Date.now())
+				  : (planetData[i].speed * Date.now());
+                const sunX = sun.getBoundingClientRect().left + sun.offsetWidth / 2;
+                const sunY = sun.getBoundingClientRect().top + sun.offsetHeight / 2;
+				const planetOrbit = document.querySelector(`.planet-orbit.planet-orbit${i + 1}`);
+                const planetX = sunX + planetData[i].radius * Math.cos(angle);
+                const planetY = sunY + planetData[i].radius * Math.sin(angle);				
+                planets[i].style.left = `${planetX - planetData[i].size / 2}px`;
+                planets[i].style.top = `${planetY - planetData[i].size / 2}px`;
+                planets[i].style.width = `${planetData[i].size}px`;
+                planets[i].style.height = `${planetData[i].size}px`;	
+				planetOrbit.style.left = `${sunX - planetData[i].radius - 1.5}px`;
+				planetOrbit.style.top = `${sunY - planetData[i].radius - 1}px`;
+				planetOrbit.style.width = `${2 * planetData[i].radius}px`;
+				planetOrbit.style.height = `${2 * planetData[i].radius}px`;				
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();			
+    </script>
+</body>
+</html>

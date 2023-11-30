@@ -98,7 +98,7 @@
 			align-items: center;
 			z-index: 2;
 			user-select: none;
-		}
+		}			
 
 		.star-icon {
 			width: 10px;
@@ -106,7 +106,7 @@
 			background-color: #ff5733;
 			border-radius: 50%;
 			cursor: default;
-		}		
+		}			
 
 		.star-label {
 			margin-top: 6px;
@@ -142,7 +142,7 @@
 			color: #B7B7B7;			
 			font-size: 12px;
 			cursor: pointer			
-		}
+		}		
 
 		.star-label img{			
 			position: absolute;
@@ -203,7 +203,7 @@
 			width: 100%;
 			height: 100%;
 			resize: none;		
-		}
+		}		
 
 		.banner-starfield span {
 			position: relative;
@@ -475,7 +475,7 @@
 			top: -18px; 
 			left: -25px;
 			content: url("Data/Textures/Icons/StaryardMarker.png");			
-		}		
+		}			
     </style>	
 </head>
 <body>
@@ -727,9 +727,13 @@
 		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 126px; left: 10px; width: 136px; height: 55px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 666;"></iframe>
 		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>		
 		<iframe id="journal-frame" src="Data/Journal.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.0);"></iframe>				
+		<iframe class="system-iframe" id="system-alpha-centauri" src="Data/Systems/SystemAlphaCentauri.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
+		<iframe class="system-iframe" id="system-barnards-star" src="Data/Systems/SystemBarnardsStar.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
 		<iframe class="system-iframe" id="system-narion" src="Data/Systems/SystemNarion.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>		
 		<iframe class="system-iframe" id="system-sol" src="Data/Systems/SystemSol.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
+		<iframe class="system-iframe" id="system-valo" src="Data/Systems/SystemValo.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
 		<iframe class="system-iframe" id="system-vega" src="Data/Systems/SystemVega.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
+		<iframe class="system-iframe" id="system-wolf" src="Data/Systems/SystemWolf.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
 
 		<button class="system-button" onclick="closeSystemInfo()">X</button>
 				
@@ -978,9 +982,10 @@
 			</div>
 			<div id="albattani-label" class="star-label">Al-Battani</div>
 			<div class="star-icon-box">Al-Battani
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick(); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick(); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick(); playMenuClick()">Outpost</button>
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>					
 			</div>				
 		</div>
 		<div class="star-system" style="top: 846px; left: 1275px;" data-keywords="Al, Au, Be, HC, Cn, Co, Ir, Hg, Nd, Pd, Pt, Ag, Xf, W, Yb">
@@ -988,9 +993,10 @@
 			</div>
 			<div id="alchiba-label" class="star-label">Alchiba</div>
 			<div class="star-icon-box">Alchiba
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 879px; left: 1515px;" data-keywords="Al, F, HC, Cn, Nh, Ir, Li, V">
@@ -998,9 +1004,10 @@
 			</div>
 			<div id="algorab-label" class="star-label">Algorab</div>
 			<div class="star-icon-box">Algorab
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 227px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe">
@@ -1008,21 +1015,23 @@
 			</div>
 			<div id="alphaandraste-label" class="star-label">Alpha Andraste</div>
 			<div class="star-icon-box">Alpha Andraste
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 603px; left: 344px;" data-keywords="Al, Ar, Cn, Cl, He, Sc, Co, Fe, Pb, Ni, Pt, W, U, V, Ho, Xe">
-			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
+			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-alpha-centauri'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="alphacentauri-label" class="star-label">Alpha Centauri
 				<img class="city-marker">	
 			</div>
 			<div class="star-icon-box">Alpha Centauri
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 431px; left: 823px;" data-keywords="Al, Be, F, HC, Cn, Co, Cu, Dy, Eu, Ir, Li, Ag, V">
@@ -1030,9 +1039,10 @@
 			</div>
 			<div id="alphamarae-label" class="star-label">Alpha Marae</div>	
 			<div class="star-icon-box">Alpha Marae
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 608px; left: 1408px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Eu, Li, Hg, Ne, Pu, Ta, Ti, W, V, Xe">
@@ -1040,9 +1050,10 @@
 			</div>
 			<div id="alphaternion-label" class="star-label">Alpha Ternion</div>
 			<div class="star-icon-box">Alpha Ternion
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 868px; left: 1094px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Il, Ir, Ne, Ag, Ta, Xf, Ti, W">
@@ -1050,9 +1061,10 @@
 			</div>
 			<div id="alphatirna-label" class="star-label">Alpha Tirna</div>
 			<div class="star-icon-box">Alpha Tirna
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 451px; left: 350px;" data-keywords="Al, Au, Be, F, Cn, Cl, Sc, Co, Cu, Ir, Pb, Nd, Ni, Pt, Pu, Ag, Xf, W, U">
@@ -1060,9 +1072,10 @@
 			</div>
 			<div id="altair-label" class="star-label">Altair</div>
 			<div class="star-icon-box">Altair
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 296px; left: 560px;" data-keywords="Al, Be, F, HC, Cn, Nh, Cl, Sc, Cu, Eu, Ir, Fe, Pb, Li, Ne, Ni, U, V, Xe">
@@ -1070,9 +1083,10 @@
 			</div>
 			<div id="andromas-label" class="star-label">Andromas</div>
 			<div class="star-icon-box">Andromas
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 631px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta">
@@ -1080,9 +1094,10 @@
 			</div>
 			<div id="aranae-label" class="star-label">Aranae</div>
 			<div class="star-icon-box">Aranae
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 633px; left: 1706px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Il, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, Yb">
@@ -1090,9 +1105,10 @@
 			</div>
 			<div id="archimedes-label" class="star-label">Archimedes</div>
 			<div class="star-icon-box">Archimedes
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 341px; left: 942px;" data-keywords="HC, Cn, Cl, Ir, Fe, Pb, U">
@@ -1100,9 +1116,10 @@
 			</div>
 			<div id="arcturus-label" class="star-label">Arcturus</div>
 			<div class="star-icon-box">Arcturus
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 575px; left: 1426px;" data-keywords="Al, Be, Cs, Sc, Co, Ir, Hg, Pt, Ag, V">
@@ -1110,9 +1127,10 @@
 			</div>
 			<div id="bannoc-label" class="star-label">Bannoc</div>
 			<div class="star-icon-box">Bannoc
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 564px; left: 1432px;" data-keywords="Al, Nd">
@@ -1120,9 +1138,10 @@
 			</div>
 			<div id="bannocsecundus-label" class="star-label">Bannoc Secundus</div>
 			<div class="star-icon-box">Bannoc Secundus
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 353px; left: 1318px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Ta, Ti">
@@ -1130,9 +1149,10 @@
 			</div>
 			<div id="bara-label" class="star-label">Bara</div>
 			<div class="star-icon-box">Bara
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 152px; left: 757px;" data-keywords="Al, Cs, F, HC, Nh, Sc, Co, Ir, Li, Nd, Ne, Pt, Ag, Ta, Xf, Ti, Xe, Yb">
@@ -1140,19 +1160,21 @@
 			</div>
 			<div id="bardeen-label" class="star-label">Bardeen</div>
 			<div class="star-icon-box">Bardeen
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 515px; left: 371px;" data-keywords="He, Pb, Ho">
-			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-barnards-star'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="barnardsstar-label" class="star-label">Barnard's Star</div>
 			<div class="star-icon-box">Barnard's Star
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 546px; left: 1476px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Li, Nd, Pd, Pt, Ta, Xf">
@@ -1160,9 +1182,10 @@
 			</div>
 			<div id="bel-label" class="star-label">Bel</div>
 			<div class="star-icon-box">Bel
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 418px; left: 269px;" data-keywords="Al, Be, Co, Fe, Nd, Ne, Ni, Pt">
@@ -1170,9 +1193,10 @@
 			</div>
 			<div id="bessel-label" class="star-label">Bessel</div>
 			<div class="star-icon-box">Bessel
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 215px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V">
@@ -1180,9 +1204,10 @@
 			</div>
 			<div id="betaandraste-label" class="star-label">Beta Andraste</div>
 			<div class="star-icon-box">Beta Andraste
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 445px; left: 815px;" data-keywords="Al, F, HC, Sb, Sc, Co, Il, Ir, Nd, Pd, Pu, W, V">
@@ -1190,9 +1215,10 @@
 			</div>
 			<div id="betamarae-label" class="star-label">Beta Marae</div>
 			<div class="star-icon-box">Beta Marae
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 620px; left: 1400px;" data-keywords="Al, Cn, Sc, Co, Li, Pd, Pt">
@@ -1200,9 +1226,10 @@
 			</div>
 			<div id="betaternion-label" class="star-label">Beta Ternion</div>
 			<div class="star-icon-box">Beta Ternion
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 881px; left: 1089px;" data-keywords="">
@@ -1210,9 +1237,10 @@
 			</div>
 			<div id="betaternion-label" class="star-label">Beta Tirna</div>
 			<div class="star-icon-box">Beta Tirna
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 321px; left: 1829px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Hg, Pt, Ag, W">
@@ -1220,9 +1248,10 @@
 			</div>
 			<div id="bohr-label" class="star-label">Bohr</div>
 			<div class="star-icon-box">Bohr
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 765px; left: 1081px;" data-keywords="W">
@@ -1230,9 +1259,10 @@
 			</div>
 			<div id="bolivar-label" class="star-label">Bolivar</div>
 			<div class="star-icon-box">Bolivar
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 207px; left: 742px;" data-keywords="Al, HC, Cn, Cl, Sc, Co, Eu, Fe, Pb, Ni, Ti, U, Yb">
@@ -1240,9 +1270,10 @@
 			</div>
 			<div id="bradbury-label" class="star-label">Bradbury</div>
 			<div class="star-icon-box">Bradbury
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 259px; left: 108px;" data-keywords="Al, Be, HC, Cn, Cl, Sc, Cu, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Rc, Xf, W, Xe">
@@ -1250,9 +1281,10 @@
 			</div>
 			<div id="carinae-label" class="star-label">Carinae</div>
 			<div class="star-icon-box">Carinae
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 270px; left: 1095px;" data-keywords="Al, Au, Be, Cs, HC, Cn, Sc, Ne, Ta, Yb">
@@ -1260,9 +1292,10 @@
 			</div>
 			<div id="celebrai-label" class="star-label">Celebrai</div>
 			<div class="star-icon-box">Celebrai
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 340px; left: 1375px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Ir, Hg, Nd, Ne, Pt, Ta, Xf, Ti, W">
@@ -1270,9 +1303,10 @@
 			</div>
 			<div id="charybdis-label" class="star-label">Charybdis</div>
 			<div class="star-icon-box">Charybdis
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 392px; left: 701px;" data-keywords="Al, Be, Ar, Au, F, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Il, Ir, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Pt, Ag, Xf, Ti, W, U, V, Ho">
@@ -1283,9 +1317,10 @@
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Cheyenne
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 474px; left: 1046px;" data-keywords="Al, Be, F, Cn, Cl, Sc, Co, Eu, Li, Nd, Ti, W">
@@ -1293,9 +1328,10 @@
 			</div>
 			<div id="copernicus-label" class="star-label">Copernicus</div>
 			<div class="star-icon-box">Copernicus
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 487px; left: 1037px;" data-keywords="HC, Sc, Li">
@@ -1303,9 +1339,10 @@
 			</div>
 			<div id="copernicusminor-label" class="star-label">Copernicus Minor</div>
 			<div class="star-icon-box">Copernicus Minor
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 531px; left: 1291px;" data-keywords="Al, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Pd, W, Vy">
@@ -1313,9 +1350,10 @@
 			</div>
 			<div id="decaran-label" class="star-label">Decaran</div>
 			<div class="star-icon-box">Decaran
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 832px; left: 325px;" data-keywords="Al, Be, F, HC, Sc, Co, Dy, Ir, Fe, Pb, Li, Nd, Ag, Ag, Xf, W, U, V, Yb">
@@ -1323,9 +1361,10 @@
 			</div>
 			<div id="deltapavonis-label" class="star-label">Delta Pavonis</div>
 			<div class="star-icon-box">Delta Pavonis
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 611px; left: 1276px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Ne, Ta, Xf">
@@ -1333,9 +1372,10 @@
 			</div>
 			<div id="deltavulpes-label" class="star-label">Delta Vulpes</div>
 			<div class="star-icon-box">Delta Vulpes
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 459px; left: 948px;" data-keywords="Al, HC, Sc, Ir, Ag, Ta, U, Yb">
@@ -1343,9 +1383,10 @@
 			</div>
 			<div id="denebola-label" class="star-label">Denebola</div>
 			<div class="star-icon-box">Denebola
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>
 		</div>
 		<div class="star-system" style="top: 620px; left: 1546px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Ne, Pt, Ta, W, V">
@@ -1353,9 +1394,10 @@
 			</div>
 			<div id="enlil-label" class="star-label">Enlil</div>
 			<div class="star-icon-box">Enlil
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 790px; left: 45px;" data-keywords="Al, Au, Be, Cs, F, HC, Cl, Sc, Co, Cu, Eu, Ir, Fe, Pb, Li, Nd, Ne, Ni, Pu, Ag, Ti, W, U, V">
@@ -1363,9 +1405,10 @@
 			</div>
 			<div id="eridani-label" class="star-label">Eridani</div>
 			<div class="star-icon-box">Eridani
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 273px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U">
@@ -1373,9 +1416,10 @@
 			</div>
 			<div id="etacassiopeia-label" class="star-label">Eta Cassiopeia</div>
 			<div class="star-icon-box">Eta Cassiopeia
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 285px; left: 1778px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, V, Xe, Yb">
@@ -1383,9 +1427,10 @@
 			</div>
 			<div id="fermi-label" class="star-label">Fermi</div>
 			<div class="star-icon-box">Fermi
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 669px; left: 778px;" data-keywords="Al, Au, Be, F, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Hg, Nd, Pd, Pu, Ag, Ta, Xf, W, V">
@@ -1393,9 +1438,10 @@
 			</div>
 			<div id="feynman-label" class="star-label">Feynman</div>
 			<div class="star-icon-box">Feynman
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 698px; left: 1453px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Il, Ir, Hg, Nd, Pt, Pu, Xf, Ti, W, V">
@@ -1403,9 +1449,10 @@
 			</div>
 			<div id="foucault-label" class="star-label">Foucault</div>
 			<div class="star-icon-box">Foucault
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 148px; left: 1258px;" data-keywords="Al, Be, Cn, F, Sc, Co, Eu, Ir, Hg, Pt, Ag, Xf, Ti, W, V, Xe">
@@ -1413,9 +1460,10 @@
 			</div>
 			<div id="freya-label" class="star-label">Freya</div>
 			<div class="star-icon-box">Freya
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 626px; left: 1269px;" data-keywords="Al, Cn, Sc, Co, Dy, Ir, Li, Nd, Xf, Ti, W">
@@ -1423,9 +1471,10 @@
 			</div>
 			<div id="gammavulpes-label" class="star-label">Gamma Vulpes</div>
 			<div class="star-icon-box">Gamma Vulpes
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 268px; left: 722px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Pb, Li, Nd, Ag, Xf, Ti, W, U, V">
@@ -1433,9 +1482,10 @@
 			</div>
 			<div id="groombridge-label" class="star-label">Groombridge</div>
 			<div class="star-icon-box">Groombridge
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 627px; left: 535px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Nh, Cl, Sc, Co, Cu, Ir, Fe, Pb, Hg, Nd, Ni, Pd, Ta, Ti, W, U, V">
@@ -1443,9 +1493,10 @@
 			</div>
 			<div id="guniibuu-label" class="star-label">Guniibuu</div>
 			<div class="star-icon-box">Guniibuu
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 599px; left: 1791px;" data-keywords="HC, Sc, Ir, Li, Pd, Pt, Ag, Ta, Xf, W, Yb">
@@ -1453,9 +1504,10 @@
 			</div>
 			<div id="hawking-label" class="star-label">Hawking</div>
 			<div class="star-icon-box">Hawking
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 569px; left: 1312px;" data-keywords="Al, Be, Cs, HC, Nh, Sc, Co, Eu, Ir, Li, Hg, Nd, Ne, Pd, Ag, V, Xe">
@@ -1463,9 +1515,10 @@
 			</div>
 			<div id="heinlein-label" class="star-label">Heinlein</div>
 			<div class="star-icon-box">Heinlein
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 396px; left: 1051px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Ag, Xf, Ti, W">
@@ -1473,9 +1526,10 @@
 			</div>
 			<div id="heisenberg-label" class="star-label">Heisenberg</div>
 			<div class="star-icon-box">Heisenberg
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 567px; left: 1824px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Ne, Pu, W, V, Xe">
@@ -1483,9 +1537,10 @@
 			</div>
 			<div id="huygens-label" class="star-label">Huygens</div>
 			<div class="star-icon-box">Huygens
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>			
 		<div class="star-system" style="top: 488px; left: 1359px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Eu, Il, Ir, Li, Hg, Nd, Ne, Pt, Pu, Ag, Ta, Xf, Ti, W, V">
@@ -1493,9 +1548,10 @@
 			</div>
 			<div id="hyla-label" class="star-label">Hyla</div>
 			<div class="star-icon-box">Hyla
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 641px; left: 528px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Cl, Co, Cu, Ir, Fe, Pb, Hg, Ni, Pt, Ta, Xf, U, Yb">
@@ -1503,9 +1559,10 @@
 			</div>
 			<div id="indum-label" class="star-label">Indum</div>
 			<div class="star-icon-box">Indum
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 172px; left: 1250px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Li, Ne, Pu, Ag, W, V">
@@ -1513,9 +1570,10 @@
 			</div>
 			<div id="ixyll-label" class="star-label">Ixyll</div>
 			<div class="star-icon-box">Ixyll
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 616px; left: 974px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Li, Hg, Nd, Pd, Pu, Ag, Xf, Ti, W, U, V">
@@ -1523,9 +1581,10 @@
 			</div>
 			<div id="jaffa-label" class="star-label">Jaffa</div>
 			<div class="star-icon-box">Jaffa
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 718px; left: 1486px;" data-keywords="Al, Be, F, HC, Sb, Sc, Co, Ir, Nd, Ag, Ta, Xf, Ti, V, Yb">
@@ -1533,9 +1592,10 @@
 			</div>
 			<div id="kang-label" class="star-label">Kang</div>
 			<div class="star-icon-box">Kang
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 729px; left: 159px;" data-keywords="Al, He, Pb, Ni, Pt, U, V">
@@ -1543,9 +1603,10 @@
 			</div>
 			<div id="kapteynsstar-label" class="star-label">Kapteyn's Star</div>
 			<div class="star-icon-box">Kapteyn's Star
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 878px; left: 1375px;" data-keywords="Al, Be, HC, Cn, Nh, Sc, Ag, Yb">
@@ -1553,9 +1614,10 @@
 			</div>
 			<div id="katydid-label" class="star-label">Katydid</div>
 			<div class="star-icon-box">Katydid
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>			
 		<div class="star-system" style="top: 494px; left: 1250px;" data-keywords="Al, Au, Be, HC, Cn, Sc, Co, Eu, Ie, Il, Ir, Pu, Ta, Xf, Ti, W, Xe, Yb">
@@ -1563,9 +1625,10 @@
 			</div>
 			<div id="khayyam-label" class="star-label">Khayyam</div>
 			<div class="star-icon-box">Khayyam
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 424px; left: 913px;" data-keywords="Al, Au, Be, F, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Pu, U">
@@ -1575,9 +1638,10 @@
 				<img class="city-marker">			
 			</div>
 			<div class="star-icon-box">Kryx
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 300px; left: 760px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Sc, Co, Dy, Eu, Il, Ir, Pb, Nd, Ne, Pd, Pt, Pu, Ta, Xf, U, Xe">
@@ -1585,9 +1649,10 @@
 			</div>
 			<div id="kumasi-label" class="star-label">Kumasi</div>
 			<div class="star-icon-box">Kumasi
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 560px; left: 931px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Hg, Pd, Pt, Pu, Ag, Ta, Xf, W, U, V">
@@ -1595,9 +1660,10 @@
 			</div>
 			<div id="lantana-label" class="star-label">Lantana</div>
 			<div class="star-icon-box">Lantana
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 443px; left: 1406px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Ir, Li, Hg, Nd, Pt, Pu, Ag, Yb">
@@ -1605,9 +1671,10 @@
 			</div>
 			<div id="leonis-label" class="star-label">Leonis</div>
 			<div class="star-icon-box">Leonis
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 446px; left: 703px;" data-keywords="Al, Au, Be, F, Sc, Eu, Ne, Xe, Yb">
@@ -1615,9 +1682,10 @@
 			</div>
 			<div id="leiviathan-label" class="star-label">Leviathan</div>
 			<div class="star-icon-box">Leviathan
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 663px; left: 554px;" data-keywords="Al, Be, F, HC, Cn, Sc, Co, Eu, Ir, Nd, Pt, Ag, Ta, Xf, Yb">
@@ -1625,9 +1693,10 @@
 			</div>
 			<div id="linnaeus-label" class="star-label">Linnaeus</div>
 			<div class="star-icon-box">Linnaeus
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 485px; left: 702px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Sc, Co, Hg, Nd, Ne, Pt, Xf, Xe">
@@ -1635,9 +1704,10 @@
 			</div>
 			<div id="lunara-label" class="star-label">Lunara</div>
 			<div class="star-icon-box">Lunara
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 563px; left: 213px;" data-keywords="HC, Cl, Fe, Li, Ta, Ho">
@@ -1645,9 +1715,10 @@
 			</div>
 			<div id="luytensstar-label" class="star-label" style="margin-left: -106px;">Luyten's Star</div>
 			<div class="star-icon-box">Luyten's Star
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 428px; left: 1607px;" data-keywords="Al, Au, Be, F, HC, He, Sb, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Pt, Ag, Xf, Ti, W, V, Yb">
@@ -1655,9 +1726,10 @@
 			</div>
 			<div id="maal-label" class="star-label">Maal</div>
 			<div class="star-icon-box">Maal
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 405px; left: 693px;" data-keywords="Al, Au, Be, F, He, HC, Sb, Cn, Nh, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ne, Ni, Ag, Xf, Ho, Yb">
@@ -1665,9 +1737,10 @@
 			</div>
 			<div id="maheo-label" class="star-label">Maheo</div>
 			<div class="star-icon-box">Maheo
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 822px; left: 1466px;" data-keywords="Al, Au, Be, F, Cs, Nh, Sc, Co, Eu, Ne, Pd, Pt, Pu, Xf, V">
@@ -1675,9 +1748,10 @@
 			</div>
 			<div id="marduk-label" class="star-label">Marduk</div>
 			<div class="star-icon-box">Marduk
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 650px; left: 1294px;" data-keywords="Al, Be, F, HC, Cn, Co, Il, Ir, Pt, Ag, W, V, Yb">
@@ -1685,9 +1759,10 @@
 			</div>
 			<div id="masada-label" class="star-label">Masada</div>
 			<div class="star-icon-box">Masada
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 221px; left: 733px;" data-keywords="Al, HC, Cl, Sc, Co, Cu, Fe, Nd, Ta">
@@ -1695,9 +1770,10 @@
 			</div>
 			<div id="mcclure-label" class="star-label">McClure</div>
 			<div class="star-icon-box">McClure
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 375px; left: 1304px;" data-keywords="Al, Au, F, Sb, Cn, Nh, Co, Ir, Li, Hg, Nd, Ag, V">
@@ -1705,9 +1781,10 @@
 			</div>
 			<div id="moloch-label" class="star-label">Moloch</div>
 			<div class="star-icon-box">Moloch
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 362px; left: 955px;" data-keywords="Al, Be, Cs, F, HC, Sb, Cn, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Li, Hg, Ni, Pt, Ag, W, U, V, Xe, Yb">
@@ -1715,9 +1792,10 @@
 			</div>
 			<div id="muphrid-label" class="star-label">Muphrid</div>
 			<div class="star-icon-box">Muphrid
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 499px; left: 472px;" data-keywords="Al, Be, Cs, F, Ar, He, HC, Cn, Cl, Sc, Cu, Eu, Il, Ir, Fe, Pb, Nd, Ne, Ni, Pu, Ag, Xf, U, V, Ho">
@@ -1727,9 +1805,10 @@
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Narion
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 109px; left: 743px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Co, Dy, Ne, Pd, Ag, Xf, W, U, V, Yb">
@@ -1737,9 +1816,10 @@
 			</div>
 			<div id="nemeria-label" class="star-label">Nemeria</div>
 			<div class="star-icon-box">Nemeria
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 140px; left: 633px;" data-keywords="Al, Au, Be, F, HC, Sc, Li, Pt, Xf, Ti, W, V">
@@ -1747,9 +1827,10 @@
 			</div>
 			<div id="newton-label" class="star-label">Newton</div>
 			<div class="star-icon-box">Newton
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 421px; left: 633px;" data-keywords="Al, Be, F, HC, Nh, Co, Ir, Nd, Pt, Pu, Ta, W">
@@ -1757,9 +1838,10 @@
 			</div>
 			<div id="nikola-label" class="star-label">Nikola</div>
 			<div class="star-icon-box">Nikola
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 415px; left: 1380px;" data-keywords="Al, Be, HC, Ir, Ta, W">
@@ -1767,9 +1849,10 @@
 			</div>
 			<div id="nirah-label" class="star-label">Nirah</div>
 			<div class="star-icon-box">Nirah
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 806px; left: 1108px;" data-keywords="Al, Be, F, HC, Sc, Il, Ir, Ag, Xf, V">
@@ -1777,9 +1860,10 @@
 			</div>
 			<div id="nirvana-label" class="star-label">Nirvana</div>
 			<div class="star-icon-box">Nirvana
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 714px; left: 533px;" data-keywords="">
@@ -1787,9 +1871,10 @@
 			</div>
 			<div id="oborumproxima-label" class="star-label">Oborum Proxima</div>
 			<div class="star-icon-box">Oborum Proxima
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 703px; left: 541px;" data-keywords="Al, Au, Cl, Sc, Cu, Fe, Pb, Nd, Pt, Ag, Ta, Xf">
@@ -1797,9 +1882,10 @@
 			</div>
 			<div id="oborumprime-label" class="star-label">Oborum Prime</div>
 			<div class="star-icon-box">Oborum Prime
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 643px; left: 645px;" data-keywords="Al, Be, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Ir, Fe, Pb, Ni, Pd, Ta, U, V">
@@ -1807,9 +1893,10 @@
 			</div>
 			<div id="olympus-label" class="star-label">Olympus</div>
 			<div class="star-icon-box">Olympus
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 464px; left: 1292px;" data-keywords="F">
@@ -1817,9 +1904,10 @@
 			</div>
 			<div id="ophion-label" class="star-label">Ophion</div>
 			<div class="star-icon-box">Ophion
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 403px; left: 276px;" data-keywords="Al, Au, Be, Cs, F, HC, He, Cl, Sc, Co, Cu, Eu, Fe, Pb, Nd, Ni, Pd, Pt">
@@ -1827,9 +1915,10 @@
 			</div>
 			<div id="piazzi-label" class="star-label">Piazzi</div>
 			<div class="star-icon-box">Piazzi
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 614px; left: 1060px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Eu, Li, Nd, Ne, Pu, U">
@@ -1839,9 +1928,10 @@
 				<img class="city-marker">			
 			</div>
 			<div class="star-icon-box">Porrima
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 572px; left: 237px;" data-keywords="Al, F, HC, Cn, He, Nh, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Ne, Ni, Xf, Ti, W, U">
@@ -1849,9 +1939,10 @@
 			</div>
 			<div id="procyona-label" class="star-label">Procyon A</div>
 			<div class="star-icon-box">Procyon A
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 559px; left: 245px;" data-keywords="Al, He, Nd">
@@ -1859,9 +1950,10 @@
 			</div>
 			<div id="procoyonb-label" class="star-label">Procyon B</div>
 			<div class="star-icon-box">Procyon B
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 632px; left: 1392px;" data-keywords="Al, Cs, F, HC, Eu, Li, Pu, Ag">
@@ -1869,9 +1961,10 @@
 			</div>
 			<div id="proximaternion-label" class="star-label">Proxima Ternion</div>
 			<div class="star-icon-box">Proxima Ternion
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 230px; left: 1683px;" data-keywords="Al, Au, Be, Cs, F, HC, Sc, Co, I, Il, Ir, Li, Nd, Pt, Ti, V">
@@ -1879,9 +1972,10 @@
 			</div>
 			<div id="pyraas-label" class="star-label">Pyraas</div>
 			<div class="star-icon-box">Pyraas
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 271px; left: 1642px;" data-keywords="Al, Be, F, HC, Cn, Sc, Il, Li, Nd, Ne, Pd, Pt, Ag, Ta, Xf, Ti, W, V, Yb">
@@ -1889,9 +1983,10 @@
 			</div>
 			<div id="rana-label" class="star-label">Rana</div>
 			<div class="star-icon-box">Rana
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 286px; left: 798px;" data-keywords="Al, Au, Be, F, Cs, HC, Co, Yb">
@@ -1899,9 +1994,10 @@
 			</div>
 			<div id="rasalhague-label" class="star-label">Rasalhague</div>
 			<div class="star-icon-box">Rasalhague
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 777px; left: 1072px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Eu, Hg, Nd, Pt, Ag, U">
@@ -1909,9 +2005,10 @@
 			</div>
 			<div id="rivera-label" class="star-label">Rivera</div>
 			<div class="star-icon-box">Rivera
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 400px; left: 1291px;" data-keywords="Al, Be, Cs, Sb, Cn, Nh, Sc, Ir, Li, Hg, Nd, Ne, Pt, Ti, V">
@@ -1919,9 +2016,10 @@
 			</div>
 			<div id="rutherford-label" class="star-label">Rutherford</div>
 			<div class="star-icon-box">Rutherford
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 390px; left: 863px;" data-keywords="Co, Ni">
@@ -1929,9 +2027,10 @@
 			</div>
 			<div id="sagan-label" class="star-label">Sagan</div>
 			<div class="star-icon-box">Sagan
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 698px; left: 437px;" data-keywords="Al">
@@ -1939,9 +2038,10 @@
 			</div>
 			<div id="sakharov-label" class="star-label">Sakharov</div>
 			<div class="star-icon-box">Sakharov
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 465px; left: 843px;" data-keywords="Ad, Be, Al, F, HC, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Nd, Ne, Pu, Ag, Ta, Xf, Ti, W, V">
@@ -1949,9 +2049,10 @@
 			</div>
 			<div id="schrodinger-label" class="star-label">Schrodinger</div>
 			<div class="star-icon-box">Schrodinger
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 355px; left: 1420px;" data-keywords="Al, Be, F, Sc, Li, W, V">
@@ -1959,9 +2060,10 @@
 			</div>
 			<div id="serpentis-label" class="star-label">Serpentis</div>
 			<div class="star-icon-box">Serpentis
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 288px; left: 1222px;" data-keywords="Al, Au, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Li, Nd, Pd, Pt, Ag, W, U, Yb">
@@ -1969,9 +2071,10 @@
 			</div>
 			<div id="shoza-label" class="star-label">Shoza</div>
 			<div class="star-icon-box">Shoza
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 626px; left: 224px;" data-keywords="Al, HC, He, Cn, Cl, F, Sc, Cu, Ir, Fe, Li, Ni, U, Ho, Xe">
@@ -1979,9 +2082,10 @@
 			</div>
 			<div id="sirius-label" class="star-label">Sirius</div>
 			<div class="star-icon-box">Sirius
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 540px; left: 300px;" data-keywords="Al, Ar, Cn, He, Nh, Cl, F, Sc, Co, Dy, Fe, Pb, Hg, Nd, Ni, Pd, Ag, Ti, W, Ho, Aq">
@@ -1992,9 +2096,10 @@
 				<img class="staryard-marker">
 			</div>
 			<div class="star-icon-box">Sol
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 221px; left: 1365px;" data-keywords="Al, Be, HC, Cn, F, Nh, Sc, Co, Il, Ir, Nd, Pd, Pt, Ag, Ta, Ti, W, V">
@@ -2002,9 +2107,10 @@
 			</div>
 			<div id="sparta-label" class="star-label">Sparta</div>
 			<div class="star-icon-box">Sparta
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 303px; left: 1736px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Dy, Ir, Li, Hg, Pd, Ag, Xe">
@@ -2012,9 +2118,10 @@
 			</div>
 			<div id="strix-label" class="star-label">Strix</div>
 			<div class="star-icon-box">Strix
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 594px; left: 1486px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Pu, Ta, Xf, Yb">
@@ -2022,9 +2129,10 @@
 			</div>
 			<div id="syrma-label" class="star-label">Syrma</div>
 			<div class="star-icon-box">Syrma
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 593px; left: 82px;" data-keywords="Al, Be, Cs, F, HC, He, Cn, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ni, Pd, Pt, Ta, Xf, U, V, Yb">
@@ -2032,9 +2140,10 @@
 			</div>
 			<div id="tauceti-label" class="star-label">Tau Ceti</div>
 			<div class="star-icon-box">Tau Ceti
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 640px; left: 216px;" data-keywords="Cs, Cl">
@@ -2042,9 +2151,10 @@
 			</div>
 			<div id="thepup-label" class="star-label">The Pup</div>
 			<div class="star-icon-box">The Pup
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 590px; left: 352px;" data-keywords="Al, Be, Cn, He, Pb, Ag">
@@ -2052,9 +2162,10 @@
 			</div>
 			<div id="toliman-label" class="star-label">Toliman</div>
 			<div class="star-icon-box">Toliman
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb">
@@ -2062,9 +2173,10 @@
 			</div>
 			<div id="tidacha-label" class="star-label">Tidacha</div>
 			<div class="star-icon-box">Tidacha
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 329px; left: 769px;" data-keywords="Al, Be, Cn, Cl, F, Sc, Co, Fe, Nd, Ta, U">
@@ -2072,9 +2184,10 @@
 			</div>
 			<div id="ursaemajoris-label" class="star-label">Ursae Majoris</div>
 			<div class="star-icon-box">Ursae Majoris
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 315px; left: 777px;" data-keywords="Al, Nh, Eu, F, Ir, Ta, Xf">
@@ -2082,22 +2195,24 @@
 			</div>
 			<div id="ursaeminoris-label" class="star-label">Ursae Minoris</div>
 			<div class="star-icon-box">Ursae Minoris
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 485px; left: 480px;" data-keywords="Al, Be, Cn, Cl, He, Sc, Co, Eu, Ir, Li, Nd, Ni, U, V, Ho">
-			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
+			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-valo'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="valo-label" class="star-label">Valo
 				<img class="city-marker">	
 				<img class="staryard-marker" style="left: -10px; top: -21px;">				
 			</div>
 			<div class="star-icon-box">Valo
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 505px; left: 60px;" data-keywords="Cu">
@@ -2105,18 +2220,20 @@
 			</div>
 			<div id="vanmaanensstar-label" class="star-label">Van Maanen's Star</div>
 			<div class="star-icon-box">Van Maanen's Star
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 252px; left: 456px;" data-keywords="Al, HC, Sc, Co, Dy, Pd, Ti, U">	
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-vega'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;"></div>
 			<div id="vega-label" class="star-label">Vega</div>	
 			<div class="star-icon-box">Vega
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 474px; left: 1702px;" data-keywords="Al, Be, Cn, F, Sc, Ir, Li, Hg, Ne, Pd, Pt, Pu, Ag, Ti, W, V, Vr, Yb">
@@ -2124,9 +2241,10 @@
 			</div>
 			<div id="verne-label" class="star-label">Verne</div>
 			<div class="star-icon-box">Verne
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 713px; left: 824px;" data-keywords="Al, Be, Cn, Cl, F, He, Sc, Cu, Il, Fe, Pb, Nd">
@@ -2137,21 +2255,23 @@
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Volii
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>				
 		<div class="star-system" style="top: 545px; left: 396px;" data-keywords="Al, Be, Pb, Hg, Ag, Ho">
-			<div class="star-icon" ondblclick="resizeIframe()" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-wolf'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="wolf-label" class="star-label">Wolf
-				<img class="staryard-marker" style="top: -10px;">				
+				<img class="staryard-marker" style="top: -10px; margin-left: -10px;">				
 			</div>			
 			<div class="star-icon-box">Wolf
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 682px; left: 853px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Pt, Ag, Xf, W, V, Yb">
@@ -2159,9 +2279,10 @@
 			</div>
 			<div id="xiophiuchi-label" class="star-label">Xi Ophiuchi</div>
 			<div class="star-icon-box">Xi Ophiuchi
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 894px; left: 1575px;" data-keywords="Cn, Cs, F, Sc, Co, Ir, Li, Ne, Pd, Pt, Pu, Ag, Xf, Ti, W, Xe">
@@ -2169,9 +2290,10 @@
 			</div>
 			<div id="zelazny-label" class="star-label">Zelazny</div>
 			<div class="star-icon-box">Zelazny
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 696px; left: 846px;" data-keywords="Al, Au, Be, HC, Sb, Cn, Sc, Co, Ir, Li, Ne, Pt, Pu, Ag, Ta, V, Yb">
@@ -2179,9 +2301,10 @@
 			</div>
 			<div id="zetaophiuchi-label" class="star-label">Zeta Ophiuchi</div>
 			<div class="star-icon-box">Zeta Ophiuchi
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
 		<div class="star-system" style="top: 301px; left: 1108px;" data-keywords="F, HC, Cn, Sc, Co, Ir, Pd, Ta, Xe">
@@ -2189,9 +2312,10 @@
 			</div>
 			<div id="zosma-label" class="star-label">Zosma</div>
 			<div class="star-icon-box">Zosma
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this)">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this)">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this)">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 65px; top: -90px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>				
 			</div>			
 		</div>		
 		
@@ -2202,11 +2326,14 @@
 
     <script>
 	
-		var journalOpen = new Audio('Data/Sound/JournalOpen.wav');
-		var journalClose = new Audio('Data/Sound/JournalClose.wav');
+		var menuClick = new Audio('Data/Sound/MenuClick.wav');
 		var scanLoop = new Audio('Data/Sound/ScanLoop.wav');
 		var toggleLabel = new Audio('Data/Sound/ToggleLabel.wav');
 		var toggleLabelReverse = new Audio('Data/Sound/ToggleLabelReverse.wav');			
+
+		function playMenuClick() {
+			menuClick.play();
+		}
 
 		function playToggleLabel() {
 			toggleLabel.play();
@@ -2221,7 +2348,7 @@
 		}
 
 		const outpostImage = new Image();
-		outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";		
+		outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";				
 	
 		function toggleDiscoverState(boxParent) {
 			const iconChild = boxParent.parentElement.parentElement.childNodes[3];
@@ -2263,7 +2390,7 @@
 				outpostImage.style.marginLeft = "1px";				
 				outpostImage.style.transform = "scale(0.65)";
 			}
-		}		
+		}	
 	
 		document.addEventListener('mouseover', function (event) {	
 			if (!isHovering()) {
@@ -2357,6 +2484,10 @@
 		const settingsInfo = document.querySelectorAll('.settings-info');		
 		
 		const originalCoordinatesSpan = document.getElementById("original-coordinates");
+		
+		function closeStarIconBox(button) {
+			button.parentElement.style.display = "none";	
+		}		
 
 		starLabels.forEach((starLabel, index) => {
 			const discoveredText = localStorage.getItem(starLabel.id + "-discover");
@@ -2416,18 +2547,18 @@
 
 			starInfoBox.addEventListener('click', function(event) {
 				toggleStarInfoBox(starInfoBox, event);
-				journalClose.play();
+				toggleLabelReverse.play();
 			});
 
 			return starInfoBox;
 		}	
 	
-		function closeStarInfoBox(index) {
-			const starInfoBox = document.querySelector(`#starInfoText${index}`).parentElement;
+		function closeStarInfoBox(index) {	
+			const starInfoBox = document.querySelector(`#starInfoText${index}`).parentElement;			
 			starInfoBox.style.display = 'none';
 			const storedText = localStorage.getItem('starInfoText' + index);
 			extendedInfoContainer.textContent = storedText;
-			extendedInfoContainer.style.display = 'none';
+			extendedInfoContainer.style.display = 'none';		
 		}	
 
 		function toggleStarInfoBox(starInfoBox, event) {
@@ -2437,9 +2568,9 @@
 
 				if (starInfoBox.style.display === "block") {
 					starInfoBox.style.zIndex = 9999;
-					journalOpen.play();
+					toggleLabel.play();
 				} else {
-					journalClose.play();
+					toggleLabelReverse.play();
 				}				
 
 				const coordinatesText = originalCoordinatesSpan.textContent;
@@ -2583,7 +2714,7 @@
 						const storedText = localStorage.getItem('starInfoText' + index);
 						extendedInfoContainer.textContent = `${storedText}`;
 						extendedInfoContainer.style.padding = '5px';
-						//systemAnimation.style.display = 'block';
+						//systemAnimation.style.display = 'block';						
 					}
 
 				}, animationDuration / scaleSteps);
@@ -2596,10 +2727,10 @@
 				if (event.shiftKey) {
 					if (!extendedInfoOpen) {
 						extendedInfoContainer.style.display = 'block';
-						journalOpen.play();
+						toggleLabel.play();
 					} else {
 						extendedInfoContainer.style.display = 'none';
-						journalClose.play();
+						toggleLabelReverse.play();
 					}
 				}
 				iconBoxOpen = !iconBoxOpen;					
@@ -2614,9 +2745,9 @@
 
 					if (!isOpenForCurrentStarSystem) {
 						starIconBox.style.display = 'block';
-						journalOpen.play();
+						toggleLabelReverse.play();
 					} else {
-						journalClose.play();					
+						toggleLabelReverse.play();					
 					}
 				}			
 			});
@@ -2699,7 +2830,7 @@
 				iframe.classList.add("opened");
 				systemButton.style.display = 'block';
 				backgroundBlur.style.display = 'block';
-				journalOpen.play();
+				toggleLabel.play();
 			}
 
 			isIframeEnlarged = !isIframeEnlarged;
@@ -2718,7 +2849,7 @@
 			}
 			systemButton.style.display = 'none';
 			backgroundBlur.style.display = 'none';
-			journalClose.play();
+			toggleLabelReverse.play();
 		}
 		
 		const chartElements = document.querySelector('.chartElements');

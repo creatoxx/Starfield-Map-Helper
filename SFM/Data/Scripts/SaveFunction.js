@@ -80,6 +80,12 @@ function updateStarLabels(data) {
                 starLabel.appendChild(outpostImage);
                 const storageKey = starLabel.id + "-outpost";
                 localStorage.setItem(storageKey, JSON.stringify(true));
+				outpostImage.style.top = "auto";
+				outpostImage.style.marginTop = "10px";
+				outpostImage.style.left = "auto";
+				outpostImage.style.marginLeft = "1px";				
+				outpostImage.style.transform = "scale(0.65)";	
+				location.reload();				
             } else {
                 const existingOutpostImage = starLabel.querySelector('img');
                 if (existingOutpostImage) {

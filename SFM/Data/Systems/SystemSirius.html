@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>		
+	<link rel='stylesheet' type="text/css" href="styles.css">	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+	<style>
+		.sun {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			background: radial-gradient(ellipse at center, #ccffff, #e6ffff, #ffffff);
+			border-radius: 50%;
+			left: 65%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 75px #ccffff, 0 0 70px #e6ffff, 0 0 65px #ffffff;
+			z-index: 1;		
+		}
+	</style>
+</head>
+<body>
+
+	<div class="system-info-box-left">
+		<div class="celestial-body">
+			<div style="margin-left: 5px; margin-top: 10px; width: 100px; height: 100px; background: radial-gradient(ellipse at center, #ccffff, #e6ffff, #ffffff); border-radius: 50%;">
+				<img id="Sirius_System" name="Sirius" src="../Textures/Icons/Suns/IconClassA.gif" style="width: 100px; height: 100px; opacity: 0.25;" ondblclick="openInfo(document.getElementById('Sirius_System'))"/>
+			</div>
+			<div>
+				<img id="Sirius_I" name="Sirius I" src="../Textures/Icons/Planets/Sirius/IconSiriusI.png" style="margin-left: 5px; margin-top: 10px; width: 35px; height: 35px;" ondblclick="openInfo(document.getElementById('Sirius_I'))"/>			
+			</div>
+			<div>
+				<img id="Sirius_II" name="Sirius II" src="../Textures/Icons/Planets/Sirius/IconSiriusII.png" style="margin-left: 5px; margin-top: 10px; width: 40px; height: 40px; filter: hue-rotate(335deg);" ondblclick="openInfo(document.getElementById('Sirius_II'))">
+				<img id="Sirius_II-a" name="Sirius IIa" src="../Textures/Icons/Moons/Sirius/IconSiriusIIa.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Sirius_II-a'))"/>
+			</div>
+			<div>
+				<img id="Sirius_III" name="Sirius III" src="../Textures/Icons/Planets/Sirius/IconSiriusIII.png" style="margin-left: 5px; margin-top: 10px; width: 70px; height: 70px; filter: hue-rotate(335deg);" ondblclick="openInfo(document.getElementById('Sirius_III'))">
+				<img id="Sirius_III-a" name="Sirius III-a" src="../Textures/Icons/Moons/Sirius/IconSiriusIIIa.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Sirius_III-a'))"/>
+				<img id="Sirius_III-b" name="Sirius III-b" src="../Textures/Icons/Moons/Sirius/IconSiriusIIIb.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Sirius_III-b'))"/>				
+			</div>			
+		</div>
+	</div> 
+
+	<div class="system-info-box-right">
+		<object id="celestialData"></object>	
+	</div> 	
+	
+	<div class="main">
+		<div class="banner-Sirius" style="border-top-right-radius: 20px; position: relative;">
+			<img src="../Textures/StarfieldBanner.png" style="width: 25%; height: 25%; margin-top: 10px; margin-left: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 0 14px #000000;">
+			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Sirius System</p>
+			<div style="position: absolute; top: 0; right: 0;">
+				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid green; border-bottom: 90px solid transparent;">
+					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 5</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="sun" id="Sirius-id">
+			<img src="../Textures/Icons/Suns/IconClassA.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;"/>		
+		</div>
+		
+		<!--mercury type-->
+		<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+		<div class="planet planet1" id="planet1-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Sirius/IconSiriusI.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>	
+		</div>
+		
+		<!--venus type-->	
+		<div class="planet-orbit planet-orbit2"></div>
+		<div class="planet planet2" style="background-color: #999966; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Sirius/IconSiriusII.png" style="width: 105%; height: 105%; margin-left: -0.2px; margin-bottom: 8px; animation: rotate-sphere 5s linear infinite;" />	
+			<div class="moon-orbit" style="left: 4.5px; top: 4.5px; width: 4px; height: 4px;">
+				<div class="moon-spin-left" style="left: 1px; top: 1px; width: 2px; height: 2px;">
+					<div class="moon moon1" style="left: 5.5px; top: 5.5px; width: 3.474px; height: 3.474px;">
+						<img src="../Textures/Icons/Moons/Sirius/IconSiriusIIa.png" style="width: 100%; height: 100%; margin-bottom: 15px;" />				
+					</div>
+				</div>
+			</div>
+		</div>	
+
+		<!--earth type-->	
+		<div class="planet-orbit planet-orbit3" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet3" style="background-color: transparent;"></div>	
+
+		<!--mars type-->	
+		<div class="planet-orbit planet-orbit4" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet4" style="background-color: transparent;"></div>	
+
+		<!--jupiter type: Sirius III(a-b)-->	
+		<div class="planet-orbit planet-orbit5"></div>
+		<div class="planet planet5" style="background: radial-gradient(ellipse at center, #ff6600, #ff944d, #ffc299); box-shadow: 0 0 14px #ff6600;">
+			<img src="../Textures/Icons/Planets/Sirius/IconSiriusIII.png" style="width: 100%; height: 100%; margin-top: -0.3px; animation: rotate-sphere 11s linear infinite;" />		
+			<div class="planet-rings" style="top: -4px; left: -4px; border: 1px double #C68C53; box-shadow: 0 0 3px #C68C53;"></div>
+			<div class="planet-rings" style="width: 27px; height: 27px; top: -2.5px; left: -2.5px; border: 1px double #996633; box-shadow: 0 0 3px #996633;"></div>		
+			<div class="moon-orbit" style="left: 8px; top: 8px; width: 8px; height: 8px;">
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 11px; top: 11px; width: 4.6432px; height: 4.6432px; background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF;">
+						<img src="../Textures/Icons/Moons/Sirius/IconSiriusIIIa.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>			
+				</div>
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 3.1s linear infinite;">
+					<div class="moon moon2" style="left: 13.8px; top: 13.8px; width: 3.1216px; height: 3.1216px; background-color: #999999; box-shadow: 0 0 14px #999999;">
+						<img src="../Textures/Icons/Moons/Sirius/IconSiriusIIIb.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />					
+					</div>				
+				</div>			
+			</div>	
+		</div>
+
+		<!--jupiter type II ringless: Sirius II(a-e)-->	
+		<div class="planet-orbit planet-orbit6" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet6" style="background-color: transparent;"></div>	
+
+		<!--your anus type: titania, oberon, miranda, umbriel, ariel-->	
+		<div class="planet-orbit planet-orbit7" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet7" style="background-color: transparent;"></div>	
+
+		<!--neptune type: triton-->	
+		<div class="planet-orbit planet-orbit8" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet8" style="background-color: transparent;"></div>	
+
+		<!--pluto type: charon-->	
+		<div class="planet-orbit planet-orbit9" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet9" style="background-color: transparent;"></div>	
+
+		<!--eris type-->	
+		<div class="planet-orbit planet-orbit10" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet10" style="background-color: transparent;"></div>	
+
+	<div/>
+
+	<script src="../Scripts/PreventDefault.js"></script>
+	<script src="../Scripts/CelestialData.js"></script>	
+	
+    <script>
+
+		/*const pathText = "../Text/CelestialData/Sirius/";
+		const moonPath = pathText + "Moons/";
+
+		const dataSources = {
+		  'Sirius_System': pathText + "Sirius_System.txt",		
+		  'Sirius_I': pathText + "Sirius_I.txt",
+		  'Sirius_II': pathText + "Sirius_II.txt",
+		  'Sirius_I-a': moonPath + "Sirius_I-a.txt",
+		  'Sirius_I-b': moonPath + "Sirius_I-b.txt",
+		  'Sirius_I-c': moonPath + "Sirius_I-c.txt",	
+		  'Sirius_II-a': moonPath + "Sirius_II-a.txt",	
+		  'Sirius_II-b': moonPath + "Sirius_II-b.txt",	
+		  'Sirius_II-c': moonPath + "Sirius_II-c.txt",
+		  'Sirius_II-d': moonPath + "Sirius_II-d.txt",	
+		  'Sirius_II-e': moonPath + "Sirius_II-e.txt"				
+		};	*/
+	
+        const sun = document.querySelector('.sun');
+        const planets = document.querySelectorAll('.planet');
+		const planetData = [
+			{ radius: 35.38750, speed: 0.0004736, size: 4.879400, direction: 'left' },
+			{ radius: 47.07230, speed: 0.0003502, size: 12.10360, direction: 'left' },
+			{ radius: 63.10000, speed: 0.0002978, size: 12.75627, direction: 'left' },
+			{ radius: 85.14501, speed: 0.0002407, size: 6.792400, direction: 'left' },
+			{ radius: 129.5207, speed: 0.0001306, size: 24.08600, direction: 'left' },
+			{ radius: 203.4392, speed: 0.0000968, size: 20.04500, direction: 'left' },
+			{ radius: 281.8372, speed: 0.0000681, size: 17.18800, direction: 'left' },
+			{ radius: 364.4922, speed: 0.0000543, size: 16.75420, direction: 'left' },
+			{ radius: 381.3323, speed: 0.0000467, size: 2.374000, direction: 'left' },
+			{ radius: 400.0000, speed: 0.0000000, size: 0.000000, direction: 'left' }
+		];		
+
+        function animate() {
+            for (let i = 0; i < planets.length; i++) {
+				const angle = (planetData[i].direction === 'left')
+				  ? (2 * Math.PI - planetData[i].speed * Date.now())
+				  : (planetData[i].speed * Date.now());
+                const sunX = sun.getBoundingClientRect().left + sun.offsetWidth / 2;
+                const sunY = sun.getBoundingClientRect().top + sun.offsetHeight / 2;
+				const planetOrbit = document.querySelector(`.planet-orbit.planet-orbit${i + 1}`);
+                const planetX = sunX + planetData[i].radius * Math.cos(angle);
+                const planetY = sunY + planetData[i].radius * Math.sin(angle);				
+                planets[i].style.left = `${planetX - planetData[i].size / 2}px`;
+                planets[i].style.top = `${planetY - planetData[i].size / 2}px`;
+                planets[i].style.width = `${planetData[i].size}px`;
+                planets[i].style.height = `${planetData[i].size}px`;	
+				planetOrbit.style.left = `${sunX - planetData[i].radius - 1.5}px`;
+				planetOrbit.style.top = `${sunY - planetData[i].radius - 1}px`;
+				planetOrbit.style.width = `${2 * planetData[i].radius}px`;
+				planetOrbit.style.height = `${2 * planetData[i].radius}px`;				
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();		
+    </script>
+</body>
+</html>

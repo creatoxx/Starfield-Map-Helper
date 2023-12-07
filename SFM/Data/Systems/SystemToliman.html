@@ -26,10 +26,16 @@
 	<div class="system-info-box-left">
 		<div class="celestial-body">
 			<div style="margin-left: 5px; margin-top: 10px; width: 100px; height: 100px; background: radial-gradient(ellipse at center, #ff0000, #ff4d4d, #ff9999); border-radius: 50%;">
-				<img id="Barnard%27s_Star_System" name="Barnard's Star" src="../Textures/Icons/Suns/IconClassM.gif" style="width: 100px; height: 100px; opacity: 0.25;" ondblclick="openInfo(document.getElementById('Barnard%27s_Star_System'))"/>
+				<img id="Toliman_System" name="Toliman" src="../Textures/Icons/Suns/IconClassK.gif" style="width: 100px; height: 100px; opacity: 0.25;" ondblclick="openInfo(document.getElementById('Toliman_System'))"/>
 			</div>
 			<div>
-				<img id="Frost" name="Frost" src="../Textures/Icons/Planets/BarnardsStar/IconFrost.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;" ondblclick="openInfo(document.getElementById('Frost'))"/>				
+				<img id="Toliman_I" name="Toliman I" src="../Textures/Icons/Planets/Toliman/IconTolimanI.png" style="margin-left: 5px; margin-top: 10px; width: 75px; height: 75px;" ondblclick="openInfo(document.getElementById('Toliman I'))"/>				
+			</div>
+			<div>
+				<img id="Toliman_II" name="Toliman II" src="../Textures/Icons/Planets/Toliman/IconTolimanII.png" style="margin-left: 5px; margin-top: 10px; width: 70px; height: 70px;" ondblclick="openInfo(document.getElementById('Toliman_II'))">
+				<img id="Toliman_II-a" name="Toliman IIa" src="../Textures/Icons/Moons/Toliman/IconTolimanIIa.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Toliman_II-a'))"/>
+				<img id="Toliman_II-b" name="Toliman IIb" src="../Textures/Icons/Moons/Toliman/IconTolimanIIb.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Toliman_II-b'))"/>
+				<img id="Toliman_II-c" name="Toliman IIc" src="../Textures/Icons/Moons/Toliman/IconTolimanIIc.png" style="margin-left: 6px; width: 16px; height: 16px;" ondblclick="openInfo(document.getElementById('Toliman_II-c'))"/>				
 			</div>
 		</div>
 	</div> 
@@ -39,42 +45,54 @@
 	</div> 	
 	
 	<div class="main">
-		<div class="banner-barnards-star" style="border-top-right-radius: 20px; position: relative;">
+		<div class="banner-toliman" style="border-top-right-radius: 20px; position: relative;">
 			<img src="../Textures/StarfieldBanner.png" style="width: 25%; height: 25%; margin-top: 10px; margin-left: 10px; border-bottom-right-radius: 20px; border-top-right-radius: 20px; box-shadow: 0 0 14px #000000;">
-			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Barnard's Star</p>
+			<p style="position: absolute; margin-top: -35px; left: 135px; font-size: 22px; color: #B7B7B7; z-index: 2;">Toliman System</p>
 			<div style="position: absolute; top: 0; right: 0;">
 				<div style="width: 0; height: 0; border-left: 45px solid transparent; border-right: 90px solid green; border-bottom: 90px solid transparent;">
-					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 1</p>
+					<p style="position: absolute; margin-top: 18px; margin-left: 35px; font-size: 12px; color: #B7B7B7; z-index: 2; transform: rotate(45deg)">Level: 5</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="sun" id="barnards-star-id">
-			<img src="../Textures/Icons/Suns/IconClassM.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;"/>		
+		<div class="sun" id="toliman-id">
+			<img src="../Textures/Icons/Suns/IconClassK.gif" style="width: 100%; height: 100%; opacity: 0.09; animation: rotate-sphere 60s linear infinite;"/>		
 		</div>
 		
 		<!--mercury type-->
-		<div class="planet-orbit planet-orbit1" style="border: 1px dashed transparent;"></div>
-		<div class="planet planet1" style="background-color: transparent;"></div>	
+		<div class="planet-orbit  planet-orbit1" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+		<div class="planet planet1" id="planet1-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Toliman/IconTolimanI.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>		
+		</div>
 
 		<!--venus type-->	
-		<div class="planet-orbit planet-orbit2" style="border: 1px dashed transparent;"></div>
-		<div class="planet planet2" style="background-color: transparent;"></div>	
+		<div class="planet-orbit  planet-orbit2" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
+		<div class="planet planet2" id="planet2-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
+			<img src="../Textures/Icons/Planets/Toliman/IconTolimanII.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>
+			<div class="moon-orbit" style="left: 8px; top: 8px; width: 8px; height: 8px;">
+				<div class="moon-spin-left" style="left: 1.9px; top: 1.9px; width: 4.5px; height: 4.5px; animation: spin-left 4.3s linear infinite;">
+					<div class="moon moon1" style="left: 11px; top: 11px; width: 4.6432px; height: 4.6432px; background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF;">
+						<img src="../Textures/Icons/Moons/Toliman/IconTolimanIIa.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>	
+					<div class="moon moon2" style="left: 11px; top: 11px; width: 4.6432px; height: 4.6432px; background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF;">
+						<img src="../Textures/Icons/Moons/Toliman/IconTolimanIIb.png" style="width: 100%; height: 100%; margin-bottom: 12px;" />	
+					</div>					
+				</div>				
+			</div>			
+		</div>
 
 		<!--earth type-->	
 		<div class="planet-orbit planet-orbit3" style="border: 1px dashed transparent;"></div>
 		<div class="planet planet3" style="background-color: transparent;"></div>	
 
 		<!--mars type-->	
-		<div class="planet-orbit  planet-orbit4" style="margin-left: 0.5px; margin-top: 0.5px;"></div>	
-		<div class="planet planet4" id="planet1-id" style="background-color: #B3B3B3; box-shadow: 0 0 14px #FFFFFF;">
-			<img src="../Textures/Icons/Planets/BarnardsStar/IconFrost.png" style="width: 100%; height: 100%; margin-bottom: 10px; animation: rotate-sphere 1s linear infinite;"/>		
-		</div>
+		<div class="planet-orbit planet-orbit4" style="border: 1px dashed transparent;"></div>
+		<div class="planet planet4" style="background-color: transparent;"></div>	
 
 		<!--jupiter type: wolf I(a-c)-->	
 		<div class="planet-orbit planet-orbit5" style="border: 1px dashed transparent;"></div>
 		<div class="planet planet5" style="background-color: transparent;"></div>
-
+		
 		<!--jupiter type II ringless: wolf II(a-e)-->	
 		<div class="planet-orbit planet-orbit6" style="border: 1px dashed transparent;"></div>
 		<div class="planet planet6" style="background-color: transparent;"></div>	

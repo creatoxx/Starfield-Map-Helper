@@ -97,7 +97,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - moved all planet and moon icons to their dedicated sub folders
 - all moons and planets have their real game icons added
 - fixed wolf system overmouse not correctly responding by moving the staryard icon</p>
-<p>Alpha 6 Rev 2(7.12.2023 RC01):- fixed barnards star link not correctly opening web page
+<p>Alpha 6 Rev 3(7.12.2023 RC01):- fixed barnards star link not correctly opening web page
 - fixed outpost images not correctly showing when loading map state(with refresh page)
 - fixed outpost image not working on multiple stars(with refresh page)
 - added star system: luyten's star, procyon B, procyon A, toliman, altair, sirius, the pup, tau ceti, van maanen, piazzi

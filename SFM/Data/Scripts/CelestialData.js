@@ -36,8 +36,8 @@ function showInfo(bodyID) {
 function openInfo(bodyID) {
 	if (bodyID) {
 		var url = 'https://starfieldwiki.net/wiki/Starfield:' + bodyID.id;
-		var leftOffset = (window.innerWidth - 1024) / 2;
-		var topOffset = (window.innerHeight - 768) / 2;
-		var newWindow = window.open(url, 'newWindow', 'width=1024,height=768,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
+		var leftOffset = (window.innerWidth - 1440) / 2;
+		var topOffset = (window.innerHeight - 810) / 2;
+		var newWindow = window.open(url, 'newWindow', 'width=1440,height=810,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
 	}
 }

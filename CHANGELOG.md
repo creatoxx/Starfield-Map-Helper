@@ -104,3 +104,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - new star class icon .gif: WD
 - changed vega star(Class A) to resemble a closer color to an actual A class star(white)
 - fixed state x box position for some systems with long names</p>
+<p>Beta 1 Release(16.12.2023): - fixed non existant moon on tau ceti IX
+- all systems that do not have a system iframe, will have a direct link to the wiki now
+- fixed code error on groombridge system
+- the window pop up when double clicking systems with out widget, will have increased size now(1440x810)</p>

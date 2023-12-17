@@ -108,3 +108,8 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - all systems that do not have a system iframe, will have a direct link to the wiki now
 - fixed code error on groombridge system
 - the window pop up when double clicking systems with out widget, will have increased size now(1440x810)</p>
+<p>Version 0.1.0.7, 17.12.2023:- the system widget close button is now a static button on the left side of the screen with a clear lable
+- fixed missing ID for Altair system widget
+- fix position of x button for many system state windows
+- changed position of community patch button to better fit to 1920x1080 resolution
+- changed position of the stars: algorab, delta pavonis, zelazny to get in line with 1920x1080 button change</p>

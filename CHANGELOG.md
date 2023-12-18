@@ -113,3 +113,12 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fix position of x button for many system state windows
 - changed position of community patch button to better fit to 1920x1080 resolution
 - changed position of the stars: algorab, delta pavonis, zelazny to get in line with 1920x1080 button change</p>
+<p>Version 0.1.1.6, 18.12.2023: - fixed all x button positions for state toggle
+- fixed outpost image toggle not corrrectly working
+- added standard browser key mappings to settings
+- added missing outpost description to settings
+- slightly changed position of xi ophiuchi, bradbury, ursae majoris, bannoc secundus, all three ternions for better accesss
+- changed local map and direct wiki link container position to latest 1920x1080 res adaption
+- changed positions of all elements because of that
+- slightly corrected SFCP banner pos again
+- added direct link to nexus page for starfield map helper banner</p>

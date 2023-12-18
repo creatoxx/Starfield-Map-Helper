@@ -119,6 +119,6 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - added missing outpost description to settings
 - slightly changed position of xi ophiuchi, bradbury, ursae majoris, bannoc secundus, all three ternions for better accesss
 - changed local map and direct wiki link container position to latest 1920x1080 res adaption
-- changed positions of all elements because of that
+- changed positions of all affected elements because of that
 - slightly corrected SFCP banner pos again
 - added direct link to nexus page for starfield map helper banner</p>

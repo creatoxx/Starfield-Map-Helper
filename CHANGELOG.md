@@ -122,3 +122,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - changed positions of all affected elements because of that
 - slightly corrected SFCP banner pos again
 - added direct link to nexus page for starfield map helper banner</p>
+<p>Version 0.1.2, 23.12.2023: - add new systems: bessel, kapteyns star
+- fixed ursae majoris, and ursae minoris wrong star color and size on starmap
+- fixed typo on luyten's rock name
+- fixed wrong planet icon on luyten's rock</p>

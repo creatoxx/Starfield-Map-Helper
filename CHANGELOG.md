@@ -126,7 +126,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed ursae majoris, and ursae minoris wrong star color and size on starmap
 - fixed typo on luyten's rock name
 - fixed wrong planet icon on luyten's rock</p>
-<p>- fixed missing resource keywords for oborum proxima
+<p>Version 0.1.2.4, 29.12.23: - fixed missing resource keywords for oborum proxima
 - fixed issues related to typo in luytens rock image etc.
 - add missing helium keyword to sakharov system
 - fixed typo in copernicus and copernicus minor system preventing wiki link call</p>

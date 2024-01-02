@@ -1,6 +1,8 @@
 # Starfield-Map-Helper
 A small project for Starfield to provide missing features of the ingame map...
 
-7.12.2023: We're closing in to release date. I will supposedly not manage to import all 120 systems, because it not only takes a long time to build, but also it's a literal pita to do so. I will provide about 15-20 systems with initial release, and bit by bit add more systems during the next year, after initial release. You can help if you'd like to. Take one of the system.html as template, and adapt to the given data. You do not need to be perfect when doing this. If you just provide the basic changes, and apply the correct links etc., 95% of the work is already done. I might provide a complete self replicating template at one point. Thank you.
+You can help if you'd like to. Take one of the system.html as template, and adapt to the given data. You do not need to be perfect when doing this. If you just provide the basic changes, and apply the correct links etc., 95% of the work is already done. I might provide a complete self replicating template at one point. Thank you.
 
-17.12.2023: project has been released on the Nexus: https://www.nexusmods.com/starfield/mods/7689?tab=description&BH=4
+Nexus Download: https://www.nexusmods.com/starfield/mods/7689?tab=description&BH=4
+
+2.1.2024 I'm currently somewhat busy helping to improve the UESP-Wiki(https://starfieldwiki.net/wiki/Home), so don't expect any major updates during the next 4-8 weeks. I will however release smaller polishing updates on a 1-2 weekly frequency. Current work in progress for the next major update is: integrated Desktop-Radio(this will also be a seperate release on the Nexus). A difficulty overlay to have a quick fly over system specific difficulties. Linking the Star labels to real star wiki links for educational purpose. Adding "real Star names" as toggleable option. The system template, which might end up being a full fledged auto build extension for systems. See the back up for revision 1 which allowed you to build your own stars.

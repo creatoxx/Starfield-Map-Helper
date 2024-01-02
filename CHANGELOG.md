@@ -130,3 +130,9 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed issues related to typo in luytens rock image etc.
 - add missing helium keyword to sakharov system
 - fixed typo in copernicus and copernicus minor system preventing wiki link call</p>
+<p>Version 0.1.3, 2.1.2024: - fixed missing asterisk in leonis system, preventing opening the wiki link
+- added city markers to wolf, ixyll, and narion
+- starport renamed to ship build location
+- large city renamed to major settled location
+- add staryard icon to alpha centauri, porrima, ixyll and kryx
+- moved sagan a tiny bit further up to make way for the british royal guard</p>

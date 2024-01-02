@@ -824,11 +824,11 @@
 				<div class="hotkey-description">
 					<h1 class="hotkey">Marker Icons</h1>                
 					<img class="city-marker">                
-					<span class="hotkey">= </span> Large City
+					<span class="hotkey">= </span> Major Settled Location
 				</div>
 				<div class="hotkey-description">
 					<img src="Data/Textures/Icons/StaryardMarker.png" style="vertical-align: middle; margin-left: -3px; scale: 65%;">                
-					<span class="hotkey" style="vertical-align: middle; margin-left: -1px;">= </span> Stardock
+					<span class="hotkey" style="vertical-align: middle; margin-left: -1px;">= </span> Ship Build Location
 				</div>		
 				<div class="hotkey-description">
 					<img src="Data/Textures/Icons/OutpostMarker.png" style="scale: 75%;">                
@@ -1057,7 +1057,8 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-alpha-centauri'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="alphacentauri-label" class="star-label">Alpha Centauri
-				<img class="city-marker">	
+				<img class="city-marker">
+				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Alpha Centauri
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1600,7 +1601,10 @@
 		<div class="star-system" style="top: 172px; left: 1250px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Li, Ne, Pu, Ag, W, V">
 			<div id="Ixyll_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ixyll_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="ixyll-label" class="star-label">Ixyll</div>
+			<div id="ixyll-label" class="star-label">Ixyll
+				<img class="city-marker">
+				<img class="staryard-marker">				
+			</div>
 			<div class="star-icon-box">Ixyll
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1667,7 +1671,8 @@
 			<div id="Kryx_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kryx_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div id="kryx-label" class="star-label">Kryx
-				<img class="city-marker">			
+				<img class="city-marker">	
+				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Kryx
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1699,7 +1704,7 @@
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 443px; left: 1406px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Ir, Li, Hg, Nd, Pt, Pu, Ag, Yb">
-			<div id="Leonis_System" class="star-icon" ondblclick="openInfo(document.getElementById(Leonis_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 13px; height: 13px;">
+			<div id="Leonis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Leonis_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 13px; height: 13px;">
 			</div>
 			<div id="leonis-label" class="star-label">Leonis</div>
 			<div class="star-icon-box">Leonis
@@ -1834,7 +1839,8 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-narion'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="narion-label" class="star-label">Narion
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="city-marker">					
 			</div>
 			<div class="star-icon-box">Narion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1957,7 +1963,8 @@
 			<div id="Porrima_System" class="star-icon" ondblclick="openInfo(document.getElementById('Porrima_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div id="porrima-label" class="star-label">Porrima
-				<img class="city-marker">			
+				<img class="city-marker">	
+				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Porrima
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2054,7 +2061,7 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 390px; left: 863px;" data-keywords="Co, Ni">
+		<div class="star-system" style="top: 380px; left: 863px;" data-keywords="Co, Ni">
 			<div id="Sagan_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sagan_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="sagan-label" class="star-label">Sagan</div>
@@ -2297,7 +2304,8 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-wolf'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="wolf-label" class="star-label">Wolf
-				<img class="staryard-marker" style="top: -10px; margin-left: -10px;">				
+				<img class="staryard-marker" style="top: -10px; margin-left: -10px;">
+				<img class="city-marker">					
 			</div>			
 			<div class="star-icon-box">Wolf
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>

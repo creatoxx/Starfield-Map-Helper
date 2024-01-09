@@ -72,7 +72,7 @@
             padding: 20px;
             z-index: 999;
 			display: none;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;			
         }		
 
@@ -111,7 +111,9 @@
 		.star-label {
 			margin-top: 6px;
 			margin-left: 6px;
-			color: #B7B7B7;
+			color: #B7B7B7;						
+			font-size: 10px;
+			text-decoration: none;			
 		}	
 
 		.hidden-label {
@@ -235,14 +237,16 @@
         .system-button {
             position: absolute;
 			background-color: rgba(48, 62, 77, 1.0);
-            top: 195px;
+            top: 355px;
             left: 10px;
-			width: 138px;
+			width: 200px;
+			height: auto;
             cursor: pointer;
 			font-family: 'Orbitron';			
-            font-size: 12px;
+            font-size: 36px;
             color: #b7b7b7;
 			z-index: 999;
+			padding-bottom: 6px;
 			display: none;
         }
 		
@@ -413,53 +417,21 @@
 				transform: scale(1);
 			}
 		}	
-				
-		.custom-file-input {
-			position: relative;
-			overflow: hidden;
-			width: 155px;
-			height: auto;		
-		}
 
-		.custom-file-output,
-		.file-input-container label {
-			display: inline-block;
-			background: #303E4D;
-			color: #B7B7B7;
-			padding: 8px 20px;
-			border-radius: 5px;
-			cursor: pointer;
-			font-family: 'Orbitron';
-			font-size: 12px;
-			border: 2px inset #B7B7B7; 
-			border-right: solid black; 
-			border-bottom: solid black;		
+		.custom-file-output:hover {
+			color: cyan;
+			font-weight: bold;			
 		}
-
-		.file-input-container input {
-			display: none;	
-		}
-
-		.file-input-container {
-			position: relative;
-			overflow: hidden;
-			display: block;
-			margin-top: 5px;
-			border: 2px solid #303E4D;
-			border-radius: 5px;
-		}
-
-		.custom-file-output:hover,
+		
 		.file-input-container label:hover {
 			color: cyan;
 			font-weight: bold;
+			cursor: pointer;			
 		}
-
-		.custom-file-output:active,
-		.file-input-container label:active {
-			color: #B7B7B7;
-			font-weight: normal;
-		}
+		
+		.file-input-container input {
+			display: none;	
+		}		
 		
 		.hotkey-info {
 			margin-left: -160px;
@@ -467,17 +439,18 @@
 		}	
 
 		.city-marker {
-			scale: 0.65;		
-			top: 10px;
+			scale: 0.35;		
+			top: 10.5px;
+			left: 40px;
 			content: url("Data/Textures/Icons/CityMarker.png");
 		}
 		
 		.staryard-marker {
-			scale: 0.65;		
-			top: -18px; 
-			left: -25px;
+			scale: 0.35;		
+			top: -10.0px; 
+			left: -22px;
 			content: url("Data/Textures/Icons/StaryardMarker.png");			
-		}			
+		}	
     </style>	
 </head>
 <body>
@@ -728,7 +701,7 @@
 		</div>			
 		
 		<div class="background-blur"></div>	
-		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 126px; left: 10px; width: 136px; height: 55px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 666;"></iframe>
+		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 161px; left: 10px; width: 135px; height: 55px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 666;"></iframe>
 		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>		
 		<iframe id="journal-frame" src="Data/Journal.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.0);"></iframe>				
 		<iframe class="system-iframe" id="system-alpha-centauri" src="Data/Systems/SystemAlphaCentauri.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
@@ -756,15 +729,7 @@
 		<div class="settings-info">
 			<button class="close-settings-button" onclick="closeSettingsInfo(); playToggleReverse()">X</button>
 
-			<div class="custom-file-input">
-				<button class="custom-file-output" onclick="saveToFile()">Save Map State</button>
-				<div class="file-input-container">
-					<label for="fileInput">Load Map State</label>				
-					<input type="file" id="fileInput" name="fileInput" onchange="loadFromFile(this)">
-				</div>
-			</div>
-
-			<div class="hotkey-info">
+			<div class="hotkey-info" style="margin-left: 5px;">
 				<div class="hotkey-description">
 					<h1 class="hotkey">Starmap Hotkeys</h1>
 				</div>
@@ -775,7 +740,7 @@
 					<span class="hotkey">Ctrl-Click Star Icon = </span> Show System Journal
 				</div>	
 				<div class="hotkey-description">
-					<span class="hotkey">Shift-Click Star Icon = </span> Show System Information
+					<span class="hotkey">Mouseover Star Icon = </span> Show System Information
 				</div>
 				<div class="hotkey-description">
 					<span class="hotkey">Alt-Click Star Icon = </span> Show System Properties
@@ -800,14 +765,14 @@
 				</div>					
 			</div>
 
-			<div class="hotkey-info">
+			<div class="hotkey-info" style="padding-left: 80px">
 				<div class="hotkey-description">
 					<h1 class="hotkey">System Widget Hotkeys</h1>                
 					<span class="hotkey">Double Click Star Icon = </span> Open System Wiki Link
 				</div>
 			</div>
 
-			<div class="hotkey-info">
+			<div class="hotkey-info" style="padding-left: 40px">
 				<div class="hotkey-description">
 					<h1 class="hotkey">Star Icon States</h1>                
 					<span class="hotkey">Cyan Font = </span> Discovered
@@ -823,7 +788,7 @@
 			<div class="hotkey-info" style="margin-left: -260px;">
 				<div class="hotkey-description">
 					<h1 class="hotkey">Marker Icons</h1>                
-					<img class="city-marker">                
+					<img class="city-marker" style="scale: 65%;">                
 					<span class="hotkey">= </span> Major Settled Location
 				</div>
 				<div class="hotkey-description">
@@ -841,9 +806,14 @@
 			<textarea id="starInfoText"></textarea>
 		</div>		
 		
-		<div id="button-container">
+		<div id="button-container" style="width: 140px;">
 			<button onclick="toggleSettingsInfo(); playToggleLabel()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Settings</button>								
-			<button onclick="toggleStarLabels(); playToggleLabel()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Toggle Star Labels</button>
+			<!--button onclick="toggleStarLabels(); playToggleLabel()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Toggle Star Labels</button-->
+			<button class="custom-file-output" onclick="saveToFile()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Save Map State</button>
+			<div class="file-input-container" style="padding: 3px; height: 15px; cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black;" >
+				<label for="fileInput" style="padding-left: 15px;">Load Map State</label>				
+				<input type="file" id="fileInput" name="fileInput" onchange="loadFromFile(this)">
+			</div>		
 		</div>
 				
 		<div id="extended-info-container">
@@ -1015,8 +985,8 @@
 			<div id="albattani-label" class="star-label">Al-Battani</div>
 			<div class="star-icon-box">Al-Battani
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick(); playMenuClick()">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick(); playMenuClick()">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick(); playMenuClick()">Outpost</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick();">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick();">Outpost</button>
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>					
 			</div>				
 		</div>
@@ -1042,7 +1012,7 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 227px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe">
+		<div class="star-system" style="top: 246px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe">
 			<div id="Alpha_Andraste_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Andraste_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="alphaandraste-label" class="star-label">Alpha Andraste</div>
@@ -1057,7 +1027,7 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-alpha-centauri'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="alphacentauri-label" class="star-label">Alpha Centauri
-				<img class="city-marker">
+				<img class="city-marker" style="left: 85px;">
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Alpha Centauri
@@ -1232,7 +1202,7 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 215px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V">
+		<div class="star-system" style="top: 229px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V">
 			<div id="Beta_Andraste_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Andraste_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="betaandraste-label" class="star-label">Beta Andraste</div>
@@ -1309,7 +1279,7 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 259px; left: 108px;" data-keywords="Al, Be, HC, Cn, Cl, Sc, Cu, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Rc, Xf, W, Xe">
+		<div class="star-system" style="top: 269px; left: 108px;" data-keywords="Al, Be, HC, Cn, Cl, Sc, Cu, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Rc, Xf, W, Xe">
 			<div id="Carinae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Carinae_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="carinae-label" class="star-label">Carinae</div>
@@ -1346,7 +1316,7 @@
 			<div id="Cheyenne_System" class="star-icon" ondblclick="openInfo(document.getElementById('Cheyenne_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="cheyenne-label"  class="star-label">Cheyenne
-				<img class="city-marker">	
+				<img class="city-marker" style="left: 60px;">	
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Cheyenne
@@ -1444,7 +1414,7 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 273px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U">
+		<div class="star-system" style="top: 283px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U">
 			<div id="Eta_Cassiopeia_System" class="star-icon" ondblclick="openInfo(document.getElementById('Eta_Cassiopeia_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="etacassiopeia-label" class="star-label">Eta Cassiopeia</div>
@@ -1602,7 +1572,7 @@
 			<div id="Ixyll_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ixyll_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="ixyll-label" class="star-label">Ixyll
-				<img class="city-marker">
+				<img class="city-marker" style="left: 26px;">
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Ixyll
@@ -1671,7 +1641,7 @@
 			<div id="Kryx_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kryx_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div id="kryx-label" class="star-label">Kryx
-				<img class="city-marker">	
+				<img class="city-marker" style="left: 32px;">	
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Kryx
@@ -1963,7 +1933,7 @@
 			<div id="Porrima_System" class="star-icon" ondblclick="openInfo(document.getElementById('Porrima_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div id="porrima-label" class="star-label">Porrima
-				<img class="city-marker">	
+				<img class="city-marker" style="left: 47px;">	
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Porrima
@@ -2131,7 +2101,7 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-sol'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="sol-label" class="star-label">Sol
-				<img class="city-marker">	
+				<img class="city-marker" style="left: 22px;">	
 				<img class="staryard-marker">
 			</div>
 			<div class="star-icon-box">Sol
@@ -2244,8 +2214,8 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-valo'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="valo-label" class="star-label">Valo
-				<img class="city-marker">	
-				<img class="staryard-marker" style="left: -10px; top: -21px;">				
+				<img class="city-marker" style="left: 30px;">	
+				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Valo
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2289,8 +2259,8 @@
 		<div class="star-system" style="top: 713px; left: 824px;" data-keywords="Al, Be, Cn, Cl, F, He, Sc, Cu, Il, Fe, Pb, Nd">
 			<div id="Volii_System" class="star-icon" ondblclick="openInfo(document.getElementById('Volii_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="volii-label" class="star-label" style="margin-top: 15px;">Volii
-				<img class="city-marker">
+			<div id="volii-label" class="star-label">Volii
+				<img class="city-marker" style="left: 27px;">
 				<img class="staryard-marker">				
 			</div>
 			<div class="star-icon-box">Volii
@@ -2304,8 +2274,8 @@
 			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-wolf'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="wolf-label" class="star-label">Wolf
-				<img class="staryard-marker" style="top: -10px; margin-left: -10px;">
-				<img class="city-marker">					
+				<img class="city-marker" style="left: 28px;">			
+				<img class="staryard-marker">					
 			</div>			
 			<div class="star-icon-box">Wolf
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2366,6 +2336,8 @@
 	<script src="Data/Scripts/CelestialData.js"></script>		
 
     <script>
+
+		//let starLabelsHidden = true;
 	
 		var menuClick = new Audio('Data/Sound/MenuClick.wav');
 		var scanLoop = new Audio('Data/Sound/ScanLoop.wav');
@@ -2389,10 +2361,10 @@
 		}			
 	
 		function toggleDiscoverState(boxParent) {
-			const iconChild = boxParent.parentElement.parentElement.childNodes[3];
-			const isCyan = iconChild.style.color === "cyan";
-			iconChild.style.color = isCyan ? "#B7B7B7" : "cyan";
-			const storageKey = iconChild.id + "-discover";
+			const iconChildDiscover = boxParent.parentElement.parentElement.childNodes[3];
+			const isCyan = iconChildDiscover.style.color === "cyan";
+			iconChildDiscover.style.color = isCyan ? "#B7B7B7" : "cyan";
+			const storageKey = iconChildDiscover.id + "-discover";
 			const isDiscovered = !isCyan;
 			localStorage.setItem(storageKey, JSON.stringify(isDiscovered));
 			if (!isDiscovered) {
@@ -2401,10 +2373,10 @@
 		}
 
 		function toggleSurveyState(boxParent) {
-			const iconChild = boxParent.parentElement.parentElement.childNodes[3];
-			const isLime = iconChild.style.color === "lime";
-			iconChild.style.color = isLime ? "#B7B7B7" : "lime";
-			const storageKey = iconChild.id + "-survey";
+			const iconChildSurvey = boxParent.parentElement.parentElement.childNodes[3];
+			const isLime = iconChildSurvey.style.color === "lime";
+			iconChildSurvey.style.color = isLime ? "#B7B7B7" : "lime";
+			const storageKey = iconChildSurvey.id + "-survey";
 			const isSurveyed = !isLime;
 			localStorage.setItem(storageKey, JSON.stringify(isSurveyed));
 			if (!isSurveyed) {
@@ -2414,23 +2386,26 @@
 
 		function toggleOutpostState(boxParent) {
 			const outpostImage = new Image();
-			outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";			
-			const iconChild = boxParent.parentElement.parentElement.childNodes[3];
+			outpostImage.classList.add("variantOutpost");
+			outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";            
+			const iconChildOutpost = boxParent.parentElement.parentElement.childNodes[3];
 
-			const hasOutpostImage = Array.from(iconChild.children).some(child => child.tagName.toLowerCase() === 'img');
+			const hasOutpostImage = Array.from(iconChildOutpost.children).some(child => child.tagName.toLowerCase() === 'img' && child.classList.contains('variantOutpost'));
 
 			if (hasOutpostImage) {
-				const existingImage = iconChild.querySelector('img');
-				iconChild.removeChild(existingImage);
-				localStorage.removeItem(iconChild.id + "-outpost");
+				const existingImage = iconChildOutpost.querySelector('img.variantOutpost');
+				iconChildOutpost.removeChild(existingImage);
+				localStorage.removeItem(iconChildOutpost.id + "-outpost");
 			} else {
-				iconChild.appendChild(outpostImage);
-				localStorage.setItem(iconChild.id + "-outpost", JSON.stringify(true));
-				outpostImage.style.top = iconChild.style.top + "auto";
-				outpostImage.style.marginTop = "10px";
-				outpostImage.style.left = iconChild.style.left + "auto";
-				outpostImage.style.marginLeft = "1px";				
-				outpostImage.style.transform = "scale(0.65)";
+				iconChildOutpost.appendChild(outpostImage);
+				localStorage.setItem(iconChildOutpost.id + "-outpost", JSON.stringify(true));
+				// Do not change the following lines to keep your original coordinate variables
+				outpostImage.style.top = iconChildOutpost.style.top;
+				outpostImage.style.marginTop = "-1px";
+				outpostImage.style.right = "-36px";                
+				outpostImage.style.left = iconChildOutpost.style.left;
+				outpostImage.style.marginLeft = "1px";                
+				outpostImage.style.transform = "scale(0.35)";
 			}
 		}	
 	
@@ -2529,6 +2504,7 @@
 		
 		function closeStarIconBox(button) {
 			button.parentElement.style.display = "none";	
+			//location.reload();
 		}		
 
 		starLabels.forEach((starLabel, index) => {
@@ -2546,10 +2522,11 @@
 				outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";				
 				starLabel.appendChild(outpostImage);
 				outpostImage.style.top = starLabel.style.top + "auto";
-				outpostImage.style.marginTop = "10px";
+				outpostImage.style.marginTop = "-1px";
+				outpostImage.style.right = "-36px";   				
 				outpostImage.style.left = starLabel.style.left + "auto";
 				outpostImage.style.marginLeft = "1px";				
-				outpostImage.style.transform = "scale(0.65)";
+				outpostImage.style.transform = "scale(0.35)";
 			}			
 		});
 		
@@ -2597,19 +2574,32 @@
 			return starInfoBox;
 		}	
 	
-		function closeStarInfoBox(index) {	
-			const starInfoBox = document.querySelector(`#starInfoText${index}`).parentElement;			
-			starInfoBox.style.display = 'none';
+		function closeStarInfoBox(index) {
+			const starInfoBox = document.querySelector(`#starInfoText${index}`).parentElement;
 			const storedText = localStorage.getItem('starInfoText' + index);
-			extendedInfoContainer.textContent = storedText;
-			extendedInfoContainer.style.display = 'none';		
-		}	
+
+			localStorage.removeItem('starInfoText' + index);
+
+
+			starInfoBox.style.display = 'none';
+			extendedInfoContainer.textContent = '';
+			extendedInfoContainer.style.display = 'none';
+
+			starLabels.forEach((starLabel, labelIndex) => {
+				if (labelIndex === index) {
+					if (storedText !== null && storedText.trim() !== '') {
+						starLabel.style.textDecoration = 'underline';
+					} else {
+						starLabel.style.textDecoration = 'none';
+					}
+				}
+			});
+		}
 
 		function toggleStarInfoBox(starInfoBox, event) {
 			if (event.ctrlKey) {
 				starInfoBox.style.display = (starInfoBox.style.display === 'block') ? 'none' : 'block';
 				
-
 				if (starInfoBox.style.display === "block") {
 					starInfoBox.style.zIndex = 9999;
 					toggleLabel.play();
@@ -2691,10 +2681,8 @@
 			});				
 			
 		});		
-		
-		let starLabelsHidden = true;
 
-		function toggleStarLabels() {
+		/*function toggleStarLabels() {
 			starLabelsHidden = !starLabelsHidden;
 			starLabels.forEach(label => {
 				if (starLabelsHidden) {
@@ -2703,7 +2691,7 @@
 					label.style.display = 'block';
 				}
 			});
-		}
+		}*/
 
 		let settingsInfoHidden = true;
 
@@ -2719,39 +2707,40 @@
 		}
 
 		let hoverTimer;
-		let prevStarIcon;
+		let prevStarIcon;	
 		let extendedInfoOpen = true;
 		let iconBoxOpen = true;
-		const animationDuration = 50;
-		const scaleSteps = 25;
-		const scaleFactorIncrement = 1.5 / scaleSteps;
-		const systemAnimationInterval = 2000;		
+		const animationDuration = 15;
+		const scaleSteps = 15;
+		const scaleFactorIncrement = 1.2 / scaleSteps;
+		const systemAnimationInterval = 2000;			
 
 		starIcons.forEach((starIcon, index) => {
 			starIcon.addEventListener('mouseenter', function (event) {
+			
 				if (prevStarIcon) {
 					clearInterval(hoverTimer);
 					resetStar(prevStarIcon);
 				}
 				
 				let currentScale = 1.0;
-				const finalScale = 2.5;
+				const finalScale = 2.0;
 
-				let step = 0;
+				let step = 0;				
 
 				hoverTimer = setInterval(() => {
 					currentScale += scaleFactorIncrement;
 
 					if (currentScale <= finalScale) {
-						starIcon.style.transform = `scale(${currentScale})`;
+						starIcon.style.transform = `scale(${currentScale})`;	
 					} else {
 						clearInterval(hoverTimer);
 					}
 
-					if (starLabelsHidden) {
-						const label = starIcon.nextElementSibling;
+					/*if (starLabelsHidden) {
+						const label = starIcon.nextElementSibling;			
 						label.style.display = 'block';
-					}
+					}*/
 					
 					if (!event.ctrlKey) {
 						const starName = starIcon.nextElementSibling.textContent;
@@ -2766,16 +2755,20 @@
 				prevStarIcon = starIcon;
 			});
 			
-			starIcon.addEventListener('click', function (event) {
-				extendedInfoOpen = !extendedInfoOpen;	
-				if (event.shiftKey) {
+			starIcon.addEventListener('mouseover', function (event) {
+				extendedInfoOpen = !extendedInfoOpen;
+				const storedText = localStorage.getItem('starInfoText' + starIcon.id);	
+				
+				if (storedText != 'null') {			
+				//if (event.shiftKey) {
 					if (!extendedInfoOpen) {
 						extendedInfoContainer.style.display = 'block';
-						toggleLabel.play();
+						//toggleLabel.play();
 					} else {
 						extendedInfoContainer.style.display = 'none';
-						toggleLabelReverse.play();
+						//toggleLabelReverse.play();
 					}
+				//}
 				}
 				iconBoxOpen = !iconBoxOpen;					
 				if (event.altKey) {
@@ -2790,13 +2783,14 @@
 					if (!isOpenForCurrentStarSystem) {
 						starIconBox.style.display = 'block';
 						toggleLabelReverse.play();
-					} else {
+					} else {				
 						toggleLabelReverse.play();					
 					}
 				}			
 			});
 
 			starIcon.addEventListener('mouseleave', function () {
+				extendedInfoOpen = !extendedInfoOpen;
 				clearInterval(hoverTimer);
 
 				let currentScale = parseFloat(starIcon.style.transform.match(/\d\.\d+/));
@@ -2813,20 +2807,32 @@
 
 						if (!starInfoBoxes[index].style.display || starInfoBoxes[index].style.display === 'none') {
 							extendedInfoContainer.style.display = 'none';
-							//systemAnimation.style.display = 'none';
+							/*systemAnimation.style.display = 'none';
 							if (starLabelsHidden) {
 								const label = starIcon.nextElementSibling;
 								label.style.display = 'none';
-							}						
+							}*/ 
 						}
 					}
-				});
+				}, animationDuration / scaleSteps);
 			});
 		});
 
 		function resetStar(starIcon) {
-			starIcon.style.transform = 'scale(1.0)';
-		}
+			starIcon.style.transform = 'scale(1.0)';			
+		}	
+
+		starLabels.forEach((starLabel, index) => {
+			const storedText = localStorage.getItem('starInfoText' + index);
+
+			if (starLabel) {
+				if (storedText !== null && storedText.trim() !== '') {
+					starLabel.style.textDecoration = 'underline';
+				} else {
+					starLabel.style.textDecoration = 'none';
+				}
+			}
+		});
 		
 		let isIframeEnlarged = false;
 		var systemButton = document.querySelector(".system-button");
@@ -3065,7 +3071,7 @@
 			}
 		});		
 
-		toggleStarLabels();		
+		//toggleStarLabels();		
     </script>
 </body>
 </html>

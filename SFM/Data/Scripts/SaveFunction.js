@@ -84,8 +84,7 @@ function updateStarLabels(data) {
 				outpostImage.style.marginTop = "10px";
 				outpostImage.style.left = "auto";
 				outpostImage.style.marginLeft = "1px";				
-				outpostImage.style.transform = "scale(0.65)";	
-				location.reload();				
+				outpostImage.style.transform = "scale(0.65)";				
             } else {
                 const existingOutpostImage = starLabel.querySelector('img');
                 if (existingOutpostImage) {
@@ -94,6 +93,7 @@ function updateStarLabels(data) {
             }
         }
     });
+	location.reload();	
 }
 
 //text export...work another day!

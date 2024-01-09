@@ -136,3 +136,19 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - large city renamed to major settled location
 - add staryard icon to alpha centauri, porrima, ixyll and kryx
 - moved sagan a tiny bit further up to make way for the british royal guard</p>
+<p>Versiom 0.1.3.17, 9.1.2024: - fixed duplicate playMenuClick() function on al-battani
+- fixed occasional buggy behaviour when adding outpost icon
+- fixed settings window only auto closing when an outpost image was defined
+- increased the speed of star icon resizer when hovering
+- entirely fixed problems with the outpost icon srewing with virtually everything...there was a leftover I missed from like 5-6 versions ago
+- reduced scale of all icons from 0.65 to 0.35...sorry grandpa's you need to move closer...i've gotten new glasses
+- label font size set to 10
+- entirely removed star label toggle -> major reason: pointless and without use, not so major reason: stupid me can't manage to fix with hover state and is actually fed up with it
+- placed load/save map state out of settings and in place of previous star label toggle
+- moved watch, stars: alpha/beta andraste, as well as carinae/eta cassiopeia further down to make way for previously mentioned changes
+- moved the close system button further to center and increased size by mucho
+- slightly reduced size of final star icon hover scale
+- improved overall accessibility and visual distinction of all system icon elements, for better, well, visual distinctive accessibility
+- fixed all weird behaviour for any of the system icons on refresh or starting the page
+- you will no longer need to press shift in order to show the star system custom journal text, it will be displayed on hover
+- if there is a journal entry for a specific system now, the system label will be underlined</p>

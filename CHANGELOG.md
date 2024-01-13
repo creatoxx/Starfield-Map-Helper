@@ -152,3 +152,5 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - fixed all weird behaviour for any of the system icons on refresh or starting the page
 - you will no longer need to press shift in order to show the star system custom journal text, it will be displayed on hover
 - if there is a journal entry for a specific system now, the system label will be underlined</p>
+<p>Hotfix 13.01.2024: - fixed broken alt key interaction
+- alt key interaction can now be toggled on the star system</p>

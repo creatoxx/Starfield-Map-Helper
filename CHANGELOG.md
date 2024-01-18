@@ -154,7 +154,7 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - if there is a journal entry for a specific system now, the system label will be underlined</p>
 <p>Hotfix 13.01.2024: - fixed broken alt key interaction
 - alt key interaction can now be toggled on the star system</p>
-<p>- full integration of the radio.html...https://www.nexusmods.com/starfield/mods/8086
+<p>Version 0.2, 18.1.2024: - full integration of the radio.html...https://www.nexusmods.com/starfield/mods/8086
 - set opacity of starfield icon to 100% for better visualibilittittiely
 - a blue circle will appear around the staricon so you know to interact with it
 - added version text to banner

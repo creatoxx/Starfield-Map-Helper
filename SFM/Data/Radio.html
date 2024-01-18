@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Radio Player</title>
+    <style>
+		html {
+			font-family: 'Orbitron'; 
+			font-size: 12px;		
+		}
+        body {
+            background-color: #B7B7B7;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+			background-image: url('Textures/Background.png');
+            background-size: cover;				
+        }
+
+        #player {
+            width: 300px;
+			z-index: 666;
+			margin-top: -25px;
+			margin-left: -10px;
+        }
+
+        #audioPlayer {
+            width: 100%;
+            background-color: #303E4D;
+            color: white;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+		
+        .buttonContainer {	
+			grid-template-columns: repeat(4, 1fr);
+			grid-gap: 8px;		
+            background-color: #303E4D;		
+            margin-top: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+			width: 320px;
+			height: 90px;
+        }		
+
+        #importButton,
+        #clearListButton,
+        #playAllButton,
+        #togglePlayerButton, 
+		#stopButton {	
+			font-family: 'Orbitron'; 	
+			font-size: 12px;			
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            margin-top: 10px;
+			margin-left: 1px;
+        }
+
+        #clearListButton {
+            background-color: #f44336;
+        }		
+
+		#playlist {
+			background-color: #303E4D;
+			border: 1px solid #666;
+			border-radius: 5px;
+			list-style: none;
+			padding: 5px;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+			grid-gap: 6px;
+			max-height: 680px;
+			width: 310px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		#playlist li {
+			background-color: #303E4D;
+			border: 1px solid #666;
+			border-radius: 5px;
+			padding: 8px;
+			cursor: pointer;
+			color: #B7B7B7;
+			font-size: 10px;
+			box-sizing: border-box;
+		}
+
+		#playlist li:hover {
+			text-decoration: underline;
+		}
+
+        .music-service {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .music-service a {
+            margin-bottom: 10px;
+        }
+
+        .music-service a img {
+            width: 120px;
+            height: auto;
+            cursor: pointer;
+        }	
+    </style>
+</head>
+<body>
+
+	<iframe id="star-animation" src="StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>		
+
+	<div id="player">
+		<img src="Textures/StarfieldBanner.png" style="margin-top: 20px; border-bottom-right-radius: 20px; border-top-right-radius: 20px;">
+		<p style="position: absolute; top: -2px; left: 20px; font-size: 24px; color: #B7B7B7;">
+			<a href="https://www.nexusmods.com/starfield/mods/8086" target="_blank" style="color: #B7B7B7; text-decoration: none;" onmouseover="this.style.color='cyan'" onmouseout="this.style.color='#B7B7B7'">Starfield Radio</a>
+		</p>	
+		<p style="position: absolute; top: 28px; left: 215px; font-size: 12px; color: #B7B7B7; letter-spacing: -1px;">
+			<span style="color: #B7B7B7; letter-spacing: 1px;">by </span>
+			<span class="blink" style="color: cyan; text-shadow: 0 0 10px cyan;">C</span>
+			<span style="color: #B7B7B7;">r</span>
+			<span style="color: cyan; text-shadow: 0 0 10px cyan;">E</span>
+			<span style="color: #B7B7B7;">a</span>
+			<span style="color: cyan; text-shadow: 0 0 10px cyan;">T</span>
+			<span style="color: #B7B7B7;">o</span>
+			<span style="color: cyan; text-shadow: 0 0 10px cyan;">X</span>
+			<span style="color: #B7B7B7;">x</span>				
+		</p>
+		<div id="svgContainer" onclick="toggleUrlInputs()" onmouseover="addCircle()" onmouseout="removeCircle()" style="position: absolute; top: 16px; left: 373px; width: 40px; height: 40px; cursor: pointer;">
+			<svg id="starfieldIcon" style="width: 100%; height: 100%;" x="0" y="0" width="35" height="35" opacity="1.0">
+				<circle id="hoverCircle" cx="50%" cy="50%" r="18" fill="none" stroke="cyan" stroke-width="2" style="visibility: hidden;" />
+				<image xlink:href="Textures/Icons/SVG/StarfieldIcon.svg" x="2.5" y="2.5" width="35" height="35" />
+			</svg>
+		</div>
+		<audio id="audioPlayer" controls autoplay="false" style="width: 100%; margin-top: 10px;">
+			Your browser does not support the audio element.
+		</audio>
+		<div class="buttonContainer">
+			<button id="importButton" onclick="document.getElementById('fileInput').click()">Import Music</button>
+			<button id="clearListButton" onclick="clearPlaylist()">Clear List</button>
+			<button id="playAllButton" onclick="playAll()">Play All</button>
+			<a href="https://www.deezer.com/" target="_blank">
+				<img src="https://pbs.twimg.com/profile_images/1727315676052746240/i5jAsf69_400x400.png" alt="Deezer" style="width: 30px; height: auto; margin-top: 7px; margin-right: 235px;">
+			</a>
+			<button id="togglePlayerButton" onclick="togglePlayer()" style="font-size: 12px; position: absolute; margin-top: 7px; margin-left: -235px; padding-left: 12px;">Toggle Playlist</button>
+			<button id="stopButton" onclick="stopMusic()" style="position: absolute; margin-top: 7px; margin-left: -108px;">Stop Music</button>
+			<a href="https://www.spotify.com/" target="_blank">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/512px-Spotify_icon.svg.png" alt="Spotify" style="width: 30px; height: auto; margin-top: 5px;">
+			</a>
+			<input type="file" accept="audio/*" multiple id="fileInput" style="display: none; margin-top: 10px;">
+		</div>
+		<a href="https://music.amazon.com/" target="_blank" style="position: relative; top: 10px; left: 20px;">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Amazon_music_logo.svg/800px-Amazon_music_logo.svg.png" alt="Amazon Music" style="width: 300px; height: auto;">
+		</a>	
+		<ul id="playlist"></ul>
+	</div>	
+	
+	<div class="container" style="width: 81.5%; background-color: #303E4D; border: 1px solid #666; border-radius: 5px; position: absolute; left: 346px; top: 70px">
+		<iframe id="containerIframe" style="border-radius: 12px; width: 100%; position: relative; z-index: 666;" height="835" frameBorder="0" allow="encrypted-media; clipboard-write; fullscreen; picture-in-picture" loading="lazy"></iframe>
+	</div>
+	
+	<!-- Inside #player -->
+	<!-- example deezer: https://widget.deezer.com/widget/dark/album/475796135 example spotify: https://open.spotify.com/embed/playlist/4G73za8amBGtcFyINZMx1n?utm_source=generator -->
+	<div id="urlInputs" style="position: absolute; top: 15px; left: 425px; z-index: 666; background-color: #303E4D; border: 1px solid #666; border-radius: 5px; padding: 10px; display: none;">
+		<input type="text" id="spotifyInput" placeholder="Spotify URL" style="width: 400px; z-index: 666;">
+		<input type="text" id="deezerInput" placeholder="Deezer URL" style="width: 400px; z-index: 666;">
+	</div>
+
+	<script>
+		// Retrieve saved URLs and playlist from local storage on page load
+		document.addEventListener('DOMContentLoaded', function () {
+			const savedSpotifyInput = localStorage.getItem('spotifyInput');
+			const savedDeezerInput = localStorage.getItem('deezerInput');
+			const savedPlaylist = localStorage.getItem('playlist');
+
+			if (savedSpotifyInput) {
+				document.getElementById('spotifyInput').value = savedSpotifyInput;
+			}
+
+			if (savedDeezerInput) {
+				document.getElementById('deezerInput').value = savedDeezerInput;
+			}
+
+			if (savedPlaylist) {
+				const parsedPlaylist = JSON.parse(savedPlaylist);
+
+				// Populate the playlist from local storage
+				const playlist = document.getElementById('playlist');
+				playlist.innerHTML = '';
+
+				for (let i = 0; i < parsedPlaylist.length; i++) {
+					const listItem = document.createElement('li');
+					listItem.textContent = parsedPlaylist[i];
+					listItem.addEventListener('click', () => playSavedSong(parsedPlaylist[i]));
+					playlist.appendChild(listItem);
+				}
+			}
+		});
+
+		const audioPlayer = document.getElementById('audioPlayer');
+		const playlist = document.getElementById('playlist');
+		const fileInput = document.getElementById('fileInput');
+		const spotifyInput = document.getElementById('spotifyInput');
+		const deezerInput = document.getElementById('deezerInput');
+
+		function playSavedSong(fileUrl) {
+			audioPlayer.src = fileUrl;
+			// auto play on song fill...keep it here for future wishes?
+			// audioPlayer.play();
+		}
+
+		function playAll() {
+			const playlistItems = playlist.getElementsByTagName('li');
+
+			function playNext(index) {
+				if (index < playlistItems.length) {
+					playlistItems[index].click();
+
+					audioPlayer.addEventListener('ended', function () {
+						playNext(index + 1);
+					});
+				}
+			}
+
+			playNext(0);
+		}
+
+		function clearPlaylist() {
+			playlist.innerHTML = '';
+			audioPlayer.pause();
+			audioPlayer.src = '';
+			fileInput.value = '';
+			// Clear the playlist from local storage
+			localStorage.removeItem('playlist');
+		}
+
+		function togglePlayer() {
+			// Save current URLs to local storage
+			localStorage.setItem('spotifyInput', spotifyInput.value);
+			localStorage.setItem('deezerInput', deezerInput.value);
+
+			const containerIframe = document.getElementById('containerIframe');
+
+			if (audioPlayer.src === spotifyInput.value) {
+				audioPlayer.src = deezerInput.value;
+				containerIframe.src = deezerInput.value;
+				console.log("Toggled to Deezer");
+			} else if (audioPlayer.src === deezerInput.value) {
+				audioPlayer.src = '';
+				containerIframe.src = '';
+				console.log("Toggled to empty iframe");
+			} else {
+				audioPlayer.src = spotifyInput.value;
+				containerIframe.src = spotifyInput.value;
+				console.log("Toggled to Spotify");
+			}
+		}
+
+		function stopMusic() {
+			audioPlayer.pause();
+		}
+
+		fileInput.addEventListener('change', function () {
+			const files = this.files;
+
+			const playlistItems = [];
+
+			if (files.length > 0) {
+				for (let i = 0; i < files.length; i++) {
+					const listItem = document.createElement('li');
+					listItem.textContent = files[i].name;
+					listItem.addEventListener('click', () => playSong(files[i]));
+					playlist.appendChild(listItem);
+
+					playlistItems.push(files[i].name);
+				}
+
+				// Save the playlist to local storage
+				localStorage.setItem('playlist', JSON.stringify(playlistItems));
+
+				// auto play on list fill...keep it here for future wishes?
+				//playAll();
+			}
+		});
+
+		function playSong(file) {
+			audioPlayer.src = URL.createObjectURL(file);
+			// auto play on song fill...keep it here for future wishes?
+			// audioPlayer.play();
+		}
+
+		function toggleUrlInputs() {
+			const urlInputs = document.getElementById('urlInputs');
+			urlInputs.style.display = (urlInputs.style.display === 'none' || urlInputs.style.display === '') ? 'block' : 'none';
+		}
+
+		function addCircle() {
+			document.getElementById('hoverCircle').style.visibility = 'visible';
+		}
+
+		function removeCircle() {
+			document.getElementById('hoverCircle').style.visibility = 'hidden';
+		}
+	</script>
+
+</body>
+</html>

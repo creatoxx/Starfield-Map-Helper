@@ -41,3 +41,12 @@ function openInfo(bodyID) {
 		var newWindow = window.open(url, 'newWindow', 'width=1440,height=810,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
 	}
 }
+
+function openWiki(labelID) {
+	if (labelID) {
+		var url = 'https://en.wikipedia.org/wiki/' + labelID;
+		var leftOffset = (window.innerWidth - 1440) / 2;
+		var topOffset = (window.innerHeight - 810) / 2;
+		var newWindow = window.open(url, 'newWindow', 'width=1440,height=810,' + 'left=' + leftOffset + ',top=' + topOffset + ',resizable=no,scrollbars=no,status=no');
+	}
+}

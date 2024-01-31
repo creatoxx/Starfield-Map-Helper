@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Codex</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;                   
+            font-family: 'Orbitron';
+            font-size: 12px;
+            background-size: cover;
+            backdrop-filter: blur(10px);            
+            overflow: hidden;
+        }   
+        
+        .primaryBox {
+            width: 100vw;
+            height: 100vh;               
+        }   
+
+        .codexSystem {     
+			width: 98.9%;		
+            background: transparent;        
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            margin-top: 60px;
+			margin-left: 10px;
+            overflow: hidden;
+            position: relative;
+			gap: 3px;
+        }
+
+        .box {      
+            width: 18px;
+            height: 18px;
+            box-sizing: border-box;
+            cursor: pointer;
+            background: rgba(48, 62, 77, 1.0);
+            color: #B7B7B7;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            border: 4px inset #B7B7B7;			
+        }
+
+        .box.expanded {
+            width: 100%;
+            height: 100%;  
+            position: absolute;
+            z-index: 999;		
+        }
+		
+        .box:not(.expanded) + .textInput {
+			height: 18px;
+            width: 272px;
+            box-sizing: border-box;
+            padding-left: 2px;
+			gap: 1px;
+			font-family: 'Orbitron';
+            font-size: 14px;
+            background: transparent;
+            border: 1px inset #B7B7B7;
+            color: #B7B7B7;
+            outline: none;
+            margin-right: 10px;
+            display: inline-block;
+			background: rgba(48, 62, 77, 1.0);
+        }		
+
+        .box.expanded textarea {
+            height: 200px;
+			width: 300px;
+            margin-top: 5px;
+			margin-left: 5px;
+            overflow-y: hidden;
+            border: 2px inset #B7B7B7;				
+        }
+
+		.box textarea {
+			width: 20%;
+			height: 20%;
+			box-sizing: border-box;
+			padding: 5px;
+			font-size: 12px;
+			margin: 0;
+			resize: none;
+			background: transparent;
+			border: 2px inset #B7B7B7;
+			color: #B7B7B7;
+			outline: none;
+			margin-right: 10px;
+		}
+
+		.box .imageURL-input, 
+			.imageURL-input2, .imageURL-input3, 
+			.imageURL-input4, .imageURL-input5, 
+			.imageURL-input6, .imageURL-input7,
+			.imageURL-input8, .imageURL-input9,
+			.imageURL-input10, .imageURL-input11,
+			.imageURL-input12 {
+			width: 15.8%;
+			box-sizing: border-box;
+			padding: 5px;
+			font-size: 12px;
+			background: transparent;
+			border: 2px inset #B7B7B7;
+			color: #B7B7B7;
+			outline: none;
+			display: block;
+			margin-top: 5px;
+			margin-left: 5px;			
+		}	
+
+		.box img, img.second-image, 
+			img.third-image, img.fourth-image, 
+			img.fifth-image, img.sixth-image, 
+			img.seventh-image, img.eigth-image,
+			img.nineth-image, img.tenth-image,
+			img.eleventh-image, img.twelveth-image {
+			max-width: calc(28.35% - 10px);
+			max-height: calc(28.35% - 70px);
+            border: 2px inset #B7B7B7; 	
+			position: absolute;		
+			display: none;
+		}		
+		
+        button {
+            position: fixed;
+            padding: 10px;
+            cursor: pointer;
+        }  
+
+        #exportBtn, #importBtn,
+			#extBtn, #extBox {
+			background: rgba(48, 62, 77, 1.0);
+            font-family: 'Orbitron';
+            font-size: 12px;	
+			color: #B7B7B7;			
+        }		
+
+        #exportBtn {
+            left: 44.5%;
+            top: 10px;
+            transform: translateX(-290%);
+        }
+
+        #importFile {
+            position: fixed;
+            opacity: 0;
+        }
+
+        #importBtn {
+            left: 54.5%;
+            top: 10px;
+            transform: translateX(-327.5%);
+        }       
+
+        #extBtn {
+            left: 10%;
+            top: 10px;
+            transform: translateX(200%);
+            z-index: 999;
+        }
+		
+        #extBox {
+            left: 10%;
+            top: 10px;
+            transform: translateX(532.5%);
+            z-index: 999;
+			display: none;
+        }		
+                
+    </style>
+</head>
+<body>
+
+	<div class="primaryBox">
+		<div class="codexSystem"></div>
+		<button id="exportBtn" onclick="exportToJson()">Export to JSON</button>
+		<input type="file" id="importFile" accept=".json" />
+		<button id="importBtn" onclick="importFromJson()">Import from JSON</button>
+		<button id="extBtn" onclick="exitcodex()">Close Codex Tabs</button>  
+		<button id="extBox" onclick="exitSystemBox()">Close Codex Box</button>		
+	</div>
+
+    <script>
+        const totalBoxes = 240;
+        const codex = document.querySelector('.codexSystem');
+        const extBoxButton = document.getElementById("extBox");	
+
+		function createBox() {
+			const box = document.createElement('div');
+			box.className = 'box';
+
+			const textarea1 = document.createElement('textarea');
+			textarea1.placeholder = 'Write your first codex entry...';
+			textarea1.maxLength = 500;
+
+			const textarea2 = document.createElement('textarea');
+			textarea2.placeholder = 'Write your second codex entry...';
+			textarea2.maxLength = 500;
+			
+			const textarea3 = document.createElement('textarea');
+			textarea3.placeholder = 'Write your third codex entry...';
+			textarea3.maxLength = 500;
+
+			const textarea4 = document.createElement('textarea');
+			textarea4.placeholder = 'Write your fourth codex entry...';
+			textarea4.maxLength = 500;
+
+			const textarea5 = document.createElement('textarea');
+			textarea5.placeholder = 'Write your fifth codex entry...';
+			textarea5.maxLength = 500;	
+
+			const textarea6 = document.createElement('textarea');
+			textarea6.placeholder = 'Write your sixth codex entry...';
+			textarea6.maxLength = 500;
+
+			const textarea7 = document.createElement('textarea');
+			textarea7.placeholder = 'Write your seventh codex entry...';
+			textarea7.maxLength = 500;	
+			textarea7.style.position = 'absolute';
+			textarea7.style.top = '74.5%';
+			textarea7.style.left = '0%';
+			
+			const textarea8 = document.createElement('textarea');
+			textarea8.placeholder = 'Write your eigth codex entry...';
+			textarea8.maxLength = 500;	
+			textarea8.style.position = 'absolute';
+			textarea8.style.top = '74.5%';
+			textarea8.style.left = '16.66%';	
+
+			const textarea9 = document.createElement('textarea');
+			textarea9.placeholder = 'Write your ninth codex entry...';
+			textarea9.maxLength = 500;	
+			textarea9.style.position = 'absolute';
+			textarea9.style.top = '74.5%';
+			textarea9.style.left = '33.33%';
+
+			const textarea10 = document.createElement('textarea');
+			textarea10.placeholder = 'Write your tenth codex entry...';
+			textarea10.maxLength = 500;	
+			textarea10.style.position = 'absolute';
+			textarea10.style.top = '74.5%';
+			textarea10.style.left = '50%';
+
+			const textarea11 = document.createElement('textarea');
+			textarea11.placeholder = 'Write your eleventh codex entry...';
+			textarea11.maxLength = 500;	
+			textarea11.style.position = 'absolute';
+			textarea11.style.top = '74.5%';
+			textarea11.style.left = '66.66%';
+
+			const textarea12 = document.createElement('textarea');
+			textarea12.placeholder = 'Write your twelveth codex entry...';
+			textarea12.maxLength = 500;	
+			textarea12.style.position = 'absolute';
+			textarea12.style.top = '74.5%';
+			textarea12.style.left = '83.33%';			
+
+			const imageURLInput1 = document.createElement('input');
+			imageURLInput1.className = 'imageURL-input';
+			imageURLInput1.type = 'text';
+			imageURLInput1.placeholder = 'Enter image URL 1...';
+
+			const imageURLInput2 = document.createElement('input');
+			imageURLInput2.className = 'imageURL-input2';
+			imageURLInput2.type = 'text';
+			imageURLInput2.placeholder = 'Enter image URL 2...';
+			imageURLInput2.style.marginTop = '-28px';
+			imageURLInput2.style.marginLeft = '320px';
+			
+			const imageURLInput3 = document.createElement('input');
+			imageURLInput3.className = 'imageURL-input3';
+			imageURLInput3.type = 'text';
+			imageURLInput3.placeholder = 'Enter image URL 3...';
+			imageURLInput3.style.marginTop = '-28.5px';
+			imageURLInput3.style.marginLeft = '635px';		
+
+			const imageURLInput4 = document.createElement('input');
+			imageURLInput4.className = 'imageURL-input4';
+			imageURLInput4.type = 'text';
+			imageURLInput4.placeholder = 'Enter image URL 4...';
+			imageURLInput4.style.marginTop = '-28px';
+			imageURLInput4.style.marginLeft = '950px';	
+
+			const imageURLInput5 = document.createElement('input');
+			imageURLInput5.className = 'imageURL-input5';
+			imageURLInput5.type = 'text';
+			imageURLInput5.placeholder = 'Enter image URL 5...';
+			imageURLInput5.style.marginTop = '-28px';
+			imageURLInput5.style.marginLeft = '1265px';	
+
+			const imageURLInput6 = document.createElement('input');
+			imageURLInput6.className = 'imageURL-input6';
+			imageURLInput6.type = 'text';
+			imageURLInput6.placeholder = 'Enter image URL 6...';
+			imageURLInput6.style.marginTop = '-27.5px';
+			imageURLInput6.style.marginLeft = '1580px';	
+
+			const imageURLInput7 = document.createElement('input');
+			imageURLInput7.className = 'imageURL-input7';
+			imageURLInput7.type = 'text';
+			imageURLInput7.placeholder = 'Enter image URL 7...';
+			imageURLInput7.style.marginTop = '344px';
+			imageURLInput7.style.marginLeft = '5px';
+
+			const imageURLInput8 = document.createElement('input');
+			imageURLInput8.className = 'imageURL-input8';
+			imageURLInput8.type = 'text';
+			imageURLInput8.placeholder = 'Enter image URL 8...';
+			imageURLInput8.style.marginTop = '-28px';
+			imageURLInput8.style.marginLeft = '320px';				
+
+			const imageURLInput9 = document.createElement('input');
+			imageURLInput9.className = 'imageURL-input9';
+			imageURLInput9.type = 'text';
+			imageURLInput9.placeholder = 'Enter image URL 9...';
+			imageURLInput9.style.marginTop = '-28px';
+			imageURLInput9.style.marginLeft = '635px';	
+
+			const imageURLInput10 = document.createElement('input');
+			imageURLInput10.className = 'imageURL-input10';
+			imageURLInput10.type = 'text';
+			imageURLInput10.placeholder = 'Enter image URL 10...';
+			imageURLInput10.style.marginTop = '-28px';
+			imageURLInput10.style.marginLeft = '950px';	
+
+			const imageURLInput11 = document.createElement('input');
+			imageURLInput11.className = 'imageURL-input11';
+			imageURLInput11.type = 'text';
+			imageURLInput11.placeholder = 'Enter image URL 11...';
+			imageURLInput11.style.marginTop = '-28px';
+			imageURLInput11.style.marginLeft = '1265px';	
+
+			const imageURLInput12 = document.createElement('input');
+			imageURLInput12.className = 'imageURL-input12';
+			imageURLInput12.type = 'text';
+			imageURLInput12.placeholder = 'Enter image URL 12...';
+			imageURLInput12.style.marginTop = '-28px';
+			imageURLInput12.style.marginLeft = '1580px';	
+
+			const img = document.createElement('img');
+			img.style.display = 'none';
+
+			const img2 = document.createElement('img');
+			img2.style.display = 'none';
+			img2.className = 'second-image';
+
+			const img3 = document.createElement('img');
+			img3.style.display = 'none';
+			img3.className = 'third-image';
+
+			const img4 = document.createElement('img');
+			img4.style.display = 'none';
+			img4.className = 'fourth-image';
+
+			const img5 = document.createElement('img');
+			img5.style.display = 'none';
+			img5.className = 'fifth-image';	
+
+			const img6 = document.createElement('img');
+			img6.style.display = 'none';
+			img6.className = 'sixth-image';	
+
+			const img7 = document.createElement('img');
+			img7.style.display = 'none';
+			img7.className = 'seventh-image';			
+
+			const img8 = document.createElement('img');
+			img8.style.display = 'none';
+			img8.className = 'eigth-image';
+
+			const img9 = document.createElement('img');
+			img9.style.display = 'none';
+			img9.className = 'nineth-image';
+
+			const img10 = document.createElement('img');
+			img10.style.display = 'none';
+			img10.className = 'tenth-image';
+
+			const img11 = document.createElement('img');
+			img11.style.display = 'none';
+			img11.className = 'eleventh-image';
+
+			const img12 = document.createElement('img');
+			img12.style.display = 'none';
+			img12.className = 'twelveth-image';			
+
+			box.appendChild(textarea1);
+			box.appendChild(textarea2);
+			box.appendChild(textarea3);
+			box.appendChild(textarea4);
+			box.appendChild(textarea5);
+			box.appendChild(textarea6);	
+			box.appendChild(textarea7);	
+			box.appendChild(textarea8);	
+			box.appendChild(textarea9);	
+			box.appendChild(textarea10);	
+			box.appendChild(textarea11);	
+			box.appendChild(textarea12);				
+			box.appendChild(imageURLInput1);
+			box.appendChild(imageURLInput2);
+			box.appendChild(imageURLInput3);
+			box.appendChild(imageURLInput4);
+			box.appendChild(imageURLInput5);
+			box.appendChild(imageURLInput6);
+			box.appendChild(imageURLInput7);
+			box.appendChild(imageURLInput8);
+			box.appendChild(imageURLInput9);
+			box.appendChild(imageURLInput10);
+			box.appendChild(imageURLInput11);
+			box.appendChild(imageURLInput12);			
+			box.appendChild(img);
+			box.appendChild(img2);
+			box.appendChild(img3);
+			box.appendChild(img4);
+			box.appendChild(img5);
+			box.appendChild(img6);
+			box.appendChild(img7);
+			box.appendChild(img8);
+			box.appendChild(img9);
+			box.appendChild(img10);
+			box.appendChild(img11);	
+			box.appendChild(img12);			
+
+			codex.appendChild(box);
+			
+            const textInput = document.createElement('input');
+            textInput.type = 'text';
+            textInput.className = 'textInput';
+            box.insertAdjacentElement('afterend', textInput);			
+
+			box.addEventListener('click', function (event) {
+				toggleExpand(box, event);
+			});
+
+			imageURLInput1.addEventListener('input', function () {
+				updateImage(box, img);
+			});
+
+			imageURLInput2.addEventListener('input', function () {
+				updateImage(box, img2);
+			});
+			
+			imageURLInput3.addEventListener('input', function () {
+				updateImage(box, img3);
+			});
+
+			imageURLInput4.addEventListener('input', function () {
+				updateImage(box, img4);
+			});
+
+			imageURLInput5.addEventListener('input', function () {
+				updateImage(box, img5);
+			});		
+
+			imageURLInput6.addEventListener('input', function () {
+				updateImage(box, img6);
+			});
+
+			imageURLInput7.addEventListener('input', function () {
+				updateImage(box, img7);
+			});
+
+			imageURLInput8.addEventListener('input', function () {
+				updateImage(box, img8);
+			});
+
+			imageURLInput9.addEventListener('input', function () {
+				updateImage(box, img9);
+			});
+
+			imageURLInput10.addEventListener('input', function () {
+				updateImage(box, img10);
+			});
+
+			imageURLInput11.addEventListener('input', function () {
+				updateImage(box, img11);
+			});
+
+			imageURLInput12.addEventListener('input', function () {
+				updateImage(box, img12);
+			});			
+		}
+
+		function toggleExpand(box, event) {
+			const isExpanded = box.classList.contains('expanded');
+
+			if (!isExpanded) {
+				const expandedBoxes = document.querySelectorAll('.box.expanded');
+				expandedBoxes.forEach((expandedBox) => {
+					expandedBox.classList.remove('expanded');
+				});			
+
+				const imageURLInput = box.querySelector('.imageURL-input');
+				const imageURLInput2 = box.querySelector('.imageURL-input2');
+				const imageURLInput3 = box.querySelector('.imageURL-input3');
+				const imageURLInput4 = box.querySelector('.imageURL-input4');
+				const imageURLInput5 = box.querySelector('.imageURL-input5');
+				const imageURLInput6 = box.querySelector('.imageURL-input6');
+				const imageURLInput7 = box.querySelector('.imageURL-input7');
+				const imageURLInput8 = box.querySelector('.imageURL-input8');
+				const imageURLInput9 = box.querySelector('.imageURL-input9');
+				const imageURLInput10 = box.querySelector('.imageURL-input10');
+				const imageURLInput11 = box.querySelector('.imageURL-input11');
+				const imageURLInput12 = box.querySelector('.imageURL-input12');					
+				const img = box.querySelector('img');
+				const img2 = box.querySelector('.second-image');
+				const img3 = box.querySelector('.third-image');
+				const img4 = box.querySelector('.fourth-image');
+				const img5 = box.querySelector('.fifth-image');
+				const img6 = box.querySelector('.sixth-image');
+				const img7 = box.querySelector('.seventh-img');
+				const img8 = box.querySelector('.eigth-image');	
+				const img9 = box.querySelector('.nineth-image');
+				const img10 = box.querySelector('.tenth-image');
+				const img11 = box.querySelector('.eleventh-image');
+				const img12 = box.querySelector('.twelveth-image');					
+
+				if (imageURLInput && img) {
+					const imageURL = imageURLInput.value;
+					if (imageURL) {
+						img.src = imageURL;
+						img.style.display = 'block';
+					} else {
+						img.style.display = 'none';
+					}
+				}
+				
+				if (imageURLInput2 && img2) {
+					const imageURL2 = imageURLInput2.value;
+					if (imageURL2) {
+						img2.src = imageURL2;
+						img2.style.display = 'block';
+					} else {
+						img2.style.display = 'none';
+					}
+				}	
+
+				if (imageURLInput3 && img3) {
+					const imageURL3 = imageURLInput3.value;
+					if (imageURL3) {
+						img3.src = imageURL3;
+						img3.style.display = 'block';
+					} else {
+						img3.style.display = 'none';
+					}
+				}
+
+				if (imageURLInput4 && img4) {
+					const imageURL4 = imageURLInput4.value;
+					if (imageURL4) {
+						img4.src = imageURL4;
+						img4.style.display = 'block';
+					} else {
+						img4.style.display = 'none';
+					}
+				}
+
+				if (imageURLInput5 && img5) {
+					const imageURL5 = imageURLInput5.value;
+					if (imageURL5) {
+						img5.src = imageURL5;
+						img5.style.display = 'block';
+					} else {
+						img5.style.display = 'none';
+					}
+				}
+
+				if (imageURLInput6 && img6) {
+					const imageURL6 = imageURLInput6.value;
+					if (imageURL6) {
+						img6.src = imageURL6;
+						img6.style.display = 'block';
+					} else {
+						img6.style.display = 'none';
+					}
+				}
+
+				if (imageURLInput7 && img7) {
+					const imageURL7 = imageURLInput7.value;
+					if (imageURL7) {
+						img7.src = imageURL7;
+						img7.style.display = 'block';
+					} else {
+						img7.style.display = 'none';
+					}
+				}
+
+				if (imageURLInput8 && img8) {
+					const imageURL8 = imageURLInput8.value;
+					if (imageURL8) {
+						img8.src = imageURL8;
+						img8.style.display = 'block';
+					} else {
+						img8.style.display = 'none';
+					}
+				}
+				
+				if (imageURLInput9 && img9) {
+					const imageURL9 = imageURLInput9.value;
+					if (imageURL9) {
+						img9.src = imageURL9;
+						img9.style.display = 'block';
+					} else {
+						img9.style.display = 'none';
+					}
+				}
+				
+				if (imageURLInput10 && img10) {
+					const imageURL10 = imageURLInput10.value;
+					if (imageURL10) {
+						img10.src = imageURL10;
+						img10.style.display = 'block';
+					} else {
+						img10.style.display = 'none';
+					}
+				}
+				
+				if (imageURLInput11 && img11) {
+					const imageURL11 = imageURLInput11.value;
+					if (imageURL11) {
+						img11.src = imageURL11;
+						img11.style.display = 'block';
+					} else {
+						img11.style.display = 'none';
+					}
+				}
+				
+				if (imageURLInput12 && img12) {
+					const imageURL12 = imageURLInput12.value;
+					if (imageURL12) {
+						img12.src = imageURL12;
+						img12.style.display = 'block';
+					} else {
+						img12.style.display = 'none';
+					}
+				}				
+
+				box.classList.add('expanded');
+				extBoxButton.style.display = 'block';
+			} else {
+				const isInsideExpandedBox = event.target.closest('.box.expanded');
+				const isInsideTextarea = event.target.tagName.toLowerCase() === 'textarea';
+
+				if (!isInsideExpandedBox && !isInsideTextarea) {
+					box.classList.remove('expanded');
+				}
+			}
+		}
+		
+		function updateImage(box) {
+			const imageURLInput = box.querySelector('.imageURL-input');
+			const img = box.querySelector('img');
+			const img2 = box.querySelector('.second-image');
+			const img3 = box.querySelector('.third-image');
+			const img4 = box.querySelector('.fourth-image');
+			const img5 = box.querySelector('.fifth-image');	
+			const img6 = box.querySelector('.sixth-image');
+			const img7 = box.querySelector('.seventh-image');	
+			const img8 = box.querySelector('.eigth-image');	
+			const img9 = box.querySelector('.nineth-image');	
+			const img10 = box.querySelector('.tenth-image');	
+			const img11 = box.querySelector('.eleventh-image');	
+			const img12 = box.querySelector('.twelveth-image');				
+
+			if (imageURLInput && img) {
+				const imageURL = imageURLInput.value;
+				img.style.display = imageURL ? 'block' : 'none';
+				img.src = imageURL;
+			}
+
+			if (imageURLInput && img2) {
+				const imageURL2 = box.querySelector('.imageURL-input2').value;
+				img2.style.display = imageURL2 ? 'block' : 'none';
+				img2.src = imageURL2;
+			}
+			
+			if (imageURLInput && img3) {
+				const imageURL3 = box.querySelector('.imageURL-input3').value;
+				img3.style.display = imageURL3 ? 'block' : 'none';
+				img3.src = imageURL3;
+			}
+
+			if (imageURLInput && img4) {
+				const imageURL4 = box.querySelector('.imageURL-input4').value;
+				img4.style.display = imageURL4 ? 'block' : 'none';
+				img4.src = imageURL4;
+			}
+
+			if (imageURLInput && img5) {
+				const imageURL5 = box.querySelector('.imageURL-input5').value;
+				img5.style.display = imageURL5 ? 'block' : 'none';
+				img5.src = imageURL5;
+			}
+
+			if (imageURLInput && img6) {
+				const imageURL6 = box.querySelector('.imageURL-input6').value;
+				img6.style.display = imageURL6 ? 'block' : 'none';
+				img6.src = imageURL6;
+			}
+
+			if (imageURLInput && img7) {
+				const imageURL7 = box.querySelector('.imageURL-input7').value;
+				img7.style.display = imageURL7 ? 'block' : 'none';
+				img7.src = imageURL7;
+			}
+
+			if (imageURLInput && img7) {
+				const imageURL7 = box.querySelector('.imageURL-input7').value;
+				img7.style.display = imageURL7 ? 'block' : 'none';
+				img7.src = imageURL7;
+			}
+
+			if (imageURLInput && img8) {
+				const imageURL8 = box.querySelector('.imageURL-input8').value;
+				img8.style.display = imageURL8 ? 'block' : 'none';
+				img8.src = imageURL8;
+			}
+
+			if (imageURLInput && img9) {
+				const imageURL9 = box.querySelector('.imageURL-input9').value;
+				img9.style.display = imageURL9 ? 'block' : 'none';
+				img9.src = imageURL9;
+			}
+			
+			if (imageURLInput && img10) {
+				const imageURL10 = box.querySelector('.imageURL-input10').value;
+				img10.style.display = imageURL10 ? 'block' : 'none';
+				img10.src = imageURL10;
+			}
+
+			if (imageURLInput && img11) {
+				const imageURL11 = box.querySelector('.imageURL-input11').value;
+				img11.style.display = imageURL11 ? 'block' : 'none';
+				img11.src = imageURL11;
+			}
+
+			if (imageURLInput && img12) {
+				const imageURL12 = box.querySelector('.imageURL-input12').value;
+				img12.style.display = imageURL12 ? 'block' : 'none';
+				img12.src = imageURL12;
+			}			
+			
+			if (img.style.display === 'block') {
+
+				img.style.top = '243px';
+				img.style.left = '5px';					
+			}
+			
+			if (img2.style.display === 'block') {
+
+				img2.style.top = '243px';
+				img2.style.left = '320px';					
+			}
+			if (img3.style.display === 'block') {
+
+				img3.style.top = '243px';
+				img3.style.left = '635px';					
+			}	
+
+			if (img4.style.display === 'block') {
+
+				img4.style.top = '243px';
+				img4.style.left = '950px';					
+			}
+
+			if (img5.style.display === 'block') {
+
+				img5.style.top = '243px';
+				img5.style.left = '1265px';					
+			}	
+
+			if (img6.style.display === 'block') {
+
+				img6.style.top = '243px';
+				img6.style.left = '1580px';					
+			}
+
+			if (img7.style.display === 'block') {
+
+				img7.style.top = '415px';
+				img7.style.left = '5px';					
+			}
+			
+			if (img8.style.display === 'block') {
+
+				img8.style.top = '415px';
+				img8.style.left = '320px';					
+			}
+
+			if (img9.style.display === 'block') {
+
+				img9.style.top = '415px';
+				img9.style.left = '635px';					
+			}	
+
+			if (img10.style.display === 'block') {
+
+				img10.style.top = '415px';
+				img10.style.left = '950px';					
+			}
+
+			if (img11.style.display === 'block') {
+
+				img11.style.top = '415px';
+				img11.style.left = '1265px';					
+			}
+
+			if (img12.style.display === 'block') {
+
+				img12.style.top = '415px';
+				img12.style.left = '1580px';					
+			}			
+			
+		}	
+		
+		function exitSystemBox() {
+			const expandedBoxes = document.querySelectorAll('.box.expanded');
+			expandedBoxes.forEach((expandedBox) => {
+				expandedBox.classList.remove('expanded');
+			});
+
+			extBoxButton.style.display = 'none';
+			saveToLocalStorage()
+		}	
+
+        function initializecodex() {
+            for (let i = 0; i < totalBoxes; i++) {
+                createBox();
+            }
+			loadFromLocalStorage()
+        }
+        
+        initializecodex();     
+        
+        function exitcodex() {
+            parent.postMessage('closeCodexJournal', '*');
+			saveToLocalStorage()
+        }
+
+		function exportToJson() {
+			const boxes = document.querySelectorAll('.box');
+			const codexData = [];
+
+			boxes.forEach((box, index) => {
+				const codexEntry = {
+					id: index + 1,
+					textAreas: [],
+					imageUrls: [],
+					imagePositions: [],
+					textInput: ''
+				};
+
+				const textAreas = box.querySelectorAll('textarea');
+				textAreas.forEach((textarea, i) => {
+					codexEntry.textAreas.push({
+						entryNumber: i + 1,
+						content: textarea.value
+					});
+				});
+
+				const imageURLInputs = box.querySelectorAll('input[type="text"]');
+				imageURLInputs.forEach((input, i) => {
+					codexEntry.imageUrls.push({
+						entryNumber: i + 1,
+						url: input.value
+					});
+				});
+
+				const imageElements = box.querySelectorAll('img');
+				imageElements.forEach((img, i) => {
+					const position = {
+						entryNumber: i + 1,
+						top: img.style.top,
+						left: img.style.left
+					};
+					codexEntry.imagePositions.push(position);
+				});
+
+				const textInput = box.nextElementSibling;
+				if (textInput && textInput.classList.contains('textInput')) {
+					codexEntry.textInput = textInput.value;
+				}
+
+				codexData.push(codexEntry);
+			});
+
+			const jsonData = JSON.stringify(codexData, null, 2);
+			
+			localStorage.setItem('codexData', jsonData);
+
+			const blob = new Blob([jsonData], { type: 'application/json' });
+			const url = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = url;
+			a.download = 'journalCodex.json';
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+			URL.revokeObjectURL(url);
+		}
+
+		function importFromJson() {
+			const inputElement = document.getElementById('importFile');
+			
+			inputElement.addEventListener('change', (event) => {
+				const file = event.target.files[0];
+
+				if (file) {
+					const reader = new FileReader();
+
+					reader.onload = function (e) {
+						const importedData = JSON.parse(e.target.result);
+						populatecodex(importedData);
+					};
+
+					reader.readAsText(file);
+				}
+			});
+
+			inputElement.click();
+		}
+
+		function populatecodex(importedData) {
+			const boxes = document.querySelectorAll('.box');
+
+			importedData.forEach((codexEntry, index) => {
+				const box = boxes[index];
+
+				const textAreas = box.querySelectorAll('textarea');
+				textAreas.forEach((textarea, i) => {
+					textarea.value = codexEntry.textAreas[i].content;
+				});
+
+				const imageURLInputs = box.querySelectorAll('input[type="text"]');
+				imageURLInputs.forEach((input, i) => {
+					input.value = codexEntry.imageUrls[i].url;
+				});
+
+				const imageElements = box.querySelectorAll('img');
+				imageElements.forEach((img, i) => {
+					const position = codexEntry.imagePositions.find(pos => pos.entryNumber === i + 1);
+					if (position) {
+						img.style.top = position.top;
+						img.style.left = position.left;
+					}
+				});
+
+				const textInput = box.nextElementSibling;
+				if (textInput && textInput.classList.contains('textInput')) {
+					textInput.value = codexEntry.textInput;
+				}
+			});
+		}	
+
+		function saveToLocalStorage() {
+			const boxes = document.querySelectorAll('.box');
+			const codexData = [];
+
+			boxes.forEach((box, index) => {
+				const codexEntry = {
+					id: index + 1,
+					textAreas: [],
+					imageUrls: [],
+					imagePositions: [],
+					textInput: ''
+				};
+
+				const textAreas = box.querySelectorAll('textarea');
+				textAreas.forEach((textarea, i) => {
+					codexEntry.textAreas.push({
+						entryNumber: i + 1,
+						content: textarea.value
+					});
+				});
+
+				const imageURLInputs = box.querySelectorAll('input[type="text"]');
+				imageURLInputs.forEach((input, i) => {
+					codexEntry.imageUrls.push({
+						entryNumber: i + 1,
+						url: input.value
+					});
+				});
+
+				const imageElements = box.querySelectorAll('img');
+				imageElements.forEach((img, i) => {
+					const position = {
+						entryNumber: i + 1,
+						top: img.style.top,
+						left: img.style.left
+					};
+					codexEntry.imagePositions.push(position);
+				});
+
+				const textInput = box.nextElementSibling;
+				if (textInput && textInput.classList.contains('textInput')) {
+					codexEntry.textInput = textInput.value;
+				}
+
+				codexData.push(codexEntry);
+			});
+
+			const jsonData = JSON.stringify(codexData, null, 2);
+
+			localStorage.setItem('codexData', jsonData);
+		}
+
+		function loadFromLocalStorage() {
+			const jsonData = localStorage.getItem('codexData');
+
+			if (jsonData) {
+				const importedData = JSON.parse(jsonData);
+				populatecodex(importedData);
+			}
+		}
+
+		loadFromLocalStorage();		
+        
+    </script>
+</body>
+</html>

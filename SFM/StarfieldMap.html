@@ -40,7 +40,7 @@
             left: 890px;
             background-color: rgba(255, 255, 255, 0.7);
             border: 1px solid #000;
-			z-index: 3;
+			z-index: 999;
 			padding: 5px;
         }		
 
@@ -123,7 +123,7 @@
 		.star-icon-box{
 			position: fixed;	
 			top: 63px;
-			left: 362px;
+			left: 162px;
 			display: inline-block;
 			padding: 0 5px;
 			height: 95px;
@@ -161,51 +161,6 @@
 			gap: 10px;
 			z-index: 666;
 		}	
-
-		#extended-info-container {
-			position: absolute;
-			top: 63px;
-			left: calc(10px + 150px);
-			width: 180px;
-			height: 180px;
-			background: rgba(48, 62, 77, 1.0);
-			color: #B7B7B7;
-			border: 2px inset #B7B7B7; 
-			border-right: solid black; 
-			border-bottom: solid black;
-			z-index: 2;
-			display: none;
-			white-space: pre-line;
-			max-width: 200px;
-			max-height: 200px;
-			overflow: hidden;
-		}
-
-		#extended-info-text {
-			padding: 10px;
-		}			
-
-		.star-info {	
-			position: fixed;
-			padding: 10px;
-			width: 200px;
-			height: 200px;			
-			z-index: 666;
-			bottom: 10px;
-			right: 10px;
-			max-width: 200px;
-			max-height: 200px;
-			display: none;
-		}
-
-		.star-info textarea {
-			background-color: black;
-			color: white;
-			z-index: 666;			
-			width: 100%;
-			height: 100%;
-			resize: none;		
-		}		
 
 		.banner-starfield span {
 			position: relative;
@@ -360,7 +315,7 @@
             border-radius: 50%;
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 70%;
             transform: translate(-50%, -50%) scale(1.35);
             overflow: hidden;
 			background: black;
@@ -382,19 +337,22 @@
 		
 		.element-box {
 			position: absolute;		
-			left: 160px;
-			top: 64px;
-			width: 280px;
-			height: 192px;
+			left: 10px;
+			top: 10px;
+			width: 618px;
+			height: 196px;
+			padding-top: 12px;
+			padding-left: 10px;
 			background-color: rgba(48, 62, 77, 1.0);
 			border: 2px inset #B7B7B7; 
 			border-right: solid black; 
 			border-bottom: solid black;	
 			color: #B7B7B7;			
-			font-size: 10px;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;				
-			display: none;
+			font-size: 11px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5px;				
+			z-index: 999;
+			display: none;			
 		}	
 
         .text-box {
@@ -451,6 +409,14 @@
 			left: -22px;
 			content: url("Data/Textures/Icons/StaryardMarker.png");			
 		}	
+		
+		.outpost-marker {
+			scale: 0.35;		
+			top: 13.0px; 
+			left: -23px;
+			content: url("Data/Textures/Icons/OutpostMarker.png");
+			display: none;			
+		}		
     </style>	
 </head>
 <body>
@@ -466,7 +432,7 @@
 			</p>
 			<p style="position: absolute; top: 32px; left: 30px; font-size: 8px; color: #00FFFF; letter-spacing: 1px; z-index: 2;">
 				<span style="letter-spacing: 1px;">Version: </span>
-				<span style="">0.1.3.19</span>			
+				<span style="">0.3</span>			
 			</p>			
 			<p style="position: absolute; top: 25px; left: 285px; font-size: 10px; color: #B7B7B7; letter-spacing: -1px; z-index: 2;">
 				<span style="color: #B7B7B7; letter-spacing: 1px;">by </span>
@@ -708,45 +674,21 @@
 		<div class="background-blur"></div>	
 		<iframe id="music-player" src="Data/Radio.html" style="display: none; transform: scale(0.8); position: absolute; top: -34px; left: -36px; width: 1920px; height: 972px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 999;"></iframe>		
 		<iframe id="real-time-watch" src="Data/RealTimeWatch.html" style="position: absolute; top: 161px; left: 10px; width: 135px; height: 55px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black; background-color: rgba(48, 62, 77, 1.0); z-index: 666;"></iframe>
-		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>		
-		<iframe id="journal-frame" src="Data/Journal.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.0);"></iframe>				
-		<iframe class="system-iframe" id="system-alpha-centauri" src="Data/Systems/SystemAlphaCentauri.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-altair" src="Data/Systems/SystemAltair.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-bessel" src="Data/Systems/SystemBessel.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>						
-		<iframe class="system-iframe" id="system-barnards-star" src="Data/Systems/SystemBarnardsStar.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-kapteyns-star" src="Data/Systems/SystemKapteynsStar.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>		
-		<iframe class="system-iframe" id="system-luytens-star" src="Data/Systems/SystemLuytensStar.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-narion" src="Data/Systems/SystemNarion.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>		
-		<iframe class="system-iframe" id="system-piazzi" src="Data/Systems/SystemPiazzi.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-procyonA" src="Data/Systems/SystemProcyonA.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-procyonB" src="Data/Systems/SystemProcyonB.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-sirius" src="Data/Systems/SystemSirius.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>		
-		<iframe class="system-iframe" id="system-sol" src="Data/Systems/SystemSol.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-tau-ceti" src="Data/Systems/SystemTauCeti.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-the-pup" src="Data/Systems/SystemThePup.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-toliman" src="Data/Systems/SystemToliman.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>		
-		<iframe class="system-iframe" id="system-valo" src="Data/Systems/SystemValo.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>				
-		<iframe class="system-iframe" id="system-van-maanen" src="Data/Systems/SystemVanMaanen.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>						
-		<iframe class="system-iframe" id="system-vega" src="Data/Systems/SystemVega.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-		<iframe class="system-iframe" id="system-wolf" src="Data/Systems/SystemWolf.html" width="1400" height="800" style="border: 8px inset #B7B7B7; border-right: 8px solid black; border-bottom: 8px solid black; background-color: rgba(48, 62, 77, 1.0); transform: scale(0.25); position: absolute; top: -260px; left: 675px; display: none;"></iframe>
-
-		<button class="system-button" onclick="closeSystemInfo()">Close System</button>
-				
+		<iframe id="star-animation" src="Data/StarAnimation.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgba(0, 0, 0, 0.5);"></iframe>			
+		<iframe id="journal-frame" src="Data/Journal.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; 
+			background-color: rgba(0, 0, 0, 0.0);"></iframe>
+		<iframe id="journal-system-frame" src="Data/JournalSystem.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; 
+			background-color: rgba(0, 0, 0, 0.0);"></iframe>
+		<iframe id="journal-codex-frame" src="Data/JournalSurvey.html" style="display: none; z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; 
+			background-color: rgba(0, 0, 0, 0.0);"></iframe>			
+		
 		<div class="settings-info">
 			<button class="close-settings-button" onclick="closeSettingsInfo(); playToggleReverse()">X</button>
 
 			<div class="hotkey-info" style="margin-left: 5px;">
 				<div class="hotkey-description">
 					<h1 class="hotkey">Starmap Hotkeys</h1>
-				</div>
-				<div class="hotkey-description">
-					<span class="hotkey">Double Click Star Icon = </span> Show System Widget
-				</div>
-				<div class="hotkey-description">
-					<span class="hotkey">Ctrl-Click Star Icon = </span> Show System Journal
-				</div>	
-				<div class="hotkey-description">
-					<span class="hotkey">Mouseover Star Icon = </span> Show System Information
+					<span class="hotkey">Double Click Star Icon = </span> Open UESP Wiki Link					
 				</div>
 				<div class="hotkey-description">
 					<span class="hotkey">Alt-Click Star Icon = </span> Show System Properties
@@ -761,6 +703,12 @@
 					<span class="hotkey">"j" = </span> Show Global Journal
 				</div>	
 				<div class="hotkey-description">
+					<span class="hotkey">"s" = </span> Show System Journal
+				</div>
+				<div class="hotkey-description">
+					<span class="hotkey">"c" = </span> Show Codex Journal
+				</div>				
+				<div class="hotkey-description">
 					<span class="hotkey">"F3 or CTRL+F" = </span> Open Search Bar
 				</div>	
 				<div class="hotkey-description">
@@ -769,13 +717,6 @@
 				<div class="hotkey-description">
 					<span class="hotkey">"F12" = </span> Browser Debug Mode
 				</div>			
-			</div>
-
-			<div class="hotkey-info" style="padding-left: 80px">
-				<div class="hotkey-description">
-					<h1 class="hotkey">System Widget Hotkeys</h1>                
-					<span class="hotkey">Double Click Star Icon = </span> Open System Wiki Link
-				</div>
 			</div>
 
 			<div class="hotkey-info" style="padding-left: 40px">
@@ -815,22 +756,15 @@
 				</div>
 			</div>			
 		</div>
-
-		<div class="star-info" id="starInfo">
-			<textarea id="starInfoText"></textarea>
-		</div>		
+		
 		
 		<div id="button-container" style="width: 140px;">
 			<button onclick="toggleSettingsInfo(); playToggleLabel()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Settings</button>								
-			<!--button onclick="toggleStarLabels(); playToggleLabel()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Toggle Star Labels</button-->
 			<button class="custom-file-output" onclick="saveToFile()" style="cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px;" onmouseover="this.style.color='cyan'; this.style.fontWeight='bold'" onmouseout="this.style.color='#B7B7B7'; this.style.fontWeight='normal'">Save Map State</button>
 			<div class="file-input-container" style="padding: 3px; height: 15px; cursor: pointer; background-color: #303E4D; color: #B7B7B7; font-family: 'Orbitron'; font-size: 12px; border: 2px inset #B7B7B7; border-right: solid black; border-bottom: solid black;" >
 				<label for="fileInput" style="padding-left: 15px;">Load Map State</label>				
 				<input type="file" id="fileInput" name="fileInput" onchange="loadFromFile(this)">
 			</div>		
-		</div>
-				
-		<div id="extended-info-container">
 		</div>
 
 		<div class="chartElements">
@@ -878,19 +812,19 @@
 				</div>
 				<div class="element-description">
 					<span class="element">Cu:</span> Copper					
-				</div>
+				</div>					
+			</div>
+			
+			<div class="element-info">
 				<div class="element-description">
 					<span class="element">Dy:</span> Dysprosium					
-				</div>
+				</div>			
 				<div class="element-description">
 					<span class="element">Eu:</span> Europium					
 				</div>	
 				<div class="element-description">
 					<span class="element">F:</span> Fluorine					
-				</div>					
-			</div>
-			
-			<div class="element-info">
+				</div>			
 				<div class="element-description">
 					<span class="element">Fe:</span> Iron				
 				</div>
@@ -920,10 +854,13 @@
 				</div>
 				<div class="element-description">
 					<span class="element">Nd:</span> Neodymium					
-				</div>	
+				</div>				
+			</div>			
+			
+			<div class="element-info">
 				<div class="element-description">
 					<span class="element">Ne:</span> Neon					
-				</div>	
+				</div>				
 				<div class="element-description">
 					<span class="element">Nh:</span> Amino Acid					
 				</div>	
@@ -938,10 +875,7 @@
 				</div>	
 				<div class="element-description">
 					<span class="element">Pt:</span> Platinum					
-				</div>				
-			</div>			
-			
-			<div class="element-info">
+				</div>			
 				<div class="element-description">
 					<span class="element">Pu:</span> Plutonium				
 				</div>
@@ -962,10 +896,13 @@
 				</div>	
 				<div class="element-description">
 					<span class="element">Ti:</span> Titanium						
-				</div>	
+				</div>						
+			</div>
+
+			<div class="element-info">
 				<div class="element-description">
 					<span class="element">Ts:</span> Tasine					
-				</div>
+				</div>				
 				<div class="element-description">
 					<span class="element">U:</span> Uranium				
 				</div>
@@ -990,13 +927,112 @@
 				<div class="element-description">
 					<span class="element">Yb:</span> Ytterbium					
 				</div>				
+				<div class="element-description">
+					<span class="element">As:</span> Adhesive				
+				</div>
+				<div class="element-description">
+					<span class="element">Ac:</span> Analgesic				
+				</div>	
+				<div class="element-description">
+					<span class="element">Ab:</span> Antimicro.				
+				</div>
+				<div class="element-description">
+					<span class="element">Am:</span> Aromatic			
+				</div>				
+			</div>
+			
+			<div class="element-info">
+				<div class="element-description">
+					<span class="element">Bs:</span> Biosuppre.				
+				</div>	
+				<div class="element-description">
+					<span class="element">Cm:</span> Cosmetic						
+				</div>	
+				<div class="element-description">
+					<span class="element">Fb:</span> Fiber					
+				</div>
+				<div class="element-description">
+					<span class="element">Gd:</span> Gastronom.			
+				</div>
+				<div class="element-description">
+					<span class="element">Hu:</span> Hallucinog.					
+				</div>	
+				<div class="element-description">
+					<span class="element">Ht:</span> High-Tensi.				
+				</div>	
+				<div class="element-description">
+					<span class="element">Hy:</span> Hypercata.				
+				</div>	
+				<div class="element-description">
+					<span class="element">Is:</span> Immunosti.				
+				</div>
+				<div class="element-description">
+					<span class="element">Lc:</span> Lubricant					
+				</div>	
+				<div class="element-description">
+					<span class="element">Lx:</span> Luxury Tex.				
+				</div>	
+				<div class="element-description">
+					<span class="element">Mb:</span> Membrane					
+				</div>				
+				<div class="element-description">
+					<span class="element">Ms:</span> Memory Sub.				
+				</div>
+				<div class="element-description">
+					<span class="element">Ma:</span> Metabolic				
+				</div>					
+			</div>
+
+			<div class="element-info">
+				<div class="element-description">
+					<span class="element">Nl:</span> Neurologic				
+				</div>	
+				<div class="element-description">
+					<span class="element">Nt:</span> Nutrient			
+				</div>	
+				<div class="element-description">
+					<span class="element">Om:</span> Ornamental			
+				</div>
+				<div class="element-description">
+					<span class="element">Pm:</span> Pigment				
+				</div>	
+				<div class="element-description">
+					<span class="element">Py:</span> Polymer						
+				</div>	
+				<div class="element-description">
+					<span class="element">Qd:</span> Quark-Deg.				
+				</div>
+				<div class="element-description">
+					<span class="element">Sl:</span> Sealant		
+				</div>
+				<div class="element-description">
+					<span class="element">Sd:</span> Sedative					
+				</div>	
+				<div class="element-description">
+					<span class="element">Sv:</span> Solvent				
+				</div>	
+				<div class="element-description">
+					<span class="element">Se:</span> Spice				
+				</div>	
+				<div class="element-description">
+					<span class="element">Su:</span> Stimulant			
+				</div>
+				<div class="element-description">
+					<span class="element">Sm:</span> Structur.					
+				</div>	
+				<div class="element-description">
+					<span class="element">Tx:</span> Toxin				
+				</div>			
 			</div>			
+			
 		</div>	
 	
-		<div class="star-system" style="top: 479px; left: 1235px;" data-keywords="Al, Be, Cu, Dy, F, Fe, Hc, He, Ho, Il, Ni, Pb, Ta, Sc, Nd, Pd, Ag">
+		<div class="star-system" style="top: 479px; left: 1235px;" data-keywords="Al, Be, Cu, Dy, F, Fe, Hc, He, Ho, Il, Ni, Pb, Ta, Sc, Nd, Pd, Ag, As, Ac, Fb, Hu, Ma, Om, Sl, Tx">
 			<div id="Al-Battani_System" class="star-icon" ondblclick="openInfo(document.getElementById('Al-Battani_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="albattani-label" class="star-label" onclick="openWiki('Al-Battani')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Al-Battani</div>
+			<div id="albattani-label" class="star-label" onclick="openWiki('Al-Battani')">Al-Battani
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Al-Battani
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick(); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick();">Surveyed</button>				
@@ -1007,7 +1043,9 @@
 		<div class="star-system" style="top: 846px; left: 1275px;" data-keywords="Al, Au, Be, HC, Cn, Co, Ir, Hg, Nd, Pd, Pt, Ag, Xf, W, Yb">
 			<div id="Alchiba_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alchiba_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alchiba-label" class="star-label" onclick="openWiki('Alpha_Corvi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alchiba</div>
+			<div id="alchiba-label" class="star-label" onclick="openWiki('Alpha_Corvi')">Alchiba
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Alchiba
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1015,10 +1053,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 859px; left: 1515px;" data-keywords="Al, F, HC, Cn, Nh, Ir, Li, V">
+		<div class="star-system" style="top: 859px; left: 1515px;" data-keywords="Al, F, HC, Cn, Nh, Ir, Li, V, Lc, Om, Pm">
 			<div id="Algorab_System" class="star-icon" ondblclick="openInfo(document.getElementById('Algorab_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="algorab-label" class="star-label" onclick="openWiki('Delta_Corvi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Algorab</div>
+			<div id="algorab-label" class="star-label" onclick="openWiki('Delta_Corvi')">Algorab
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Algorab
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1026,10 +1066,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 246px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe">
+		<div class="star-system" style="top: 246px; left: 27px;" data-keywords="Al, Be, HC, Sc, Ir, Pd, Ta, Ti, U, Xe, Ab, Bs, Cm, Hu, Ma, Nt, Sl, Sd, Se, Sm, Tx">
 			<div id="Alpha_Andraste_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Andraste_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alphaandraste-label" class="star-label" onclick="openWiki('Mu_Cassiopeiae')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alpha Andraste</div>
+			<div id="alphaandraste-label" class="star-label" onclick="openWiki('Mu_Cassiopeiae')">Alpha Andraste
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Alpha Andraste
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1037,12 +1079,13 @@
 				<button style="position: relative; left: 75px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 603px; left: 344px;" data-keywords="Al, Ar, Cn, Cl, He, Sc, Co, Fe, Pb, Ni, Pt, W, U, V, Ho, Xe">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-alpha-centauri'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 603px; left: 344px;" data-keywords="Al, Ar, Cn, Cl, He, Sc, Co, Fe, Pb, Ni, Pt, W, U, V, Ho, Xe, As, Ab, Cm, Fb, Mb, Ma, Nt, Sl, Sd, Se, Sm, Tx">
+			<div id="Alpha_Centauri_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Centauri_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alphacentauri-label" class="star-label" onclick="openWiki('Alpha_Centauri')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alpha Centauri
+			<div id="alphacentauri-label" class="star-label" onclick="openWiki('Alpha_Centauri')">Alpha Centauri
 				<img class="city-marker" style="left: 85px;">
 				<img class="staryard-marker">				
+				<img class="outpost-marker">			
 			</div>
 			<div class="star-icon-box">Alpha Centauri
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1051,10 +1094,12 @@
 				<button style="position: relative; left: 72px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 431px; left: 823px;" data-keywords="Al, Be, F, HC, Cn, Co, Cu, Dy, Eu, Ir, Li, Ag, V">
+		<div class="star-system" style="top: 431px; left: 823px;" data-keywords="Al, Be, F, HC, Cn, Co, Cu, Dy, Eu, Ir, Li, Ag, V, Sl, Tx">
 			<div id="Alpha_Marae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Marae_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alphamarae-label" class="star-label" onclick="openWiki('HD_158614')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alpha Marae</div>	
+			<div id="alphamarae-label" class="star-label" onclick="openWiki('HD_158614')">Alpha Marae
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Alpha Marae
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1062,10 +1107,12 @@
 				<button style="position: relative; left: 64px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 604px; left: 1408px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Eu, Li, Hg, Ne, Pu, Ta, Ti, W, V, Xe">
+		<div class="star-system" style="top: 604px; left: 1408px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Eu, Li, Hg, Ne, Pu, Ta, Ti, W, V, Xe, Ab, Am, Om, Pm, Py, Se">
 			<div id="Alpha_Ternion__System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Ternion_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alphaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alpha Ternion</div>
+			<div id="alphaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')">Alpha Ternion
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Alpha Ternion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1073,10 +1120,12 @@
 				<button style="position: relative; left: 70px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 868px; left: 1094px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Il, Ir, Ne, Ag, Ta, Xf, Ti, W">
+		<div class="star-system" style="top: 868px; left: 1094px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Il, Ir, Ne, Ag, Ta, Xf, Ti, W, As, Ab, Cm, Fb, Lc, Ma, Nt, Om, Pm, Sl, Sm, Tx">
 			<div id="Alpha_Tirna_System" class="star-icon" ondblclick="openInfo(document.getElementById('Alpha_Tirna_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="alphatirna-label" class="star-label" onclick="openWiki('HD_102365')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Alpha Tirna</div>
+			<div id="alphatirna-label" class="star-label" onclick="openWiki('HD_102365')">Alpha Tirna
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Alpha Tirna
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1084,10 +1133,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 451px; left: 350px;" data-keywords="Al, Au, Be, F, Cn, Cl, Sc, Co, Cu, Ir, Pb, Nd, Ni, Pt, Pu, Ag, Xf, W, U">
+		<div class="star-system" style="top: 451px; left: 350px;" data-keywords="Al, Au, Be, F, Cn, Cl, Sc, Co, Cu, Ir, Pb, Nd, Ni, Pt, Pu, Ag, Xf, W, U, As, Nt, Sl, Sm">
 			<div id="Altair_System" class="star-icon" ondblclick="openInfo(document.getElementById('Altair_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
-			<div id="altair-label" class="star-label" onclick="openWiki('Altair')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Altair</div>
+			<div id="altair-label" class="star-label" onclick="openWiki('Altair')">Altair
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Altair
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1095,10 +1146,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 296px; left: 560px;" data-keywords="Al, Be, F, HC, Cn, Nh, Cl, Sc, Cu, Eu, Ir, Fe, Pb, Li, Ne, Ni, U, V, Xe">
+		<div class="star-system" style="top: 296px; left: 560px;" data-keywords="Al, Be, F, HC, Cn, Nh, Cl, Sc, Cu, Eu, Ir, Fe, Pb, Li, Ne, Ni, U, V, Xe, Ab, Cm, Fb, Hu, Ma, Om, Sl, Sm, Tx">
 			<div id="Andromas_System" class="star-icon" ondblclick="openInfo(document.getElementById('Andromas_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="andromas-label" class="star-label" onclick="openWiki('Mu_Herculis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Andromas</div>
+			<div id="andromas-label" class="star-label" onclick="openWiki('Mu_Herculis')">Andromas
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Andromas
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1106,10 +1159,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 631px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta">
+		<div class="star-system" style="top: 631px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta, Nt, Om, Sl">
 			<div id="Aranae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Aranae_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="aranae-label" class="star-label" onclick="openWiki('Gliese_570')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Aranae</div>
+			<div id="aranae-label" class="star-label" onclick="openWiki('Gliese_570')">Aranae
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Aranae
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1117,10 +1172,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 633px; left: 1706px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Il, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, Yb">
+		<div class="star-system" style="top: 633px; left: 1706px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Il, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, Yb, As, Ab, Am, Lc, Om, Pm, Sd">
 			<div id="Archimedes_System" class="star-icon" ondblclick="openInfo(document.getElementById('Archimedes_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="archimedes-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Archimedes</div>
+			<div id="archimedes-label" class="star-label" onclick="alert('No catalogue entry available!')">Archimedes
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Archimedes
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1128,10 +1185,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 341px; left: 942px;" data-keywords="HC, Cn, Cl, Ir, Fe, Pb, U">
+		<div class="star-system" style="top: 341px; left: 942px;" data-keywords="HC, Cn, Cl, Ir, Fe, Pb, U, As, Fb, Ma, Py, Sl, Tx">
 			<div id="Arcturus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Arcturus_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
-			<div id="arcturus-label" class="star-label" onclick="openWiki('Arcturus')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Arcturus</div>
+			<div id="arcturus-label" class="star-label" onclick="openWiki('Arcturus')">Arcturus
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Arcturus
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1139,10 +1198,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 575px; left: 1426px;" data-keywords="Al, Be, Cs, Sc, Co, Ir, Hg, Pt, Ag, V">
+		<div class="star-system" style="top: 575px; left: 1426px;" data-keywords="Al, Be, Cs, Sc, Co, Ir, Hg, Pt, Ag, V, Fb, Om, Sm">
 			<div id="Bannoc_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bannoc_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
-			<div id="bannoc-label" class="star-label" onclick="alert('No Wiki result for Gl 544 A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bannoc</div>
+			<div id="bannoc-label" class="star-label" onclick="alert('No Wiki result for Gl 544 A!')">Bannoc
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bannoc
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1153,7 +1214,9 @@
 		<div class="star-system" style="top: 558px; left: 1432px;" data-keywords="Al, Nd">
 			<div id="Bannoc_Secundus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bannoc_Secundus_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 7px; height: 7px;">
 			</div>
-			<div id="bannocsecundus-label" class="star-label" onclick="alert('No Wiki result for Gl 544 B!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bannoc Secundus</div>
+			<div id="bannocsecundus-label" class="star-label" onclick="alert('No Wiki result for Gl 544 B!')">Bannoc Secundus
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bannoc Secundus
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1161,10 +1224,12 @@
 				<button style="position: relative; left: 82px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 353px; left: 1318px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Ta, Ti">
+		<div class="star-system" style="top: 353px; left: 1318px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Ta, Ti, Ac, Ab, Fb, Ma, Om, Pm, Su, Tx">
 			<div id="Bara_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bara_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="bara-label" class="star-label" onclick="openWiki('70_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bara</div>
+			<div id="bara-label" class="star-label" onclick="openWiki('70_Virginis')">Bara
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bara
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1172,10 +1237,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 152px; left: 757px;" data-keywords="Al, Cs, F, HC, Nh, Sc, Co, Ir, Li, Nd, Ne, Pt, Ag, Ta, Xf, Ti, Xe, Yb">
+		<div class="star-system" style="top: 152px; left: 757px;" data-keywords="Al, Cs, F, HC, Nh, Sc, Co, Ir, Li, Nd, Ne, Pt, Ag, Ta, Xf, Ti, Xe, Yb, Ac, Ab, Cm, Gd, Lc, Pm, Py, Sd, Se">
 			<div id="Bardeen_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bardeen_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="bardeen-label" class="star-label" onclick="alert('No Wiki result for GJ 1229!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bardeen</div>
+			<div id="bardeen-label" class="star-label" onclick="alert('No Wiki result for GJ 1229!')">Bardeen
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bardeen
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1183,10 +1250,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 515px; left: 371px;" data-keywords="He, Pb, Ho">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-barnards-star'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 515px; left: 371px;" data-keywords="He, Pb, Ho, Mb">
+			<div id="Barnard%27s_Star_System" class="star-icon" ondblclick="openInfo(document.getElementById('Barnard%27s_Star_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="barnardsstar-label" class="star-label" onclick="openWiki('Barnard%27s_Star')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Barnard's Star</div>
+			<div id="barnardsstar-label" class="star-label" onclick="openWiki('Barnard%27s_Star')">Barnard's Star
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Barnard's Star
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1194,10 +1263,12 @@
 				<button style="position: relative; left: 73px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 546px; left: 1476px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Li, Nd, Pd, Pt, Ta, Xf">
+		<div class="star-system" style="top: 546px; left: 1476px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Li, Nd, Pd, Pt, Ta, Xf, As, Ac, Ab, Am, Fb, Ms, Ma, Om, Py">
 			<div id="Bel_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bel_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="bel-label" class="star-label" onclick="alert('No Wiki result for NN 3830!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bel</div>
+			<div id="bel-label" class="star-label" onclick="alert('No Wiki result for NN 3830!')">Bel
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bel
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1206,9 +1277,11 @@
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 418px; left: 269px;" data-keywords="Al, Be, Co, Fe, Nd, Ne, Ni, Pt">
-			<div id="Bessel_System" class="star-icon" ondblclick="resizeIframe(document.getElementById('system-bessel'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
+			<div id="Bessel_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bessel_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="bessel-label" class="star-label" onclick="openWiki('61_Cygni')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bessel</div>
+			<div id="bessel-label" class="star-label" onclick="openWiki('61_Cygni')">Bessel
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bessel
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1216,10 +1289,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 229px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V">
+		<div class="star-system" style="top: 229px; left: 35px;" data-keywords="Au, He, Sb, Cl, Cu, F, Ir, Ni, U, V, Sl, Sm">
 			<div id="Beta_Andraste_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Andraste_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="betaandraste-label" class="star-label" onclick="openWiki('Mu_Cassiopeiae')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Beta Andraste</div>
+			<div id="betaandraste-label" class="star-label" onclick="openWiki('Mu_Cassiopeiae')">Beta Andraste
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Beta Andraste
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1227,10 +1302,12 @@
 				<button style="position: relative; left: 72px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 445px; left: 815px;" data-keywords="Al, F, HC, Sb, Sc, Co, Il, Ir, Nd, Pd, Pu, W, V">
+		<div class="star-system" style="top: 445px; left: 815px;" data-keywords="Al, F, HC, Sb, Sc, Co, Il, Ir, Nd, Pd, Pu, W, V, Am, Bs, Cm, Fb, Hu, Lc, Ma, Pm, Sd, Sm, Tx">
 			<div id="Beta_Marae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Marae_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="betamarae-label" class="star-label" onclick="openWiki('HD_158614')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Beta Marae</div>
+			<div id="betamarae-label" class="star-label" onclick="openWiki('HD_158614')">Beta Marae
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Beta Marae
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1238,10 +1315,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 620px; left: 1400px;" data-keywords="Al, Cn, Sc, Co, Li, Pd, Pt">
+		<div class="star-system" style="top: 620px; left: 1400px;" data-keywords="Al, Cn, Sc, Co, Li, Pd, Pt, As, Ac, Bs, Fb, Hu, Ma, Nt, Om, Pm, Sl, Se, Su, Sm, Tx">
 			<div id="Beta_Ternion_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Ternion_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="betaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Beta Ternion</div>
+			<div id="betaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')">Beta Ternion
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Beta Ternion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1252,7 +1331,9 @@
 		<div class="star-system" style="top: 881px; left: 1089px;" data-keywords="">
 			<div id="Beta_Tirna_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Tirna_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="betaternion-label" class="star-label" onclick="openWiki('HD_102365')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Beta Tirna</div>
+			<div id="betaternion-label" class="star-label" onclick="openWiki('HD_102365')">Beta Tirna
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Beta Tirna
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1260,10 +1341,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 321px; left: 1829px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Hg, Pt, Ag, W">
+		<div class="star-system" style="top: 321px; left: 1829px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Hg, Pt, Ag, W, As, Am, Cm, Pm, Py">
 			<div id="Bohr_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bohr_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="bohr-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bohr</div>
+			<div id="bohr-label" class="star-label" onclick="alert('No catalogue entry available!')">Bohr
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bohr
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1271,10 +1354,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 753px; left: 1081px;" data-keywords="W">
+		<div class="star-system" style="top: 753px; left: 1081px;" data-keywords="W, Fb, Hu, Ma, Nt, Sl, Sm, Tx">
 			<div id="Bolivar_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bolivar_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="bolivar-label" class="star-label" onclick="alert('No Wiki result for NN 3727A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bolivar</div>
+			<div id="bolivar-label" class="star-label" onclick="alert('No Wiki result for NN 3727A!')">Bolivar
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bolivar
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1282,10 +1367,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 200px; left: 746px;" data-keywords="Al, HC, Cn, Cl, Sc, Co, Eu, Fe, Pb, Ni, Ti, U, Yb">
+		<div class="star-system" style="top: 200px; left: 746px;" data-keywords="Al, HC, Cn, Cl, Sc, Co, Eu, Fe, Pb, Ni, Ti, U, Yb, As, Ab, Cm, Hu, Ma, Nt, Om, Sl, Sm, Tx">
 			<div id="Bradbury_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bradbury_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="bradbury-label" class="star-label" onclick="openWiki('Zeta_Herculis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Bradbury</div>
+			<div id="bradbury-label" class="star-label" onclick="openWiki('Zeta_Herculis')">Bradbury
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Bradbury
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1296,7 +1383,9 @@
 		<div class="star-system" style="top: 269px; left: 108px;" data-keywords="Al, Be, HC, Cn, Cl, Sc, Cu, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Rc, Xf, W, Xe">
 			<div id="Carinae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Carinae_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="carinae-label" class="star-label" onclick="openWiki('Eta_Cassiopeiae')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Carinae</div>
+			<div id="carinae-label" class="star-label" onclick="openWiki('Eta_Cassiopeiae')">Carinae
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Carinae
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1304,10 +1393,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 270px; left: 1095px;" data-keywords="Al, Au, Be, Cs, HC, Cn, Sc, Ne, Ta, Yb">
+		<div class="star-system" style="top: 270px; left: 1095px;" data-keywords="Al, Au, Be, Cs, HC, Cn, Sc, Ne, Ta, Yb, Ac, Hu, Lc, Om, Pm, Sd, Se">
 			<div id="Celebrai_System" class="star-icon" ondblclick="openInfo(document.getElementById('Celebrai_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
-			<div id="celebrai-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Celebrai</div>
+			<div id="celebrai-label" class="star-label" onclick="alert('No catalogue entry available!')">Celebrai				
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Celebrai
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1315,10 +1406,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 340px; left: 1375px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Ir, Hg, Nd, Ne, Pt, Ta, Xf, Ti, W">
+		<div class="star-system" style="top: 340px; left: 1375px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Ir, Hg, Nd, Ne, Pt, Ta, Xf, Ti, W, As, Cm, Hu, Hy, Lc, Om, Pm, Sv, Se">
 			<div id="Charybdis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Charybdis_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="charybdis-label" class="star-label" onclick="alert('No Wiki result for NN 3727A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Charybdis</div>
+			<div id="charybdis-label" class="star-label" onclick="alert('No Wiki result for NN 3727A!')">Charybdis
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Charybdis
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1326,12 +1419,14 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 392px; left: 701px;" data-keywords="Al, Be, Ar, Au, F, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Il, Ir, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Pt, Ag, Xf, Ti, W, U, V, Ho">
+		<div class="star-system" style="top: 392px; left: 701px;" data-keywords="Al, Be, Ar, Au, F, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Il, Ir, Fe, Pb, Hg, Nd, Ne, Ni, Pd, Pt, Ag, Xf, Ti, W, U, 
+			V, Ho, Ac, Ab, Am, Cm, Fb, Hu, Mb, Ma, Nt, Pm, Sl, Sv, Se, Sm, Tx">
 			<div id="Cheyenne_System" class="star-icon" ondblclick="openInfo(document.getElementById('Cheyenne_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="cheyenne-label"  class="star-label" onclick="openWiki('Xi_Boötis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Cheyenne
+			<div id="cheyenne-label"  class="star-label" onclick="openWiki('Xi_Boötis')">Cheyenne
 				<img class="city-marker" style="left: 60px;">	
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px">		
 			</div>
 			<div class="star-icon-box">Cheyenne
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1340,10 +1435,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 474px; left: 1046px;" data-keywords="Al, Be, F, Cn, Cl, Sc, Co, Eu, Li, Nd, Ti, W">
+		<div class="star-system" style="top: 474px; left: 1046px;" data-keywords="Al, Be, F, Cn, Cl, Sc, Co, Eu, Li, Nd, Ti, W, Ac, Ab, Cm, Fb, Ma, Nt, Pm, Sl, Sv, Sm, Tx">
 			<div id="Copernicus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Copernicus_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="copernicus-label" class="star-label" onclick="openWiki('Psi_Serpentis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Copernicus</div>
+			<div id="copernicus-label" class="star-label" onclick="openWiki('Psi_Serpentis')">Copernicus
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Copernicus
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1351,10 +1448,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 487px; left: 1037px;" data-keywords="HC, Sc, Li">
+		<div class="star-system" style="top: 487px; left: 1037px;" data-keywords="HC, Sc, Li, Nt, Se, Tx">
 			<div id="Copernicus_Minor_System" class="star-icon" ondblclick="openInfo(document.getElementById('Copernicus_Minor_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="copernicusminor-label" class="star-label" onclick="openWiki('Psi_Serpentis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Copernicus Minor</div>
+			<div id="copernicusminor-label" class="star-label" onclick="openWiki('Psi_Serpentis')">Copernicus Minor
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Copernicus Minor
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1362,10 +1461,12 @@
 				<button style="position: relative; left: 82px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 531px; left: 1291px;" data-keywords="Al, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Pd, W, Vy">
+		<div class="star-system" style="top: 531px; left: 1291px;" data-keywords="Al, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Pd, W, Vy, Ab, Lc">
 			<div id="Decaran_System" class="star-icon" ondblclick="openInfo(document.getElementById('Decaran_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 13px; height: 13px;">
 			</div>
-			<div id="decaran-label" class="star-label" onclick="alert('No Wiki result for NN 3969!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Decaran</div>
+			<div id="decaran-label" class="star-label" onclick="alert('No Wiki result for NN 3969!')">Decaran
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Decaran
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1373,10 +1474,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 822px; left: 325px;" data-keywords="Al, Be, F, HC, Sc, Co, Dy, Ir, Fe, Pb, Li, Nd, Ag, Ag, Xf, W, U, V, Yb">
+		<div class="star-system" style="top: 822px; left: 325px;" data-keywords="Al, Be, F, HC, Sc, Co, Dy, Ir, Fe, Pb, Li, Nd, Ag, Ag, Xf, W, U, V, Yb, As, Bs, Cm, Fb, Ma, Nt, Om, Sl, Tx">
 			<div id="Delta_Pavonis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Delta_Pavonis_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div id="deltapavonis-label" class="star-label" onclick="openWiki('Delta_Pavonis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Delta Pavonis</div>
+			<div id="deltapavonis-label" class="star-label" onclick="openWiki('Delta_Pavonis')">Delta Pavonis
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Delta Pavonis
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1384,10 +1487,12 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 611px; left: 1276px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Ne, Ta, Xf">
+		<div class="star-system" style="top: 611px; left: 1276px;" data-keywords="Al, Be, F, HC, Cn, Nh, Co, Ne, Ta, Xf, Sm">
 			<div id="Delta_Vulpes_System" class="star-icon" ondblclick="openInfo(document.getElementById('Delta_Vulpes_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="deltavulpes-label" class="star-label" onclick="alert('No Wiki result for Gl 586B!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Delta Vulpes</div>
+			<div id="deltavulpes-label" class="star-label" onclick="alert('No Wiki result for Gl 586B!')">Delta Vulpes
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Delta Vulpes
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1395,10 +1500,12 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 459px; left: 948px;" data-keywords="Al, HC, Sc, Ir, Ag, Ta, U, Yb">
+		<div class="star-system" style="top: 459px; left: 948px;" data-keywords="Al, HC, Sc, Ir, Ag, Ta, U, Yb, Am, Fb, Hy, Nt, Sl, Sm, Tx">
 			<div class="star-icon" ondblclick="openInfo(document.getElementById('Denebola_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
-			<div id="Denebola_System" id="denebola-label" class="star-label" onclick="openWiki('Denebola')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Denebola</div>
+			<div id="Denebola_System" id="denebola-label" class="star-label" onclick="openWiki('Denebola')">Denebola
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Denebola
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1406,10 +1513,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>
 		</div>
-		<div class="star-system" style="top: 620px; left: 1546px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Ne, Pt, Ta, W, V">
+		<div class="star-system" style="top: 620px; left: 1546px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Ne, Pt, Ta, W, V, Ac, Bs, Cm, Hu, Sd, Se">
 			<div id="Enlil_System" class="star-icon" ondblclick="openInfo(document.getElementById('Enlil_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="enlil-label" class="star-label" onclick="openWiki('Xi_Scorpii')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Enlil</div>
+			<div id="enlil-label" class="star-label" onclick="openWiki('Xi_Scorpii')">Enlil
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Enlil
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1417,10 +1526,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 790px; left: 45px;" data-keywords="Al, Au, Be, Cs, F, HC, Cl, Sc, Co, Cu, Eu, Ir, Fe, Pb, Li, Nd, Ne, Ni, Pu, Ag, Ti, W, U, V">
+		<div class="star-system" style="top: 790px; left: 45px;" data-keywords="Al, Au, Be, Cs, F, HC, Cl, Sc, Co, Cu, Eu, Ir, Fe, Pb, Li, Nd, Ne, Ni, Pu, Ag, Ti, W, U, V, Am, Cm, Fb, Hu, Ma, Nt, Pm, Sl, Su, Sm, Tx">
 			<div id="Eridani_System" class="star-icon" ondblclick="openInfo(document.getElementById('Eridani_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="eridani-label" class="star-label" onclick="openWiki('82_G._Eridani')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Eridani</div>
+			<div id="eridani-label" class="star-label" onclick="openWiki('82_G._Eridani')">Eridani
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Eridani
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1428,10 +1539,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 283px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U">
+		<div class="star-system" style="top: 283px; left: 98px;" data-keywords="Al, F, HC, Cl, Sc, Co, Cu, Ir, Fe, Pb, Ni, Pt, Ta, W, U, Ac, Cm, Fb, Ma, Nt, Pm, Sl, Sm, Tx">
 			<div id="Eta_Cassiopeia_System" class="star-icon" ondblclick="openInfo(document.getElementById('Eta_Cassiopeia_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="etacassiopeia-label" class="star-label" onclick="openWiki('Eta_Cassiopeiae')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Eta Cassiopeia</div>
+			<div id="etacassiopeia-label" class="star-label" onclick="openWiki('Eta_Cassiopeiae')">Eta Cassiopeia
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Eta Cassiopeia
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1439,10 +1552,12 @@
 				<button style="position: relative; left: 73px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 285px; left: 1778px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, V, Xe, Yb">
+		<div class="star-system" style="top: 285px; left: 1778px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Hg, Nd, Pd, Pt, Ag, Ta, W, V, Xe, Yb, Cm, Hy, Ms, Se, Su">
 			<div id="Fermi_System" class="star-icon" ondblclick="openInfo(document.getElementById('Fermi_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="fermi-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Fermi</div>
+			<div id="fermi-label" class="star-label" onclick="alert('No catalogue entry available!')">Fermi
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Fermi
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1450,10 +1565,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 669px; left: 778px;" data-keywords="Al, Au, Be, F, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Hg, Nd, Pd, Pu, Ag, Ta, Xf, W, V">
+		<div class="star-system" style="top: 669px; left: 778px;" data-keywords="Al, Au, Be, F, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Hg, Nd, Pd, Pu, Ag, Ta, Xf, W, V, Am, Bs, Cm, Ma, Pm, Sd">
 			<div id="Feynman_System" class="star-icon" ondblclick="openInfo(document.getElementById('Feynman_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="feynman-label" class="star-label" onclick="openWiki('58_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Feynman</div>
+			<div id="feynman-label" class="star-label" onclick="openWiki('58_Ophiuchi')">Feynman
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Feynman
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1461,10 +1578,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 698px; left: 1453px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Il, Ir, Hg, Nd, Pt, Pu, Xf, Ti, W, V">
+		<div class="star-system" style="top: 698px; left: 1453px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Il, Ir, Hg, Nd, Pt, Pu, Xf, Ti, W, V, Lc">
 			<div id="Foucault_System" class="star-icon" ondblclick="openInfo(document.getElementById('Foucault_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="foucault-label" class="star-label" onclick="openWiki('Zuben-el-dschenubi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Foucault</div>
+			<div id="foucault-label" class="star-label" onclick="openWiki('Zuben-el-dschenubi')">Foucault
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Foucault
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1472,10 +1591,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 148px; left: 1258px;" data-keywords="Al, Be, Cn, F, Sc, Co, Eu, Ir, Hg, Pt, Ag, Xf, Ti, W, V, Xe">
+		<div class="star-system" style="top: 148px; left: 1258px;" data-keywords="Al, Be, Cn, F, Sc, Co, Eu, Ir, Hg, Pt, Ag, Xf, Ti, W, V, Xe, As, Ac, Fb, Ma, Nt, Om, Py, Sl, Sd, Se, Sm, Tx">
 			<div id="Freya_System" class="star-icon" ondblclick="openInfo(document.getElementById('Freya_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="freya-label" class="star-label" onclick="openWiki('HD_130948')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Freya</div>
+			<div id="freya-label" class="star-label" onclick="openWiki('HD_130948')">Freya
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Freya
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1483,10 +1604,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 626px; left: 1269px;" data-keywords="Al, Cn, Sc, Co, Dy, Ir, Li, Nd, Xf, Ti, W">
+		<div class="star-system" style="top: 626px; left: 1269px;" data-keywords="Al, Cn, Sc, Co, Dy, Ir, Li, Nd, Xf, Ti, W, As, Am, Cm, Fb, Hu, Ma, Pm, Py, Se">
 			<div id="Gamma_Vulpes_System" class="star-icon" ondblclick="openInfo(document.getElementById('Gamma_Vulpes_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="gammavulpes-label" class="star-label" onclick="alert('No Wiki result for Gl 586A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Gamma Vulpes</div>
+			<div id="gammavulpes-label" class="star-label" onclick="alert('No Wiki result for Gl 586A!')">Gamma Vulpes
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Gamma Vulpes
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1494,10 +1617,12 @@
 				<button style="position: relative; left: 73px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 268px; left: 722px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Pb, Li, Nd, Ag, Xf, Ti, W, U, V">
+		<div class="star-system" style="top: 268px; left: 722px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Pb, Li, Nd, Ag, Xf, Ti, W, U, V, Ab, Am, Fb, Ma, Nt, Om, Sl, Sd, Su, Tx">
 			<div id="Groombridge_System" class="star-icon" ondblclick="openInfo(document.getElementById('Groombridge_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="groombridge-label" class="star-label" onclick="openWiki('Groombridge_1830')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Groombridge</div>
+			<div id="groombridge-label" class="star-label" onclick="openWiki('Groombridge_1830')">Groombridge
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Groombridge
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1505,10 +1630,12 @@
 				<button style="position: relative; left: 64px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 627px; left: 535px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Nh, Cl, Sc, Co, Cu, Ir, Fe, Pb, Hg, Nd, Ni, Pd, Ta, Ti, W, U, V">
+		<div class="star-system" style="top: 627px; left: 535px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Nh, Cl, Sc, Co, Cu, Ir, Fe, Pb, Hg, Nd, Ni, Pd, Ta, Ti, W, U, V, Ab, Am, Cm, Fb, Ma, Nt, Om, Sl, Sd, Se, Sm, Tx">
 			<div id="Guniibuu_System" class="star-icon" ondblclick="openInfo(document.getElementById('Guniibuu_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="guniibuu-label" class="star-label" onclick="openWiki('36_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Guniibuu</div>
+			<div id="guniibuu-label" class="star-label" onclick="openWiki('36_Ophiuchi')">Guniibuu
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Guniibuu
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1516,10 +1643,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 599px; left: 1791px;" data-keywords="HC, Sc, Ir, Li, Pd, Pt, Ag, Ta, Xf, W, Yb">
+		<div class="star-system" style="top: 599px; left: 1791px;" data-keywords="HC, Sc, Ir, Li, Pd, Pt, Ag, Ta, Xf, W, Yb, Ac, Pm, Sv, Se">
 			<div id="Hawking_System" class="star-icon" ondblclick="openInfo(document.getElementById('Hawking_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="hawking-label" class="star-label" onclick="openWiki('Stephen_Hawking')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Hawking</div>
+			<div id="hawking-label" class="star-label" onclick="openWiki('Stephen_Hawking')">Hawking
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Hawking
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1527,10 +1656,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 569px; left: 1312px;" data-keywords="Al, Be, Cs, HC, Nh, Sc, Co, Eu, Ir, Li, Hg, Nd, Ne, Pd, Ag, V, Xe">
+		<div class="star-system" style="top: 569px; left: 1312px;" data-keywords="Al, Be, Cs, HC, Nh, Sc, Co, Eu, Ir, Li, Hg, Nd, Ne, Pd, Ag, V, Xe, Cm, Fb, Sd, Sm, Tx">
 			<div id="Heinlein_System" class="star-icon" ondblclick="openInfo(document.getElementById('Heinlein_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
-			<div id="heinlein-label" class="star-label" onclick="openWiki('Mu_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Heinlein</div>
+			<div id="heinlein-label" class="star-label" onclick="openWiki('Mu_Virginis')">Heinlein
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Heinlein
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1538,10 +1669,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 396px; left: 1051px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Ag, Xf, Ti, W">
+		<div class="star-system" style="top: 396px; left: 1051px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Ag, Xf, Ti, W, Ab, Am, Ma, Pm, Py">
 			<div id="Heisenberg_System" class="star-icon" ondblclick="openInfo(document.getElementById('Heisenberg_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="heisenberg-label" class="star-label" onclick="openWiki('V2213_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Heisenberg</div>
+			<div id="heisenberg-label" class="star-label" onclick="openWiki('V2213_Ophiuchi')">Heisenberg
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Heisenberg
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1549,10 +1682,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 567px; left: 1824px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Ne, Pu, W, V, Xe">
+		<div class="star-system" style="top: 567px; left: 1824px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Ne, Pu, W, V, Xe, Cm, Hu, Lc, Pm, Sd, Se, Su">
 			<div id="Huygens_System" class="star-icon" ondblclick="openInfo(document.getElementById('Huygens_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="huygens-label" class="star-label" onclick="openWiki('Christiaan_Huygens')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Huygens</div>
+			<div id="huygens-label" class="star-label" onclick="openWiki('Christiaan_Huygens')">Huygens
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Huygens
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1560,10 +1695,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>			
-		<div class="star-system" style="top: 488px; left: 1359px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Eu, Il, Ir, Li, Hg, Nd, Ne, Pt, Pu, Ag, Ta, Xf, Ti, W, V">
+		<div class="star-system" style="top: 488px; left: 1359px;" data-keywords="Al, Be, Cs, F, HC, Cn, Nh, Sc, Eu, Il, Ir, Li, Hg, Nd, Ne, Pt, Pu, Ag, Ta, Xf, Ti, W, V, Am, Bs, Cm, Fb, Ma, Nt, Sl, Se, Sm, Tx">
 			<div id="Hyla_System" class="star-icon" ondblclick="openInfo(document.getElementById('Hyla_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div id="hyla-label" class="star-label" onclick="openWiki('HD_126053')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Hyla</div>
+			<div id="hyla-label" class="star-label" onclick="openWiki('HD_126053')">Hyla
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Hyla
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1571,10 +1708,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 641px; left: 528px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Cl, Co, Cu, Ir, Fe, Pb, Hg, Ni, Pt, Ta, Xf, U, Yb">
+		<div class="star-system" style="top: 641px; left: 528px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Cl, Co, Cu, Ir, Fe, Pb, Hg, Ni, Pt, Ta, Xf, U, Yb, Ac, Nt, Sl, Sm, Tx">
 			<div id="Indum_System" class="star-icon" ondblclick="openInfo(document.getElementById('Indum_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="indum-label" class="star-label" onclick="openWiki('36_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Indum</div>
+			<div id="indum-label" class="star-label" onclick="openWiki('36_Ophiuchi')">Indum
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Indum
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1582,12 +1721,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 172px; left: 1250px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Li, Ne, Pu, Ag, W, V">
+		<div class="star-system" style="top: 172px; left: 1250px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Sc, Co, Eu, Il, Ir, Li, Ne, Pu, Ag, W, V, Ac, Am, Cm, Fb, Hy, Ma, Nt, Om, Pm, Sl, Se, Su, Sm, Tx">
 			<div id="Ixyll_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ixyll_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="ixyll-label" class="star-label" onclick="openWiki('HD_111395')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Ixyll
+			<div id="ixyll-label" class="star-label" onclick="openWiki('HD_111395')">Ixyll
 				<img class="city-marker" style="left: 26px;">
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker">			
 			</div>
 			<div class="star-icon-box">Ixyll
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1596,10 +1736,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 616px; left: 974px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Li, Hg, Nd, Pd, Pu, Ag, Xf, Ti, W, U, V">
+		<div class="star-system" style="top: 616px; left: 974px;" data-keywords="Al, Au, Be, F, HC, Cn, Nh, Sc, Co, Dy, Eu, Ir, Li, Hg, Nd, Pd, Pu, Ag, Xf, Ti, W, U, V, Fb, Hu, Hy, Ma, Nt, Pm, Sl, Sd, Sm, Tx">
 			<div id="Jaffa_System" class="star-icon" ondblclick="openInfo(document.getElementById('Jaffa_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="jaffa-label" class="star-label" onclick="openWiki('18_Scorpii')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Jaffa</div>
+			<div id="jaffa-label" class="star-label" onclick="openWiki('18_Scorpii')">Jaffa
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Jaffa
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1607,10 +1749,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 718px; left: 1486px;" data-keywords="Al, Be, F, HC, Sb, Sc, Co, Ir, Nd, Ag, Ta, Xf, Ti, V, Yb">
+		<div class="star-system" style="top: 718px; left: 1486px;" data-keywords="Al, Be, F, HC, Sb, Sc, Co, Ir, Nd, Ag, Ta, Xf, Ti, V, Yb, Ab, Om, Se">
 			<div id="Kang_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kang_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="kang-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Kang</div>
+			<div id="kang-label" class="star-label" onclick="alert('No catalogue entry available!')">Kang
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Kang
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1619,9 +1763,11 @@
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 729px; left: 159px;" data-keywords="Al, He, Pb, Ni, Pt, U, V">
-			<div id="Kapteyn%27s_Star_System" class="star-icon" ondblclick="resizeIframe(document.getElementById('system-kapteyns-star'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+			<div id="Kapteyn%27s_Star_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kapteyn%27s_Star_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="kapteynsstar-label" class="star-label" onclick="openWiki('Kapteyn%27s_Star')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Kapteyn's Star</div>
+			<div id="kapteynsstar-label" class="star-label" onclick="openWiki('Kapteyn%27s_Star')">Kapteyn's Star
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Kapteyn's Star
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1629,10 +1775,12 @@
 				<button style="position: relative; left: 73px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 878px; left: 1375px;" data-keywords="Al, Be, HC, Cn, Nh, Sc, Ag, Yb">
+		<div class="star-system" style="top: 878px; left: 1375px;" data-keywords="Al, Be, HC, Cn, Nh, Sc, Ag, Yb, Cm, Om, Pm">
 			<div id="Katydid_System" class="star-icon" ondblclick="openInfo(document.getElementById(Katydid_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="katydid-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Katydid</div>
+			<div id="katydid-label" class="star-label" onclick="alert('No catalogue entry available!')">Katydid
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Katydid
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1640,10 +1788,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>			
-		<div class="star-system" style="top: 494px; left: 1250px;" data-keywords="Al, Au, Be, HC, Cn, Sc, Co, Eu, Ie, Il, Ir, Pu, Ta, Xf, Ti, W, Xe, Yb">
+		<div class="star-system" style="top: 494px; left: 1250px;" data-keywords="Al, Au, Be, HC, Cn, Sc, Co, Eu, Ie, Il, Ir, Pu, Ta, Xf, Ti, W, Xe, Yb, Ac, Ab, Fb, Hu, Ma, Om, Py, Se, Sm">
 			<div id="Khayyam_System" class="star-icon" ondblclick="openInfo(document.getElementById('Khayyam_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="khayyam-label" class="star-label" onclick="alert('No Wiki result for NN 3782B!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Khayyam</div>
+			<div id="khayyam-label" class="star-label" onclick="alert('No Wiki result for NN 3782B!')">Khayyam
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Khayyam
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1651,12 +1801,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 424px; left: 913px;" data-keywords="Al, Au, Be, F, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Pu, U">
+		<div class="star-system" style="top: 424px; left: 913px;" data-keywords="Al, Au, Be, F, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Pu, U, Nt, Sl, Sm, Tx">
 			<div id="Kryx_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kryx_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div id="kryx-label" class="star-label" onclick="openWiki('Lambda_Serpentis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Kryx
+			<div id="kryx-label" class="star-label" onclick="openWiki('Lambda_Serpentis')">Kryx
 				<img class="city-marker" style="left: 32px;">	
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker" style="margin-left: 18px; margin-top: -20px;">				
 			</div>
 			<div class="star-icon-box">Kryx
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1665,10 +1816,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 300px; left: 760px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Sc, Co, Dy, Eu, Il, Ir, Pb, Nd, Ne, Pd, Pt, Pu, Ta, Xf, U, Xe">
+		<div class="star-system" style="top: 300px; left: 760px;" data-keywords="Al, Au, Be, F, Cs, HC, Cn, Sc, Co, Dy, Eu, Il, Ir, Pb, Nd, Ne, Pd, Pt, Pu, Ta, Xf, U, Xe, As, Ab, Bs, 
+			Cm, Fb, Ma, Nt, Pm, Sl, Sd, Sv, Se, Su, Sm, Tx">
 			<div id="Kumasi_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kumasi_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="kumasi-label" class="star-label" onclick="openWiki('61_Ursae_Majoris')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Kumasi</div>
+			<div id="kumasi-label" class="star-label" onclick="openWiki('61_Ursae_Majoris')">Kumasi
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Kumasi
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1676,10 +1830,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 560px; left: 931px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Hg, Pd, Pt, Pu, Ag, Ta, Xf, W, U, V">
+		<div class="star-system" style="top: 560px; left: 931px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Ir, Hg, Pd, Pt, Pu, Ag, Ta, Xf, W, U, V, Ac, Cm, Fb, Ma, Nt, Om, Py, Sl, Se, Sm, Tx">
 			<div id="Lantana_System" class="star-icon" ondblclick="openInfo(document.getElementById('Lantana_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="lantana-label" class="star-label" onclick="openWiki('Beta_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Lantana</div>
+			<div id="lantana-label" class="star-label" onclick="openWiki('Beta_Virginis')">Lantana
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Lantana
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1687,10 +1843,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 443px; left: 1406px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Ir, Li, Hg, Nd, Pt, Pu, Ag, Yb">
+		<div class="star-system" style="top: 443px; left: 1406px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Ir, Li, Hg, Nd, Pt, Pu, Ag, Yb, Ab, Am, Hu, Hy, Lc, Om, Pm">
 			<div id="Leonis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Leonis_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 13px; height: 13px;">
 			</div>
-			<div id="leonis-label" class="star-label" onclick="openWiki('Chi_Leonis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Leonis</div>
+			<div id="leonis-label" class="star-label" onclick="openWiki('Chi_Leonis')">Leonis
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Leonis
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1698,10 +1856,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 446px; left: 703px;" data-keywords="Al, Au, Be, F, Sc, Eu, Ne, Xe, Yb">
+		<div class="star-system" style="top: 446px; left: 703px;" data-keywords="Al, Au, Be, F, Sc, Eu, Ne, Xe, Yb, Ab, Ma, Se">
 			<div id="Leviathan_System" class="star-icon" ondblclick="openInfo(document.getElementById('Leviathan_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
-			<div id="leiviathan-label" class="star-label" onclick="openWiki('Eta_Serpentis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Leviathan</div>
+			<div id="leiviathan-label" class="star-label" onclick="openWiki('Eta_Serpentis')">Leviathan
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Leviathan
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1709,10 +1869,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 663px; left: 554px;" data-keywords="Al, Be, F, HC, Cn, Sc, Co, Eu, Ir, Nd, Pt, Ag, Ta, Xf, Yb">
+		<div class="star-system" style="top: 663px; left: 554px;" data-keywords="Al, Be, F, HC, Cn, Sc, Co, Eu, Ir, Nd, Pt, Ag, Ta, Xf, Yb, Fb, Ht, Om, Pm">
 			<div id="Linnaeus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Linnaeus_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="linnaeus-label" class="star-label" onclick="openWiki('HD_172051')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Linnaeus</div>
+			<div id="linnaeus-label" class="star-label" onclick="openWiki('HD_172051')">Linnaeus
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Linnaeus
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1720,10 +1882,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 485px; left: 702px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Sc, Co, Hg, Nd, Ne, Pt, Xf, Xe">
+		<div class="star-system" style="top: 485px; left: 702px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Sc, Co, Hg, Nd, Ne, Pt, Xf, Xe, Ac, Fb, Ma, Nt, Om, Sl, Sm, Tx">
 			<div id="Lunara_System" class="star-icon" ondblclick="openInfo(document.getElementById('Lunara_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="lunara-label" class="star-label" onclick="alert('No Wiki result for Gl 660A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Lunara</div>
+			<div id="lunara-label" class="star-label" onclick="alert('No Wiki result for Gl 660A!')">Lunara
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Lunara
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1732,9 +1896,11 @@
 			</div>			
 		</div>		
 		<div class="star-system" style="top: 563px; left: 213px;" data-keywords="HC, Cl, Fe, Li, Ta, Ho">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-luytens-star'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+			<div id="Luyten%27s_Star_System" class="star-icon" ondblclick="openInfo(document.getElementById('Luyten%27s_Star_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="luytensstar-label" class="star-label" onclick="openWiki('Luyten%27s_Star')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'" style="margin-left: -106px;">Luyten's Star</div>
+			<div id="luytensstar-label" class="star-label" onclick="openWiki('Luyten%27s_Star')" style="margin-left: -91px;">Luyten's Star
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Luyten's Star
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1742,10 +1908,12 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 428px; left: 1607px;" data-keywords="Al, Au, Be, F, HC, He, Sb, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Pt, Ag, Xf, Ti, W, V, Yb">
+		<div class="star-system" style="top: 428px; left: 1607px;" data-keywords="Al, Au, Be, F, HC, He, Sb, Cn, Nh, Sc, Co, Ir, Li, Hg, Nd, Pt, Ag, Xf, Ti, W, V, Yb, Ab, Am, Bs, Hy, Om, Pm, Se">
 			<div id="Maal_System" class="star-icon" ondblclick="openInfo(document.getElementById('Maal_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="maal-label" class="star-label" onclick="alert('No catalogue entry available!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Maal</div>
+			<div id="maal-label" class="star-label" onclick="alert('No catalogue entry available!')">Maal
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Maal
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1753,10 +1921,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 405px; left: 693px;" data-keywords="Al, Au, Be, F, He, HC, Sb, Cn, Nh, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ne, Ni, Ag, Xf, Ho, Yb">
+		<div class="star-system" style="top: 405px; left: 693px;" data-keywords="Al, Au, Be, F, He, HC, Sb, Cn, Nh, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ne, Ni, Ag, Xf, Ho, Yb, Fb, Mb, Nt">
 			<div id="Maheo_System" class="star-icon" ondblclick="openInfo(document.getElementById('Maheo_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="maheo-label" class="star-label" onclick="openWiki('Xi_Boötis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Maheo</div>
+			<div id="maheo-label" class="star-label" onclick="openWiki('Xi_Boötis')">Maheo
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Maheo
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1764,10 +1934,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 822px; left: 1466px;" data-keywords="Al, Au, Be, F, Cs, Nh, Sc, Co, Eu, Ne, Pd, Pt, Pu, Xf, V">
+		<div class="star-system" style="top: 822px; left: 1466px;" data-keywords="Al, Au, Be, F, Cs, Nh, Sc, Co, Eu, Ne, Pd, Pt, Pu, Xf, V, As, Ab, Bs, Cm, Pm, Sd, Se">
 			<div id="Marduk_System" class="star-icon" ondblclick="openInfo(document.getElementById('Marduk_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="marduk-label" class="star-label" onclick="openWiki('HD_108799')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Marduk</div>
+			<div id="marduk-label" class="star-label" onclick="openWiki('HD_108799')">Marduk
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Marduk
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1775,10 +1947,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 650px; left: 1294px;" data-keywords="Al, Be, F, HC, Cn, Co, Il, Ir, Pt, Ag, W, V, Yb">
+		<div class="star-system" style="top: 650px; left: 1294px;" data-keywords="Al, Be, F, HC, Cn, Co, Il, Ir, Pt, Ag, W, V, Yb, Ab, Cm, Hy, Sv, Se">
 			<div id="Masada_System" class="star-icon" ondblclick="openInfo(document.getElementById('Masada_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="masada-label" class="star-label" onclick="alert('No Wiki result for Gl 650!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Masada</div>
+			<div id="masada-label" class="star-label" onclick="alert('No Wiki result for Gl 650!')">Masada
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Masada
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1786,10 +1960,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 221px; left: 733px;" data-keywords="Al, HC, Cl, Sc, Co, Cu, Fe, Nd, Ta">
+		<div class="star-system" style="top: 221px; left: 733px;" data-keywords="Al, HC, Cl, Sc, Co, Cu, Fe, Nd, Ta, Fb, Ma, Nt, Pm, Sl, Sv, Sm, Tx">
 			<div id="McClure_System" class="star-icon" ondblclick="openInfo(document.getElementById('McClure_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
-			<div id="mcclure-label" class="star-label" onclick="openWiki('Zeta_Herculis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">McClure</div>
+			<div id="mcclure-label" class="star-label" onclick="openWiki('Zeta_Herculis')">McClure
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">McClure
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1797,10 +1973,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 375px; left: 1304px;" data-keywords="Al, Au, F, Sb, Cn, Nh, Co, Ir, Li, Hg, Nd, Ag, V">
+		<div class="star-system" style="top: 375px; left: 1304px;" data-keywords="Al, Au, F, Sb, Cn, Nh, Co, Ir, Li, Hg, Nd, Ag, V, As, Ac, Ab, Cm, Fb, Hu, Ma, Nt, Sl, Se, Sm, Tx">
 			<div id="Moloch_System" class="star-icon" ondblclick="openInfo(document.getElementById('Moloch_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="moloch-label" class="star-label" onclick="alert('No Wiki result for Gl 538 Boötes!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Moloch</div>
+			<div id="moloch-label" class="star-label" onclick="alert('No Wiki result for Gl 538 Boötes!')">Moloch
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Moloch
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1808,10 +1986,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 362px; left: 955px;" data-keywords="Al, Be, Cs, F, HC, Sb, Cn, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Li, Hg, Ni, Pt, Ag, W, U, V, Xe, Yb">
+		<div class="star-system" style="top: 362px; left: 955px;" data-keywords="Al, Be, Cs, F, HC, Sb, Cn, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Li, Hg, Ni, Pt, Ag, W, U, V, Xe, Yb, Ac, Am, Fb, Lc, Ma, Nt, Om, Py, Sl, Sm, Tx">
 			<div id="Muphrid_System" class="star-icon" ondblclick="openInfo(document.getElementById('Muphrid_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div id="muphrid-label" class="star-label" onclick="openWiki('Eta_Boötis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Muphrid</div>
+			<div id="muphrid-label" class="star-label" onclick="openWiki('Eta_Boötis')">Muphrid
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Muphrid
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1819,12 +1999,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 499px; left: 472px;" data-keywords="Al, Be, Cs, F, Ar, He, HC, Cn, Cl, Sc, Cu, Eu, Il, Ir, Fe, Pb, Nd, Ne, Ni, Pu, Ag, Xf, U, V, Ho">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-narion'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 499px; left: 472px;" data-keywords="Al, Be, Cs, F, Ar, He, HC, Cn, Cl, Sc, Cu, Eu, Il, Ir, Fe, Pb, Nd, Ne, Ni, Pu, Ag, Xf, U, V, Ho, Ab, Cm, Fb, Hy, Mb, Ma, Nt, Sl, Se, Tx">
+			<div id="Narion_System" class="star-icon" ondblclick="openInfo(document.getElementById('Narion_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="narion-label" class="star-label" onclick="openWiki('70_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Narion
+			<div id="narion-label" class="star-label" onclick="openWiki('70_Ophiuchi')">Narion
 				<img class="staryard-marker">
-				<img class="city-marker">					
+				<img class="city-marker">
+				<img class="outpost-marker">				
 			</div>
 			<div class="star-icon-box">Narion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1833,10 +2014,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 109px; left: 743px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Co, Dy, Ne, Pd, Ag, Xf, W, U, V, Yb">
+		<div class="star-system" style="top: 109px; left: 743px;" data-keywords="Al, Au, Be, F, HC, Sb, Cn, Nh, Co, Dy, Ne, Pd, Ag, Xf, W, U, V, Yb, As, Ab, Fb, Ma, Nt, Om, Py, Sl, Sd, Sm, Tx">
 			<div id="Nemeria_System" class="star-icon" ondblclick="openInfo(document.getElementById('Nemeria_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
-			<div id="nemeria-label" class="star-label" onclick="openWiki('72_Herculis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Nemeria</div>
+			<div id="nemeria-label" class="star-label" onclick="openWiki('72_Herculis')">Nemeria
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Nemeria
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1844,10 +2027,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 140px; left: 633px;" data-keywords="Al, Au, Be, F, HC, Sc, Li, Pt, Xf, Ti, W, V">
+		<div class="star-system" style="top: 140px; left: 653px;" data-keywords="Al, Au, Be, F, HC, Sc, Li, Pt, Xf, Ti, W, V, As, Ab, Hu, Hy, Pm, Se">
 			<div id="Newton_System" class="star-icon" ondblclick="openInfo(document.getElementById('Newton_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="newton-label" class="star-label" onclick="openWiki('Struve_2398')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Newton</div>
+			<div id="newton-label" class="star-label" onclick="openWiki('Struve_2398')">Newton
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Newton
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1858,7 +2043,9 @@
 		<div class="star-system" style="top: 421px; left: 633px;" data-keywords="Al, Be, F, HC, Nh, Co, Ir, Nd, Pt, Pu, Ta, W">
 			<div id="Nikola_System" class="star-icon" ondblclick="openInfo(document.getElementById('Nikola_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="nikola-label" class="star-label" onclick="alert('No Wiki result for NN 4506!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Nikola</div>
+			<div id="nikola-label" class="star-label" onclick="alert('No Wiki result for NN 4506!')">Nikola
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Nikola
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1866,10 +2053,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 415px; left: 1380px;" data-keywords="Al, Be, HC, Ir, Ta, W">
+		<div class="star-system" style="top: 415px; left: 1380px;" data-keywords="Al, Be, HC, Ir, Ta, W, Am, Ma, Pm, Sv">
 			<div id="Nirah_System" class="star-icon" ondblclick="openInfo(document.getElementById('Nirah_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="nirah-label" class="star-label" onclick="alert('No Wiki result for NN 3917!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Nirah</div>
+			<div id="nirah-label" class="star-label" onclick="alert('No Wiki result for NN 3917!')">Nirah
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Nirah
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1877,10 +2066,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 806px; left: 1108px;" data-keywords="Al, Be, F, HC, Sc, Il, Ir, Ag, Xf, V">
+		<div class="star-system" style="top: 806px; left: 1108px;" data-keywords="Al, Be, F, HC, Sc, Il, Ir, Ag, Xf, V, Am, Cm, Fb, Ma, Nt, Sl, Se, Su, Sm, Tx">
 			<div id="Nirvana_System" class="star-icon" ondblclick="openInfo(document.getElementById('Nirvana_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
-			<div id="nirvana-label" class="star-label" onclick="openWiki('HD_104304')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Nirvana</div>
+			<div id="nirvana-label" class="star-label" onclick="openWiki('HD_104304')">Nirvana
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Nirvana
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1891,7 +2082,9 @@
 		<div class="star-system" style="top: 714px; left: 533px;" data-keywords="Pb, Cl, Ho">
 			<div id="Oborum_Proxima_System" class="star-icon" ondblclick="openInfo(document.getElementById('Oborum_Proxima_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="oborumproxima-label" class="star-label" onclick="openWiki('Gliese_667')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Oborum Proxima</div>
+			<div id="oborumproxima-label" class="star-label" onclick="openWiki('Gliese_667')">Oborum Proxima
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Oborum Proxima
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1899,10 +2092,12 @@
 				<button style="position: relative; left: 78px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 703px; left: 541px;" data-keywords="Al, Au, Cl, Sc, Cu, Fe, Pb, Nd, Pt, Ag, Ta, Xf">
+		<div class="star-system" style="top: 703px; left: 541px;" data-keywords="Al, Au, Cl, Sc, Cu, Fe, Pb, Nd, Pt, Ag, Ta, Xf, Ab, Fb, Hy, Ma, Nt, Om, Pm, Sl, Sm, Tx">
 			<div id="Oborum_Prime_System" class="star-icon" ondblclick="openInfo(document.getElementById('Oborum_Prime_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="oborumprime-label" class="star-label" onclick="openWiki('Gliese_667')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Oborum Prime</div>
+			<div id="oborumprime-label" class="star-label" onclick="openWiki('Gliese_667')">Oborum Prime
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Oborum Prime
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1910,10 +2105,12 @@
 				<button style="position: relative; left: 70px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 643px; left: 645px;" data-keywords="Al, Be, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Ir, Fe, Pb, Ni, Pd, Ta, U, V">
+		<div class="star-system" style="top: 643px; left: 645px;" data-keywords="Al, Be, HC, He, Cn, Nh, Cl, Co, Cu, Eu, Ir, Fe, Pb, Ni, Pd, Ta, U, V, As, Ab, Fb, Ma, Nt, Om, Pm, Sl, Sd, Sm, Tx">
 			<div id="Olympus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Olympus_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="olympus-label" class="star-label" onclick="openWiki('Gliese_570')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Olympus</div>
+			<div id="olympus-label" class="star-label" onclick="openWiki('Gliese_570')">Olympus
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Olympus
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1924,7 +2121,9 @@
 		<div class="star-system" style="top: 464px; left: 1292px;" data-keywords="F">
 			<div id="Ophion_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ophion_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="ophion-label" class="star-label" onclick="alert('No Wiki result for Gl 580A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Ophion</div>
+			<div id="ophion-label" class="star-label" onclick="alert('No Wiki result for Gl 580A!')">Ophion
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Ophion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1932,10 +2131,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 403px; left: 276px;" data-keywords="Al, Au, Be, Cs, F, HC, He, Cl, Sc, Co, Cu, Eu, Fe, Pb, Nd, Ni, Pd, Pt">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-piazzi'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 403px; left: 276px;" data-keywords="Al, Au, Be, Cs, F, HC, He, Cl, Sc, Co, Cu, Eu, Fe, Pb, Nd, Ni, Pd, Pt, Ab, Fb, Nt, Om, Pm, Sl, Sv, Sm, Tx">
+			<div id="Piazzi_System" class="star-icon" ondblclick="openInfo(document.getElementById('Piazzi_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="piazzi-label" class="star-label" onclick="openWiki('61_Cygni')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Piazzi</div>
+			<div id="piazzi-label" class="star-label" onclick="openWiki('61_Cygni')">Piazzi
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Piazzi
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1943,12 +2144,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 614px; left: 1060px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Eu, Li, Nd, Ne, Pu, U">
+		<div class="star-system" style="top: 614px; left: 1060px;" data-keywords="Al, Au, Be, Cs, F, HC, Sb, Cn, Nh, Sc, Eu, Li, Nd, Ne, Pu, U, Ac, Ab, Am, Cm, Fb, Ma, Nt, Sl, Se, Sm, Tx">
 			<div id="Porrima_System" class="star-icon" ondblclick="openInfo(document.getElementById('Porrima_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
-			<div id="porrima-label" class="star-label" onclick="openWiki('Gamma_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Porrima
+			<div id="porrima-label" class="star-label" onclick="openWiki('Gamma_Virginis')">Porrima
 				<img class="city-marker" style="left: 47px;">	
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker">		
 			</div>
 			<div class="star-icon-box">Porrima
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -1957,10 +2159,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 572px; left: 237px;" data-keywords="Al, F, HC, Cn, He, Nh, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Ne, Ni, Xf, Ti, W, U">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-procyonA'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
+		<div class="star-system" style="top: 572px; left: 237px;" data-keywords="Al, F, HC, Cn, He, Nh, Cl, Sc, Co, Cu, Il, Ir, Fe, Pb, Ne, Ni, Xf, Ti, W, U, As, Ab, Fb, Ma, Nt, Om, Sl, Sd, Se, Su, Sm, Tx">
+			<div id="Procyon_A_System" class="star-icon" ondblclick="openInfo(document.getElementById('Procyon_A_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="procyona-label" class="star-label" onclick="openWiki('Procyon')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Procyon A</div>
+			<div id="procyona-label" class="star-label" onclick="openWiki('Procyon')">Procyon A
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Procyon A
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1969,9 +2173,11 @@
 			</div>			
 		</div>
 		<div class="star-system" style="top: 559px; left: 245px;" data-keywords="Al, He, Nd">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-procyonB'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
+			<div id="Procyon_B_System" class="star-icon" ondblclick="openInfo(document.getElementById('Procyon_B_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
-			<div id="procoyonb-label" class="star-label" onclick="openWiki('Procyon')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Procyon B</div>
+			<div id="procoyonb-label" class="star-label" onclick="openWiki('Procyon')">Procyon B
+				<img class="outpost-marker" style="margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Procyon B
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1979,10 +2185,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 636px; left: 1392px;" data-keywords="Al, Cs, F, HC, Eu, Li, Pu, Ag">
+		<div class="star-system" style="top: 636px; left: 1392px;" data-keywords="Al, Cs, F, HC, Eu, Li, Pu, Ag, Om, Sd">
 			<div id="Proxima_Termion_System" class="star-icon" ondblclick="openInfo(document.getElementById('Proxima_Ternion_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="proximaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Proxima Ternion</div>
+			<div id="proximaternion-label" class="star-label" onclick="openWiki('Xi_Scorpii')">Proxima Ternion
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Proxima Ternion
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -1990,10 +2198,12 @@
 				<button style="position: relative; left: 78px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 230px; left: 1683px;" data-keywords="Al, Au, Be, Cs, F, HC, Sc, Co, I, Il, Ir, Li, Nd, Pt, Ti, V">
+		<div class="star-system" style="top: 230px; left: 1683px;" data-keywords="Al, Au, Be, Cs, F, HC, Sc, Co, I, Il, Ir, Li, Nd, Pt, Ti, V, As, Ab, Cm, Hu, Om, Sd, Sv, Se">
 			<div id="Pyraas_System" class="star-icon" ondblclick="openInfo(document.getElementById('Pyraas_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="pyraas-label" class="star-label" onclick="alert('No Wiki result for NN 3824!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Pyraas</div>
+			<div id="pyraas-label" class="star-label" onclick="alert('No Wiki result for NN 3824!')">Pyraas
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Pyraas
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2001,10 +2211,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 271px; left: 1642px;" data-keywords="Al, Be, F, HC, Cn, Sc, Il, Li, Nd, Ne, Pd, Pt, Ag, Ta, Xf, Ti, W, V, Yb">
+		<div class="star-system" style="top: 271px; left: 1642px;" data-keywords="Al, Be, F, HC, Cn, Sc, Il, Li, Nd, Ne, Pd, Pt, Ag, Ta, Xf, Ti, W, V, Yb, Ab, Am, Cm, Hy, Om, Pm">
 			<div id="Rana_System" class="star-icon" ondblclick="openInfo(document.getElementById('Rana_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="rana-label" class="star-label" onclick="openWiki('Delta_Eridani')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Rana</div>
+			<div id="rana-label" class="star-label" onclick="openWiki('Delta_Eridani')">Rana
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Rana
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2012,10 +2224,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 286px; left: 798px;" data-keywords="Al, Au, Be, F, Cs, HC, Co, Yb">
+		<div class="star-system" style="top: 286px; left: 798px;" data-keywords="Al, Au, Be, F, Cs, HC, Co, Yb, Cm, Fb, Ma, Nt, Sl, Sm">
 			<div id="Rasalhague_System" class="star-icon" ondblclick="openInfo(document.getElementById('Rasalhague_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 13px; height: 13px;">
 			</div>
-			<div id="rasalhague-label" class="star-label" onclick="openWiki('Alpha_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Rasalhague</div>
+			<div id="rasalhague-label" class="star-label" onclick="openWiki('Alpha_Ophiuchi')">Rasalhague
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Rasalhague
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2023,10 +2237,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 765px; left: 1072px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Eu, Hg, Nd, Pt, Ag, U">
+		<div class="star-system" style="top: 765px; left: 1072px;" data-keywords="Al, Be, HC, Cn, Sc, Co, Eu, Hg, Nd, Pt, Ag, U, Ab, Am, Lc, Ma, Nt, Om, Pm, Sl, Se, Sm, Tx">
 			<div id="Rivera_System" class="star-icon" ondblclick="openInfo(document.getElementById('Rivera_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="rivera-label" class="star-label" onclick="alert('No Wiki result for NN 3728B!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Rivera</div>
+			<div id="rivera-label" class="star-label" onclick="alert('No Wiki result for NN 3728B!')">Rivera
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Rivera
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2034,10 +2250,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 400px; left: 1291px;" data-keywords="Al, Be, Cs, Sb, Cn, Nh, Sc, Ir, Li, Hg, Nd, Ne, Pt, Ti, V">
+		<div class="star-system" style="top: 400px; left: 1291px;" data-keywords="Al, Be, Cs, Sb, Cn, Nh, Sc, Ir, Li, Hg, Nd, Ne, Pt, Ti, V, Fb, Hu, Ma, Om, Py, Se, Sm">
 			<div id="Rutherford_System" class="star-icon" ondblclick="openInfo(document.getElementById('Rutherford_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="rutherford-label" class="star-label" onclick="openWiki('59_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Rutherford</div>
+			<div id="rutherford-label" class="star-label" onclick="openWiki('59_Virginis')">Rutherford
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Rutherford
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2048,7 +2266,9 @@
 		<div class="star-system" style="top: 380px; left: 863px;" data-keywords="Co, Ni">
 			<div id="Sagan_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sagan_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="sagan-label" class="star-label" onclick="openWiki('Gliese_569')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Sagan</div>
+			<div id="sagan-label" class="star-label" onclick="openWiki('Gliese_569')">Sagan
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Sagan
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2059,7 +2279,9 @@
 		<div class="star-system" style="top: 698px; left: 437px;" data-keywords="Al, He">
 			<div id="Sakharov_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sakharov_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="sakharov-label" class="star-label" onclick="openWiki('Gliese_674')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Sakharov</div>
+			<div id="sakharov-label" class="star-label" onclick="openWiki('Gliese_674')">Sakharov
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Sakharov
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2067,10 +2289,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 465px; left: 843px;" data-keywords="Ad, Be, Al, F, HC, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Nd, Ne, Pu, Ag, Ta, Xf, Ti, W, V">
+		<div class="star-system" style="top: 465px; left: 843px;" data-keywords="Ad, Be, Al, F, HC, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Nd, Ne, Pu, Ag, Ta, Xf, Ti, W, V, Ac, Ab, Lc, Lx, Pm, Sd, Se, Su">
 			<div id="Schrodinger_System" class="star-icon" ondblclick="openInfo(document.getElementById('Schrodinger_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="schrodinger-label" class="star-label" onclick="openWiki('Sun')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Schrodinger</div>
+			<div id="schrodinger-label" class="star-label" onclick="openWiki('Zeta_Serpentis')">Schrodinger
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Schrodinger
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2078,10 +2302,12 @@
 				<button style="position: relative; left: 64px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 355px; left: 1420px;" data-keywords="Al, Be, F, Sc, Li, W, V">
+		<div class="star-system" style="top: 355px; left: 1420px;" data-keywords="Al, Be, F, Sc, Li, W, V, Ac, Cm, Lc, Om, Pm, Sd, Se">
 			<div id="Serpentis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Serpentis_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="serpentis-label" class="star-label" onclick="openWiki('Zeta_Serpentis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Serpentis</div>
+			<div id="serpentis-label" class="star-label" onclick="openWiki('Zeta_Serpentis')">Serpentis
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Serpentis
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2089,10 +2315,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 288px; left: 1222px;" data-keywords="Al, Au, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Li, Nd, Pd, Pt, Ag, W, U, Yb">
+		<div class="star-system" style="top: 288px; left: 1222px;" data-keywords="Al, Au, Be, Cn, F, Nh, Sc, Co, Eu, Ir, Li, Nd, Pd, Pt, Ag, W, U, Yb, As, Ac, Ab, Am, Bs, Cm, Fb, Hu, Ma, Nt, Om, Pm, Py, Sl, Se, Sm, Tx">
 			<div id="Shoza_System" class="star-icon" ondblclick="openInfo(document.getElementById('Shoza_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="shoza-label" class="star-label" onclick="openWiki('Tau_Boötis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Shoza</div>
+			<div id="shoza-label" class="star-label" onclick="openWiki('Tau_Boötis')">Shoza
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Shoza
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2101,9 +2329,11 @@
 			</div>			
 		</div>	
 		<div class="star-system" style="top: 626px; left: 224px;" data-keywords="Al, HC, He, Cn, Cl, F, Sc, Cu, Ir, Fe, Li, Ni, U, Ho, Xe">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-sirius'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
+			<div id="Sirius_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sirius_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
-			<div id="sirius-label" class="star-label" onclick="openWiki('Sirius')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Sirius</div>
+			<div id="sirius-label" class="star-label" onclick="openWiki('Sirius')">Sirius
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Sirius
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2111,12 +2341,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 540px; left: 300px;" data-keywords="Al, Ar, Cn, He, Nh, Cl, F, Sc, Co, Dy, Fe, Pb, Hg, Nd, Ni, Pd, Ag, Ti, W, Ho, Aq">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-sol'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 540px; left: 300px;" data-keywords="Al, Ar, Cn, He, Nh, Cl, F, Sc, Co, Dy, Fe, Pb, Hg, Nd, Ni, Pd, Ag, Ti, W, Ho, Aq, Mb">
+			<div id="Sol_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sol_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="sol-label" class="star-label" onclick="openWiki('Sun')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'" onclick="openWiki('Sun')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Sol
+			<div id="sol-label" class="star-label" onclick="openWiki('Sun')" onclick="openWiki('Sun')">Sol
 				<img class="city-marker" style="left: 22px;">	
 				<img class="staryard-marker">
+				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Sol
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2125,10 +2356,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 221px; left: 1365px;" data-keywords="Al, Be, HC, Cn, F, Nh, Sc, Co, Il, Ir, Nd, Pd, Pt, Ag, Ta, Ti, W, V">
+		<div class="star-system" style="top: 221px; left: 1365px;" data-keywords="Al, Be, HC, Cn, F, Nh, Sc, Co, Il, Ir, Nd, Pd, Pt, Ag, Ta, Ti, W, V, Ab, Am, Cm, Pm, Su">
 			<div id="Sparta_System" class="star-icon" ondblclick="openInfo(document.getElementById('Sparta_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="sparta-label" class="star-label" onclick="alert('No Wiki result for Gl 615.1A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Sparta</div>
+			<div id="sparta-label" class="star-label" onclick="alert('No Wiki result for Gl 615.1A!')">Sparta
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Sparta
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2136,10 +2369,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 303px; left: 1736px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Dy, Ir, Li, Hg, Pd, Ag, Xe">
+		<div class="star-system" style="top: 303px; left: 1736px;" data-keywords="Al, Au, Be, F, HC, Cn, Sc, Co, Dy, Ir, Li, Hg, Pd, Ag, Xe, Ac, Hu, Om, Sd">
 			<div id="Strix_System" class="star-icon" ondblclick="openInfo(document.getElementById('Strix_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="strix-label" class="star-label" onclick="alert('No Wiki result for NN 3868A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Strix</div>
+			<div id="strix-label" class="star-label" onclick="alert('No Wiki result for NN 3868A!')">Strix
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Strix
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2147,10 +2382,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 594px; left: 1486px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Pu, Ta, Xf, Yb">
+		<div class="star-system" style="top: 594px; left: 1486px;" data-keywords="Al, Be, F, HC, Cn, Nh, Sc, Co, Ir, Li, Pt, Pu, Ta, Xf, Yb, Ac, Ab, Cm, Pm">
 			<div id="Syrma_System" class="star-icon" ondblclick="openInfo(document.getElementById('Syrma_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="syrma-label" class="star-label" onclick="openWiki('Iota_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Syrma</div>
+			<div id="syrma-label" class="star-label" onclick="openWiki('Iota_Virginis')">Syrma
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Syrma
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2158,10 +2395,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 593px; left: 82px;" data-keywords="Al, Be, Cs, F, HC, He, Cn, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ni, Pd, Pt, Ta, Xf, U, V, Yb">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-tau-ceti'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 593px; left: 82px;" data-keywords="Al, Be, Cs, F, HC, He, Cn, Cl, Sc, Co, Cu, Fe, Pb, Li, Nd, Ni, Pd, Pt, Ta, Xf, U, V, Yb, Ac, Cm, Fb, Hy, Ma, Nt, Om, Sl, Sv, Sm, Tx">
+			<div id="Tau_Ceti_System" class="star-icon" ondblclick="openInfo(document.getElementById('Tau_Ceti_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="tauceti-label" class="star-label" onclick="openWiki('Tau_Ceti')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Tau Ceti</div>
+			<div id="tauceti-label" class="star-label" onclick="openWiki('Tau_Ceti')">Tau Ceti
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Tau Ceti
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2170,9 +2409,11 @@
 			</div>			
 		</div>
 		<div class="star-system" style="top: 640px; left: 216px;" data-keywords="Cs, Cl">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-the-pup'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
+			<div id="The_Pup_System" class="star-icon" ondblclick="openInfo(document.getElementById('The_Pup_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
-			<div id="thepup-label" class="star-label" onclick="openWiki('Sirius')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">The Pup</div>
+			<div id="thepup-label" class="star-label" onclick="openWiki('Sirius')">The Pup
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">The Pup
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2180,10 +2421,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 590px; left: 352px;" data-keywords="Al, Be, Cn, He, Pb, Ag">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-toliman'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 590px; left: 352px;" data-keywords="Al, Be, Cn, He, Pb, Ag, As, Hu, Ma, Nt, Om, Sl, Se, Sm, Tx">
+			<div id="Toliman_System" class="star-icon" ondblclick="openInfo(document.getElementById('Toliman_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="toliman-label" class="star-label" onclick="openWiki('Alpha_Centauri')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Toliman</div>
+			<div id="toliman-label" class="star-label" onclick="openWiki('Alpha_Centauri')">Toliman
+				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px;">
+			</div>
 			<div class="star-icon-box">Toliman
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2191,10 +2434,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb">
+		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb, Ac, Cm, Fb, Hu, Ma, Pm, Se, Sm">
 			<div id="Tidacha_System" class="star-icon" ondblclick="openInfo(document.getElementById('Tidacha_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="tidacha-label" class="star-label" onclick="openWiki('HD_152391')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Tidacha</div>
+			<div id="tidacha-label" class="star-label" onclick="openWiki('HD_152391')">Tidacha
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Tidacha
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2202,10 +2447,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 335px; left: 769px;" data-keywords="Al, Be, Cn, Cl, F, Sc, Co, Fe, Nd, Ta, U">
+		<div class="star-system" style="top: 335px; left: 769px;" data-keywords="Al, Be, Cn, Cl, F, Sc, Co, Fe, Nd, Ta, U, Cm, Fb, Ma, Nt, Om, Sl, Sv, Se, Sm, Tx">
 			<div id="Ursae_Majoris_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ursae_Majoris_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
-			<div id="ursaemajoris-label" class="star-label" onclick="openWiki('Xi_Ursae_Majoris')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Ursae Majoris</div>
+			<div id="ursaemajoris-label" class="star-label" onclick="openWiki('Xi_Ursae_Majoris')">Ursae Majoris
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Ursae Majoris
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2213,10 +2460,12 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 315px; left: 777px;" data-keywords="Al, Nh, Eu, F, Ir, Ta, Xf">
+		<div class="star-system" style="top: 315px; left: 777px;" data-keywords="Al, Nh, Eu, F, Ir, Ta, Xf, Ab, Am, Fb, Ma, Nt, Sl, Sm, Tx">
 			<div id="Ursae_Minoris_System" class="star-icon" ondblclick="openInfo(document.getElementById('Ursae_Minoris_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="ursaeminoris-label" class="star-label" onclick="openWiki('Xi_Ursae_Majoris')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Ursae Minoris</div>
+			<div id="ursaeminoris-label" class="star-label" onclick="openWiki('Xi_Ursae_Majoris')">Ursae Minoris
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Ursae Minoris
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2224,12 +2473,13 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 485px; left: 480px;" data-keywords="Al, Be, Cn, Cl, He, Sc, Co, Eu, Ir, Li, Nd, Ni, U, V, Ho">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-valo'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
+		<div class="star-system" style="top: 485px; left: 480px;" data-keywords="Al, Be, Cn, Cl, He, Sc, Co, Eu, Ir, Li, Nd, Ni, U, V, Ho, Ab, Fb, Ma, Nt, Om, Sl, Sv, Se, Sm, Tx">
+			<div id="Valo_System" class="star-icon" ondblclick="openInfo(document.getElementById('Valo_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
-			<div id="valo-label" class="star-label" onclick="openWiki('70_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Valo
+			<div id="valo-label" class="star-label" onclick="openWiki('70_Ophiuchi')">Valo
 				<img class="city-marker" style="left: 30px;">	
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px;">				
 			</div>
 			<div class="star-icon-box">Valo
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2239,9 +2489,11 @@
 			</div>			
 		</div>
 		<div class="star-system" style="top: 505px; left: 60px;" data-keywords="Cu">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-van-maanen'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
+			<div id="Van_Maanen%27s_Star_System" class="star-icon" ondblclick="openInfo(document.getElementById('Van_Maanen%27s_Star_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 5px; height: 5px;">
 			</div>
-			<div id="vanmaanensstar-label" class="star-label" onclick="openWiki('Van_Maanen_2')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Van Maanen's Star</div>
+			<div id="vanmaanensstar-label" class="star-label" onclick="openWiki('Van_Maanen_2')">Van Maanen's Star
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Van Maanen's Star
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2249,9 +2501,11 @@
 				<button style="position: relative; left: 85px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>	
-		<div class="star-system" style="top: 252px; left: 456px;" data-keywords="Al, HC, Sc, Co, Dy, Pd, Ti, U">	
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-vega'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;"></div>
-			<div id="vega-label" class="star-label" onclick="openWiki('Vega')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Vega</div>	
+		<div class="star-system" style="top: 252px; left: 456px;" data-keywords="Al, HC, Sc, Co, Dy, Pd, Ti, U, Ab, Fb, Hu, Ma, Nt, Pm, Sl, Sm, Tx">	
+			<div id="Vega_System" class="star-icon" ondblclick="openInfo(document.getElementById('Vega_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;"></div>
+			<div id="vega-label" class="star-label" onclick="openWiki('Vega')">Vega
+				<img class="outpost-marker">
+			</div>	
 			<div class="star-icon-box">Vega
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2259,10 +2513,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 474px; left: 1702px;" data-keywords="Al, Be, Cn, F, Sc, Ir, Li, Hg, Ne, Pd, Pt, Pu, Ag, Ti, W, V, Vr, Yb">
+		<div class="star-system" style="top: 474px; left: 1702px;" data-keywords="Al, Be, Cn, F, Sc, Ir, Li, Hg, Ne, Pd, Pt, Pu, Ag, Ti, W, V, Vr, Yb, Ab, Cm, Hu, Se">
 			<div id="Verne_System" class="star-icon" ondblclick="openInfo(document.getElementById('Verne_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="verne-label" class="star-label" onclick="alert('No Wiki result for Wo 9429(Virgo)!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Verne</div>
+			<div id="verne-label" class="star-label" onclick="alert('No Wiki result for Wo 9429(Virgo)!')">Verne
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Verne
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2270,12 +2526,13 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 713px; left: 824px;" data-keywords="Al, Be, Cn, Cl, F, He, Sc, Cu, Il, Fe, Pb, Nd">
+		<div class="star-system" style="top: 713px; left: 824px;" data-keywords="Al, Be, Cn, Cl, F, He, Sc, Cu, Il, Fe, Pb, Nd, Lc, Sm, Tx">
 			<div id="Volii_System" class="star-icon" ondblclick="openInfo(document.getElementById('Volii_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="volii-label" class="star-label" onclick="openWiki('61_Virginis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Volii
+			<div id="volii-label" class="star-label" onclick="openWiki('61_Virginis')">Volii
 				<img class="city-marker" style="left: 27px;">
-				<img class="staryard-marker">				
+				<img class="staryard-marker">
+				<img class="outpost-marker">			
 			</div>
 			<div class="star-icon-box">Volii
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2285,11 +2542,12 @@
 			</div>			
 		</div>				
 		<div class="star-system" style="top: 545px; left: 396px;" data-keywords="Al, Be, Pb, Hg, Ag, Ho">
-			<div class="star-icon" ondblclick="resizeIframe(document.getElementById('system-wolf'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
+			<div id="Wolf_System" class="star-icon" ondblclick="openInfo(document.getElementById('Wolf_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
-			<div id="wolf-label" class="star-label" onclick="openWiki('Wolf_359')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Wolf
+			<div id="wolf-label" class="star-label" onclick="openWiki('Wolf_359')">Wolf
 				<img class="city-marker" style="left: 28px;">			
-				<img class="staryard-marker">					
+				<img class="staryard-marker">
+				<img class="outpost-marker">				
 			</div>			
 			<div class="star-icon-box">Wolf
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
@@ -2298,10 +2556,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 676px; left: 859px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Pt, Ag, Xf, W, V, Yb">
+		<div class="star-system" style="top: 676px; left: 859px;" data-keywords="Al, Be, F, HC, Sb, Cn, Nh, Sc, Co, Dy, Ir, Li, Hg, Pt, Ag, Xf, W, V, Yb, As, Ma, Om">
 			<div id="Xi_Ophiuchi_System" class="star-icon" ondblclick="openInfo(document.getElementById('Xi_Ophiuchi_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
-			<div id="xiophiuchi-label" class="star-label" onclick="openWiki('Xi_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Xi Ophiuchi</div>
+			<div id="xiophiuchi-label" class="star-label" onclick="openWiki('Xi_Ophiuchi')">Xi Ophiuchi
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Xi Ophiuchi
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2309,10 +2569,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 884px; left: 1575px;" data-keywords="Cn, Cs, F, Sc, Co, Ir, Li, Ne, Pd, Pt, Pu, Ag, Xf, Ti, W, Xe">
+		<div class="star-system" style="top: 884px; left: 1575px;" data-keywords="Cn, Cs, F, Sc, Co, Ir, Li, Ne, Pd, Pt, Pu, Ag, Xf, Ti, W, Xe, As, Ab, Am, Cm, Hu, Is">
 			<div id="Zelazny_System" class="star-icon" ondblclick="openInfo(document.getElementById('Zelazny_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="zelazny-label" class="star-label" onclick="alert('No Wiki result for Wo 9390A!')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Zelazny</div>
+			<div id="zelazny-label" class="star-label" onclick="alert('No Wiki result for Wo 9390A!')">Zelazny
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Zelazny
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2320,10 +2582,12 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>		
-		<div class="star-system" style="top: 696px; left: 846px;" data-keywords="Al, Au, Be, HC, Sb, Cn, Sc, Co, Ir, Li, Ne, Pt, Pu, Ag, Ta, V, Yb">
+		<div class="star-system" style="top: 696px; left: 846px;" data-keywords="Al, Au, Be, HC, Sb, Cn, Sc, Co, Ir, Li, Ne, Pt, Pu, Ag, Ta, V, Yb, Ac, Fb, Ma, Nl, Pm, Py, Sd, Se">
 			<div id="Zeta_Ophiuchi_System" class="star-icon" ondblclick="openInfo(document.getElementById('Zeta_Ophiuchi_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 13px; height: 13px;">
 			</div>
-			<div id="zetaophiuchi-label" class="star-label" onclick="openWiki('Zeta_Ophiuchi')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Zeta Ophiuchi</div>
+			<div id="zetaophiuchi-label" class="star-label" onclick="openWiki('Zeta_Ophiuchi')">Zeta Ophiuchi
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Zeta Ophiuchi
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2331,10 +2595,12 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 301px; left: 1108px;" data-keywords="F, HC, Cn, Sc, Co, Ir, Pd, Ta, Xe">
+		<div class="star-system" style="top: 301px; left: 1108px;" data-keywords="F, HC, Cn, Sc, Co, Ir, Pd, Ta, Xe, Ab, Bs, Fb, Ma">
 			<div id="Zosma_System" class="star-icon" ondblclick="openInfo(document.getElementById('Zosma_System'))" style="background-color: #ADD8E6; box-shadow: 0 0 14px #ADD8E6; width: 9px; height: 9px;">
 			</div>
-			<div id="zosma-label" class="star-label" onclick="openWiki('Delta_Leonis')" onMouseOver="this.style.color = 'cyan'" onMouseOut="this.style.color = '#B7B7B7'">Zosma</div>
+			<div id="zosma-label" class="star-label" onclick="openWiki('Delta_Leonis')">Zosma
+				<img class="outpost-marker">
+			</div>
 			<div class="star-icon-box">Zosma
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
@@ -2350,8 +2616,6 @@
 	<script src="Data/Scripts/CelestialData.js"></script>		
 
     <script>
-
-		//let starLabelsHidden = true;
 	
 		var menuClick = new Audio('Data/Sound/MenuClick.wav');
 		var scanLoop = new Audio('Data/Sound/ScanLoop.wav');
@@ -2399,30 +2663,22 @@
 		}		
 
 		function toggleOutpostState(boxParent) {
-			const outpostImage = new Image();
-			outpostImage.classList.add("variantOutpost");
-			outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";            
 			const iconChildOutpost = boxParent.parentElement.parentElement.childNodes[3];
+			const existingImage = iconChildOutpost.querySelector('img.outpost-marker');
 
-			const hasOutpostImage = Array.from(iconChildOutpost.children).some(child => child.tagName.toLowerCase() === 'img' && child.classList.contains('variantOutpost'));
+			if (existingImage) {
+				const isVisible = existingImage.style.display !== 'none';
 
-			if (hasOutpostImage) {
-				const existingImage = iconChildOutpost.querySelector('img.variantOutpost');
-				iconChildOutpost.removeChild(existingImage);
-				localStorage.removeItem(iconChildOutpost.id + "-outpost");
-			} else {
-				iconChildOutpost.appendChild(outpostImage);
-				localStorage.setItem(iconChildOutpost.id + "-outpost", JSON.stringify(true));
-				// Do not change the following lines to keep your original coordinate variables
-				outpostImage.style.top = iconChildOutpost.style.top;
-				outpostImage.style.marginTop = "-1px";
-				outpostImage.style.right = "-36px";                
-				outpostImage.style.left = iconChildOutpost.style.left;
-				outpostImage.style.marginLeft = "1px";                
-				outpostImage.style.transform = "scale(0.35)";
+				if (isVisible) {
+					existingImage.style.display = 'none';
+					localStorage.removeItem(iconChildOutpost.id + "-outpost");
+				} else {
+					existingImage.style.display = 'block';
+					localStorage.setItem(iconChildOutpost.id + "-outpost", JSON.stringify(true));
+				}
 			}
-		}	
-	
+		}
+
 		document.addEventListener('mouseover', function (event) {	
 			if (!isHovering()) {
 				document.getElementById("submenu01").style.display = "none";
@@ -2508,9 +2764,7 @@
         }	
 	
 	    const mapContainer = document.getElementById("map-container");
-		const extendedInfoContainer = document.getElementById('extended-info-container');
 		const starIconBox = document.querySelector('.star-icon-box');		
-        //const systemAnimation = document.querySelector('.system-animation');
 		const starLabels = document.querySelectorAll('.star-label');
 		const settingsInfo = document.querySelectorAll('.settings-info');		
 		
@@ -2518,7 +2772,6 @@
 		
 		function closeStarIconBox(button) {
 			button.parentElement.style.display = "none";	
-			//location.reload();
 		}		
 
 		starLabels.forEach((starLabel, index) => {
@@ -2531,16 +2784,15 @@
 			if(surveyedText) {
 				starLabel.style.color = "lime";
 			}			
-			if(outpostText) {
-				const outpostImage = new Image();
-				outpostImage.src = "Data/Textures/Icons/OutpostMarker.png";				
-				starLabel.appendChild(outpostImage);
-				outpostImage.style.top = starLabel.style.top + "auto";
-				outpostImage.style.marginTop = "-1px";
-				outpostImage.style.right = "-36px";   				
-				outpostImage.style.left = starLabel.style.left + "auto";
-				outpostImage.style.marginLeft = "1px";				
-				outpostImage.style.transform = "scale(0.35)";
+			const outpostImage = starLabel.querySelector('img.outpost-marker');
+			if (outpostImage) {
+				const isVisible = outpostText === "true";
+
+				if (isVisible) {
+					outpostImage.style.display = 'block';
+				} else {
+					outpostImage.style.display = 'none';
+				}
 			}			
 		});
 		
@@ -2555,130 +2807,10 @@
 		mapContainer.addEventListener("mouseleave", function () {
 			originalCoordinatesSpan.value = "";		
 		});			
-		
-		function createStarInfoBox(index) {
-			const starInfoBox = document.createElement('div');
-			starInfoBox.className = 'star-info';
-			starInfoBox.style.zIndex = 9999;
-
-			starInfoBox.innerHTML = '<button class="close-button" onclick="closeStarInfoBox(' + index + ')" style="cursor: pointer;">Confirm</button>\
-				<button class="drag-button" id="dragButton" style="cursor: grab;">Drag</button><textarea rows="4" cols="30" id="starInfoText' + index + 
-				'" placeholder="">' + (localStorage.getItem('starInfoText' + index) || '') + '</textarea>';			
-
-			starInfoBox.style.display = 'none';
-			document.body.appendChild(starInfoBox);
-
-			const starInfoText = starInfoBox.querySelector('textarea');
-			starInfoText.style.zIndex = 9999;
-			starInfoText.addEventListener('input', function() {
-				const text = starInfoText.value;
-				if (text.length <= 500) {
-					localStorage.setItem('starInfoText' + index, text);
-				}
-			});
-
-			const dragButton = starInfoBox.querySelector('.drag-button');
-			enableDragAndDrop(dragButton, starInfoBox);
-
-			starInfoBox.addEventListener('click', function(event) {
-				toggleStarInfoBox(starInfoBox, event);
-				toggleLabelReverse.play();
-			});
-
-			return starInfoBox;
-		}	
-	
-		function closeStarInfoBox(index) {
-			const starInfoBox = document.querySelector(`#starInfoText${index}`).parentElement;
-			const storedText = localStorage.getItem('starInfoText' + index);
-
-			localStorage.removeItem('starInfoText' + index);
-
-
-			starInfoBox.style.display = 'none';
-			extendedInfoContainer.textContent = '';
-			extendedInfoContainer.style.display = 'none';
-
-			starLabels.forEach((starLabel, labelIndex) => {
-				if (labelIndex === index) {
-					if (storedText !== null && storedText.trim() !== '') {
-						starLabel.style.textDecoration = 'underline';
-					} else {
-						starLabel.style.textDecoration = 'none';
-					}
-				}
-			});
-		}
-
-		function toggleStarInfoBox(starInfoBox, event) {
-			if (event.ctrlKey) {
-				starInfoBox.style.display = (starInfoBox.style.display === 'block') ? 'none' : 'block';
-				
-				if (starInfoBox.style.display === "block") {
-					starInfoBox.style.zIndex = 9999;
-					toggleLabel.play();
-				} else {
-					toggleLabelReverse.play();
-				}				
-
-				const coordinatesText = originalCoordinatesSpan.textContent;
-				const matches = coordinatesText.match(/X\(left\):\s*(-?\d+).*Y\(top\):\s*(-?\d+)/);
-
-				if (matches && matches.length === 3) {
-					const x = parseInt(matches[1]);
-					const y = parseInt(matches[2]);
-
-					const screenWidth = window.innerWidth;
-					const screenHeight = window.innerHeight;
-
-					const offsetX = x < screenWidth / 2 ? 20 : -starInfoBox.offsetWidth - 220;
-					const offsetY = y < screenHeight / 2 ? 20 : -starInfoBox.offsetHeight - 220;
-
-					starInfoBox.style.left = (x + offsetX) + 'px';
-					starInfoBox.style.top = (y + offsetY) + 'px';
-				}
-			}
-		}
-
-		function enableDragAndDrop(dragButton, textBox) {
-			let offsetX, offsetY;
-			let isDragging = false;
-
-			dragButton.addEventListener('mousedown', (event) => {
-				isDragging = true;
-				const boundingBox = textBox.getBoundingClientRect();
-				offsetX = event.clientX - boundingBox.left;
-				offsetY = event.clientY - boundingBox.top;
-			});
-
-			document.addEventListener('mousemove', (event) => {
-				if (isDragging) {
-					const newLeft = event.clientX - offsetX + 'px';
-					const newTop = event.clientY - offsetY + 'px';
-					textBox.style.left = newLeft;
-					textBox.style.top = newTop;
-				}
-			});
-
-			document.addEventListener('mouseup', () => {
-				isDragging = false;
-			});
-		}	
 
 		const starIcons = document.querySelectorAll('.star-icon');
-		const starInfoBoxes = Array.from(starIcons).map((starIcon, index) => createStarInfoBox(index));
 
 		starIcons.forEach((starIcon, index) => {
-		
-			starIcon.addEventListener('click', function(event) {
-				toggleStarInfoBox(starInfoBoxes[index], event);
-			});
-			
-			starIcon.addEventListener('mouseover', (event) => {
-				if (event.ctrlKey) {
-					starIcon.style.cursor = 'pointer';
-				}
-			});
 			
 			starIcon.addEventListener('mouseout', () => {
 				starIcon.style.cursor = 'default';			
@@ -2695,17 +2827,6 @@
 			});				
 			
 		});		
-
-		/*function toggleStarLabels() {
-			starLabelsHidden = !starLabelsHidden;
-			starLabels.forEach(label => {
-				if (starLabelsHidden) {
-					label.style.display = 'none';
-				} else {
-					label.style.display = 'block';
-				}
-			});
-		}*/
 
 		let settingsInfoHidden = true;
 
@@ -2751,40 +2872,11 @@
 						clearInterval(hoverTimer);
 					}
 
-					/*if (starLabelsHidden) {
-						const label = starIcon.nextElementSibling;			
-						label.style.display = 'block';
-					}*/
-					
-					if (!event.ctrlKey) {
-						const starName = starIcon.nextElementSibling.textContent;
-						const storedText = localStorage.getItem('starInfoText' + index);
-						extendedInfoContainer.textContent = `${storedText}`;
-						extendedInfoContainer.style.padding = '5px';
-						//systemAnimation.style.display = 'block';						
-					}
-
 				}, animationDuration / scaleSteps);
 
 				prevStarIcon = starIcon;
 			});
 			
-			starIcon.addEventListener('mouseover', function (event) {
-				extendedInfoOpen = !extendedInfoOpen;
-				const storedText = localStorage.getItem('starInfoText' + starIcon.id);	
-				
-				if (storedText != 'null') {			
-				//if (event.shiftKey) {
-					if (!extendedInfoOpen) {
-						extendedInfoContainer.style.display = 'block';
-						//toggleLabel.play();
-					} else {
-						extendedInfoContainer.style.display = 'none';
-						//toggleLabelReverse.play();
-					}
-				//}
-				}
-			});	
 			starIcon.addEventListener('click', function (event) {			
 				iconBoxOpen = !iconBoxOpen;					
 				if (event.altKey) {
@@ -2806,29 +2898,19 @@
 			});
 
 			starIcon.addEventListener('mouseleave', function () {
-				extendedInfoOpen = !extendedInfoOpen;
+			
 				clearInterval(hoverTimer);
-
 				let currentScale = parseFloat(starIcon.style.transform.match(/\d\.\d+/));
-
 				let step = 0;
 
 				hoverTimer = setInterval(() => {
+				
 					currentScale -= scaleFactorIncrement;
 
 					if (currentScale >= 1.0) {
 						starIcon.style.transform = `scale(${currentScale})`;
 					} else {
 						clearInterval(hoverTimer);
-
-						if (!starInfoBoxes[index].style.display || starInfoBoxes[index].style.display === 'none') {
-							extendedInfoContainer.style.display = 'none';
-							/*systemAnimation.style.display = 'none';
-							if (starLabelsHidden) {
-								const label = starIcon.nextElementSibling;
-								label.style.display = 'none';
-							}*/ 
-						}
 					}
 				}, animationDuration / scaleSteps);
 			});
@@ -2837,98 +2919,30 @@
 		function resetStar(starIcon) {
 			starIcon.style.transform = 'scale(1.0)';			
 		}	
-
-		starLabels.forEach((starLabel, index) => {
-			const storedText = localStorage.getItem('starInfoText' + index);
-
-			if (starLabel) {
-				if (storedText !== null && storedText.trim() !== '') {
-					starLabel.style.textDecoration = 'underline';
-				} else {
-					starLabel.style.textDecoration = 'none';
-				}
-			}
-		});
 		
-		let isIframeEnlarged = false;
 		var systemButton = document.querySelector(".system-button");
 		var backgroundBlur = document.querySelector(".background-blur");
-
-		function resizeIframe(iframeId) {
-		
-			if (event.shiftKey) {
-				return
-			}
-		
-			if(!iframeId) {
-				alert("No system scan available!");
-				return
-			}
-	
-			var iframe;
-	
-			iframe = iframeId;
-
-			if (isIframeEnlarged) {
-				iframe.style.display = 'none';   
-				iframe.style.width = '1400px';
-				iframe.style.height = '800px';
-				iframe.style.left = '675px';
-				iframe.style.top = '-260px';
-				iframe.style.backgroundColor = 'rgba(48, 62, 77, 1.0)';            
-				iframe.style.transform = 'scale(0.25)';    
-				iframe.style.zIndex = '0';
-				iframe.style.border = '8px inset #B7B7B7'; 
-				iframe.style.borderRight = '8px solid black'; 
-				iframe.style.borderBottom = '8px solid black';   
-				systemButton.style.display = 'none';
-				backgroundBlur.style.display = 'none';
-			} else {
-				iframe.style.left = '300px';
-				iframe.style.top = '62px';
-				iframe.style.backgroundColor = 'rgba(48, 62, 77, 1.0)';
-				iframe.style.transform = 'scale(1)';
-				iframe.style.zIndex = '999';
-				iframe.style.border = '2px inset #B7B7B7'; 
-				iframe.style.borderRight = '2px solid black'; 
-				iframe.style.borderBottom = '2px solid black';    
-				iframe.style.display = 'block';
-				iframe.classList.add("opened");
-				systemButton.style.display = 'block';
-				backgroundBlur.style.display = 'block';
-				toggleLabel.play();
-			}
-
-			isIframeEnlarged = !isIframeEnlarged;
-		}
 
 		function closeSettingsInfo() {
 			var settingsInfoDiv = document.querySelector('.settings-info');
 			settingsInfoDiv.style.display = 'none';
 			settingsInfoHidden = true;
 		}
-
-		function closeSystemInfo() {
-			var iframes = document.querySelectorAll(".system-iframe");
-			for (var i = 0; i < iframes.length; i++) {
-				iframes[i].style.display = "none";
-			}
-			systemButton.style.display = 'none';
-			backgroundBlur.style.display = 'none';
-			toggleLabelReverse.play();
-		}
 		
 		const chartElements = document.querySelector('.chartElements');
 		const segmentContainer = document.querySelector('.chartSegments-container');
-		const totalSegments = 49;
+		const totalSegments = 80;
 		
 		const segmentNames = [
 		  'Ad', 'Ag', 'Al', 'Aq', 'Ar', 'Au', 'Be', 'Cl', 'Cn', // 1-9; Cn = C6Hn -> Benzene; Aq -> Aqoueous Haematite
 		  'Co', 'Cs', 'Ct', 'Cu', 'Dy', 'Eu', 'F', 'Fe', 'HC', // 10-18; HC = HnCn -> Alkane
 		  'He', 'Hg', 'Ho', 'Ie', 'Il', 'Ir', 'Li', 'Nd', 'Ne', // 19-27; Ho = H2O -> Gumma die Oma da hadd ja ka Wassa da; He = He-3 -> Helium-3
-		  'Nh', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'Rc', 'Ro', 'Sb', // 28-36; Ro = R-COC -> Carbolyxic Acid; Nh = NH2 -> Amino Acid
-		  'Sc', 'Ta', 'Ti', 'Ts', 'U', 'V', 'Vr', 'Vy', 'W', // 37-45; Sc = SiH3Cl -> Chlorosilanes
-		  'Xe', 'Xf', 'Yb', 'Zr' //45-49 Xf = XF4 -> Tetrafluoride
+		  'Nh', 'Ni', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'Rc', 'Ro', // 28-36; Ro = R-COC -> Carbolyxic Acid; Nh = NH2 -> Amino Acid
+		  'Sb', 'Sc', 'Ta', 'Ti', 'Ts', 'U', 'V', 'Vr', 'Vy', 'W', // 37-45; Sc = SiH3Cl -> Chlorosilanes
+		  'Xe', 'Xf', 'Yb', 'As', 'As', 'Ac', 'Ab', 'Am', //45-49 Xf = XF4 -> Tetrafluoride; 50-54 = Adhesive - Aromatic
+		  'Bs', 'Cm', 'Fb', 'Gd', 'Hu', 'Ht', 'Hy', 'Is', 'Lc', // 55-63 = Biosupressant - Lubricunt
+		  'Lx', 'Mb', 'Ms', 'Ma', 'Nl', 'Nt', 'Om', 'Pm', 'Py', // 64-73 = Luxury Textile - Polymer
+		  'Qd', 'Sl', 'Sd', 'Sv', 'Se', 'Su', 'Sm', 'Tx' // 74-80 = Quark-Degenerate Tissues - Toxin
 		];				
 
 		for (let i = 0; i < totalSegments; i++) {
@@ -2960,17 +2974,22 @@
 
 		function getColorForSegment(segmentNumber) {
 			const colors = [
-				//colors are applied position = -18
-				'#6DA49E', '#7AB26B', '#AB9489', '#D7FFFF', '#4CD7BB', //1-5
-				'#706E29', '#5A74CB', '#A1E4DB', '#6A9A97', '#2AA1BE', //6-10
-				'#5F4421', '#444F54', '#D9A23C', '#4971A8', '#B8B840', //11-15
-				'#3A7B9C', '#DBBF5B', '#FC9375', '#4E5D93', '#BD5D5F', //16-20
-				'#698794', '#FBDC4C', '#4A490F', '#8E8E33', '#27D6E6', //21-25
-				'#EDED56', '#596C75', '#8498FF', '#D4826A', '#37A08B', //26-30
-				'#E6EFEF', '#BA8CFF', '#7E736D', '#344A49', '#FB4B42', //31-35
-				'#224B66', '#C79E4E', '#396764', '#424A57', '#2B5F80', //36-40
-				'#33588C', '#8A84FF', '#275549', '#222222', '#74A3B8', //41-45
-				'#9FD0CD', '#2F7869', '#75403A', '#A14B54' //46-49						
+				'#5F4421', '#444F54', '#D9A23C', '#4971A8', '#B8B840', //29-33
+				'#FC9375', '#3A7B9C', '#DBBF5B', '#4E5D93', '#BD5D5F', //34-38
+				'#698794', '#FBDC4C', '#4A490F', '#8E8E33', '#27D6E6', //39-43
+				'#EDED56', '#596C75', '#8498FF', '#37A08B', '#D4826A', //44-48
+				'#33588C', '#33588C', '#FFFFFF', '#275549', '#74A3B8', //49-53
+				'#A1E4DB', '#BA8CFF', '#7E736D', '#344A49', '#FB4B42', //54-58
+				'#224B66', '#C79E4E', '#396764', '#424A57', '#2B5F80', //59-63
+				'#9FD0CD', '#2F7869', '#75403A', '#A14B54', '#7AB26B', //64-69
+				'#FC9375', '#3A7B9C', '#DBBF5B', '#4E5D93', '#BD5D5F', //70-74
+				'#5A74CB', '#6A9A97', '#2AA1BE', '#A1E4DB', '#706E29', //75-79
+				'#A1E4DB', '#BA8CFF', '#7E736D', '#344A49', '#FB4B42', //80-4 <-- origin pos 2 aldumite #BA8CFF
+				'#224B66', '#C79E4E', '#396764', '#424A57', '#2B5F80', //5-9
+				'#33588C', '#8A84FF', '#FFFFFF', '#275549', '#74A3B8', //10-14
+				'#9FD0CD', '#2F7869', '#75403A', '#A14B54', '#7AB26B', //15-19
+				'#AB9489', '#6DA49E', '#D7FFFF', '#4CD7BB', '#706E29', //20-24
+				'#5A74CB', '#6A9A97', '#2AA1BE', '#A1E4DB'//25-28					
 			];
 
 			return colors[segmentNumber % colors.length];
@@ -3010,32 +3029,39 @@
 			});
 		});
 		
-		let isJournalKeyPressed = false;		
+		let isJournalKeyPressed = false;
+		let isJournalSystemKeyPressed = false;	
+		let isJournalCodexKeyPressed = false;			
 
 		document.addEventListener('keydown', (event) => {
+		
 			if (event.key === 'r' && isMouseOverStarIcon) {
+			
 				if (hoveredStarIconKeywords) {
 					scanLoop.loop = true;
 					scanLoop.play();				
 					chart.style.display = 'block';
 					elementBox.style.display = 'grid';
-					/*const localMaps = document.getElementsByClassName("localmap-container");
-					for (const localMap of localMaps) {
-						localMap.style.display = "none";
-					}*/
 				}
+				
 			}
+			
 			if (event.key === 'h') {
+			
 				const containers = document.querySelectorAll('.wikimain-container, .localmap-container');
 				
 				containers.forEach((container) => {
 					container.style.display = 'flex';
 				});		
+				
 				const wikiSide = document.getElementById("wiki-container");	
 				wikiSide.style.display = 'flex';				
 			}
+			
 			if (event.key === 'j' && !isJournalKeyPressed) {
+			
 				const journalFrame = document.getElementById('journal-frame');
+				
 				if (journalFrame.style.display === 'block') {
 					journalFrame.style.display = 'none';
 				} else {
@@ -3043,19 +3069,42 @@
 				}
 				isJournalKeyPressed = true;
 			}
+			
+			if (event.key === 's' && !isJournalSystemKeyPressed) {
+			
+				const journalSystemFrame = document.getElementById('journal-system-frame');
+				
+				if (journalSystemFrame.style.display === 'block') {
+					journalSystemFrame.style.display = 'none';
+				} else {
+					journalSystemFrame.style.display = 'block';
+				}
+				isJournalSystemKeyPressed = true;
+			}	
+
+			if (event.key === 'c' && !isJournalCodexKeyPressed) {
+			
+				const journalCodexFrame = document.getElementById('journal-codex-frame');
+				
+				if (journalCodexFrame.style.display === 'block') {
+					journalCodexFrame.style.display = 'none';
+				} else {
+					journalCodexFrame.style.display = 'block';
+				}
+				isJournalCodexKeyPressed = true;
+			}				
+			
 		});
 
 		document.addEventListener('keyup', (event) => {
+		
 			if (event.key === 'r') {
 				scanLoop.pause();
 				scanLoop.currentTime = 0;				
 				chart.style.display = 'none';
-				elementBox.style.display = 'none';
-				/*const localMaps = document.getElementsByClassName("localmap-container");
-				for (const localMap of localMaps) {
-					localMap.style.display = "flex";
-				}*/				
+				elementBox.style.display = 'none';			
 			}
+			
 			if (event.key === 'h') {
 				const containers = document.querySelectorAll('.wikimain-container, .localmap-container');
 				
@@ -3065,9 +3114,19 @@
 				const wikiSide = document.getElementById("wiki-container");	
 				wikiSide.style.display = 'none';					
 			}
+			
 			if (event.key === 'j') {
 				isJournalKeyPressed = false;
+			}
+
+			if (event.key === 's') {
+				isJournalSystemKeyPressed = false;
+			}
+
+			if (event.key === 'c') {
+				isJournalCodexKeyPressed = false;
 			}			
+			
 		});	
 
 		function resetSegmentNameColors() {
@@ -3087,6 +3146,20 @@
 			}
 		});	
 		
+		window.addEventListener('message', function (event) {
+			if (event.data === 'closeSystemJournal') {
+				const journalSystemFrame = document.getElementById('journal-system-frame');
+				journalSystemFrame.style.display = 'none';
+			}
+		});	
+
+		window.addEventListener('message', function (event) {
+			if (event.data === 'closeCodexJournal') {
+				const journalCodexFrame = document.getElementById('journal-codex-frame');
+				journalCodexFrame.style.display = 'none';
+			}
+		});		
+		
 		function toggleRadio() {
 			const radioIframe = document.getElementById('music-player');
 			radioIframe.style.display = (radioIframe.style.display === 'none' || radioIframe.style.display === '') ? 'block' : 'none';
@@ -3099,9 +3172,7 @@
 
 		function removeCircle() {
 			document.getElementById('hoverCircle').style.visibility = 'hidden';
-		}		
-
-		//toggleStarLabels();		
+		}				
     </script>
 </body>
 </html>

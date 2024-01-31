@@ -161,3 +161,28 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - clicking a label will open the stars real life wiki page...if the name is based on a not star info, it will lead to that page instead, like for example Al-Battani who was an Astronomer and Mathematician in the medieval Arabian world...some stars don't have catalogue entries, or any way to trace them regardless of thier catalogue number
 - hovering a system label text will render the label cyan
 - fixed bannoc appearing smaller then bannoc secundus</p>
+<p>- fixed schrodinger label linking to sun instead of zeta serpentis
+- removed color change off label on mouse over because le douche is le douche, links are still intact
+- correction of luytens star label position
+
+major code revision:
+
+- the way outpost images are handled has been completely redone. they are now static elements that will have its visbility toggled when an outpost added is to system. this should solve any issues whatsoever
+- the small journal, as well as the text display has been completely removed for reasons stated further down
+- the system widget is gone for good. reason: to much effort for way to less benefit...the animation was decent and visually appeasant, but what's the use if you'd end up on the wiki anyways? but watch this...
+- resource wheel will show the whole palette of available resources for all systems now
+- increased accessibility and size of the element text box for better reading
+- corrected position of resource wheel to consider other elements and not overlapp as much
+- corrected position of system Newton to new changes
+- massive correction of color distribution on the resource wheel, they should all match exactly now
+- of course the new added elements(left side as-tx) do not have proper colors because they don't have individual colors, but share all the same color: #A1E4DB...i still gave them color variations so the wheel wouldn't look single colored on one side of the spectrum
+- distributed all relevant new keywords to the system divs
+- moved the state box further to the left so it doesn't look out of place with the new changes
+
+and now for the major bomb drop:
+
+- the whole "system mini journal aspect" has been revamped. there is now a dedicated system "journal" if you press the "s"(system) or "c"(codex). the structure might be intially confusing, because you will be presented with a 240 elements grid. each of the elements has a "button" like shape and a text input area. the text input area is supposed to act like a "naming field", so, for example, you could write a system name into it. if you then click the adjacent button, it will expand the "journal" underneath which will give you access to 12 text fields plus 12 adjacent image spaces. the idea here is simple: combine text and images you make in game
+
+technically that means what I present you with here, is an interactable in game "Wikipedia" or "Codex" or whatever name you wanna give it. adding images is as easy as to make a Steam screenshot and then use the Steam overlay to catch the image link and put it into your journal's URL imagelink section. of course all the new features are fully saved to local storage, and can be exported to an external .json, so to say "saved" as a game would be saved. but mind though, given the sheer quantitie of entries this new addition is potentially going to add to local storage, I wouldn't rely on LS at all. from here now it's more like a "short time" saving/back-up instance depending on the number of entries. you will most certainly lose content if you close the application without properly saving(exporting) to .json
+
+and if that wasn't enough, as already mentioned, there are two instances of that new journal. one is a"system" journal, the other is meant to be used as "fauna/flora codex"., but of course you are free to use those journals for whatever you like. i'd love to see some of you guys sharing .json exports online for others to import. but mind though, the codex, for now, is basically just a copy aste variant of the system journal, because I didn't found the time and enough reasons to customize it apart from the system journal. but that doesn't mean it is not fully intact, it only means it will be subject to strong visual variation in future updates</p>

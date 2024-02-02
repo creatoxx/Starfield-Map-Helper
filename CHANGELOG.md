@@ -161,7 +161,8 @@ Hotfix 1: reimplemented mouse coordinates. le douche forgot he was using it to d
 - clicking a label will open the stars real life wiki page...if the name is based on a not star info, it will lead to that page instead, like for example Al-Battani who was an Astronomer and Mathematician in the medieval Arabian world...some stars don't have catalogue entries, or any way to trace them regardless of thier catalogue number
 - hovering a system label text will render the label cyan
 - fixed bannoc appearing smaller then bannoc secundus</p>
-<p>- fixed schrodinger label linking to sun instead of zeta serpentis
+<p>Version 0.3, 310.1.2024:
+  - fixed schrodinger label linking to sun instead of zeta serpentis
 - removed color change off label on mouse over because le douche is le douche, links are still intact
 - correction of luytens star label position
 
@@ -186,3 +187,6 @@ and now for the major bomb drop:
 technically that means what I present you with here, is an interactable in game "Wikipedia" or "Codex" or whatever name you wanna give it. adding images is as easy as to make a Steam screenshot and then use the Steam overlay to catch the image link and put it into your journal's URL imagelink section. of course all the new features are fully saved to local storage, and can be exported to an external .json, so to say "saved" as a game would be saved. but mind though, given the sheer quantitie of entries this new addition is potentially going to add to local storage, I wouldn't rely on LS at all. from here now it's more like a "short time" saving/back-up instance depending on the number of entries. you will most certainly lose content if you close the application without properly saving(exporting) to .json
 
 and if that wasn't enough, as already mentioned, there are two instances of that new journal. one is a"system" journal, the other is meant to be used as "fauna/flora codex"., but of course you are free to use those journals for whatever you like. i'd love to see some of you guys sharing .json exports online for others to import. but mind though, the codex, for now, is basically just a copy aste variant of the system journal, because I didn't found the time and enough reasons to customize it apart from the system journal. but that doesn't mean it is not fully intact, it only means it will be subject to strong visual variation in future updates</p>
+<p>Version 0.3.1.1, 2.2.2024:
+  - fixed position of tidacha and toliman in the div hierarchie
+- re-add the difficulty layer(key d), but in a more sophisticated manner</p>

@@ -707,7 +707,10 @@
 				</div>
 				<div class="hotkey-description">
 					<span class="hotkey">"c" = </span> Show Codex Journal
-				</div>				
+				</div>	
+				<div class="hotkey-description">
+					<span class="hotkey">"d" = </span> Show Difficulty Overlay
+				</div>					
 				<div class="hotkey-description">
 					<span class="hotkey">"F3 or CTRL+F" = </span> Open Search Bar
 				</div>	
@@ -2420,6 +2423,19 @@
 				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
+		</div>	
+		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb, Ac, Cm, Fb, Hu, Ma, Pm, Se, Sm">
+			<div id="Tidacha_System" class="star-icon" ondblclick="openInfo(document.getElementById('Tidacha_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
+			</div>
+			<div id="tidacha-label" class="star-label" onclick="openWiki('HD_152391')">Tidacha
+				<img class="outpost-marker">
+			</div>
+			<div class="star-icon-box">Tidacha
+				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
+				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
+				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
+				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
+			</div>			
 		</div>		
 		<div class="star-system" style="top: 590px; left: 352px;" data-keywords="Al, Be, Cn, He, Pb, Ag, As, Hu, Ma, Nt, Om, Sl, Se, Sm, Tx">
 			<div id="Toliman_System" class="star-icon" ondblclick="openInfo(document.getElementById('Toliman_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
@@ -2428,19 +2444,6 @@
 				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px;">
 			</div>
 			<div class="star-icon-box">Toliman
-				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
-				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
-				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
-				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
-			</div>			
-		</div>
-		<div class="star-system" style="top: 445px; left: 966px;" data-keywords="Al, Be, HC, Cn, Nh, Nd, Ta, Yb, Ac, Cm, Fb, Hu, Ma, Pm, Se, Sm">
-			<div id="Tidacha_System" class="star-icon" ondblclick="openInfo(document.getElementById('Tidacha_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
-			</div>
-			<div id="tidacha-label" class="star-label" onclick="openWiki('HD_152391')">Tidacha
-				<img class="outpost-marker">
-			</div>
-			<div class="star-icon-box">Tidacha
 				<button style="margin-top: 5px" onclick="toggleDiscoverState(this); playMenuClick()">Discovered</button>
 				<button style="margin-top: 5px" onclick="toggleSurveyState(this); playMenuClick()">Surveyed</button>				
 				<button style="margin-top: 5px" onclick="toggleOutpostState(this); playMenuClick()">Outpost</button>				
@@ -3031,7 +3034,18 @@
 		
 		let isJournalKeyPressed = false;
 		let isJournalSystemKeyPressed = false;	
-		let isJournalCodexKeyPressed = false;			
+		let isJournalCodexKeyPressed = false;
+		let isDifficultyKeyPressed = false;		
+		
+		const defaultColors = {};
+		const systemDefaultColors = ['#FF3300', '#FF3300', '#990000', '#FFFF00', '#00FF00', '#FF3300', '#990000', '#FF3300', '#00CCFF', '#00CCFF', '#00CCFF', '#990000', '#00CCFF', '#FF3300', '#FF3300',
+			'#FF3300', '#990000', '#00FF00', '#990000', '#00FF00', '#00CCFF', '#FF3300', '#FF3300', '#FF3300', '#990000', '#FF3300', '#00CCFF', '#00CCFF', '#990000', '#990000',
+			'#00FF00', '#FFFF00', '#FFFF00', '#990000', '#FFFF00', '#FF3300', '#FFFF00', '#990000', '#00CCFF', '#00CCFF', '#990000', '#990000', '#990000', '#FF3300', '#FF3300',
+			'#FFFF00', '#00CCFF', '#990000', '#FF3300', '#990000', '#990000', '#FF3300', '#00CCFF', '#FF3300', '#FF3300', '#990000', '#00FF00', '#990000', '#FF3300', '#00CCFF',
+			'#FFFF00', '#FFFF00', '#990000', '#990000', '#FF3300', '#FFFF00', '#00FF00', '#990000', '#00FF00', '#990000', '#990000', '#00CCFF', '#FF3300', '#00CCFF', '#00FF00',
+			'#FF3300', '#990000', '#FF3300', '#990000', '#FF3300', '#00CCFF', '#FFFF00', '#00FF00', '#FF3300', '#00FF00', '#FFFF00', '#00FF00', '#00FF00', '#990000', '#990000',
+			'#990000', '#FF3300', '#FF3300', '#FF3300', '#00CCFF', '#00CCFF', '#990000', '#990000', '#FF3300', '#00FF00', '#00FF00', '#990000', '#990000', '#990000', '#00FF00',
+			'#00FF00', '#FF3300', '#00FF00', '#FFFF00', '#00CCFF', '#00FF00', '#00FF00', '#FFFF00', '#990000', '#00CCFF', '#00FF00', '#FF3300', '#990000', '#FF3300', '#FF3300'];		
 
 		document.addEventListener('keydown', (event) => {
 		
@@ -3092,7 +3106,23 @@
 					journalCodexFrame.style.display = 'block';
 				}
 				isJournalCodexKeyPressed = true;
-			}				
+			}	
+
+			if (event.key === 'd' && !isDifficultyKeyPressed) {
+				const starSystems = document.querySelectorAll('.star-icon');
+
+				starSystems.forEach((starSystem, index) => {
+					const currentColor = window.getComputedStyle(starSystem).backgroundColor;
+					defaultColors[index] = currentColor;
+					starSystem.style.backgroundColor = systemDefaultColors[index % systemDefaultColors.length];
+					
+					const defaultBoxShadow = window.getComputedStyle(starSystem).boxShadow;
+					starSystem.setAttribute('data-default-box-shadow', defaultBoxShadow);
+					starSystem.style.boxShadow = `0 0 14px ${systemDefaultColors[index % systemDefaultColors.length]}`;					
+				});
+
+				isDifficultyKeyPressed = true;
+			}
 			
 		});
 
@@ -3125,9 +3155,20 @@
 
 			if (event.key === 'c') {
 				isJournalCodexKeyPressed = false;
-			}			
+			}
+
+			if (event.key === 'd') {
+				isDifficultyKeyPressed = false;
+				const starSystems = document.querySelectorAll('.star-icon');
+
+				starSystems.forEach((starSystem, index) => {
+					starSystem.style.backgroundColor = defaultColors[index];
+					const defaultBoxShadow = starSystem.getAttribute('data-default-box-shadow');
+					starSystem.style.boxShadow = defaultBoxShadow;					
+				});
+			}		
 			
-		});	
+		});		
 
 		function resetSegmentNameColors() {
 			for (let i = 0; i < totalSegments; i++) {

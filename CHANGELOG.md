@@ -190,3 +190,5 @@ and if that wasn't enough, as already mentioned, there are two instances of that
 <p>Version 0.3.1.1, 2.2.2024:
   - fixed position of tidacha and toliman in the div hierarchie
 - re-add the difficulty layer(key d), but in a more sophisticated manner</p>
+<p>Version 0.3.1.3, 4.2.2024:
+- changed red and orange colors for the difficulty overlay, to make them more easy to distinct</p>

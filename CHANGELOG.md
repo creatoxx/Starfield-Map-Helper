@@ -192,3 +192,5 @@ and if that wasn't enough, as already mentioned, there are two instances of that
 - re-add the difficulty layer(key d), but in a more sophisticated manner</p>
 <p>Version 0.3.1.3, 4.2.2024:
 - changed red and orange colors for the difficulty overlay, to make them more easy to distinct</p>
+<p>Version 0.3.1.5, 15.2.2024: - fixed wrong position of codex journal close button
+- add preset save for system journal</p>

@@ -416,6 +416,36 @@
 			left: -23px;
 			content: url("Data/Textures/Icons/OutpostMarker.png");
 			display: none;			
+		}	
+
+		.derelict-marker {
+			scale: 0.35;		
+			top: -16.0px; 
+			left: -42.0px;
+			content: url("Data/Textures/Icons/DerelictMarker.png");			
+		}
+		.city-name {
+			display: none;
+			position: absolute;
+			top: -5px;
+			left: 118px;
+			color: cyan;			
+		}
+
+		.city-marker:hover + .city-name {
+			display: inline-block;
+		}	
+
+		.staryard-name {
+			display: none;
+			position: absolute;
+			top: -5px;
+			left: 118px;
+			color: cyan;			
+		}
+
+		.staryard-marker:hover + .staryard-name {
+			display: inline-block;
 		}		
     </style>	
 </head>
@@ -432,7 +462,7 @@
 			</p>
 			<p style="position: absolute; top: 32px; left: 30px; font-size: 8px; color: #00FFFF; letter-spacing: 1px; z-index: 2;">
 				<span style="letter-spacing: 1px;">Version: </span>
-				<span style="">0.3</span>			
+				<span style="">0.3.5.4</span>			
 			</p>			
 			<p style="position: absolute; top: 25px; left: 285px; font-size: 10px; color: #B7B7B7; letter-spacing: -1px; z-index: 2;">
 				<span style="color: #B7B7B7; letter-spacing: 1px;">by </span>
@@ -739,16 +769,20 @@
 				<div class="hotkey-description">
 					<h1 class="hotkey">Marker Icons</h1>                
 					<img class="city-marker" style="scale: 65%;">                
-					<span class="hotkey">= </span> Major Settled Location
+					<span class="hotkey">= </span> Important Settled Location
 				</div>
 				<div class="hotkey-description">
 					<img src="Data/Textures/Icons/StaryardMarker.png" style="vertical-align: middle; margin-left: -3px; scale: 65%;">                
-					<span class="hotkey" style="vertical-align: middle; margin-left: -1px;">= </span> Ship Build Location
+					<span class="hotkey" style="vertical-align: middle; margin-left: -1px;">= </span> Important Station Location
 				</div>		
 				<div class="hotkey-description">
 					<img src="Data/Textures/Icons/OutpostMarker.png" style="scale: 75%;">                
-					<span class="hotkey">= </span> Player Outpost
-				</div>                    
+					<span class="hotkey">= </span> Player Build Outpost
+				</div>  
+				<div class="hotkey-description">
+					<img src="Data/Textures/Icons/DerelictMarker.png" style="scale: 125%;">                
+					<span class="hotkey">= </span> Derelict Ship Location
+				</div>				
 			</div>
 
 			<div class="hotkey-info" style="margin-left: 8px; margin-bottom: 550px;">
@@ -1087,7 +1121,10 @@
 			</div>
 			<div id="alphacentauri-label" class="star-label" onclick="openWiki('Alpha_Centauri')">Alpha Centauri
 				<img class="city-marker" style="left: 85px;">
-				<img class="staryard-marker">				
+				<span class="city-name">New Atlantis, Gagarin Landing</span>				
+				<img class="derelict-marker">				
+				<img class="staryard-marker">	
+				<span class="staryard-name" style="left: 66px; top: -7px">The Eye, Starstation RE-939</span>
 				<img class="outpost-marker">			
 			</div>
 			<div class="star-icon-box">Alpha Centauri
@@ -1162,10 +1199,11 @@
 				<button style="position: relative; left: 62px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 631px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta, Nt, Om, Sl">
+		<div class="star-system" style="top: 622px; left: 653px;" data-keywords="Al, Be, HC, Cu, Fe, Pb, Ta, Nt, Om, Sl">
 			<div id="Aranae_System" class="star-icon" ondblclick="openInfo(document.getElementById('Aranae_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="aranae-label" class="star-label" onclick="openWiki('Gliese_570')">Aranae
+				<img class="derelict-marker">			
 				<img class="outpost-marker" style="margin-top: -19px;">
 			</div>
 			<div class="star-icon-box">Aranae
@@ -1205,6 +1243,7 @@
 			<div id="Bannoc_System" class="star-icon" ondblclick="openInfo(document.getElementById('Bannoc_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 11px; height: 11px;">
 			</div>
 			<div id="bannoc-label" class="star-label" onclick="alert('No Wiki result for Gl 544 A!')">Bannoc
+				<img class="derelict-marker">
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Bannoc
@@ -1331,10 +1370,10 @@
 				<button style="position: relative; left: 68px; top: -92px;" onclick="closeStarIconBox(this)" onMouseOver="this.style.color = 'red'" onMouseOut="this.style.color = '#B7B7B7'">X</button>	
 			</div>			
 		</div>
-		<div class="star-system" style="top: 881px; left: 1089px;" data-keywords="">
+		<div class="star-system" style="top: 881px; left: 1089px;" data-keywords="Fe, He, HC">
 			<div id="Beta_Tirna_System" class="star-icon" ondblclick="openInfo(document.getElementById('Beta_Tirna_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
-			<div id="betaternion-label" class="star-label" onclick="openWiki('HD_102365')">Beta Tirna
+			<div id="betatirna-label" class="star-label" onclick="openWiki('HD_102365')">Beta Tirna
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Beta Tirna
@@ -1413,6 +1452,8 @@
 			<div id="Charybdis_System" class="star-icon" ondblclick="openInfo(document.getElementById('Charybdis_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="charybdis-label" class="star-label" onclick="alert('No Wiki result for NN 3727A!')">Charybdis
+				<img class="city-marker" style="left: 60px;">	
+				<span class="city-name" style="left: 88px; top: 7px">Crucible</span>				
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Charybdis
@@ -1428,7 +1469,9 @@
 			</div>
 			<div id="cheyenne-label"  class="star-label" onclick="openWiki('Xi_Boötis')">Cheyenne
 				<img class="city-marker" style="left: 60px;">	
+				<span class="city-name" style="left: 60px; top: -28px;">Akila City, Waggoner Farm</span>				
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 15px; top: -30px">Trident Luxury Yards</span>
 				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px">		
 			</div>
 			<div class="star-icon-box">Cheyenne
@@ -1663,6 +1706,7 @@
 			<div id="Heinlein_System" class="star-icon" ondblclick="openInfo(document.getElementById('Heinlein_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div id="heinlein-label" class="star-label" onclick="openWiki('Mu_Virginis')">Heinlein
+				<img class="derelict-marker">			
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Heinlein
@@ -1702,6 +1746,8 @@
 			<div id="Hyla_System" class="star-icon" ondblclick="openInfo(document.getElementById('Hyla_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div id="hyla-label" class="star-label" onclick="openWiki('HD_126053')">Hyla
+				<img class="city-marker" style="left: 31px;">
+				<span class="city-name" style="left: 60px; top: 7px">Eren's Camp</span>				
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Hyla
@@ -1729,6 +1775,7 @@
 			</div>
 			<div id="ixyll-label" class="star-label" onclick="openWiki('HD_111395')">Ixyll
 				<img class="city-marker" style="left: 26px;">
+				<span class="city-name" style="left: 55px; top: 7px">Eleos Retreat</span>
 				<img class="staryard-marker">
 				<img class="outpost-marker">			
 			</div>
@@ -1808,8 +1855,10 @@
 			<div id="Kryx_System" class="star-icon" ondblclick="openInfo(document.getElementById('Kryx_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 11px; height: 11px;">
 			</div>
 			<div id="kryx-label" class="star-label" onclick="openWiki('Lambda_Serpentis')">Kryx
-				<img class="city-marker" style="left: 32px;">	
+				<img class="city-marker" style="left: 32px;">
+				<span class="city-name" style="left: 57px; top: -6px">The Lock</span>				
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 16px; top: -17px">The Key</span>
 				<img class="outpost-marker" style="margin-left: 18px; margin-top: -20px;">				
 			</div>
 			<div class="star-icon-box">Kryx
@@ -1902,6 +1951,8 @@
 			<div id="Luyten%27s_Star_System" class="star-icon" ondblclick="openInfo(document.getElementById('Luyten%27s_Star_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="luytensstar-label" class="star-label" onclick="openWiki('Luyten%27s_Star')" style="margin-left: -91px;">Luyten's Star
+				<img class="staryard-marker">
+				<span class="staryard-name" style="left: -36px; top: -22px">SY-920</span>
 				<img class="outpost-marker" style="margin-top: -19px;">
 			</div>
 			<div class="star-icon-box">Luyten's Star
@@ -2007,7 +2058,9 @@
 			</div>
 			<div id="narion-label" class="star-label" onclick="openWiki('70_Ophiuchi')">Narion
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 66px; top: -7px">The Clinic, Stroud-Eklund Staryard</span>
 				<img class="city-marker">
+				<span class="city-name" style="left: 65px; top: -17px">One of a Kind</span>
 				<img class="outpost-marker">				
 			</div>
 			<div class="star-icon-box">Narion
@@ -2112,6 +2165,8 @@
 			<div id="Olympus_System" class="star-icon" ondblclick="openInfo(document.getElementById('Olympus_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="olympus-label" class="star-label" onclick="openWiki('Gliese_570')">Olympus
+				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 12px; top: 20px">The Amalgest</span>					
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Olympus
@@ -2151,7 +2206,9 @@
 			<div id="Porrima_System" class="star-icon" ondblclick="openInfo(document.getElementById('Porrima_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 9px; height: 9px;">
 			</div>
 			<div id="porrima-label" class="star-label" onclick="openWiki('Gamma_Virginis')">Porrima
-				<img class="city-marker" style="left: 47px;">	
+				<img class="city-marker" style="left: 47px;">
+				<span class="city-name" style="left: 80px; top: 0px">The Red Mile, Paradiso</span>				
+				<img class="derelict-marker">				
 				<img class="staryard-marker">
 				<img class="outpost-marker">		
 			</div>
@@ -2296,6 +2353,7 @@
 			<div id="Schrodinger_System" class="star-icon" ondblclick="openInfo(document.getElementById('Schrodinger_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div id="schrodinger-label" class="star-label" onclick="openWiki('Zeta_Serpentis')">Schrodinger
+				<img class="derelict-marker">			
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Schrodinger
@@ -2349,7 +2407,9 @@
 			</div>
 			<div id="sol-label" class="star-label" onclick="openWiki('Sun')" onclick="openWiki('Sun')">Sol
 				<img class="city-marker" style="left: 22px;">	
+				<span class="city-name" style="left: 15px; top: -30px">Cydonia, New Homestead</span>				
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 15px; top: -55px">Deimos Staryard, Nova Galactic Staryard</span>
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Sol
@@ -2389,6 +2449,8 @@
 			<div id="Syrma_System" class="star-icon" ondblclick="openInfo(document.getElementById('Syrma_System'))" style="background-color: #FFFFFF; box-shadow: 0 0 14px #FFFFFF; width: 11px; height: 11px;">
 			</div>
 			<div id="syrma-label" class="star-label" onclick="openWiki('Iota_Virginis')">Syrma
+				<img class="city-marker" style="left: 43px;">
+				<span class="city-name" style="left: 65px; top: -17px">Vlad's Settlement</span>				
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Syrma
@@ -2480,7 +2542,8 @@
 			<div id="Valo_System" class="star-icon" ondblclick="openInfo(document.getElementById('Valo_System'))" style="background-color: #FFBF00; box-shadow: 0 0 14px #FFBF00; width: 9px; height: 9px;">
 			</div>
 			<div id="valo-label" class="star-label" onclick="openWiki('70_Ophiuchi')">Valo
-				<img class="city-marker" style="left: 30px;">	
+				<img class="city-marker" style="left: 30px;">
+				<span class="city-name" style="left: 55px; top: 7px">Hopetown</span>				
 				<img class="staryard-marker">
 				<img class="outpost-marker" style="margin-left: 18px; margin-top: -19px;">				
 			</div>
@@ -2534,7 +2597,9 @@
 			</div>
 			<div id="volii-label" class="star-label" onclick="openWiki('61_Virginis')">Volii
 				<img class="city-marker" style="left: 27px;">
+				<span class="city-name" style="left: 55px; top: 8px">Neon City</span>				
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 15px; top: 30px">Autonomous Staryard</span>
 				<img class="outpost-marker">			
 			</div>
 			<div class="star-icon-box">Volii
@@ -2548,8 +2613,10 @@
 			<div id="Wolf_System" class="star-icon" ondblclick="openInfo(document.getElementById('Wolf_System'))" style="background-color: #FF6F61; box-shadow: 0 0 14px #FF6F61; width: 9px; height: 9px;">
 			</div>
 			<div id="wolf-label" class="star-label" onclick="openWiki('Wolf_359')">Wolf
-				<img class="city-marker" style="left: 28px;">			
+				<img class="city-marker" style="left: 28px;">	
+				<span class="city-name" style="left: 55px; top: 7px">Londinium</span>				
 				<img class="staryard-marker">
+				<span class="staryard-name" style="left: 54px; top: -6px">The Den</span>
 				<img class="outpost-marker">				
 			</div>			
 			<div class="star-icon-box">Wolf
@@ -2576,6 +2643,7 @@
 			<div id="Zelazny_System" class="star-icon" ondblclick="openInfo(document.getElementById('Zelazny_System'))" style="background-color: #FFFF99; box-shadow: 0 0 14px #FFFF99; width: 9px; height: 9px;">
 			</div>
 			<div id="zelazny-label" class="star-label" onclick="alert('No Wiki result for Wo 9390A!')">Zelazny
+				<img class="derelict-marker">			
 				<img class="outpost-marker">
 			</div>
 			<div class="star-icon-box">Zelazny

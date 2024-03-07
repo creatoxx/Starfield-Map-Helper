@@ -194,3 +194,13 @@ and if that wasn't enough, as already mentioned, there are two instances of that
 - changed red and orange colors for the difficulty overlay, to make them more easy to distinct</p>
 <p>Version 0.3.1.5, 15.2.2024: - fixed wrong position of codex journal close button
 - add preset save for system journal</p>
+<p>Version 0.3.5.4, 7.3.2024- fixed beta tirna nit having resource keywords
+- fixed beta tirna label id
+- add derelict ship maker to relevant systems
+- add settlement icons: crucible(charybdis), eren's camp(hyla), vlad's villa(Syrma)
+- hovering settlement icons will reveal names of settlements now
+- add station icon to olympus(amalgest)
+- hovering station icons will reveal names of station now
+- moved position of Aranae slightly further up to make place for icons
+- add station icon to luyten's rock(sy-920)
+- adapted and slightly changed setting section to new changes</p>

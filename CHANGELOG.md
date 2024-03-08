@@ -204,3 +204,7 @@ and if that wasn't enough, as already mentioned, there are two instances of that
 - moved position of Aranae slightly further up to make place for icons
 - add station icon to luyten's rock(sy-920)
 - adapted and slightly changed setting section to new changes</p>
+<p>Version 0.3.6.2, 8.3.2024:
+- add extra derelict icon for settings section, because reasons
+- fixed derelict icon not correctly showing on starmap
+- slightly changed positioning of derelict icon on starmap to go in line wit other icons</p>

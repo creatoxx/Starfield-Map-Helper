@@ -208,3 +208,14 @@ and if that wasn't enough, as already mentioned, there are two instances of that
 - add extra derelict icon for settings section, because reasons
 - fixed derelict icon not correctly showing on starmap
 - slightly changed positioning of derelict icon on starmap to go in line wit other icons</p>
+<p>Version 0.4, 20.3.2024
+- all star names will now show the number of planets and moons in their name(p/m)
+- doubled the scale of all star icons
+- set label of stars to use font scale 12
+- doubled the scale of all city, ship etc. icons
+- removed the scale change on hovering star icons...reason: nice visual, no use
+- adapted all things to all new changes
+- add info box to difficutly overlay
+- slightly reduced scale of red dwarf star icons
+- increased number of z-index priority for star icons, so they respond better to clicks if city, derelict, staryard or outpost icons are hovered or clicked
+- minor position fixes to staryard name labels</p>
